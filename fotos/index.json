@@ -575,5 +575,102 @@
       "presos",
       "presidio"
     ]
+  },
+  {
+    "archivo": "El-Hoyo-Incendio-forestal-012.jpg",
+    "descripcion": "Vecinos entre escombros — El Hoyo, incendio forestal Comarca Andina, Chubut",
+    "keywords": [
+      "incendio",
+      "el hoyo",
+      "comarca andina",
+      "chubut",
+      "incendio forestal",
+      "damnificados",
+      "vecinos",
+      "escombros",
+      "bosque quemado",
+      "emergencia",
+      "catástrofe",
+      "evacuados",
+      "reconstrucción",
+      "patagonia"
+    ]
+  },
+  {
+    "archivo": "portada_incendios_patagonia.jpg",
+    "descripcion": "Bosque calcinado tras el incendio — Comarca Andina, Patagonia",
+    "keywords": [
+      "incendio",
+      "bosque quemado",
+      "incendio forestal",
+      "comarca andina",
+      "el hoyo",
+      "el bolsón",
+      "chubut",
+      "patagonia",
+      "árbol calcinado",
+      "catástrofe ambiental",
+      "desastre natural",
+      "emergencia"
+    ]
+  },
+  {
+    "archivo": "foto_infor_chubut.jpg",
+    "descripcion": "Incendio forestal activo nocturno — llamas en bosque patagónico",
+    "keywords": [
+      "incendio",
+      "incendio forestal",
+      "fuego",
+      "llamas",
+      "noche",
+      "bosque",
+      "patagonia",
+      "chubut",
+      "emergencia ígnea",
+      "catástrofe",
+      "brigadistas",
+      "combate de incendios",
+      "alerta roja",
+      "desastre natural"
+    ]
+  },
+  {
+    "archivo": "Costanera-Comodoro-Rivadavia.jpg",
+    "descripcion": "Vista aérea de Comodoro Rivadavia — costanera, cerro, Chubut",
+    "keywords": [
+      "comodoro rivadavia",
+      "comodoro",
+      "chubut",
+      "costanera",
+      "ciudad patagónica",
+      "vista aérea",
+      "golfo san jorge",
+      "petróleo",
+      "patagonia atlántica",
+      "cerro chenque",
+      "puerto",
+      "economía patagónica"
+    ]
+  },
+  {
+    "archivo": "petroleo.jpg",
+    "descripcion": "Bomba de petróleo al atardecer en la estepa patagónica — Vaca Muerta, Neuquén",
+    "keywords": [
+      "petróleo",
+      "petroleo",
+      "bomba de petróleo",
+      "vaca muerta",
+      "neuquén",
+      "hidrocarburos",
+      "energía",
+      "extracción",
+      "estepa patagónica",
+      "industria patagónica",
+      "gas",
+      "economía",
+      "riqueza patagónica",
+      "atardecer",
+      "pumpjack"
+    ]
   }
 ]
