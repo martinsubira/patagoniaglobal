@@ -18,8 +18,8 @@
     "fuente": "PatagoniaGLOBAL",
     "url_original": "",
     "pais": "argentina",
-    "imagen": "fotos/Calafate.jpg",
-    "imagen_keywords": "glaciar patagonia agua hielo cordillera",
+    "imagen": "fotos/LEY_GLACIARES_01.jpg",
+    "imagen_keywords": "glaciar patagonia bandera argentina icebergs ley glaciares",
     "meta": "Hoy · PatagoniaGLOBAL",
     "datos_clave": [
       {
@@ -46,6 +46,11 @@
         "label": "Próximo paso",
         "valor": "Cámara de Diputados"
       }
+    ],
+    "galeria": [
+      "fotos/LEY_GLACIARES_02.jpg",
+      "fotos/LEY_GLACIARES_03.jpg",
+      "fotos/LEY_GLACIARES_04.jpg"
     ]
   },
   "secundarias": [

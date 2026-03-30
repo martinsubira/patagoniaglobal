@@ -698,5 +698,65 @@
       "ice",
       "glaciares patagonia"
     ]
+  },
+  {
+    "archivo": "LEY_GLACIARES_01.jpg",
+    "descripcion": "Bandera argentina con icebergs y glaciares patagónicos al fondo — lago glaciar Patagonia",
+    "keywords": [
+      "glaciar",
+      "glaciares",
+      "bandera argentina",
+      "icebergs",
+      "patagonia",
+      "soberanía",
+      "agua",
+      "hielo",
+      "ley de glaciares",
+      "lago glaciar",
+      "santa cruz"
+    ]
+  },
+  {
+    "archivo": "LEY_GLACIARES_02.jpg",
+    "descripcion": "Marcha en defensa de los glaciares — carteles 'Los glaciares son vida, no destruirlos es criminal'",
+    "keywords": [
+      "glaciares",
+      "marcha",
+      "protesta",
+      "medioambiente",
+      "ley de glaciares",
+      "activismo ambiental",
+      "manifestación"
+    ]
+  },
+  {
+    "archivo": "LEY_GLACIARES_03.jpg",
+    "descripcion": "Manifestación frente al Perito Moreno con bandera #LosGlaciaresNoSeTocaN",
+    "keywords": [
+      "perito moreno",
+      "glaciar",
+      "glaciares",
+      "manifestación",
+      "ley de glaciares",
+      "protesta",
+      "calafate",
+      "santa cruz",
+      "los glaciares no se tocan"
+    ]
+  },
+  {
+    "archivo": "LEY_GLACIARES_04.jpg",
+    "descripcion": "Frente del glaciar Perito Moreno — pared de hielo con desprendimientos",
+    "keywords": [
+      "perito moreno",
+      "glaciar",
+      "hielo",
+      "patagonia",
+      "calafate",
+      "santa cruz",
+      "agua dulce",
+      "glaciares",
+      "cordillera"
+    ]
   }
 ]
