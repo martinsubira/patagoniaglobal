@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Política de Privacidad — PatagoniaGLOBAL</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+  <link rel="canonical" href="https://patagoniaglobal.org/privacidad.html"/>
+  <meta name="description" content="Política de privacidad de PatagoniaGLOBAL. Cómo recopilamos, usamos y protegemos tu información."/>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5FP2F41BZG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-5FP2F41BZG');
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600&display=swap');
+
+    :root {
+      --verde: #1c2d3d;
+      --azul-claro: #7aadcc;
+      --gris-oscuro: #252830;
+      --gris-medio: #6b7280;
+      --fondo: #f0ede8;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: var(--fondo); color: var(--gris-oscuro); }
+
+    header { background: var(--verde); position: sticky; top: 0; z-index: 100; }
+    .top-bar {
+      background: #0e1a26;
+      color: rgba(255,255,255,0.5);
+      font-size: 11px;
+      letter-spacing: 1px;
+      padding: 6px 20px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .header-main {
+      display: flex;
+      align-items: center;
+      padding: 16px 24px 12px;
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      font-weight: 900;
+      color: white;
+      letter-spacing: -1px;
+      text-decoration: none;
+    }
+    .logo span { color: var(--azul-claro); }
+    .logo-tagline {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-top: 2px;
+    }
+    nav {
+      display: flex;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    nav::-webkit-scrollbar { display: none; }
+    nav a {
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 13px 20px;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+    nav a:hover { color: white; background: rgba(255,255,255,0.07); }
+
+    .hero {
+      background: linear-gradient(160deg, #0e1a26 0%, #1c2d3d 100%);
+      color: white;
+      padding: 50px 24px 44px;
+      text-align: center;
+    }
+    .hero-tag {
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--azul-claro);
+      margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 900;
+    }
+    .hero p {
+      margin-top: 12px;
+      color: rgba(255,255,255,0.6);
+      font-size: 14px;
+    }
+
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 56px 24px 80px;
+    }
+
+    .seccion { margin-bottom: 44px; }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--verde);
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--azul-claro);
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #3a3a3a;
+      margin-bottom: 14px;
+    }
+
+    ul {
+      margin: 12px 0 14px 20px;
+      font-size: 16px;
+      line-height: 1.9;
+      color: #3a3a3a;
+    }
+
+    a { color: var(--azul-claro); }
+
+    .ultima-actualizacion {
+      display: inline-block;
+      background: white;
+      border-left: 3px solid var(--azul-claro);
+      padding: 10px 18px;
+      font-size: 13px;
+      color: var(--gris-medio);
+      margin-bottom: 40px;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .divider-footer { height: 1px; background: linear-gradient(to right, transparent, #ddd, transparent); }
+    footer {
+      background: #252830;
+      color: rgba(255,255,255,0.5);
+      padding: 32px 20px 20px;
+      text-align: center;
+    }
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 22px; color: white; margin-bottom: 6px; }
+    .footer-logo span { color: #8ab8d4; }
+    .footer-copy { font-size: 11px; color: rgba(255,255,255,0.25); margin-top: 12px; }
+    .footer-nav { margin: 12px 0; display: flex; justify-content: center; flex-wrap: wrap; gap: 4px 20px; }
+    .footer-nav a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 12px; }
+    .footer-nav a:hover { color: white; }
+
+    @media (max-width: 768px) {
+      .logo { font-size: 34px; }
+      nav a { font-size: 11px; padding: 12px 14px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="top-bar">
+    <span>Patagonia Argentina y Chilena</span>
+    <span style="color:#8ab8d4;font-weight:600;">Sur Global, principio de todo.</span>
+  </div>
+  <div class="header-main">
+    <div>
+      <a href="index.html" class="logo">Patagonia<span>GLOBAL</span></a>
+      <div class="logo-tagline">Sur Global, principio de todo.</div>
+    </div>
+  </div>
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="index.html">Noticias</a>
+    <a href="index.html">Deportes & Actividades</a>
+    <a href="index.html">Turismo & Guías</a>
+    <a href="index.html">Cultura Patagónica</a>
+    <a href="index.html">Medio Ambiente</a>
+    <a href="acerca.html">Acerca de</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <div class="hero-tag">Legal</div>
+  <h1>Política de Privacidad</h1>
+  <p>PatagoniaGLOBAL · patagoniaglobal.org</p>
+</div>
+
+<div class="container">
+
+  <div class="ultima-actualizacion">Última actualización: abril de 2026</div>
+
+  <div class="seccion">
+    <h2>1. Quiénes somos</h2>
+    <p>PatagoniaGLOBAL es un portal de noticias digital que cubre la Patagonia argentina y chilena. El sitio web está disponible en <strong>patagoniaglobal.org</strong> y es administrado desde Argentina.</p>
+    <p>Para cualquier consulta relacionada con esta política podés contactarnos en: <a href="mailto:ficciontvpatagonia@gmail.com">ficciontvpatagonia@gmail.com</a></p>
+  </div>
+
+  <div class="seccion">
+    <h2>2. Qué información recopilamos</h2>
+    <p>PatagoniaGLOBAL no solicita ni almacena datos personales de forma directa. Sin embargo, al visitar el sitio se recopila automáticamente cierta información a través de terceros:</p>
+    <ul>
+      <li><strong>Datos de navegación:</strong> páginas visitadas, tiempo de permanencia, dispositivo y navegador utilizado, país de origen de la visita.</li>
+      <li><strong>Dirección IP:</strong> utilizada para determinar la ubicación geográfica aproximada y detectar el idioma preferido.</li>
+      <li><strong>Datos de interacción:</strong> clics, desplazamiento y comportamiento general en el sitio.</li>
+    </ul>
+    <p>Si utilizás el <strong>formulario de contacto</strong>, recopilamos el nombre, dirección de correo electrónico, asunto y mensaje que enviás voluntariamente. Esa información se usa exclusivamente para responder tu consulta.</p>
+  </div>
+
+  <div class="seccion">
+    <h2>3. Cómo usamos la información</h2>
+    <p>La información recopilada se usa para:</p>
+    <ul>
+      <li>Analizar el tráfico y el comportamiento de los lectores para mejorar los contenidos y la experiencia del sitio.</li>
+      <li>Mostrar publicidad relevante a través de Google AdSense.</li>
+      <li>Responder consultas enviadas mediante el formulario de contacto.</li>
+    </ul>
+    <p>No vendemos, cedemos ni compartimos información personal con terceros, salvo los servicios indicados en esta política.</p>
+  </div>
+
+  <div class="seccion">
+    <h2>4. Cookies y tecnologías de seguimiento</h2>
+    <p>Este sitio utiliza cookies — pequeños archivos de texto que se almacenan en tu dispositivo — para funcionar correctamente y mejorar la experiencia de navegación.</p>
+    <p>Las cookies que utilizamos provienen de:</p>
+    <ul>
+      <li><strong>Google Analytics:</strong> para medir el tráfico y el comportamiento de los visitantes. Podés conocer la política de privacidad de Google en <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>.</li>
+      <li><strong>Google AdSense:</strong> para mostrar publicidad personalizada según los intereses del usuario. Podés gestionar tus preferencias de publicidad en <a href="https://adssettings.google.com" target="_blank" rel="noopener">adssettings.google.com</a>.</li>
+    </ul>
+    <p>Podés desactivar las cookies desde la configuración de tu navegador, aunque esto puede afectar el funcionamiento de algunas partes del sitio.</p>
+  </div>
+
+  <div class="seccion">
+    <h2>5. Publicidad</h2>
+    <p>PatagoniaGLOBAL puede mostrar anuncios a través de <strong>Google AdSense</strong>, un servicio de publicidad de Google LLC. Google utiliza cookies para mostrar anuncios basados en visitas anteriores a este u otros sitios web.</p>
+    <p>Los anuncios que ves están determinados por factores como tu historial de navegación, tu ubicación geográfica y tus intereses según los infiere Google. PatagoniaGLOBAL no tiene acceso ni control sobre esos datos.</p>
+    <p>Para más información o para optar por no recibir publicidad personalizada, visitá <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener">google.com/settings/ads</a>.</p>
+  </div>
+
+  <div class="seccion">
+    <h2>6. Contenido de terceros y fuentes</h2>
+    <p>PatagoniaGLOBAL elabora sus contenidos a partir de información pública de medios de comunicación, fuentes oficiales y agencias de noticias, indicando siempre la fuente original. Los sitios web de terceros enlazados desde este portal tienen sus propias políticas de privacidad, sobre las cuales no tenemos responsabilidad ni control.</p>
+  </div>
+
+  <div class="seccion">
+    <h2>7. Tus derechos</h2>
+    <p>Tenés derecho a:</p>
+    <ul>
+      <li>Acceder a la información personal que hayamos podido recopilar sobre vos.</li>
+      <li>Solicitar la rectificación o eliminación de esa información.</li>
+      <li>Oponerte al tratamiento de tus datos con fines publicitarios.</li>
+    </ul>
+    <p>Para ejercer cualquiera de estos derechos, escribinos a <a href="mailto:ficciontvpatagonia@gmail.com">ficciontvpatagonia@gmail.com</a>.</p>
+  </div>
+
+  <div class="seccion">
+    <h2>8. Cambios en esta política</h2>
+    <p>Podemos actualizar esta política de privacidad en cualquier momento. Los cambios se publicarán en esta misma página con la fecha de actualización correspondiente. Te recomendamos revisarla periódicamente.</p>
+  </div>
+
+</div>
+
+<div class="divider-footer"></div>
+<footer>
+  <div class="footer-logo">Patagonia<span>GLOBAL</span></div>
+  <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-top:4px;">Argentina · Chile · Sin fronteras</div>
+  <div class="footer-nav">
+    <a href="index.html">Inicio</a>
+    <a href="acerca.html">Acerca de</a>
+    <a href="privacidad.html">Privacidad</a>
+  </div>
+  <div class="footer-copy">© 2026 PatagoniaGLOBAL · patagoniaglobal.org</div>
+</footer>
+
+</body>
+</html>
