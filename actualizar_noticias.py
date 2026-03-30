@@ -58,6 +58,7 @@ FUENTES_RSS = [
     {"nombre": "El Divisadero",           "url": "https://www.eldivisadero.cl/feed/",                    "region": "Aysén"},
     {"nombre": "El Llanquihue",           "url": "https://www.elllanquihue.cl/feed/",                    "region": "Los Lagos"},
     {"nombre": "El Pingüino",             "url": "https://www.elpinguino.com/feed/",                     "region": "Magallanes"},
+    {"nombre": "Diario de Valdivia",      "url": "https://www.diariodevaldivia.cl/feed/",                "region": "Los Ríos"},
 ]
 
 PALABRAS_CLAVE = [
@@ -74,7 +75,8 @@ PALABRAS_CLAVE = [
     "plottier", "piedra buena", "comandante piedra buena", "los antiguos",
     # Chile
     "magallanes", "punta arenas", "puerto natales", "torres del paine",
-    "coyhaique", "aysén", "aysen", "puerto montt", "chiloé", "chiloe",
+    "coyhaique", "aysén", "aysen", "puerto aysén", "puerto aysen",
+    "puerto montt", "chiloé", "chiloe",
     "valdivia", "osorno", "pucón", "pucon", "villa o'higgins",
     "cochrane", "caleta tortel", "puerto williams", "cabo de hornos",
     # Medio ambiente — PRIORIDAD MÁXIMA
