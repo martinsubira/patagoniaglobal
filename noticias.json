@@ -54,6 +54,20 @@
   ],
   "noticias": [
     {
+      "id": "20260330-tapa",
+      "titulo": "Neuquén y Santiago ya están a un vuelo directo: Latam conecta la Patagonia con Chile",
+      "bajada": "La aerolínea lanzó una frecuencia de cuatro vuelos semanales entre Neuquén y la capital chilena. Es una señal concreta de integración binacional que la Patagonia necesitaba y que puede redefinir el turismo y los negocios en la región.",
+      "cuerpo": "Latam puso en marcha una nueva ruta aérea que une Neuquén con Santiago de Chile con cuatro frecuencias semanales, un movimiento que no es menor para una región que históricamente reclamó mejor conectividad transfronteriza. El vuelo acorta distancias reales y simbólicas entre dos vertientes de la Patagonia que comparten mucho más que la cordillera.\n\nLa conexión directa entre la capital neuquina y Santiago llega en un momento en que el turismo binacional muestra señales de recuperación y la demanda de vuelos regionales crece en todo el sur. Hasta ahora, cruzar de Neuquén a Chile por aire obligaba a pasar por Buenos Aires o buscar combinaciones poco prácticas. Este enlace directo cambia las reglas: abre la puerta a circuitos turísticos integrados —pensemos en quien aterriza en Santiago y en pocas horas está en los lagos del sur neuquino, o viceversa— y facilita vínculos comerciales que la frontera terrestre sola no alcanza a sostener.\n\nPara la Patagonia argentina, y especialmente para Neuquén, la ruta tiene un valor estratégico. La ciudad viene consolidándose como polo de servicios ligado a Vaca Muerta, pero su perfil turístico todavía está por debajo de su potencial. Un vuelo regular a Santiago la posiciona como puerta de entrada para el turista chileno e internacional que busca nieve, lagos y naturaleza sin el embudo de Bariloche. Del lado chileno, la ruta también suma: conecta a viajeros argentinos con la oferta gastronómica, cultural y de negocios de la capital, y refuerza la idea de que la cordillera no debería ser barrera sino bisagra.\n\nEl antecedente más cercano es la experiencia de otras rutas transandinas que funcionaron bien cuando hubo continuidad y precio competitivo, y fracasaron cuando alguno de esos factores falló. La clave ahora será que la demanda sostenga las cuatro frecuencias y que las autoridades de ambos lados acompañen con facilitación migratoria y aduanera ágil. Un vuelo que aterriza rápido pero se traba dos horas en migraciones no es integración real.\n\nSi esta ruta se consolida, puede ser el puntapié para que otras ciudades patagónicas —Comodoro, Trelew, incluso Esquel— empiecen a soñar con conexiones directas al otro lado de los Andes. La Patagonia binacional necesita menos discursos y más frecuencias aéreas. Este es un buen primer paso.",
+      "tag": "✈️ Turismo",
+      "categoria": "turismo",
+      "fuente": "Diario Río Negro",
+      "url_original": "https://www.rionegro.com.ar/voy-turismo/cuatro-veces-por-semana-asi-es-el-nuevo-vuelo-que-une-neuquen-con-santiago-4519786/",
+      "pais": "ambos",
+      "imagen": "fotos/vuelo-andes-patagonia.jpg",
+      "imagen_keywords": "airplane andes patagonia",
+      "meta": "Hoy · Diario Río Negro"
+    },
+    {
       "id": "20260330-1",
       "titulo": "El Senado chileno garantiza a Magallanes un lugar en las comisiones clave",
       "bajada": "El pacto de gobernabilidad 2026-2030 en la Cámara Alta incluye presencia estratégica de representantes magallánicos, algo inusual para la región más austral.",
