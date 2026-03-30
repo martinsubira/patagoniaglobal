@@ -392,8 +392,21 @@ def resolver_imagen(nota, fotos_propias, fotos_usadas):
 
 # ── JSON de salida ─────────────────────────────────────────
 
+def cargar_historias_permanentes():
+    """Carga el array 'historias' del noticias.json actual para preservarlo."""
+    ruta = os.path.join(os.path.dirname(__file__), "noticias.json")
+    if not os.path.exists(ruta):
+        return []
+    try:
+        with open(ruta, encoding="utf-8") as f:
+            data = json.load(f)
+        return data.get("historias", [])
+    except Exception:
+        return []
+
+
 def construir_noticias_json(tapa, historial, ticker):
-    """Arma noticias.json con tapa + feed del historial."""
+    """Arma noticias.json con tapa + feed del historial. Preserva historias permanentes."""
     # El feed son los últimos MAX_FEED artículos (excluyendo la tapa)
     feed = [a for a in historial if a.get("id") != tapa.get("id")][:MAX_FEED]
 
@@ -402,13 +415,17 @@ def construir_noticias_json(tapa, historial, ticker):
     # Cards del feed: del 3ro en adelante
     noticias_cards = feed[2:]
 
+    # Las historias permanentes (Historia, Cultura) nunca se borran
+    historias = cargar_historias_permanentes()
+
     return {
-        "generado":     datetime.now().isoformat(),
+        "generado":      datetime.now().isoformat(),
         "fecha_display": fecha_display(),
-        "ticker":       ticker,
-        "tapa":         tapa,
-        "secundarias":  secundarias,
-        "noticias":     noticias_cards,
+        "ticker":        ticker,
+        "tapa":          tapa,
+        "secundarias":   secundarias,
+        "noticias":      noticias_cards,
+        "historias":     historias,
     }
 
 
