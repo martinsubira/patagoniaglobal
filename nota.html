@@ -233,6 +233,9 @@
     @media (max-width: 600px) {
       .relacionadas-grid { grid-template-columns: 1fr 1fr; }
     }
+    @media (max-width: 480px) {
+      .relacionadas-grid { grid-template-columns: 1fr; }
+    }
 
     .nota-imagen-wrap {
       width: 100%;
@@ -305,11 +308,32 @@
     }
 
     @media (max-width: 768px) {
-      .nota-titulo { font-size: 26px; }
+      .top-bar { padding: 5px 12px; font-size: 10px; }
+      .top-bar span:last-child { display: none; }
+      .header-main { padding: 14px 16px 10px; }
+      .logo { font-size: 34px; }
+
+      nav { justify-content: flex-start; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+      nav::-webkit-scrollbar { display: none; }
+      nav a { font-size: 11px; padding: 12px 14px; white-space: nowrap; flex-shrink: 0; }
+
+      .container { padding: 0 14px; }
+      .nota-titulo { font-size: 24px; line-height: 1.25; }
       .nota-bajada { font-size: 15px; }
-      .nota-cuerpo p { font-size: 15px; }
-      .nota-imagen { height: 220px; }
-      nav a { font-size: 10px; padding: 10px 10px; }
+      .nota-cuerpo p { font-size: 15px; line-height: 1.7; }
+      .nota-imagen { max-height: 260px; }
+      .nota-imagen-wrap { max-height: 260px; }
+      .nota-imagen-placeholder { height: 200px; }
+
+      .compartir { flex-wrap: wrap; gap: 8px; }
+      .btn-compartir { padding: 10px 16px; font-size: 12px; }
+    }
+
+    @media (max-width: 480px) {
+      .logo { font-size: 28px; }
+      .nota-titulo { font-size: 21px; }
+      .nota-meta { font-size: 11px; gap: 10px; flex-wrap: wrap; }
+      .relacionadas-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
