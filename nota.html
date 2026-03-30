@@ -122,12 +122,21 @@
     }
     .nota-meta span { display: flex; align-items: center; gap: 5px; }
 
-    .nota-imagen {
+    .nota-imagen-wrap {
       width: 100%;
-      height: 420px;
-      object-fit: cover;
+      background: #0e1a26;
       border-radius: 4px;
       margin-bottom: 32px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      max-height: 480px;
+    }
+    .nota-imagen {
+      width: 100%;
+      max-height: 480px;
+      object-fit: contain;
       display: block;
     }
     .nota-imagen-placeholder {
@@ -245,7 +254,7 @@ function renderNota(nota, fechaDisplay) {
   // Imagen
   let imgHtml = "";
   if (nota.imagen) {
-    imgHtml = `<img class="nota-imagen" src="${nota.imagen}" alt="${nota.titulo}" onerror="this.style.display='none'">`;
+    imgHtml = `<div class="nota-imagen-wrap"><img class="nota-imagen" src="${nota.imagen}" alt="${nota.titulo}" onerror="this.parentElement.style.display='none'"></div>`;
   } else {
     imgHtml = `<div class="nota-imagen-placeholder"></div>`;
   }
