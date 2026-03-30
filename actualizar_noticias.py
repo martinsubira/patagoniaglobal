@@ -227,7 +227,7 @@ Resumen: {n['resumen_original']}
 URL: {n['url']}
 """
 
-    hoy = datetime.now().strftime('%Y%m%d')
+    hoy = datetime.now().strftime('%Y%m%d-%H%M')
 
     prompt = f"""Sos el editor jefe de PatagoniaGLOBAL, el primer medio digital panpatagónico que cubre Argentina y Chile sin fronteras.
 
