@@ -393,14 +393,14 @@ def resolver_imagen(nota, fotos_propias, fotos_usadas):
 # ── JSON de salida ─────────────────────────────────────────
 
 def cargar_historias_permanentes():
-    """Carga el array 'historias' del noticias.json actual para preservarlo."""
-    ruta = os.path.join(os.path.dirname(__file__), "noticias.json")
+    """Carga las notas permanentes desde historias.json (nunca se sobreescribe)."""
+    ruta = os.path.join(os.path.dirname(__file__), "historias.json")
     if not os.path.exists(ruta):
         return []
     try:
         with open(ruta, encoding="utf-8") as f:
             data = json.load(f)
-        return data.get("historias", [])
+        return data.get("notas", [])
     except Exception:
         return []
 

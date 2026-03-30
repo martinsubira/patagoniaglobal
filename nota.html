@@ -449,19 +449,27 @@ const id = getParam("id");
 if (!id) {
   document.getElementById("loading").textContent = "Nota no encontrada.";
 } else {
-  fetch("noticias.json")
-    .then(r => r.json())
-    .then(data => {
-      const nota = buscarNota(data, id);
-      if (nota) {
-        renderNota(nota, data.fecha_display, data);
-      } else {
-        document.getElementById("loading").textContent = "Nota no encontrada.";
-      }
-    })
-    .catch(() => {
-      document.getElementById("loading").textContent = "Error al cargar la nota.";
-    });
+  // Busca en noticias.json e historias.json en paralelo
+  Promise.all([
+    fetch("noticias.json").then(r => r.json()).catch(() => ({})),
+    fetch("historias.json").then(r => r.json()).catch(() => ({}))
+  ]).then(([noticias, historias]) => {
+    // Primero busca en noticias.json
+    let nota = buscarNota(noticias, id);
+    let data = noticias;
+    // Si no está, busca en historias.json
+    if (!nota && historias.notas) {
+      nota = historias.notas.find(n => n.id === id) || null;
+      if (nota) data = { ...noticias, historias: historias.notas };
+    }
+    if (nota) {
+      renderNota(nota, noticias.fecha_display, { ...noticias, historias: historias.notas || [] });
+    } else {
+      document.getElementById("loading").textContent = "Nota no encontrada.";
+    }
+  }).catch(() => {
+    document.getElementById("loading").textContent = "Error al cargar la nota.";
+  });
 }
 </script>
 
