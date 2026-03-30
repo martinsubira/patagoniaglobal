@@ -2,11 +2,11 @@
   "generado": "2026-03-30T14:54:15.513263",
   "fecha_display": "Lunes, 30 de Marzo de 2026",
   "ticker": [
-    "Incendios 2025-2026: el peor año en dos décadas arrasó 77.000 hectáreas en la Patagonia",
-    "Productor rionegrino revive su campo en el desierto patagónico con pastoreo holístico",
-    "Punta Arenas lanza calendario Invernadas 2026 con más de diez actividades culturales",
-    "Empresarios de Magallanes piden mantener subsidios de gas y cabotaje",
-    "Camino de la Fe: Semana Santa recorre pueblos neuquinos entre montañas y espiritualidad"
+    "Incendios 2025-2026: el peor año en dos décadas arrasó 77.000 ha en la Patagonia",
+    "Final Frontier Patagonia: 100 ciclistas de 24 países llegaron a Ushuaia — 2027 confirmado",
+    "Respira Patagonia: la estepa captura 3 veces más carbono que la Amazonía",
+    "Amazon evalúa instalar centros de datos en Chubut — frío y energía eólica como ventajas clave",
+    "Cerro Catedral elegido mejor centro de esquí de Sudamérica por 12.000 votantes"
   ],
   "tapa": {
     "id": "20260330-1600-tapa",
@@ -68,6 +68,51 @@
     }
   ],
   "noticias": [
+    {
+      "id": "20260330-1700-1",
+      "titulo": "Final Frontier Patagonia: 100 ciclistas de 24 países completaron la odisea más larga del Sur",
+      "bajada": "La primera edición del desafío de bikepacking autosuficiente más austral del mundo terminó el 31 de marzo en Ushuaia. Fueron 2.900 km desde Puerto Montt atravesando la Carretera Austral, la Ruta 40, Torres del Paine y el Glaciar Perito Moreno. Ya hay fecha para 2027.",
+      "cuerpo": "No es una carrera. Es una odisea. Y la primera edición del Final Frontier Patagonia, el desafío de ciclismo de ultra distancia más austral del planeta, acaba de escribir su primer capítulo con 100 ciclistas de 24 países pedaleando desde Puerto Montt hasta Ushuaia en condiciones que la mayoría de los ciclistas del mundo nunca enfrentará.\n\nEl recorrido no dejó margen para la improvisación: 2.900 kilómetros con 30.000 metros de desnivel acumulado, atravesando siete parques nacionales a ambos lados de la cordillera. La Carretera Austral chilena, la Ruta 40 argentina, Torres del Paine, el Glaciar Perito Moreno. Cada kilómetro, un paisaje distinto. Cada día, una prueba de autosuficiencia.\n\nLo que hace al Final Frontier diferente es su filosofía. El evento, creado desde cero por la startup chilena Austral Trails liderada por Eduardo Weise, no premia al más rápido sino al que llega. Los participantes eligen su propio hito: el Desafío Huemul termina en Coyhaique (650 km), el Guanaco en El Calafate (1.610 km), el Puma en Punta Arenas (2.250 km). La travesía completa exige llegar a Ushuaia en menos de 24 días. No hay pelotón, no hay drafting, no hay equipo de apoyo. Solo el ciclista, su bicicleta cargada y la Patagonia.\n\nUn dato que habla del potencial global del evento: el 25% de los participantes fueron mujeres, una proporción inusualmente alta para las disciplinas de ultra distancia. Y vinieron de todos lados — Europa, América del Norte, Asia, además de la base latinoamericana. La Municipalidad de Ushuaia ya declaró la travesía de Interés Municipal y Turístico.\n\nLa segunda edición ya tiene fecha tentativa: 7 de marzo de 2027. La Patagonia se está convirtiendo en un destino mundial del bikepacking de bajo impacto, y el Final Frontier es su evento emblema. Para una región que lleva décadas apostando al turismo de aventura, este tipo de evento representa exactamente lo que el territorio tiene para ofrecer: distancias que asustan, paisajes que enamoran y una naturaleza que no perdona la falta de preparación.",
+      "tag": "🚵 Deportes",
+      "categoria": "deportes",
+      "fuente": "PatagoniaGLOBAL",
+      "url_original": "",
+      "pais": "ambos",
+      "imagen": "fotos/ultra-trail.jpg",
+      "imagen_keywords": "bikepacking patagonia cycling mountains",
+      "meta": "Hoy · PatagoniaGLOBAL",
+      "autor": "Redacción PatagoniaGLOBAL"
+    },
+    {
+      "id": "20260330-1700-2",
+      "titulo": "Respira Patagonia: la estepa magallánica como reserva global de carbono",
+      "bajada": "Un proyecto innovador busca convertir la ganadería regenerativa en bonos de carbono certificados internacionalmente. Ya tiene 250.000 hectáreas comprometidas y la visita de un directivo de Verra, el estándar de certificación más importante del mundo. El dato sorprendente: la estepa patagónica captura hasta tres veces más carbono que la Amazonía.",
+      "cuerpo": "Mientras el mundo debate dónde están los próximos grandes sumideros de carbono, la Patagonia guarda un secreto que recién empieza a dimensionarse: su estepa, ese paisaje que muchos ven como vacío y árido, tiene una capacidad de captura de gases de efecto invernadero que triplica a la de la Amazonía. El proyecto Respira Patagonia llegó para convertir ese potencial en una herramienta concreta contra el cambio climático y, de paso, en una fuente de ingresos para los ganaderos magallánicos.\n\nA mediados de marzo de 2026, el proyecto presentó sus avances en Punta Arenas con la presencia de Angelo Sartori, alto directivo de Verra, el organismo que administra el Verified Carbon Standard (VCS), el estándar de certificación de bonos de carbono más riguroso y reconocido del mundo. La visita no fue protocolar: marca que la certificación internacional está en marcha y que los primeros bonos de carbono podrían comenzar a comercializarse en el mercado global en el corto plazo.\n\nEl mecanismo es elegante en su simplicidad. Los ganaderos que se suman al proyecto adoptan prácticas de ganadería regenerativa — rotación de potreros, manejo del pastoreo, cuidado del suelo — que mejoran la salud de la estepa y aumentan su capacidad de capturar carbono. Ese carbono secuestrado se convierte en créditos verificables que empresas de todo el mundo pueden comprar para compensar sus emisiones. El ganadero recibe un ingreso adicional sin necesidad de reconvertir su actividad.\n\nHasta ahora, 20 productores ya se sumaron a la iniciativa, comprometiendo 250.000 hectáreas. La meta es llegar a 500.000 hectáreas en el corto plazo y alcanzar 1,2 millones en el horizonte del proyecto — una superficie comparable a varios países europeos. Para la Patagonia chilena, donde la ganadería ovina atraviesa décadas de crisis por la caída de precios y la competencia internacional, este esquema ofrece algo que escasea: una alternativa económica que no implica abandonar el campo.\n\nEl dato que cambia la perspectiva global es el del potencial de captura. Si la estepa patagónica puede secuestrar hasta tres veces más carbono que la Amazonía por unidad de superficie, la región deja de ser un rincón remoto del planeta para convertirse en una pieza estratégica de la solución climática mundial. Respira Patagonia apuesta a que esa pieza sea manejada por quienes la conocen mejor: los ganaderos que llevan generaciones viviendo de y con ella.",
+      "tag": "🌿 Medio Ambiente",
+      "categoria": "medio ambiente",
+      "fuente": "PatagoniaGLOBAL",
+      "url_original": "",
+      "pais": "chile",
+      "imagen": "fotos/estepa-nevada-ruta-patagonica.jpg",
+      "imagen_keywords": "patagonia steppe grassland carbon",
+      "meta": "Hoy · PatagoniaGLOBAL",
+      "autor": "Redacción PatagoniaGLOBAL"
+    },
+    {
+      "id": "20260330-1700-3",
+      "titulo": "Amazon quiere instalar centros de datos en la Patagonia: frío, energía eólica y una nueva economía",
+      "bajada": "El gobernador de Chubut confirmó en Nueva York que Amazon está interesado en invertir en la Patagonia para instalar infraestructura de datos. Las ventajas son únicas: clima frío que reduce costos de refrigeración, abundante energía renovable y una nueva ley de data centers en preparación. La Patagonia chilena también compite.",
+      "cuerpo": "El frío patagónico, históricamente visto como un obstáculo para el desarrollo, podría convertirse en su mayor activo del siglo XXI. El clima que durante décadas complicó la vida de los pobladores del sur es exactamente lo que necesita la industria tecnológica global para refrigerar sus servidores sin gastar fortunas en energía. Amazon lo sabe, y la Patagonia está en su radar.\n\nDurante el Argentina Week 2026, celebrado en Nueva York entre el 9 y el 12 de marzo, el gobernador de Chubut Ignacio Torres confirmó que su provincia mantiene una agenda de trabajo activa con Amazon, interesada en instalar centros de datos en la región. La escala del tipo de inversión que se maneja da una idea de lo que está en juego: Amazon Web Services anunció planes de invertir 800 millones de dólares en una década en Argentina, y la Patagonia figura entre los destinos más atractivos para localizar esa infraestructura.\n\nLas razones son concretas. Los centros de datos son enormes consumidores de energía, y una parte significativa de ese gasto va a refrigeración de servidores. El clima frío de la Patagonia reduce ese costo drásticamente, haciendo la operación más eficiente y más sustentable. A eso se suma la disponibilidad de energías renovables: la región tiene uno de los mayores potenciales eólicos del planeta, una fuente de energía limpia y abundante que puede alimentar estas instalaciones sin depender de combustibles fósiles.\n\nChubut está trabajando en una nueva Ley de Data Centers que ofrezca un marco legal atractivo para este tipo de inversiones. Y no está sola en la carrera: la Patagonia chilena también está diseñando incentivos fiscales para atraer infraestructura tecnológica, convirtiendo la disputa en una competencia binacional por el mismo tipo de inversión.\n\nSi la apuesta se concreta, el impacto en la economía patagónica sería histórico. Los centros de datos generan empleo de alta calificación, demandan servicios locales y anclan inversión en territorios donde la actividad económica ha dependido históricamente de la extracción de recursos naturales. La Patagonia como hub tecnológico del sur de América Latina no es una fantasía — es una posibilidad que está tomando forma en los despachos de los gobernadores y en las salas de reuniones de Seattle.",
+      "tag": "💻 Tecnología",
+      "categoria": "tecnología",
+      "fuente": "PatagoniaGLOBAL",
+      "url_original": "",
+      "pais": "ambos",
+      "imagen": "fotos/petroleo.jpg",
+      "imagen_keywords": "patagonia technology data center wind energy",
+      "meta": "Hoy · PatagoniaGLOBAL",
+      "autor": "Redacción PatagoniaGLOBAL"
+    },
     {
       "id": "20260330-1452-3",
       "titulo": "Empresarios magallánicos exigen mantener subsidios clave para la región",
