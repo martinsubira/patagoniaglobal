@@ -13,6 +13,14 @@
   <meta property="og:image" content="https://martinsubira.github.io/patagoniaglobal/fotos/torres-del-paine.webp"/>
   <meta property="og:url" content="https://martinsubira.github.io/patagoniaglobal/"/>
   <meta name="twitter:card" content="summary_large_image"/>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
   <meta name="twitter:title" content="PatagoniaGLOBAL — The South. The Story."/>
   <meta name="twitter:description" content="El primer medio digital panpatagónico. Argentina · Chile · Sin fronteras."/>
   <meta name="twitter:image" content="https://martinsubira.github.io/patagoniaglobal/fotos/torres-del-paine.webp"/>
@@ -1235,6 +1243,13 @@ function bandera(pais) {
   return '<span style="font-size:11px;opacity:0.8;">🇦🇷</span> ';
 }
 
+function fechaDesdeId(id) {
+  if (!id) return "";
+  const m = id.match(/^(\d{4})(\d{2})(\d{2})/);
+  if (!m) return "";
+  return m[3] + "/" + m[2] + "/" + m[1];
+}
+
 function irANota(id) {
   window.location.href = "nota.html?id=" + id;
 }
@@ -1295,7 +1310,7 @@ function renderNoticias(data) {
       <div class="card-body">
         <div class="card-tag ${tagCls}">${n.tag}</div>
         <h3>${n.titulo}</h3>
-        <div class="card-meta">${bandera(n.pais)}${n.meta}</div>
+        <div class="card-meta">${bandera(n.pais)} · ${fechaDesdeId(n.id) || n.meta}</div>
       </div>
     </div>`;
   });

@@ -10,6 +10,14 @@
   <meta property="og:type" content="article"/>
   <meta property="og:image" content="https://martinsubira.github.io/patagoniaglobal/fotos/torres-del-paine.webp"/>
   <meta name="twitter:card" content="summary_large_image"/>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600&display=swap');
 
@@ -385,8 +393,13 @@ function renderNota(nota, fechaDisplay, data) {
   const fechaEl = document.getElementById("fecha-display");
   if (fechaEl && fechaDisplay) fechaEl.textContent = fechaDisplay + " · Patagonia Argentina y Chilena";
 
-  // Título de pestaña
+  // Título de pestaña y OG dinámico
   document.title = nota.titulo + " — PatagoniaGLOBAL";
+  const setMeta = (sel, val) => { const el = document.querySelector(sel); if (el && val) el.setAttribute("content", val); };
+  setMeta('meta[property="og:title"]', nota.titulo + " — PatagoniaGLOBAL");
+  setMeta('meta[property="og:description"]', nota.bajada || nota.titulo);
+  if (nota.imagen) setMeta('meta[property="og:image"]', nota.imagen);
+  setMeta('meta[name="description"]', nota.bajada || nota.titulo);
 
   // Imagen
   let imgHtml = "";
