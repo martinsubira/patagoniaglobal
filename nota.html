@@ -122,6 +122,92 @@
     }
     .nota-meta span { display: flex; align-items: center; gap: 5px; }
 
+    /* COMPARTIR */
+    .compartir {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 32px 0 8px;
+      flex-wrap: wrap;
+    }
+    .compartir-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gris-medio);
+    }
+    .btn-compartir {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      border-radius: 3px;
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: opacity 0.2s;
+    }
+    .btn-compartir:hover { opacity: 0.85; }
+    .btn-wa  { background: #25D366; color: white; }
+    .btn-x   { background: #000; color: white; }
+    .btn-copy { background: var(--verde); color: white; }
+
+    /* NOTAS RELACIONADAS */
+    .relacionadas {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 2px solid #e0ddd8;
+    }
+    .relacionadas-titulo {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gris-medio);
+      margin-bottom: 20px;
+    }
+    .relacionadas-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .rel-card {
+      cursor: pointer;
+      border-radius: 4px;
+      overflow: hidden;
+      background: white;
+      transition: transform 0.2s;
+    }
+    .rel-card:hover { transform: translateY(-2px); }
+    .rel-img {
+      width: 100%;
+      height: 100px;
+      object-fit: cover;
+      display: block;
+      background: linear-gradient(160deg, #0e1a26, #1c2d3d);
+    }
+    .rel-body { padding: 10px 12px 12px; }
+    .rel-tag {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--verde-medio);
+      margin-bottom: 4px;
+    }
+    .rel-titulo {
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1.35;
+      color: var(--gris-oscuro);
+    }
+    @media (max-width: 600px) {
+      .relacionadas-grid { grid-template-columns: 1fr 1fr; }
+    }
+
     .nota-imagen-wrap {
       width: 100%;
       background: #0e1a26;
@@ -243,7 +329,52 @@ function getParam(name) {
   return new URLSearchParams(window.location.search).get(name);
 }
 
-function renderNota(nota, fechaDisplay) {
+function tiempoLectura(texto) {
+  const palabras = (texto || "").trim().split(/\s+/).length;
+  const minutos = Math.max(1, Math.round(palabras / 200));
+  return minutos + " min de lectura";
+}
+
+function bandera(pais) {
+  if (pais === 'chile') return '🇨🇱 Chile';
+  if (pais === 'ambos') return '🇦🇷🇨🇱 Argentina · Chile';
+  if (pais === 'argentina') return '🇦🇷 Argentina';
+  return '🌎 Patagonia';
+}
+
+function renderRelacionadas(data, idActual) {
+  const todas = [
+    data.tapa,
+    ...(data.secundarias || []),
+    ...(data.noticias || []),
+    ...(data.historias || [])
+  ].filter(n => n && n.id !== idActual);
+
+  const elegidas = todas.sort(() => Math.random() - 0.5).slice(0, 3);
+  if (!elegidas.length) return "";
+
+  const cards = elegidas.map(n => {
+    const img = n.imagen
+      ? `<img class="rel-img" src="${n.imagen}" alt="${n.titulo}" onerror="this.style.display='none'">`
+      : `<div class="rel-img"></div>`;
+    return `
+      <div class="rel-card" onclick="location.href='nota.html?id=${n.id}'">
+        ${img}
+        <div class="rel-body">
+          <div class="rel-tag">${n.tag || "Patagonia"}</div>
+          <div class="rel-titulo">${n.titulo}</div>
+        </div>
+      </div>`;
+  }).join("");
+
+  return `
+    <div class="relacionadas">
+      <div class="relacionadas-titulo">También te puede interesar</div>
+      <div class="relacionadas-grid">${cards}</div>
+    </div>`;
+}
+
+function renderNota(nota, fechaDisplay, data) {
   // Fecha en top bar
   const fechaEl = document.getElementById("fecha-display");
   if (fechaEl && fechaDisplay) fechaEl.textContent = fechaDisplay + " · Patagonia Argentina y Chilena";
@@ -259,17 +390,29 @@ function renderNota(nota, fechaDisplay) {
     imgHtml = `<div class="nota-imagen-placeholder"></div>`;
   }
 
-  // Cuerpo: convertir \n\n en párrafos
+  // Cuerpo
   const parrafos = (nota.cuerpo || "").split(/\n\n+/).filter(p => p.trim());
   const cuerpoHtml = parrafos.map(p => `<p>${p.trim()}</p>`).join("");
+
+  // Compartir
+  const url = encodeURIComponent(window.location.href);
+  const titulo = encodeURIComponent(nota.titulo);
+  const compartirHtml = `
+    <div class="compartir">
+      <span class="compartir-label">Compartir</span>
+      <a class="btn-compartir btn-wa" href="https://wa.me/?text=${titulo}%20${url}" target="_blank" rel="noopener">WhatsApp</a>
+      <a class="btn-compartir btn-x" href="https://twitter.com/intent/tweet?text=${titulo}&url=${url}" target="_blank" rel="noopener">X / Twitter</a>
+      <button class="btn-compartir btn-copy" onclick="navigator.clipboard.writeText(window.location.href);this.textContent='¡Copiado!'">Copiar enlace</button>
+    </div>`;
 
   document.getElementById("contenido").innerHTML = `
     <div class="nota-tag">${nota.tag || "🗞️ Patagonia"}</div>
     <h1 class="nota-titulo">${nota.titulo}</h1>
     <div class="nota-bajada">${nota.bajada || ""}</div>
     <div class="nota-meta">
-      <span>${nota.pais === 'chile' ? '🇨🇱 Chile' : nota.pais === 'ambos' ? '🇦🇷🇨🇱 Argentina · Chile' : nota.pais === 'argentina' ? '🇦🇷 Argentina' : '🌎 Patagonia'}</span>
+      <span>${bandera(nota.pais)}</span>
       <span>📰 ${nota.fuente || "Medios patagónicos"}</span>
+      <span>⏱ ${tiempoLectura(nota.cuerpo)}</span>
     </div>
     ${imgHtml}
     <div class="nota-cuerpo">${cuerpoHtml}</div>
@@ -277,6 +420,8 @@ function renderNota(nota, fechaDisplay) {
       <strong>Fuente original:</strong> Esta nota fue elaborada con información de <strong>${nota.fuente || "medios locales"}</strong>.
       ${nota.url_original ? `<br>Nota original: <a href="${nota.url_original}" target="_blank" rel="noopener">ver en el medio fuente →</a>` : ""}
     </div>
+    ${compartirHtml}
+    ${renderRelacionadas(data, nota.id)}
   `;
 
   document.getElementById("loading").style.display = "none";
