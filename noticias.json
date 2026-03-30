@@ -21,7 +21,37 @@
     "imagen": "fotos/El-Hoyo-Incendio-forestal-012.jpg",
     "imagen_keywords": "patagonia wildfire forest burned",
     "meta": "Hoy · PatagoniaGLOBAL",
-    "autor": "J. Martineau"
+    "autor": "J. Martineau",
+    "galeria": [
+      "fotos/portada_incendios_patagonia.jpg",
+      "fotos/foto_infor_chubut.jpg"
+    ],
+    "datos_clave": [
+      {
+        "label": "Superficie quemada",
+        "valor": "+77.000 ha"
+      },
+      {
+        "label": "Recorte presupuesto prevención",
+        "valor": "−71,6%"
+      },
+      {
+        "label": "Familias afectadas",
+        "valor": "+40"
+      },
+      {
+        "label": "Caída del turismo",
+        "valor": "−80%"
+      },
+      {
+        "label": "Viviendas a construir",
+        "valor": "13"
+      },
+      {
+        "label": "Meta reforestación estatal",
+        "valor": "5.000 ha"
+      }
+    ]
   },
   "secundarias": [
     {

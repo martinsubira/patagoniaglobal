@@ -8,7 +8,7 @@
   <meta name="description" content="Noticias de la Patagonia argentina y chilena — PatagoniaGLOBAL"/>
   <meta property="og:site_name" content="PatagoniaGLOBAL"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:image" content="https://martinsubira.github.io/patagoniaglobal/fotos/torres-del-paine.webp"/>
+  <meta property="og:image" content="https://patagoniaglobal.org/fotos/torres-del-paine.webp"/>
   <meta name="twitter:card" content="summary_large_image"/>
   <!-- JSON-LD base (se sobreescribe dinámicamente al cargar la nota) -->
   <script type="application/ld+json" id="jsonld-nota">
@@ -18,7 +18,7 @@
     "publisher": {
       "@type": "NewsMediaOrganization",
       "name": "PatagoniaGLOBAL",
-      "url": "https://martinsubira.github.io/patagoniaglobal/"
+      "url": "https://patagoniaglobal.org/"
     }
   }
   </script>
@@ -269,6 +269,78 @@
       margin-bottom: 22px;
     }
 
+    .nota-cuerpo h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--verde);
+      margin: 36px 0 12px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--azul-claro);
+    }
+
+    .datos-clave {
+      background: linear-gradient(135deg, #0e1a26 0%, #1c2d3d 100%);
+      color: white;
+      border-radius: 8px;
+      padding: 28px 32px;
+      margin: 40px 0;
+    }
+    .datos-clave-titulo {
+      font-family: 'Playfair Display', serif;
+      font-size: 13px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--azul-claro);
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+    .datos-clave-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+    .dato-item {
+      background: rgba(255,255,255,0.07);
+      border-radius: 6px;
+      padding: 14px 16px;
+      border-left: 3px solid var(--azul-claro);
+    }
+    .dato-label {
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--azul-claro);
+      margin-bottom: 6px;
+    }
+    .dato-valor {
+      font-size: 18px;
+      font-weight: 700;
+      color: white;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .nota-galeria {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 10px;
+      margin: 32px 0;
+    }
+    .nota-galeria img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .nota-galeria img:hover { opacity: 0.88; }
+
+    @media (max-width: 480px) {
+      .datos-clave-grid { grid-template-columns: 1fr 1fr; }
+      .nota-galeria { grid-template-columns: 1fr; }
+    }
+
     .nota-fuente {
       margin-top: 40px;
       padding: 16px 20px;
@@ -371,7 +443,7 @@
 <footer>
   <div class="footer-logo">Patagonia<span>GLOBAL</span></div>
   <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-top:4px;">Argentina · Chile · Sin fronteras</div>
-  <div class="footer-copy">© 2026 PatagoniaGLOBAL · patagoniaglobal.ar</div>
+  <div class="footer-copy">© 2026 PatagoniaGLOBAL · patagoniaglobal.org</div>
 </footer>
 
 <script>
@@ -447,12 +519,12 @@ function renderNota(nota, fechaDisplay, data) {
       "description": nota.bajada || nota.titulo,
       "url": window.location.href,
       "datePublished": fechaDisplay || "",
-      "image": nota.imagen || "https://martinsubira.github.io/patagoniaglobal/fotos/torres-del-paine.webp",
+      "image": nota.imagen || "https://patagoniaglobal.org/fotos/torres-del-paine.webp",
       "publisher": {
         "@type": "NewsMediaOrganization",
         "name": "PatagoniaGLOBAL",
-        "url": "https://martinsubira.github.io/patagoniaglobal/",
-        "logo": { "@type": "ImageObject", "url": "https://martinsubira.github.io/patagoniaglobal/favicon.svg" }
+        "url": "https://patagoniaglobal.org/",
+        "logo": { "@type": "ImageObject", "url": "https://patagoniaglobal.org/favicon.svg" }
       },
       "author": { "@type": "Organization", "name": nota.fuente || "PatagoniaGLOBAL" }
     };
@@ -467,9 +539,35 @@ function renderNota(nota, fechaDisplay, data) {
     imgHtml = `<div class="nota-imagen-placeholder"></div>`;
   }
 
-  // Cuerpo
+  // Cuerpo — detecta subtítulos (línea corta sin punto final) y los renderiza como h3
   const parrafos = (nota.cuerpo || "").split(/\n\n+/).filter(p => p.trim());
-  const cuerpoHtml = parrafos.map(p => `<p>${p.trim()}</p>`).join("");
+  const cuerpoHtml = parrafos.map(p => {
+    const t = p.trim();
+    const esSubtitulo = t.length < 80 && !t.endsWith('.') && !t.endsWith(',') && !t.endsWith('?') && !t.startsWith('"') && !t.match(/^\d/);
+    return esSubtitulo ? `<h3>${t}</h3>` : `<p>${t}</p>`;
+  }).join("");
+
+  // Galería de fotos adicionales
+  let galeriaHtml = "";
+  if (nota.galeria && nota.galeria.length) {
+    const imgs = nota.galeria.map(src => `<img src="${src}" alt="${nota.titulo}" loading="lazy" onerror="this.style.display='none'">`).join("");
+    galeriaHtml = `<div class="nota-galeria">${imgs}</div>`;
+  }
+
+  // Datos clave destacados
+  let datosHtml = "";
+  if (nota.datos_clave && nota.datos_clave.length) {
+    const items = nota.datos_clave.map(d => `
+      <div class="dato-item">
+        <div class="dato-label">${d.label}</div>
+        <div class="dato-valor">${d.valor}</div>
+      </div>`).join("");
+    datosHtml = `
+      <div class="datos-clave">
+        <div class="datos-clave-titulo">Datos clave</div>
+        <div class="datos-clave-grid">${items}</div>
+      </div>`;
+  }
 
   // Compartir
   const url = encodeURIComponent(window.location.href);
@@ -494,6 +592,8 @@ function renderNota(nota, fechaDisplay, data) {
     </div>
     ${imgHtml}
     <div class="nota-cuerpo">${cuerpoHtml}</div>
+    ${galeriaHtml}
+    ${datosHtml}
     <div class="nota-fuente">
       <strong>Fuente original:</strong> Esta nota fue elaborada con información de <strong>${nota.fuente || "medios locales"}</strong>.
     </div>
