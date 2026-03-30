@@ -5,6 +5,9 @@ on:
     - cron: '45 10 * * *'  # Todos los días a las 7:45 AM hora Argentina (UTC-3)
   workflow_dispatch:         # También permite correrlo manualmente desde GitHub
 
+permissions:
+  contents: write
+
 jobs:
   actualizar:
     runs-on: ubuntu-latest
