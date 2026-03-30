@@ -831,6 +831,7 @@
     <a href="#sec-deportes">Deportes & Actividades</a>
     <a href="#sec-turismo">Turismo & Guías</a>
     <a href="#sec-historia">Cultura Patagónica</a>
+    <a href="#sec-agenda">Agenda</a>
     <a href="acerca.html">Acerca de</a>
   </nav>
 </header>
@@ -1263,6 +1264,107 @@
   </div>
 
 </div>
+
+<!-- AGENDA -->
+<div id="sec-agenda" style="background:#f0ede8; padding: 48px 0 60px;">
+  <div style="max-width:1200px; margin:0 auto; padding:0 20px;">
+
+    <div class="section-header" style="margin-bottom:8px;">
+      <h2 class="section-title">Agenda Patagónica</h2>
+      <p class="section-sub">Eventos, festivales y competencias en ambos lados de la cordillera</p>
+    </div>
+
+    <!-- Filtros -->
+    <div id="agenda-filtros" style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:28px;">
+      <button class="agenda-filtro active" data-cat="todos">Todos</button>
+      <button class="agenda-filtro" data-cat="deportes">🏃 Deportes</button>
+      <button class="agenda-filtro" data-cat="cultura">🎭 Cultura</button>
+      <button class="agenda-filtro" data-cat="gastronomia">🍽️ Gastronomía</button>
+      <button class="agenda-filtro" data-cat="desarrollo">🏭 Desarrollo</button>
+    </div>
+
+    <div id="agenda-grid" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(300px,1fr)); gap:16px;"></div>
+  </div>
+</div>
+
+<style>
+  .agenda-filtro {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    padding: 7px 16px;
+    font-size: 13px;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    color: #4a5568;
+    transition: all 0.2s;
+  }
+  .agenda-filtro:hover, .agenda-filtro.active {
+    background: #1c2d3d;
+    color: white;
+    border-color: #1c2d3d;
+  }
+  .agenda-card {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    border-top: 3px solid #7aadcc;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: box-shadow 0.2s;
+  }
+  .agenda-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+  .agenda-card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+  .agenda-emoji { font-size: 22px; flex-shrink: 0; }
+  .agenda-pais { font-size: 11px; background: #f0ede8; padding: 3px 8px; border-radius: 10px; color: #6b7280; white-space: nowrap; }
+  .agenda-fecha { font-size: 12px; font-weight: 600; color: #7aadcc; letter-spacing: 0.5px; }
+  .agenda-titulo { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; color: #1c2d3d; line-height: 1.3; }
+  .agenda-lugar { font-size: 12px; color: #6b7280; }
+  .agenda-desc { font-size: 13px; color: #4a5568; line-height: 1.6; margin-top: 4px; }
+</style>
+
+<script>
+(function() {
+  fetch('agenda.json')
+    .then(r => r.json())
+    .then(eventos => {
+      const grid = document.getElementById('agenda-grid');
+      const banderas = { AR: '🇦🇷', CL: '🇨🇱' };
+      let catActiva = 'todos';
+
+      function render() {
+        const filtrados = catActiva === 'todos' ? eventos : eventos.filter(e => e.categoria === catActiva);
+        grid.innerHTML = filtrados.map(e => `
+          <div class="agenda-card" data-cat="${e.categoria}">
+            <div class="agenda-card-top">
+              <span class="agenda-emoji">${e.emoji}</span>
+              <span class="agenda-pais">${banderas[e.pais]} ${e.region}</span>
+            </div>
+            <div class="agenda-fecha">${e.fecha_display.toUpperCase()}</div>
+            <div class="agenda-titulo">${e.titulo}</div>
+            <div class="agenda-lugar">📍 ${e.lugar}</div>
+            <div class="agenda-desc">${e.descripcion}</div>
+          </div>
+        `).join('');
+      }
+
+      document.querySelectorAll('.agenda-filtro').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.agenda-filtro').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          catActiva = btn.dataset.cat;
+          render();
+        });
+      });
+
+      render();
+    })
+    .catch(() => {
+      document.getElementById('agenda-grid').innerHTML = '<p style="color:#999;grid-column:1/-1;">No se pudo cargar la agenda.</p>';
+    });
+})();
+</script>
 
 <!-- FOOTER -->
 <footer>
