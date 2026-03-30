@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" style="scroll-behavior:smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -731,16 +731,17 @@
     <div class="logo-sub">Argentina · Chile · Sin fronteras</div>
   </div>
   <nav>
-    <a href="#" class="active">Inicio</a>
-    <a href="#">Noticias</a>
-    <a href="#">Deportes</a>
-    <a href="#">Turismo</a>
-    <a href="#">Pesca</a>
-    <a href="#">Historia</a>
-    <a href="#">Guías</a>
+    <a href="#inicio" class="active">Inicio</a>
+    <a href="#sec-noticias">Noticias</a>
+    <a href="#sec-deportes">Deportes</a>
+    <a href="#sec-turismo">Turismo</a>
+    <a href="#sec-pesca">Pesca</a>
+    <a href="#sec-historia">Historia</a>
+    <a href="#sec-turismo">Guías</a>
   </nav>
 </header>
 
+<div id="inicio"></div>
 <!-- TICKER -->
 <div class="ticker">
   <div class="ticker-label">⚡ AHORA</div>
@@ -791,7 +792,7 @@
   </div>
 
   <!-- ══ NOTICIAS DEL DÍA ══ -->
-  <div class="section-header" style="margin-top:28px">
+  <div id="sec-noticias" class="section-header" style="margin-top:28px">
     <div class="section-title">Noticias de la Semana</div>
     <div class="section-line"></div>
     <div class="section-badge badge-azul">Diario</div>
@@ -835,7 +836,7 @@
   <div class="divider" style="margin:24px 0;"></div>
 
   <!-- ══ INFORMES ══ -->
-  <div class="section-header">
+  <div id="sec-pesca" class="section-header">
     <div class="section-title">Informes</div>
     <div class="section-line"></div>
     <div class="section-badge badge-verde">En profundidad</div>
@@ -934,7 +935,7 @@
   <div class="divider" style="margin:32px 0;"></div>
 
   <!-- ══ DEPORTES PATAGÓNICOS ══ -->
-  <div class="section-header">
+  <div id="sec-deportes" class="section-header">
     <div class="section-title">Deportes Patagónicos</div>
     <div class="section-line"></div>
     <div class="section-badge badge-rojo">Solo aquí</div>
@@ -1025,7 +1026,7 @@
   <div class="divider" style="margin:32px 0;"></div>
 
   <!-- ══ GUÍAS Y TURISMO ══ -->
-  <div class="section-header">
+  <div id="sec-turismo" class="section-header">
     <div class="section-title">Guías & Turismo</div>
     <div class="section-line"></div>
     <div class="section-badge badge-azul">Para visitantes</div>
@@ -1116,7 +1117,7 @@
   <div class="divider" style="margin:32px 0;"></div>
 
   <!-- ══ HISTORIA ══ -->
-  <div class="section-header">
+  <div id="sec-historia" class="section-header">
     <div class="section-title">Historia Patagónica</div>
     <div class="section-line"></div>
     <div class="section-badge badge-dorado">Notas de la semana</div>
