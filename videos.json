@@ -9,5 +9,16 @@
     "duracion": "26 min",
     "lugar": "El Chaltén, Santa Cruz",
     "pais": "AR"
+  },
+  {
+    "id": "ruta-sur-chile",
+    "titulo": "La Ruta del Sur — Carretera Austral",
+    "descripcion": "Un viaje por la ruta que une el sur profundo de Chile, atravesando fiordos, bosques y glaciares de la Patagonia chilena. Documental que muestra la vida, el paisaje y los pueblos a lo largo de uno de los caminos más remotos del mundo.",
+    "youtube_id": "6_OFXBK37gs",
+    "categoria": "documental",
+    "año": 2024,
+    "duracion": "",
+    "lugar": "Carretera Austral, Aysén",
+    "pais": "CL"
   }
 ]
