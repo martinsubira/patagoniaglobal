@@ -306,9 +306,13 @@
 
 <script>
 const CATS = {
-  ficcion:    "Ficción",
-  documental: "Documental"
+  ficcion:          "Ficción",
+  serie_ficcion:    "Series de Ficción",
+  documental:       "Documentales",
+  serie_documental: "Series Documentales"
 };
+
+const CAT_ORDER = ["ficcion", "serie_ficcion", "documental", "serie_documental"];
 
 function thumb(id) { return `https://img.youtube.com/vi/${id}/hqdefault.jpg`; }
 function thumbHD(id) { return `https://img.youtube.com/vi/${id}/maxresdefault.jpg`; }
@@ -463,6 +467,19 @@ fetch("videos.json").then(r => r.json()).then(videos => {
 
   const filasEl = document.getElementById("filas");
 
+  // Filas en orden definido
+  CAT_ORDER.forEach(cat => {
+    const vids = porCat[cat];
+    if (!vids || vids.length < 1) return;
+    const fila = document.createElement("div");
+    fila.className = "fila";
+    fila.innerHTML = `<div class="fila-titulo">${CATS[cat]||cat}</div><div class="fila-scroll"></div>`;
+    filasEl.appendChild(fila);
+    const scroll = fila.querySelector(".fila-scroll");
+    vids.forEach(v => scroll.appendChild(renderCard(v)));
+  });
+
+  // Todo el catálogo al final
   if (videos.length > 1) {
     const filaAll = document.createElement("div");
     filaAll.className = "fila";
@@ -471,16 +488,6 @@ fetch("videos.json").then(r => r.json()).then(videos => {
     const scrollAll = filaAll.querySelector(".fila-scroll");
     videos.forEach(v => scrollAll.appendChild(renderCard(v)));
   }
-
-  Object.entries(porCat).forEach(([cat, vids]) => {
-    if (vids.length < 1) return;
-    const fila = document.createElement("div");
-    fila.className = "fila";
-    fila.innerHTML = `<div class="fila-titulo">${CATS[cat]||cat}</div><div class="fila-scroll"></div>`;
-    filasEl.appendChild(fila);
-    const scroll = fila.querySelector(".fila-scroll");
-    vids.forEach(v => scroll.appendChild(renderCard(v)));
-  });
 
 }).catch(() => {
   document.getElementById("carousel").innerHTML = '<div class="empty">No se pudieron cargar los videos.</div>';
