@@ -490,69 +490,95 @@
 
     .informe-item p { font-size: 12px; color: #777; line-height: 1.4; }
 
-    /* ── GUÍAS Y TURISMO ── */
-    .guias-grid {
+    /* ── TURISMO EN PATAGONIA ── */
+    .turismo-top {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 3fr 2fr;
       gap: 16px;
+      margin-bottom: 16px;
     }
 
-    .guia-card {
+    .turismo-principal {
       background: white;
       border-radius: 4px;
       overflow: hidden;
-      cursor: pointer;
       box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+      cursor: pointer;
     }
 
-    .guia-card .guia-img {
-      height: 160px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 40px;
+    .turismo-principal .tp-img {
+      height: 240px;
+      position: relative;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .turismo-principal .tp-img-fallback {
+      height: 240px;
+      background: linear-gradient(135deg, #1b2e42, #5a98c0);
       position: relative;
     }
 
-    .guia-img-1 { background: linear-gradient(135deg, #1b2e42, #5a98c0); }
-    .guia-img-2 { background: linear-gradient(135deg, #2a1808, #a07040); }
-    .guia-img-3 { background: linear-gradient(135deg, #1e2a38, #4a7090); }
-
-    .guia-tipo {
+    .turismo-tipo {
       position: absolute;
       top: 12px; left: 12px;
-      background: rgba(0,0,0,0.7);
+      background: rgba(0,0,0,0.72);
       color: white;
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      padding: 3px 8px;
-      border-radius: 2px;
+      font-size: 9px; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+      padding: 3px 8px; border-radius: 2px;
     }
 
-    .guia-card .guia-body { padding: 16px; }
-
-    .guia-card h3 {
+    .turismo-principal .tp-body { padding: 18px; }
+    .turismo-principal h3 {
       font-family: 'Playfair Display', serif;
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--gris-oscuro);
-      margin-bottom: 6px;
-      line-height: 1.3;
+      font-size: 20px; font-weight: 700;
+      color: var(--gris-oscuro); line-height: 1.3;
+      margin-bottom: 7px;
     }
+    .turismo-principal p { font-size: 13px; color: #777; line-height: 1.5; }
+    .tp-meta { display:flex; gap:12px; margin-top:10px; font-size:10px; color:#aaa; }
 
-    .guia-card p { font-size: 12px; color: #777; line-height: 1.5; }
-
-    .guia-card .guia-meta {
+    .turismo-secundarias {
       display: flex;
+      flex-direction: column;
       gap: 12px;
-      margin-top: 10px;
-      font-size: 10px;
-      color: #aaa;
     }
 
-    .guia-meta span { display: flex; align-items: center; gap: 3px; }
+    .turismo-sec {
+      background: white;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .turismo-sec .ts-img {
+      height: 110px;
+      position: relative;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .turismo-sec .ts-img-fallback {
+      height: 110px;
+      position: relative;
+    }
+
+    .ts-img-1 { background: linear-gradient(135deg, #1e2a38, #4a7090); }
+    .ts-img-2 { background: linear-gradient(135deg, #1a2818, #3a6040); }
+
+    .turismo-sec .ts-body { padding: 12px 14px; flex: 1; }
+    .turismo-sec h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 14px; font-weight: 700;
+      color: var(--gris-oscuro); line-height: 1.3;
+      margin-bottom: 4px;
+    }
+    .turismo-sec p { font-size: 11px; color: #888; line-height: 1.45; }
 
     /* ── HISTORIA ── */
     .historia-grid {
@@ -616,6 +642,80 @@
     }
 
     .historia-card p { font-size: 12px; color: rgba(255,255,255,0.6); line-height: 1.5; }
+
+    /* ── DESTINOS PATAGÓNICOS ── */
+    .destinos-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .destino-card {
+      border-radius: 6px;
+      overflow: hidden;
+      cursor: pointer;
+      color: white;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .destino-header {
+      height: 130px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .destino-chalten  { background: linear-gradient(160deg, #1a3a2a, #3a7a5a); }
+    .destino-ushuaia  { background: linear-gradient(160deg, #0e1e30, #2a4a6a); }
+    .destino-esquel   { background: linear-gradient(160deg, #2a1a0e, #6a4a2a); }
+    .destino-bariloche{ background: linear-gradient(160deg, #1a1a2e, #4a4a8a); }
+
+    .destino-nombre {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px; font-weight: 900;
+      padding: 10px 14px 8px;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+      line-height: 1;
+    }
+
+    .destino-body {
+      background: var(--gris-oscuro);
+      padding: 14px;
+      flex: 1;
+    }
+
+    .destino-label {
+      font-size: 8px; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: var(--verde-claro);
+      margin-bottom: 8px;
+    }
+
+    .destino-body ul {
+      list-style: none;
+      padding: 0; margin: 0;
+    }
+
+    .destino-body ul li {
+      font-size: 11px;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.5;
+      padding: 3px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding-left: 12px;
+      position: relative;
+    }
+
+    .destino-body ul li::before {
+      content: '›';
+      position: absolute; left: 0;
+      color: var(--verde-claro);
+      font-weight: 700;
+    }
 
     /* ── EL DATO & LUGAR DESCONOCIDO ── */
     .especiales-grid {
@@ -830,7 +930,7 @@
     <a href="#inicio" class="active">Inicio</a>
     <a href="#sec-noticias">Noticias</a>
     <a href="#sec-deportes">Deportes & Aventura</a>
-    <a href="#sec-turismo">Turismo & Guías</a>
+    <a href="#sec-turismo">Turismo en Patagonia</a>
     <a href="#sec-historia">Cultura Patagónica</a>
     <a href="agenda.html">Agenda</a>
     <a href="videos.html">Cinemateca</a>
@@ -1074,66 +1174,52 @@
   <div class="divider" style="margin:32px 0;"></div>
 
   <!-- ══ GUÍAS Y TURISMO ══ -->
+  <!-- ══ TURISMO EN PATAGONIA ══ -->
   <div id="sec-turismo" class="section-header">
-    <div class="section-title">Guías & Turismo</div>
+    <div class="section-title">Turismo en Patagonia</div>
     <div class="section-line"></div>
-    <div class="section-badge badge-azul">Para visitantes</div>
+    <div class="section-badge badge-azul">Guías · El Dato · Lugares</div>
   </div>
 
-  <div class="guias-grid">
-    <div class="guia-card">
-      <div class="guia-img guia-img-1" style="background-image:url('https://images.unsplash.com/photo-1517591187965-c4e8c8a80e88?w=600&q=80&fit=crop&crop=center');background-size:cover;background-position:center;">
-        <div class="guia-tipo">Guía completa</div>
+  <!-- Fila 1: principal + 2 secundarias -->
+  <div class="turismo-top">
+    <div class="turismo-principal">
+      <div class="tp-img-fallback guia-img-1">
+        <div class="turismo-tipo">Guía completa</div>
       </div>
-      <div class="guia-body">
+      <div class="tp-body">
         <h3>Cómo llegar, moverse y disfrutar El Calafate en 4 días</h3>
         <p>Todo lo que necesitás saber: transporte, alojamiento, visitas al Perito Moreno y mini-trekking sobre el glaciar.</p>
-        <div class="guia-meta">
+        <div class="tp-meta">
           <span>📍 Santa Cruz</span>
           <span>⏱ 8 min lectura</span>
           <span>📅 Actualizado marzo 2026</span>
         </div>
       </div>
     </div>
-    <div class="guia-card">
-      <div class="guia-img guia-img-2" style="background-image:url('https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=600&q=80&fit=crop&crop=center');background-size:cover;background-position:center;">
-        <div class="guia-tipo">El dato</div>
-      </div>
-      <div class="guia-body">
-        <h3>El secreto de Bariloche que los turistas no conocen: la Ruta de los Siete Lagos en moto de agua</h3>
-        <p>La mayoría la hace en auto o bus. Pero hacerla en lancha desde el lago Nahuel Huapi cambia completamente la experiencia.</p>
-        <div class="guia-meta">
-          <span>📍 Bariloche</span>
-          <span>⏱ 5 min lectura</span>
-          <span>🔥 Muy leído</span>
+    <div class="turismo-secundarias">
+      <div class="turismo-sec">
+        <div class="ts-img-fallback ts-img-1">
+          <div class="turismo-tipo">El dato</div>
+        </div>
+        <div class="ts-body">
+          <h4>El secreto de Bariloche: la Ruta de los Siete Lagos en lancha</h4>
+          <p>La mayoría la hace en auto. Pero desde el lago Nahuel Huapi cambia todo.</p>
         </div>
       </div>
-    </div>
-    <div class="guia-card">
-      <div class="guia-img guia-img-3" style="background-image:url('https://images.unsplash.com/photo-1511497584788-876760111969?w=600&q=80&fit=crop&crop=center');background-size:cover;background-position:center;">
-        <div class="guia-tipo">Lugar desconocido</div>
-      </div>
-      <div class="guia-body">
-        <h3>Río Pico: el pueblo sin señal donde el tiempo se detuvo en 1950</h3>
-        <p>A 300 km de Esquel, este pueblo casi sin turistas guarda paisajes únicos, ganadería trashumante y una hospitalidad que ya no existe en otros lugares.</p>
-        <div class="guia-meta">
-          <span>📍 Chubut</span>
-          <span>⏱ 6 min lectura</span>
-          <span>💎 Exclusivo</span>
+      <div class="turismo-sec">
+        <div class="ts-img-fallback ts-img-2">
+          <div class="turismo-tipo">Lugar desconocido</div>
+        </div>
+        <div class="ts-body">
+          <h4>Río Pico: el pueblo sin señal donde el tiempo se detuvo en 1950</h4>
+          <p>A 300 km de Esquel. Ganadería trashumante y hospitalidad que ya no existe en otros lugares.</p>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="divider" style="margin:32px 0;"></div>
-
-  <!-- ══ ESPECIALES ══ -->
-  <div class="section-header">
-    <div class="section-title">El Dato & El Lugar</div>
-    <div class="section-line"></div>
-    <div class="section-badge badge-dorado">Diferencial</div>
-  </div>
-
+  <!-- Fila 2: El Dato + El Lugar -->
   <div class="especiales-grid">
     <div class="especial-card especial-dato">
       <div class="esp-header">
@@ -1143,10 +1229,9 @@
       </div>
       <div class="esp-img" style="background-image:url('fotos/torres-del-paine.webp');background-size:cover;background-position:center top;height:160px;opacity:1;"></div>
       <div class="esp-body">
-        <p>El parque más visitado de la Patagonia chilena recibe el 80% de sus turistas entre las 9 y las 14 horas. Entrar al amanecer no solo te da luz perfecta para fotos: también te permite caminar el Mirador Las Torres casi solo, algo que era impensable hace cinco años.</p>
+        <p>El parque más visitado de la Patagonia chilena recibe el 80% de sus turistas entre las 9 y las 14 horas. Entrar al amanecer no solo te da luz perfecta: también te permite caminar el Mirador Las Torres casi solo.</p>
       </div>
     </div>
-
     <div class="especial-card especial-lugar">
       <div class="esp-header">
         <div class="esp-icono">🗺️</div>
@@ -1155,9 +1240,81 @@
       </div>
       <div class="esp-img" style="background-image:url('fotos/rio-alumine.jpg');background-size:cover;background-position:center;height:160px;opacity:1;"></div>
       <div class="esp-body">
-        <p>En el límite entre Chubut y Chile, el lago Vintter (o General Paz en el lado chileno) es uno de los lagos más grandes de la Patagonia. Sin infraestructura turística, sin WiFi, sin multitudes. Solo agua turquesa, cóndores y silencio absoluto.</p>
+        <p>En el límite entre Chubut y Chile. Sin infraestructura turística, sin WiFi, sin multitudes. Solo agua turquesa, cóndores y silencio absoluto.</p>
       </div>
     </div>
+  </div>
+
+  <!-- Fila 3: 4 destinos patagónicos -->
+  <div style="margin-top:28px; margin-bottom:6px;">
+    <div style="font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#aaa; margin-bottom:14px;">Planes para visitar</div>
+  </div>
+  <div class="destinos-grid">
+
+    <div class="destino-card">
+      <div class="destino-header destino-chalten">
+        <div class="destino-nombre">El Chaltén</div>
+      </div>
+      <div class="destino-body">
+        <div class="destino-label">Plan + Consejos</div>
+        <ul>
+          <li>Mejor época: nov–marzo (días largos y senderos abiertos)</li>
+          <li>Laguna de los Tres: salir antes de las 7 AM para evitar viento</li>
+          <li>Laguna Torre: más tranquila, vistas igual de impresionantes</li>
+          <li>Sin entrada al parque ni permisos — trekking libre</li>
+          <li>Llevá efectivo: el pueblo no tiene cajero confiable</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="destino-card">
+      <div class="destino-header destino-ushuaia">
+        <div class="destino-nombre">Ushuaia</div>
+      </div>
+      <div class="destino-body">
+        <div class="destino-label">Plan + Consejos</div>
+        <ul>
+          <li>Parque Nacional Tierra del Fuego: entrar caminando desde la ciudad</li>
+          <li>Glaciar Martial: subida corta, vistas panorámicas del Canal Beagle</li>
+          <li>Navegación por el canal: media jornada alcanza</li>
+          <li>Clima impredecible — llevar ropa para 4 estaciones</li>
+          <li>Mejor en verano (dic–feb) o invierno para ski en Cerro Castor</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="destino-card">
+      <div class="destino-header destino-esquel">
+        <div class="destino-nombre">Esquel</div>
+      </div>
+      <div class="destino-body">
+        <div class="destino-label">Plan + Consejos</div>
+        <ul>
+          <li>La Trochita: el tren más austral del mundo, salidas regulares</li>
+          <li>Parque Nacional Los Alerces: bosques milenarios y lagos vírgenes</li>
+          <li>Trevelin: pueblo galés a 24 km, té con tortas caseras</li>
+          <li>Mejor base para explorar la comarca andina del Chubut</li>
+          <li>Ski en La Hoya: menos turistas y mejores precios que Bariloche</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="destino-card">
+      <div class="destino-header destino-bariloche">
+        <div class="destino-nombre">Bariloche</div>
+      </div>
+      <div class="destino-body">
+        <div class="destino-label">Plan + Consejos</div>
+        <ul>
+          <li>Circuito Chico: recorrido clásico en bici o auto, medio día</li>
+          <li>Siete Lagos: hacerla en lancha, no en bus (la diferencia es total)</li>
+          <li>Cerro Catedral: ski en invierno, trekking en verano</li>
+          <li>Evitar enero — turistas al máximo y precios duplicados</li>
+          <li>Chocolate artesanal: mejores en Rapanui y Del Turista</li>
+        </ul>
+      </div>
+    </div>
+
   </div>
 
   <div class="divider" style="margin:32px 0;"></div>
@@ -1282,7 +1439,7 @@
   <div class="footer-nav">
     <a href="#inicio">Inicio</a>
     <a href="#sec-noticias">Noticias</a>
-    <a href="#sec-turismo">Turismo & Guías</a>
+    <a href="#sec-turismo">Turismo en Patagonia</a>
     <a href="#sec-deportes">Deportes & Aventura</a>
     <a href="#sec-historia">Cultura Patagónica</a>
     <a href="#sec-noticias">Medio Ambiente</a>
