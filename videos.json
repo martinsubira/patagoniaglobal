@@ -114,4 +114,16 @@
     "lugar": "Patagonia austral, Canal de Beagle",
     "pais": "CL"
   }
+  ,
+  {
+    "id": "un-lugar-en-el-mundo-1992",
+    "titulo": "Un Lugar en el Mundo",
+    "descripcion": "Ernesto adulto regresa al pueblo de su infancia y recuerda los años en que sus padres —intelectuales exiliados de la dictadura— dirigían una cooperativa de lana y una escuela para los campesinos de San Luis. La llegada de un geólogo al servicio de una multinacional que planea desalojar a los lugareños desata el conflicto. Concha de Oro San Sebastián 1992. Goya 1993. La única película descalificada del Oscar tras su nominación, lo que llevó a la Academia a modificar sus normas.",
+    "youtube_id": "fT7sA7ngKJg",
+    "categoria": "ficcion",
+    "año": 1992,
+    "duracion": "120 min",
+    "lugar": "San Luis, interior argentino",
+    "pais": "AR"
+  }
 ]
