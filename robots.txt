@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://martinsubira.github.io/patagoniaglobal/sitemap.xml
+Sitemap: https://patagoniaglobal.org/sitemap.xml

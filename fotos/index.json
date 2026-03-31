@@ -758,5 +758,53 @@
       "glaciares",
       "cordillera"
     ]
+  },
+  {
+    "archivo": "REGION_MAGALLANICA.jpg",
+    "descripcion": "Cuernos del Paine y lago turquesa — Región de Magallanes, Patagonia chilena",
+    "keywords": [
+      "cuernos del paine",
+      "torres del paine",
+      "paine",
+      "lago turquesa",
+      "magallanes",
+      "región de magallanes",
+      "patagonia chilena",
+      "chile",
+      "parque nacional",
+      "turismo chile",
+      "paisaje patagónico",
+      "montaña nevada",
+      "lago glaciar",
+      "puente",
+      "puerto natales",
+      "ecoturismo",
+      "patrimonio natural",
+      "patagonia austral"
+    ]
+  },
+  {
+    "archivo": "valle-rio-negro.jpg",
+    "descripcion": "Alto Valle del Río Negro — vista aérea, chacras, fruticultura, irrigación",
+    "keywords": [
+      "alto valle",
+      "valle del río negro",
+      "rio negro",
+      "río negro",
+      "fruticultura",
+      "chacra",
+      "irrigación",
+      "riego",
+      "vista aérea",
+      "manzana",
+      "pera",
+      "agricultura",
+      "neuquén",
+      "cipolletti",
+      "general roca",
+      "agro patagónico",
+      "economía rural",
+      "producción"
+    ]
   }
 ]
