@@ -20,5 +20,16 @@
     "duracion": "",
     "lugar": "Carretera Austral, Aysén",
     "pais": "CL"
+  },
+  {
+    "id": "peninsula-mitre",
+    "titulo": "Península Mitre — La tierra olvidada",
+    "descripcion": "Dos hermanos emprenden una expedición de 53 días a pie por el extremo oriental de Tierra del Fuego, con mochilas de más de 35 kg y sin comunicación externa. El objetivo: surfear una ola nunca rodeada en el Cabo San Diego. El documental se convierte en una poderosa denuncia ambiental que impulsó la protección de 300.000 hectáreas en la Patagonia argentina.",
+    "youtube_id": "H0d1WQysk9w",
+    "categoria": "documental",
+    "año": 2017,
+    "duracion": "88 min",
+    "lugar": "Península Mitre, Tierra del Fuego",
+    "pais": "AR"
   }
 ]
