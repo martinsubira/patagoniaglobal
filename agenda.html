@@ -14,6 +14,7 @@
   <style>
     :root {
       --azul:    #1c2d3d;
+      --azul-md: #243a50;
       --azul-cl: #7aadcc;
       --arena:   #f0ede8;
       --gris:    #6b7280;
@@ -21,102 +22,172 @@
     }
     * { margin:0; padding:0; box-sizing:border-box; }
     html { scroll-behavior:smooth; }
-    body { background:#fff; color:var(--texto); font-family:'Inter',sans-serif; }
+    body { background:var(--azul); color:white; font-family:'Inter',sans-serif; min-height:100vh; }
 
     /* ── HEADER ── */
     header {
       position:sticky; top:0; z-index:100;
-      background:var(--azul);
+      background:rgba(20,35,48,0.97); backdrop-filter:blur(8px);
+      border-bottom:1px solid rgba(122,173,204,0.15);
       display:flex; align-items:center; justify-content:space-between;
-      padding:0 40px; height:64px;
+      padding:0 40px; height:60px;
     }
     .header-logo {
-      font-family:'Playfair Display',serif; font-size:24px; font-weight:900;
+      font-family:'Playfair Display',serif; font-size:22px; font-weight:900;
       color:white; text-decoration:none; letter-spacing:-0.5px;
     }
     .header-logo span { color:var(--azul-cl); }
     .header-nav a {
-      color:rgba(255,255,255,0.7); text-decoration:none; font-size:13px; font-weight:500;
-      transition:color 0.2s;
+      color:rgba(255,255,255,0.55); text-decoration:none; font-size:13px; font-weight:500;
+      transition:color 0.2s; letter-spacing:0.2px;
     }
     .header-nav a:hover { color:white; }
 
-    /* ── HERO BANDA ── */
+    /* ── HERO COMPACTO ── */
     .page-hero {
-      background: linear-gradient(135deg, var(--azul) 0%, #2d4a6b 100%);
-      padding: 52px 40px 44px;
+      padding: 44px 40px 36px;
+      border-bottom: 1px solid rgba(122,173,204,0.12);
     }
     .page-hero h1 {
       font-family:'Playfair Display',serif;
-      font-size:clamp(28px,5vw,44px); font-weight:900; color:white;
-      margin-bottom:8px;
+      font-size:clamp(26px,4vw,40px); font-weight:900; color:white;
+      margin-bottom:6px;
     }
-    .page-hero p { font-size:15px; color:rgba(255,255,255,0.6); max-width:520px; }
+    .page-hero p { font-size:14px; color:rgba(255,255,255,0.45); }
 
     /* ── FILTROS ── */
     .filtros-wrap {
-      background:var(--arena); padding:20px 40px; border-bottom:1px solid #e5e0d9;
+      padding:20px 40px;
+      border-bottom:1px solid rgba(122,173,204,0.12);
       display:flex; gap:8px; flex-wrap:wrap; align-items:center;
     }
-    .filtro-label { font-size:12px; font-weight:600; color:var(--gris); letter-spacing:0.5px; margin-right:4px; }
-    .agenda-filtro {
-      background:white; border:1px solid #ddd; border-radius:20px;
-      padding:7px 16px; font-size:13px; font-family:'Inter',sans-serif;
-      cursor:pointer; color:#4a5568; transition:all 0.2s;
+    .filtro-label {
+      font-size:11px; font-weight:700; color:rgba(255,255,255,0.3);
+      letter-spacing:1px; text-transform:uppercase; margin-right:4px;
     }
-    .agenda-filtro:hover, .agenda-filtro.active {
-      background:var(--azul); color:white; border-color:var(--azul);
+    .agenda-filtro {
+      background:rgba(255,255,255,0.06);
+      border:1px solid rgba(255,255,255,0.12);
+      border-radius:20px;
+      padding:6px 16px; font-size:12px; font-family:'Inter',sans-serif;
+      cursor:pointer; color:rgba(255,255,255,0.55);
+      transition:all 0.18s; font-weight:500;
+    }
+    .agenda-filtro:hover {
+      background:rgba(122,173,204,0.15);
+      border-color:rgba(122,173,204,0.4);
+      color:rgba(255,255,255,0.9);
+    }
+    .agenda-filtro.active {
+      background:var(--azul-cl);
+      border-color:var(--azul-cl);
+      color:var(--azul);
+      font-weight:700;
     }
 
     /* ── GRID ── */
-    .agenda-wrap { max-width:1200px; margin:0 auto; padding:40px 40px 80px; }
-    #agenda-count { font-size:13px; color:var(--gris); margin-bottom:24px; }
+    .agenda-wrap { max-width:1200px; margin:0 auto; padding:32px 40px 80px; }
+    #agenda-count {
+      font-size:12px; color:rgba(255,255,255,0.3);
+      letter-spacing:0.5px; text-transform:uppercase;
+      margin-bottom:24px;
+    }
     #agenda-grid {
       display:grid;
-      grid-template-columns:repeat(auto-fill, minmax(320px,1fr));
-      gap:20px;
+      grid-template-columns:repeat(auto-fill, minmax(260px,1fr));
+      gap:14px;
     }
 
     /* ── CARD ── */
     .agenda-card {
-      background:white; border-radius:10px; padding:22px;
-      border-top:3px solid var(--azul-cl);
-      box-shadow:0 1px 4px rgba(0,0,0,0.06);
-      display:flex; flex-direction:column; gap:10px;
-      transition:box-shadow 0.2s, transform 0.2s;
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(122,173,204,0.12);
+      border-top:2px solid var(--azul-cl);
+      border-radius:8px;
+      padding:18px 18px 16px;
+      display:flex; flex-direction:column; gap:8px;
+      transition:background 0.18s, transform 0.18s, border-color 0.18s;
+      cursor:default;
     }
-    .agenda-card:hover { box-shadow:0 6px 20px rgba(0,0,0,0.1); transform:translateY(-2px); }
-    .card-top { display:flex; justify-content:space-between; align-items:flex-start; gap:8px; }
-    .card-emoji { font-size:24px; flex-shrink:0; }
-    .card-pais {
-      font-size:11px; background:var(--arena); padding:3px 9px;
-      border-radius:10px; color:var(--gris); white-space:nowrap;
-    }
-    .card-fecha { font-size:12px; font-weight:700; color:var(--azul-cl); letter-spacing:0.5px; text-transform:uppercase; }
-    .card-titulo { font-family:'Playfair Display',serif; font-size:17px; font-weight:700; color:var(--azul); line-height:1.3; }
-    .card-lugar { font-size:12px; color:var(--gris); }
-    .card-desc { font-size:13px; color:#4a5568; line-height:1.65; margin-top:2px; }
-    .card-cat {
-      font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase;
-      color:var(--azul-cl); margin-top:4px;
+    .agenda-card:hover {
+      background:rgba(122,173,204,0.09);
+      border-color:rgba(122,173,204,0.3);
+      transform:translateY(-2px);
     }
 
-    /* ── EMPTY ── */
-    .empty { text-align:center; padding:60px 20px; color:var(--gris); font-size:15px; grid-column:1/-1; }
+    /* fila superior: emoji + bandera+región */
+    .card-top {
+      display:flex; justify-content:space-between; align-items:center;
+    }
+    .card-emoji { font-size:22px; line-height:1; }
+    .card-pais {
+      font-size:11px; font-weight:600;
+      color:rgba(255,255,255,0.35);
+      letter-spacing:0.3px;
+    }
+
+    /* fecha */
+    .card-fecha {
+      font-size:10px; font-weight:700;
+      color:var(--azul-cl);
+      letter-spacing:1px; text-transform:uppercase;
+    }
+
+    /* título */
+    .card-titulo {
+      font-family:'Playfair Display',serif;
+      font-size:15px; font-weight:700;
+      color:white; line-height:1.35;
+    }
+
+    /* lugar */
+    .card-lugar {
+      font-size:11px; color:rgba(255,255,255,0.38);
+    }
+
+    /* descripción */
+    .card-desc {
+      font-size:12px; color:rgba(255,255,255,0.5);
+      line-height:1.6; padding-top:4px;
+      border-top:1px solid rgba(255,255,255,0.06);
+    }
+
+    /* categoría badge */
+    .card-cat {
+      display:inline-block;
+      font-size:9px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase;
+      color:var(--azul); background:var(--azul-cl);
+      padding:3px 8px; border-radius:10px; align-self:flex-start;
+      margin-top:2px;
+    }
+
+    /* ── VACÍO ── */
+    .empty {
+      text-align:center; padding:60px 20px;
+      color:rgba(255,255,255,0.25); font-size:14px;
+      grid-column:1/-1;
+    }
 
     /* ── FOOTER ── */
     footer {
-      background:var(--azul); color:rgba(255,255,255,0.5);
+      background:rgba(0,0,0,0.25);
+      border-top:1px solid rgba(122,173,204,0.1);
+      color:rgba(255,255,255,0.3);
       text-align:center; padding:28px 20px; font-size:12px;
     }
-    footer a { color:rgba(255,255,255,0.6); text-decoration:none; margin:0 8px; }
+    footer a { color:rgba(255,255,255,0.4); text-decoration:none; margin:0 8px; transition:color 0.2s; }
     footer a:hover { color:white; }
 
+    /* ── RESPONSIVE ── */
     @media (max-width:768px) {
       header { padding:0 16px; }
-      .page-hero { padding:36px 20px 32px; }
+      .page-hero { padding:32px 20px 28px; }
       .filtros-wrap { padding:16px 20px; }
       .agenda-wrap { padding:24px 16px 60px; }
+      #agenda-grid { grid-template-columns:1fr 1fr; gap:10px; }
+    }
+    @media (max-width:480px) {
+      #agenda-grid { grid-template-columns:1fr; }
     }
   </style>
 </head>
@@ -135,7 +206,7 @@
 </div>
 
 <div class="filtros-wrap">
-  <span class="filtro-label">Filtrar:</span>
+  <span class="filtro-label">Filtrar</span>
   <button class="agenda-filtro active" data-cat="todos">Todos</button>
   <button class="agenda-filtro" data-cat="deportes">🏃 Deportes</button>
   <button class="agenda-filtro" data-cat="cultura">🎭 Cultura</button>
@@ -146,7 +217,7 @@
 
 <div class="agenda-wrap">
   <div id="agenda-count"></div>
-  <div id="agenda-grid"><div class="empty">Cargando agenda...</div></div>
+  <div id="agenda-grid"><div class="empty">Cargando agenda…</div></div>
 </div>
 
 <footer>
@@ -161,13 +232,10 @@ const BANDERAS = { AR:'🇦🇷', CL:'🇨🇱' };
 let todosEventos = [];
 let catActiva = 'todos';
 
-function hoyISO() {
-  return new Date().toISOString().slice(0, 10);
-}
+function hoyISO() { return new Date().toISOString().slice(0, 10); }
 
 function render() {
   const hoy = hoyISO();
-  // Solo eventos futuros (fecha o fecha_fin >= hoy)
   const vigentes = todosEventos.filter(e => (e.fecha_fin || e.fecha) >= hoy);
   const filtrados = catActiva === 'todos' ? vigentes : vigentes.filter(e => e.categoria === catActiva);
 
@@ -188,7 +256,7 @@ function render() {
       <div class="card-fecha">${e.fecha_display.toUpperCase()}</div>
       <div class="card-titulo">${e.titulo}</div>
       <div class="card-lugar">📍 ${e.lugar}</div>
-      <div class="card-desc">${e.descripcion}</div>
+      ${e.descripcion ? `<div class="card-desc">${e.descripcion}</div>` : ''}
       <div class="card-cat">${e.categoria}</div>
     </div>
   `).join('');
