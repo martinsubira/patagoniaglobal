@@ -529,24 +529,83 @@ def cargar_historias_permanentes():
         return []
 
 
+def es_propio(articulo):
+    """Artículo escrito por PatagoniaGLOBAL / J. Martineau."""
+    fuente = articulo.get("fuente", "") or ""
+    autor  = articulo.get("autor", "")  or ""
+    return (
+        "PatagoniaGLOBAL" in fuente or
+        "Martineau" in autor or
+        "PatagoniaGLOBAL" in autor or
+        articulo.get("propio") is True
+    )
+
+
+def dias_desde_id(articulo_id):
+    """Extrae la fecha del ID (YYYYMMDD-...) y devuelve días transcurridos."""
+    try:
+        fecha_str = str(articulo_id)[:8]
+        fecha_art = datetime.strptime(fecha_str, "%Y%m%d")
+        return (datetime.now() - fecha_art).days
+    except Exception:
+        return 999
+
+
 def construir_noticias_json(tapa, historial, ticker):
-    """Arma noticias.json con tapa + feed del historial. Preserva historias permanentes."""
-    # El feed son los últimos MAX_FEED artículos (excluyendo la tapa)
-    feed = [a for a in historial if a.get("id") != tapa.get("id")][:MAX_FEED]
+    """Arma noticias.json con tapa + feed.
 
-    # Secundarias: los 2 primeros del feed
-    secundarias = feed[:2]
-    # Cards del feed: del 3ro en adelante
-    noticias_cards = feed[2:]
+    REGLA ARTÍCULOS PROPIOS (PatagoniaGLOBAL / J. Martineau):
+      - 0-6 días  → ocupan la TAPA (tienen prioridad sobre la selección automática)
+      - 7-30 días → permanecen en Noticias de la Semana (no rotan fuera del feed)
+      - +30 días  → pasan a archivo junto con el resto
+    """
+    hoy = datetime.now()
 
-    # Las historias permanentes (Historia, Cultura) nunca se borran
+    # ── Clasificar artículos propios del historial ──────────────
+    propios_tapa   = []   # < 7 días
+    propios_semana = []   # 7-30 días
+
+    for a in historial:
+        if not es_propio(a):
+            continue
+        dias = dias_desde_id(a.get("id", ""))
+        if dias < 7:
+            propios_tapa.append(a)
+        elif dias <= 30:
+            propios_semana.append(a)
+
+    # ── Decidir tapa ────────────────────────────────────────────
+    tapa_final = tapa
+    if propios_tapa:
+        # El propio más reciente tiene prioridad como tapa
+        candidato = propios_tapa[0]
+        if candidato.get("id") != tapa.get("id"):
+            print(f"  ★ Tapa PROPIA activada: [{candidato['id']}] {candidato.get('titulo','')[:60]}")
+            tapa_final = candidato
+
+    # ── Construir feed ──────────────────────────────────────────
+    # Excluir la tapa del feed
+    feed_base = [a for a in historial if a.get("id") != tapa_final.get("id")]
+
+    # Los propios de semana deben aparecer en el feed aunque excedan MAX_FEED
+    ids_propios_semana = {a["id"] for a in propios_semana}
+    feed_normal   = [a for a in feed_base if a["id"] not in ids_propios_semana][:MAX_FEED]
+    feed_completo = propios_semana + feed_normal
+
+    if propios_semana:
+        titulos = [a.get('titulo','')[:40] for a in propios_semana]
+        print(f"  ★ {len(propios_semana)} nota(s) propia(s) fijada(s) en Noticias de la Semana: {titulos}")
+
+    secundarias   = feed_completo[:2]
+    noticias_cards = feed_completo[2:]
+
     historias = cargar_historias_permanentes()
 
     return {
-        "generado":      datetime.now().isoformat(),
+        "generado":      hoy.isoformat(),
         "fecha_display": fecha_display(),
         "ticker":        ticker,
-        "tapa":          tapa,
+        "tapa":          tapa_final,
         "secundarias":   secundarias,
         "noticias":      noticias_cards,
         "historias":     historias,
