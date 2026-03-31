@@ -43,4 +43,16 @@
     "lugar": "Tierra del Fuego",
     "pais": "AR"
   }
+  ,
+  {
+    "id": "patagonia-rebelde-1974",
+    "titulo": "La Patagonia Rebelde",
+    "descripcion": "1920, Santa Cruz. Los peones de las estancias patagónicas se lanzan a la huelga exigiendo salario digno. El gobierno negocia, pero los estancieros incumplen. Cuando estalla la segunda huelga, el ejército regresa con órdenes de represión: entre 300 y 1.500 trabajadores son fusilados sin juicio. Basada en el libro de Osvaldo Bayer. Oso de Plata, Festival de Berlín 1974.",
+    "youtube_id": "8S0T0aR8f1w",
+    "categoria": "ficcion",
+    "año": 1974,
+    "duracion": "110 min",
+    "lugar": "Santa Cruz, Patagonia",
+    "pais": "AR"
+  }
 ]
