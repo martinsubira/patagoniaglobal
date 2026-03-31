@@ -34,6 +34,6 @@ jobs:
         run: |
           git config user.name "PatagoniaGLOBAL Bot"
           git config user.email "bot@patagoniaglobal.ar"
-          git add noticias.json historial.json agenda.json fotos/
+          git add noticias.json historial.json agenda.json fotos/ propios.json
           git diff --staged --quiet || git commit -m "Noticias actualizadas — $(date +'%d/%m/%Y')"
           git push

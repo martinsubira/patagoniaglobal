@@ -529,6 +529,20 @@ def cargar_historias_permanentes():
         return []
 
 
+def cargar_propios():
+    """Carga las notas propias (PatagoniaGLOBAL / J. Martineau) desde propios.json.
+    Este archivo NUNCA es sobreescrito por el script — es el archivo permanente
+    de notas de producción propia. Agregar aquí cada nota nueva que publiquemos."""
+    ruta = os.path.join(os.path.dirname(__file__), "propios.json")
+    if not os.path.exists(ruta):
+        return []
+    try:
+        with open(ruta, encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        return []
+
+
 def es_propio(articulo):
     """Artículo escrito por PatagoniaGLOBAL / J. Martineau."""
     fuente = articulo.get("fuente", "") or ""
@@ -558,14 +572,24 @@ def construir_noticias_json(tapa, historial, ticker):
       - 0-6 días  → ocupan la TAPA (tienen prioridad sobre la selección automática)
       - 7-30 días → permanecen en Noticias de la Semana (no rotan fuera del feed)
       - +30 días  → pasan a archivo junto con el resto
+
+    Los artículos propios se leen desde propios.json (archivo permanente) y también
+    desde historial (por si alguno fue ingresado por otro medio).
     """
     hoy = datetime.now()
 
-    # ── Clasificar artículos propios del historial ──────────────
+    # ── Cargar propios desde propios.json (fuente permanente) ──
+    propios_archivo = cargar_propios()
+    # Mezclar con historial evitando duplicados por ID
+    ids_historial = {a.get("id") for a in historial}
+    propios_extra  = [a for a in propios_archivo if a.get("id") not in ids_historial]
+    fuente_completa = propios_extra + historial
+
+    # ── Clasificar artículos propios ─────────────────────────────
     propios_tapa   = []   # < 7 días
     propios_semana = []   # 7-30 días
 
-    for a in historial:
+    for a in fuente_completa:
         if not es_propio(a):
             continue
         dias = dias_desde_id(a.get("id", ""))
@@ -585,7 +609,7 @@ def construir_noticias_json(tapa, historial, ticker):
 
     # ── Construir feed ──────────────────────────────────────────
     # Excluir la tapa del feed
-    feed_base = [a for a in historial if a.get("id") != tapa_final.get("id")]
+    feed_base = [a for a in fuente_completa if a.get("id") != tapa_final.get("id")]
 
     # Los propios de semana deben aparecer en el feed aunque excedan MAX_FEED
     ids_propios_semana = {a["id"] for a in propios_semana}
