@@ -12,6 +12,7 @@
     "url_original": "",
     "pais": "argentina",
     "imagen": "fotos/LEY_GLACIARES_02.jpg",
+    "galeria": ["fotos/LEY_GLACIARES_01.jpg", "fotos/LEY_GLACIARES_03.jpg", "fotos/LEY_GLACIARES_04.jpg"],
     "imagen_keywords": "glaciares ley de glaciares patagonia protección minería",
     "meta": "18 de Marzo · PatagoniaGLOBAL"
   }

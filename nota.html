@@ -656,9 +656,14 @@ function renderNota(nota, fechaDisplay, data) {
     <div class="nota-cuerpo">${cuerpoHtml}</div>
     ${galeriaHtml}
     ${datosHtml}
-    <div class="nota-fuente">
-      <strong>Fuente original:</strong> Esta nota fue elaborada con información de <strong>${nota.fuente || "medios locales"}</strong>.
-    </div>
+    ${nota.propio
+      ? `<div class="nota-fuente" style="border-left:3px solid #1c2d3d;background:#f0ede8;">
+           <strong>Por ${nota.autor || "PatagoniaGLOBAL"}</strong> · Nota de producción propia · <strong>PatagoniaGLOBAL</strong>
+         </div>`
+      : `<div class="nota-fuente">
+           <strong>Fuente original:</strong> Esta nota fue elaborada con información de <strong>${nota.fuente || "medios locales"}</strong>.
+         </div>`
+    }
     ${compartirHtml}
     ${renderRelacionadas(data, nota.id)}
   `;
