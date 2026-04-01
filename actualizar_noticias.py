@@ -728,9 +728,20 @@ def construir_noticias_json(tapa, historial, ticker):
             break
 
     secundarias    = feed[:2]
-    noticias_cards = feed[2:10]  # máximo 8 en Noticias de la Semana
+    noticias_cards = feed[2:10]  # 8 tarjetas en Noticias de la Semana
 
     historias = cargar_historias_permanentes()
+
+    # ── Turismo: hasta 3 notas más recientes de categoría turismo ──
+    ids_ya_usados = {tapa_final.get("id")} | {a.get("id") for a in feed}
+    turismo_feed = []
+    for a in historial:
+        if a.get("id") in ids_ya_usados or es_propio(a):
+            continue
+        if a.get("categoria", "").lower() in ("turismo", "turismo y guías", "guías"):
+            turismo_feed.append(a)
+        if len(turismo_feed) >= 3:
+            break
 
     return {
         "generado":      hoy.isoformat(),
@@ -739,6 +750,7 @@ def construir_noticias_json(tapa, historial, ticker):
         "tapa":          tapa_final,
         "secundarias":   secundarias,
         "noticias":      noticias_cards,
+        "turismo":       turismo_feed,
         "historias":     historias,
     }
 

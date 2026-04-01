@@ -1051,37 +1051,42 @@
     <div class="section-badge" style="background:#7a2020;color:#f4a0a0;">Cumbres · Rescates · Expediciones</div>
   </div>
 
-  <div style="display:grid;grid-template-columns:1.6fr 1fr;gap:4px;margin-bottom:16px;">
-
-    <!-- Nota aventura principal -->
-    <a href="nota.html?id=trail-monte-leon-2026" style="text-decoration:none;position:relative;overflow:hidden;display:block;">
-      <div style="height:300px;background-image:url('fotos/trail-monte-leon-2026.webp');background-size:cover;background-position:center;"></div>
-      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.9) 0%,rgba(0,0,0,0.1) 65%,transparent 100%);padding:22px;display:flex;flex-direction:column;justify-content:flex-end;">
-        <div style="display:inline-block;background:#3a5a7a;color:white;font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:3px 10px;border-radius:2px;margin-bottom:8px;width:fit-content;">🏃 Trail Running</div>
-        <div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:white;line-height:1.25;margin-bottom:6px;">Cuatro podios patagónicos: atletas de El Calafate brillaron en el Desafío Monte León</div>
-        <div style="font-size:12px;color:rgba(255,255,255,0.7);">Once corredores calafateños frente a 210 participantes en el Parque Nacional Monte León. Ayelén Tuller, Guajardo, Anchordoqui y Schroder en el podio. · 30 de marzo de 2026</div>
-      </div>
-    </a>
-
-    <!-- Notas aventura secundarias -->
-    <div style="display:flex;flex-direction:column;gap:4px;">
-      <a href="nota.html?id=rescate-chalten-marzo-2026" style="text-decoration:none;position:relative;overflow:hidden;flex:1;display:block;">
-        <div style="height:148px;background-image:url('fotos/rescate-chalten-01.webp');background-size:cover;background-position:center;"></div>
-        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.88) 0%,transparent 60%);padding:14px;display:flex;flex-direction:column;justify-content:flex-end;">
-          <div style="display:inline-block;background:#b03a2e;color:white;font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:2px 8px;border-radius:2px;margin-bottom:6px;width:fit-content;">🆘 Rescate</div>
-          <div style="font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:white;line-height:1.25;">Dos turistas rescatados en El Chaltén en menos de 24 horas: una mexicana en Laguna de los Tres y un holandés perdido toda la noche</div>
-        </div>
-      </a>
-      <div style="position:relative;overflow:hidden;flex:1;">
-        <div style="height:148px;background-image:url('https://images.unsplash.com/photo-1531761535209-180857e963b9?w=600&q=80&fit=crop&crop=center');background-size:cover;background-position:center;"></div>
-        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.88) 0%,transparent 60%);padding:14px;display:flex;flex-direction:column;justify-content:flex-end;">
-          <div style="display:inline-block;background:#7aadcc;color:#1c2d3d;font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:2px 8px;border-radius:2px;margin-bottom:6px;width:fit-content;">🏔️ Cumbre</div>
-          <div style="font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:white;line-height:1.25;">Tres alpinistas cordobeses alcanzan la cima del Fitz Roy por nueva variante</div>
-        </div>
-      </div>
-    </div>
-
-  </div>
+  <div id="deportes-grid" style="display:grid;grid-template-columns:1.6fr 1fr;gap:4px;margin-bottom:16px;"></div>
+  <script>
+  (function(){
+    fetch('deportes_feed.json?v=' + Date.now())
+      .then(r=>r.json())
+      .then(feed=>{
+        const grid = document.getElementById('deportes-grid');
+        const p = feed.principal;
+        const href = p.id ? `nota.html?id=${p.id}` : '#';
+        let html = `<a href="${href}" style="text-decoration:none;position:relative;overflow:hidden;display:block;">
+          <div style="height:300px;background-image:url('${p.imagen}');background-size:cover;background-position:center;"></div>
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.9) 0%,rgba(0,0,0,0.1) 65%,transparent 100%);padding:22px;display:flex;flex-direction:column;justify-content:flex-end;">
+            <div style="display:inline-block;background:${p.badge_bg};color:${p.badge_color};font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:3px 10px;border-radius:2px;margin-bottom:8px;width:fit-content;">${p.badge_text}</div>
+            <div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:white;line-height:1.25;margin-bottom:6px;">${p.titulo}</div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.7);">${p.meta||''}</div>
+          </div>
+        </a>`;
+        html += `<div style="display:flex;flex-direction:column;gap:4px;">`;
+        (feed.secundarias||[]).forEach(s=>{
+          const shref = s.id ? `nota.html?id=${s.id}` : null;
+          const tag = shref ? 'a' : 'div';
+          const extra = shref ? `href="${shref}" style="text-decoration:none;` : `style="`;
+          html += `<${tag} ${extra}position:relative;overflow:hidden;flex:1;display:block;">
+            <div style="height:148px;background-image:url('${s.imagen}');background-size:cover;background-position:center;"></div>
+            <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.88) 0%,transparent 60%);padding:14px;display:flex;flex-direction:column;justify-content:flex-end;">
+              <div style="display:inline-block;background:${s.badge_bg};color:${s.badge_color};font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:2px 8px;border-radius:2px;margin-bottom:6px;width:fit-content;">${s.badge_text}</div>
+              <div style="font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:white;line-height:1.25;">${s.titulo}</div>
+            </div>
+          </${tag}>`;
+        });
+        html += `</div>`;
+        grid.innerHTML = html;
+      })
+      .catch(()=>{});
+  })();
+  </script>
 
   <!-- Fila noticias aventura rápidas -->
   <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:4px;">
@@ -1114,42 +1119,9 @@
     <div class="section-badge badge-azul">Guías · El Dato · Lugares</div>
   </div>
 
-  <!-- Fila 1: principal + 2 secundarias -->
-  <div class="turismo-top">
-    <div class="turismo-principal" onclick="location.href='nota.html?id=guia-calafate-4-dias'" style="cursor:pointer;">
-      <div class="tp-img-fallback guia-img-1" style="background-image:url('fotos/Calafate.jpg');background-size:cover;background-position:center;">
-        <div class="turismo-tipo">Guía completa</div>
-      </div>
-      <div class="tp-body">
-        <h3>Cómo llegar, moverse y disfrutar El Calafate en 4 días</h3>
-        <p>Todo lo que necesitás saber: transporte, alojamiento, visitas al Perito Moreno y mini-trekking sobre el glaciar.</p>
-        <div class="tp-meta">
-          <span>📍 Santa Cruz</span>
-          <span>⏱ 8 min lectura</span>
-          <span>📅 Actualizado marzo 2026</span>
-        </div>
-      </div>
-    </div>
-    <div class="turismo-secundarias">
-      <div class="turismo-sec">
-        <div class="ts-img-fallback ts-img-1" style="background-image:url('fotos/bariloche-lago-nahuel-huapi.jpg');background-size:cover;background-position:center;">
-          <div class="turismo-tipo">El dato</div>
-        </div>
-        <div class="ts-body">
-          <h4>El secreto de Bariloche: la Ruta de los Siete Lagos en lancha</h4>
-          <p>La mayoría la hace en auto. Pero desde el lago Nahuel Huapi cambia todo.</p>
-        </div>
-      </div>
-      <div class="turismo-sec">
-        <div class="ts-img-fallback ts-img-2" style="background-image:url('fotos/estepa-nevada-ruta-patagonica.jpg');background-size:cover;background-position:center;">
-          <div class="turismo-tipo">Lugar desconocido</div>
-        </div>
-        <div class="ts-body">
-          <h4>Río Pico: el pueblo sin señal donde el tiempo se detuvo en 1950</h4>
-          <p>A 300 km de Esquel. Ganadería trashumante y hospitalidad que ya no existe en otros lugares.</p>
-        </div>
-      </div>
-    </div>
+  <!-- Fila 1: principal + 2 secundarias (dinámico desde noticias.json) -->
+  <div id="turismo-top-container">
+    <!-- Se rellena dinámicamente desde noticias.json → turismo[] -->
   </div>
 
   <!-- Fila 2: 4 destinos patagónicos -->
@@ -1445,7 +1417,7 @@ function renderNoticias(data) {
   if (!grid) return;
 
   let html = "";
-  noticias.slice(0,4).forEach((n, i) => {
+  noticias.slice(0,8).forEach((n, i) => {
     const colorCls = CARD_COLORS[i % CARD_COLORS.length];
     const tagCls   = TAG_CLASSES[n.categoria] || "tag-social";
     const bg = n.imagen
@@ -1463,6 +1435,54 @@ function renderNoticias(data) {
   });
 
   grid.innerHTML = html;
+}
+
+function renderTurismo(data) {
+  const turismo = data.turismo || [];
+  const container = document.getElementById("turismo-top-container");
+  if (!container || !turismo.length) return;
+
+  const principal = turismo[0];
+  const secs = turismo.slice(1, 3);
+
+  const bgPrincipal = principal.imagen
+    ? `background-image:url('${principal.imagen}');background-size:cover;background-position:center;`
+    : "background:#1c2d3d;";
+
+  let secsHtml = "";
+  secs.forEach((s, i) => {
+    const bg = s.imagen
+      ? `background-image:url('${s.imagen}');background-size:cover;background-position:center;`
+      : `background:#${i===0?'2a4a6a':'3a2a1a'};`;
+    secsHtml += `
+    <div class="turismo-sec" onclick="irANota('${s.id}')" style="cursor:pointer;">
+      <div class="ts-img-fallback" style="${bg}">
+        <div class="turismo-tipo">${s.tag || '🌿 Turismo'}</div>
+      </div>
+      <div class="ts-body">
+        <h4>${s.titulo}</h4>
+        <p>${s.bajada ? s.bajada.substring(0,100)+'…' : ''}</p>
+      </div>
+    </div>`;
+  });
+
+  container.innerHTML = `
+  <div class="turismo-top">
+    <div class="turismo-principal" onclick="irANota('${principal.id}')" style="cursor:pointer;">
+      <div class="tp-img-fallback" style="${bgPrincipal}">
+        <div class="turismo-tipo">${principal.tag || '🌿 Turismo'}</div>
+      </div>
+      <div class="tp-body">
+        <h3>${principal.titulo}</h3>
+        <p>${principal.bajada ? principal.bajada.substring(0,140)+'…' : ''}</p>
+        <div class="tp-meta">
+          <span>${principal.pais === 'chile' ? '🇨🇱 Chile' : principal.pais === 'argentina' ? '🇦🇷 Argentina' : '🌐 Patagonia'}</span>
+          <span>📅 ${principal.meta || ''}</span>
+        </div>
+      </div>
+    </div>
+    <div class="turismo-secundarias">${secsHtml}</div>
+  </div>`;
 }
 
 function renderTicker(data) {
@@ -1484,6 +1504,7 @@ fetch("noticias.json")
     renderTicker(data);
     renderTapa(data);
     renderNoticias(data);
+    renderTurismo(data);
   })
   .catch(() => {
     // Si no hay noticias.json, el sitio muestra el contenido hardcodeado. OK.
