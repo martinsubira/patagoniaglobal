@@ -885,5 +885,82 @@
       "pesquería antártica",
       "base antártica"
     ]
+  },
+  {
+    "archivo": "la-trochita.jpg",
+    "descripcion": "La Trochita — tren a vapor histórico en la estepa patagónica, Esquel, Chubut",
+    "keywords": [
+      "la trochita",
+      "tren a vapor",
+      "ferrocarril",
+      "esquel",
+      "chubut",
+      "tren patagónico",
+      "vapor",
+      "estepa",
+      "locomotora",
+      "turismo esquel",
+      "patrimonio",
+      "historia",
+      "paul theroux",
+      "old patagonian express"
+    ]
+  },
+  {
+    "archivo": "los-alerces.jpg",
+    "descripcion": "Río turquesa entre alerces y bosque andino — Parque Nacional Los Alerces, Chubut",
+    "keywords": [
+      "los alerces",
+      "parque nacional los alerces",
+      "esquel",
+      "chubut",
+      "alerce",
+      "bosque andino",
+      "río turquesa",
+      "lago",
+      "agua turquesa",
+      "patagonia andina",
+      "naturaleza",
+      "biodiversidad",
+      "trekking",
+      "comarca andina"
+    ]
+  },
+  {
+    "archivo": "lago-futalaufquen.jpg",
+    "descripcion": "Lago Futalaufquén con bote y montañas — Parque Nacional Los Alerces, Chubut",
+    "keywords": [
+      "lago futalaufquén",
+      "futalaufquen",
+      "los alerces",
+      "parque nacional los alerces",
+      "esquel",
+      "chubut",
+      "lago andino",
+      "bote",
+      "lancha",
+      "agua verde",
+      "bosque de lengas",
+      "montaña",
+      "turismo",
+      "patagonia andina",
+      "naturaleza",
+      "verano patagónico"
+    ]
+  },
+  {
+    "archivo": "ushuaia-tierra-del-fuego.jpg",
+    "descripcion": "Ushuaia y Canal Beagle — vista panorámica, Tierra del Fuego",
+    "keywords": [
+      "ushuaia",
+      "tierra del fuego",
+      "canal beagle",
+      "patagonia austral",
+      "fin del mundo",
+      "montaña nevada",
+      "ciudad austral",
+      "turismo ushuaia",
+      "vista panorámica"
+    ]
   }
 ]
