@@ -439,6 +439,101 @@ def extraer_og_image(url_articulo, nota_id):
         return None
 
 
+def extraer_galeria_articulo(url_articulo, nota_id):
+    """Descarga las fotos del interior del artículo fuente y las guarda en fotos/.
+    Retorna lista de rutas locales (máx. 4 fotos, excluyendo thumbnails y gifs)."""
+    if not url_articulo:
+        return []
+    try:
+        import re
+        req = urllib.request.Request(url_articulo, headers={
+            "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36"
+        })
+        with urllib.request.urlopen(req, timeout=12) as resp:
+            html = resp.read().decode("utf-8", errors="ignore")
+
+        # Recolectar URLs desde data-src y src en img tags
+        candidatas = []
+
+        # data-src (lazy loading — más confiable para imágenes reales del artículo)
+        for m in re.finditer(r'data-src=["\']([^"\']+)["\']', html):
+            candidatas.append(m.group(1))
+
+        # src convencional como fallback
+        for m in re.finditer(r'<img[^>]+src=["\']([^"\']+)["\']', html):
+            candidatas.append(m.group(1))
+
+        # Filtrar y deduplicar
+        base = url_articulo.split("/")[0] + "//" + url_articulo.split("/")[2]
+        vistas = set()
+        urls_limpias = []
+        for url in candidatas:
+            # Completar URLs relativas
+            if url.startswith("/"):
+                url = base + url
+            if not url.startswith("http"):
+                continue
+            # Saltar gifs, thumbnails, logos, iconos, tracking pixels
+            url_lower = url.lower()
+            if any(x in url_lower for x in [
+                ".gif", "miniatura", "thumbnail", "thumb", "logo",
+                "favicon", "icon", "avatar", "pixel", "static/custom",
+                "data:,", "1x1", "spacer"
+            ]):
+                continue
+            # Solo imágenes reales
+            ext_match = re.search(r'\.(jpg|jpeg|png|webp)(\?|$)', url_lower)
+            if not ext_match:
+                continue
+            # Deduplicar por URL limpia (sin query string)
+            url_base = url.split("?")[0]
+            if url_base in vistas:
+                continue
+            vistas.add(url_base)
+            urls_limpias.append(url)
+            if len(urls_limpias) >= 6:  # tomar más candidatas para filtrar después
+                break
+
+        # Descargar hasta 4 fotos (saltando la primera si ya es la og:image)
+        fotos_dir = os.path.join(os.path.dirname(__file__), "fotos")
+        galeria = []
+        descargadas = 0
+        for i, img_url in enumerate(urls_limpias):
+            if descargadas >= 4:
+                break
+            ext = re.search(r'\.(jpg|jpeg|png|webp)', img_url.lower())
+            ext = ext.group(1) if ext else "jpg"
+            if ext == "jpeg":
+                ext = "jpg"
+            filename = f"foto-{nota_id}-g{i+1}.{ext}"
+            ruta_local = os.path.join(fotos_dir, filename)
+            if os.path.exists(ruta_local):
+                galeria.append(f"fotos/{filename}")
+                descargadas += 1
+                continue
+            try:
+                img_req = urllib.request.Request(img_url, headers={
+                    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36"
+                })
+                with urllib.request.urlopen(img_req, timeout=10) as resp:
+                    contenido = resp.read()
+                # Saltar imágenes muy pequeñas (< 10 KB = probablemente ícono)
+                if len(contenido) < 10_000:
+                    continue
+                with open(ruta_local, "wb") as f:
+                    f.write(contenido)
+                galeria.append(f"fotos/{filename}")
+                descargadas += 1
+            except Exception:
+                continue
+
+        return galeria
+
+    except Exception as e:
+        print(f"(galeria error: {e})")
+        return []
+
+
 def buscar_foto_propia(nota, fotos):
     # Solo matchea contra imagen_keywords (campo específico que Claude genera para la foto)
     # No usa el título para evitar falsos positivos por palabras comunes como "neuquén" o "historia"
@@ -826,6 +921,17 @@ def main():
         # Agregar meta si no tiene
         if "meta" not in nota:
             nota["meta"] = f"Hoy · {nota.get('fuente','PatagoniaGLOBAL')}"
+
+    # 4b. Descargar galería de fotos internas del artículo fuente
+    print("\n  Descargando galería de fotos internas...")
+    for nota in todos_nuevos:
+        url_original = nota.get("url_original", "")
+        if not url_original or not url_original.startswith("http"):
+            continue
+        galeria = extraer_galeria_articulo(url_original, nota["id"])
+        if galeria:
+            nota["galeria"] = galeria
+            print(f"    [{nota['id']}] galería: {len(galeria)} foto(s) descargada(s)")
 
     # 5. Agregar al historial (nuevos van al frente)
     historial = todos_nuevos + historial
