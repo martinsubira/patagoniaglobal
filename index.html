@@ -1038,33 +1038,8 @@
     <div class="section-badge badge-verde">En profundidad</div>
   </div>
 
-  <div class="informes-grid">
-    <div class="informe-principal">
-      <div class="inf-img" style="background-image:url('fotos/rio-alumine.jpg');background-size:cover;background-position:center;"></div>
-      <div class="inf-body">
-        <div class="inf-label">· Informe especial · Pesca ·</div>
-        <h3>Temporada 2026 en el Río Alumine: aguas altas y truchas que baten récords históricos</h3>
-        <p>Un recorrido completo por los mejores puntos del Alumine esta temporada. Hablamos con guías locales, medimos los caudales, analizamos las zonas de captura y te damos el panorama completo para que planifiques tu próxima salida.</p>
-      </div>
-    </div>
-
-    <div class="informes-lista">
-      <div class="informe-item">
-        <div class="inf-label">· Energía ·</div>
-        <h4>El viento patagónico como reserva estratégica: los proyectos eólicos que cambiarán la región</h4>
-        <p>Análisis de las 12 centrales en construcción entre Neuquén y Santa Cruz.</p>
-      </div>
-      <div class="informe-item">
-        <div class="inf-label">· Economía ·</div>
-        <h4>El boom del turismo binacional: cómo viajan los argentinos a Chile y los chilenos a Argentina</h4>
-        <p>Datos de cruces de frontera, gasto promedio y destinos más elegidos.</p>
-      </div>
-      <div class="informe-item">
-        <div class="inf-label">· Medio Ambiente ·</div>
-        <h4>Los últimos guanacos salvajes de Tierra del Fuego: una especie bajo presión</h4>
-        <p>Censo poblacional y estado de conservación en ambos lados de la isla.</p>
-      </div>
-    </div>
+  <div id="informes-container" class="informes-grid">
+    <!-- Se rellena dinámicamente desde propios.json -->
   </div>
 
   <div class="divider" style="margin:32px 0;"></div>
@@ -1513,6 +1488,49 @@ fetch("noticias.json")
   .catch(() => {
     // Si no hay noticias.json, el sitio muestra el contenido hardcodeado. OK.
   });
+
+// ── INFORMES: carga desde propios.json (no afectado por el script diario) ──
+function renderInformes(propios) {
+  const container = document.getElementById("informes-container");
+  if (!container || !propios || !propios.length) return;
+
+  const principal = propios[0];
+  const resto = propios.slice(1, 4);
+
+  const bg = principal.imagen
+    ? `background-image:url('${principal.imagen}');background-size:cover;background-position:center;`
+    : "background:linear-gradient(135deg,#0d1820,#1c2d3d,#3a5a7a);";
+
+  let html = `
+    <div class="informe-principal" onclick="irANota('${principal.id}')">
+      <div class="inf-img" style="${bg}"></div>
+      <div class="inf-body">
+        <div class="inf-label">· Informe · ${principal.tag || ''} ·</div>
+        <h3>${principal.titulo}</h3>
+        <p>${principal.bajada || ''}</p>
+      </div>
+    </div>`;
+
+  if (resto.length > 0) {
+    html += '<div class="informes-lista">';
+    resto.forEach(n => {
+      html += `
+        <div class="informe-item" onclick="irANota('${n.id}')">
+          <div class="inf-label">· ${n.tag || 'Informe'} ·</div>
+          <h4>${n.titulo}</h4>
+          <p>${n.bajada || ''}</p>
+        </div>`;
+    });
+    html += '</div>';
+  }
+
+  container.innerHTML = html;
+}
+
+fetch("propios.json")
+  .then(r => r.json())
+  .then(data => renderInformes(data))
+  .catch(() => {});
 </script>
 </body>
 </html>

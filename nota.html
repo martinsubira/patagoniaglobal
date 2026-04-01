@@ -687,11 +687,12 @@ const id = getParam("id");
 if (!id) {
   document.getElementById("loading").textContent = "Nota no encontrada.";
 } else {
-  // Busca en noticias.json e historias.json en paralelo
+  // Busca en noticias.json, historias.json y propios.json en paralelo
   Promise.all([
     fetch("noticias.json").then(r => r.json()).catch(() => ({})),
-    fetch("historias.json").then(r => r.json()).catch(() => ({}))
-  ]).then(([noticias, historias]) => {
+    fetch("historias.json").then(r => r.json()).catch(() => ({})),
+    fetch("propios.json").then(r => r.json()).catch(() => ([]))
+  ]).then(([noticias, historias, propios]) => {
     // Primero busca en noticias.json
     let nota = buscarNota(noticias, id);
     let data = noticias;
@@ -699,6 +700,10 @@ if (!id) {
     if (!nota && historias.notas) {
       nota = historias.notas.find(n => n.id === id) || null;
       if (nota) data = { ...noticias, historias: historias.notas };
+    }
+    // Si no está, busca en propios.json
+    if (!nota && Array.isArray(propios)) {
+      nota = propios.find(n => n.id === id) || null;
     }
     if (nota) {
       renderNota(nota, noticias.fecha_display, { ...noticias, historias: historias.notas || [] });
