@@ -171,6 +171,17 @@
     "episodio": 1
   },
   {
+    "id": "swift-dos-siglos-bajo-el-mar",
+    "titulo": "Swift, Dos Siglos Bajo el Mar",
+    "descripcion": "El 13 de marzo de 1770, la corbeta de guerra británica HMS Swift naufragó frente a Puerto Deseado, Patagonia. Dos siglos después, un joven de 16 años la localiza en su segunda inmersión. El documental entrelaza tres hilos: el naufragio original, la llegada del descendiente de un sobreviviente desde Australia con el diario de su antepasado, y el trabajo del primer equipo de arqueología subacuática de Argentina (PROAS). Primer largometraje documental argentino sobre naufragios en el Atlántico Sur. Dirección: Uriel Sokolowicz Porta. INCAA, 2010.",
+    "youtube_id": "2PLjDuFqP28",
+    "categoria": "documental",
+    "año": 2010,
+    "duracion": "80 min",
+    "lugar": "Puerto Deseado, Santa Cruz",
+    "pais": "AR"
+  },
+  {
     "id": "ruta-sur-chile",
     "titulo": "La Ruta del Sur — Carretera Austral",
     "descripcion": "Un viaje por la ruta que une el sur profundo de Chile, atravesando fiordos, bosques y glaciares de la Patagonia chilena. Documental que muestra la vida, el paisaje y los pueblos a lo largo de uno de los caminos más remotos del mundo.",
