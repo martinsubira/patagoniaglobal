@@ -1447,10 +1447,9 @@ function renderNoticias(data) {
   grid.innerHTML = html;
 }
 
-function renderTurismo(data) {
-  const turismo = data.turismo || [];
+function renderTurismo(turismo) {
   const container = document.getElementById("turismo-top-container");
-  if (!container || !turismo.length) return;
+  if (!container || !turismo || !turismo.length) return;
 
   const principal = turismo[0];
   const secs = turismo.slice(1, 3);
@@ -1459,15 +1458,22 @@ function renderTurismo(data) {
     ? `background-image:url('${principal.imagen}');background-size:cover;background-position:center;`
     : "background:#1c2d3d;";
 
+  const abrirPrincipal = principal.url_original
+    ? `onclick="window.open('${principal.url_original}','_blank')" style="cursor:pointer;"`
+    : `style="cursor:default;"`;
+
   let secsHtml = "";
   secs.forEach((s, i) => {
     const bg = s.imagen
       ? `background-image:url('${s.imagen}');background-size:cover;background-position:center;`
       : `background:#${i===0?'2a4a6a':'3a2a1a'};`;
+    const abrir = s.url_original
+      ? `onclick="window.open('${s.url_original}','_blank')" style="cursor:pointer;"`
+      : `style="cursor:default;"`;
     secsHtml += `
-    <div class="turismo-sec" onclick="irANota('${s.id}')" style="cursor:pointer;">
+    <div class="turismo-sec" ${abrir}>
       <div class="ts-img-fallback" style="${bg}">
-        <div class="turismo-tipo">${s.tag || '🌿 Turismo'}</div>
+        <div class="turismo-tipo">${s.badge || '🌿 Turismo'}</div>
       </div>
       <div class="ts-body">
         <h4>${s.titulo}</h4>
@@ -1478,17 +1484,14 @@ function renderTurismo(data) {
 
   container.innerHTML = `
   <div class="turismo-top">
-    <div class="turismo-principal" onclick="irANota('${principal.id}')" style="cursor:pointer;">
+    <div class="turismo-principal" ${abrirPrincipal}>
       <div class="tp-img-fallback" style="${bgPrincipal}">
-        <div class="turismo-tipo">${principal.tag || '🌿 Turismo'}</div>
+        <div class="turismo-tipo">${principal.badge || '🌿 Turismo'}</div>
       </div>
       <div class="tp-body">
         <h3>${principal.titulo}</h3>
         <p>${principal.bajada ? principal.bajada.substring(0,140)+'…' : ''}</p>
-        <div class="tp-meta">
-          <span>${principal.pais === 'chile' ? '🇨🇱 Chile' : principal.pais === 'argentina' ? '🇦🇷 Argentina' : '🌐 Patagonia'}</span>
-          <span>📅 ${principal.meta || ''}</span>
-        </div>
+        ${principal.meta ? `<div class="tp-meta"><span>${principal.meta}</span></div>` : ''}
       </div>
     </div>
     <div class="turismo-secundarias">${secsHtml}</div>
@@ -1514,11 +1517,16 @@ fetch("noticias.json")
     renderTicker(data);
     renderTapa(data);
     renderNoticias(data);
-    renderTurismo(data);
   })
   .catch(() => {
     // Si no hay noticias.json, el sitio muestra el contenido hardcodeado. OK.
   });
+
+// Turismo: archivo separado, se actualiza manualmente los domingos
+fetch("turismo.json")
+  .then(r => r.json())
+  .then(turismo => renderTurismo(turismo))
+  .catch(() => {});
 
 // ── INFORMES: carga desde propios.json (no afectado por el script diario) ──
 function renderInformes(propios) {

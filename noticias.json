@@ -332,35 +332,5 @@
       "imagen": "fotos/kawesqar-canal-beagle.jpg",
       "imagen_keywords": "kawésqar pueblos originarios tierra del fuego canal beagle"
     }
-  ],
-  "turismo": [
-    {
-      "id": "20260330-1452-2",
-      "titulo": "Camino de la Fe: Semana Santa entre montañas y pueblos neuquinos",
-      "bajada": "Un circuito espiritual y paisajístico recorre localidades de Neuquén y propone una forma distinta de vivir la Pascua en la Patagonia norte.",
-      "cuerpo": "Mientras las grandes ciudades se vacían rumbo a las playas o las sierras, un puñado de pueblos neuquinos se prepara para recibir a quienes eligen otra forma de transitar la Semana Santa. El Camino de la Fe es un circuito que combina espiritualidad, paisaje cordillerano y la hospitalidad de comunidades pequeñas que abren sus puertas en el momento más reflexivo del calendario cristiano.\n\nEl recorrido atraviesa localidades del interior neuquino donde las capillas, muchas de ellas construidas por colonos y misioneros a lo largo del siglo XX, se convierten en estaciones de un viaje que es tanto religioso como territorial. No se trata de un peregrinaje masivo al estilo de Luján, sino de una experiencia íntima, a escala humana, en la que el paisaje patagónico —ríos, montañas, bosques de transición, estepa— funciona como un templo a cielo abierto.\n\nPara las comunidades involucradas, la Semana Santa representa una oportunidad económica concreta en un momento del año en que el turismo estival ya terminó y la temporada de nieve todavía no arrancó. Esa ventana intermedia, muchas veces vacía de propuestas, encuentra en el Camino de la Fe un contenido que atrae visitantes y genera movimiento en alojamientos, comedores y emprendimientos locales.\n\nEl circuito también pone en valor un patrimonio cultural que suele pasar desapercibido: la red de capillas rurales patagónicas, la historia de las misiones, las tradiciones religiosas que los pueblos sostienen con esfuerzo propio. En un territorio donde la identidad se construye con lo que se tiene y no con lo que se importa, el Camino de la Fe es una muestra de cómo la Patagonia puede generar turismo genuino sin necesidad de grandes inversiones, apostando a lo que ya está ahí: paisaje, historia y comunidad.",
-      "tag": "✝️ Turismo",
-      "categoria": "turismo",
-      "fuente": "Diario Río Negro",
-      "url_original": "https://www.rionegro.com.ar/voy-turismo/camino-de-la-fe-un-viaje-entre-paisajes-espiritualidad-para-vivir-semana-santa-en-los-pueblos-de-neuquen-4520116/",
-      "pais": "argentina",
-      "imagen": "https://images.unsplash.com/photo-1626920648043-4ef6d4c82088?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTAwNjB8MHwxfHNlYXJjaHwxfHxOZXVxdWVuJTIwcGF0YWdvbmlhfGVufDB8MHx8fDE3NzQ4ODI0NTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imagen_keywords": "Neuquen chapel mountains",
-      "meta": "Hoy · Diario Río Negro"
-    },
-    {
-      "id": "20260330-0745-tapa",
-      "titulo": "Neuquén y Santiago ya están a un vuelo directo: Latam conecta la Patagonia con Chile",
-      "bajada": "La aerolínea lanzó una frecuencia de cuatro vuelos semanales entre Neuquén y la capital chilena. Es una señal concreta de integración binacional que la Patagonia necesitaba y que puede redefinir el turismo y los negocios en la región.",
-      "cuerpo": "Latam puso en marcha una nueva ruta aérea que une Neuquén con Santiago de Chile con cuatro frecuencias semanales, un movimiento que no es menor para una región que históricamente reclamó mejor conectividad transfronteriza. El vuelo acorta distancias reales y simbólicas entre dos vertientes de la Patagonia que comparten mucho más que la cordillera.\n\nLa conexión directa entre la capital neuquina y Santiago llega en un momento en que el turismo binacional muestra señales de recuperación y la demanda de vuelos regionales crece en todo el sur. Hasta ahora, cruzar de Neuquén a Chile por aire obligaba a pasar por Buenos Aires o buscar combinaciones poco prácticas. Este enlace directo cambia las reglas: abre la puerta a circuitos turísticos integrados —pensemos en quien aterriza en Santiago y en pocas horas está en los lagos del sur neuquino, o viceversa— y facilita vínculos comerciales que la frontera terrestre sola no alcanza a sostener.\n\nPara la Patagonia argentina, y especialmente para Neuquén, la ruta tiene un valor estratégico. La ciudad viene consolidándose como polo de servicios ligado a Vaca Muerta, pero su perfil turístico todavía está por debajo de su potencial. Un vuelo regular a Santiago la posiciona como puerta de entrada para el turista chileno e internacional que busca nieve, lagos y naturaleza sin el embudo de Bariloche. Del lado chileno, la ruta también suma: conecta a viajeros argentinos con la oferta gastronómica, cultural y de negocios de la capital, y refuerza la idea de que la cordillera no debería ser barrera sino bisagra.\n\nEl antecedente más cercano es la experiencia de otras rutas transandinas que funcionaron bien cuando hubo continuidad y precio competitivo, y fracasaron cuando alguno de esos factores falló. La clave ahora será que la demanda sostenga las cuatro frecuencias y que las autoridades de ambos lados acompañen con facilitación migratoria y aduanera ágil. Un vuelo que aterriza rápido pero se traba dos horas en migraciones no es integración real.\n\nSi esta ruta se consolida, puede ser el puntapié para que otras ciudades patagónicas —Comodoro, Trelew, incluso Esquel— empiecen a soñar con conexiones directas al otro lado de los Andes. La Patagonia binacional necesita menos discursos y más frecuencias aéreas. Este es un buen primer paso.",
-      "tag": "✈️ Turismo",
-      "categoria": "turismo",
-      "fuente": "Diario Río Negro",
-      "url_original": "https://www.rionegro.com.ar/voy-turismo/cuatro-veces-por-semana-asi-es-el-nuevo-vuelo-que-une-neuquen-con-santiago-4519786/",
-      "pais": "ambos",
-      "imagen": "fotos/vuelo-andes-patagonia.jpg",
-      "imagen_keywords": "airplane andes patagonia",
-      "meta": "Hoy · Diario Río Negro"
-    }
   ]
 }

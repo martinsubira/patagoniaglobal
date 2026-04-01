@@ -796,16 +796,7 @@ def construir_noticias_json(tapa, historial, ticker):
 
     historias = cargar_historias_permanentes()
 
-    # ── Turismo: hasta 3 notas más recientes de categoría turismo ──
-    ids_ya_usados = {tapa_final.get("id")} | {a.get("id") for a in feed}
-    turismo_feed = []
-    for a in historial:
-        if a.get("id") in ids_ya_usados or es_propio(a):
-            continue
-        if a.get("categoria", "").lower() in ("turismo", "turismo y guías", "guías"):
-            turismo_feed.append(a)
-        if len(turismo_feed) >= 3:
-            break
+    # Nota: turismo.json es manual (se actualiza los domingos) — el script no lo toca.
 
     return {
         "generado":      hoy.isoformat(),
@@ -814,7 +805,6 @@ def construir_noticias_json(tapa, historial, ticker):
         "tapa":          tapa_final,
         "secundarias":   secundarias,
         "noticias":      noticias_cards,
-        "turismo":       turismo_feed,
         "historias":     historias,
     }
 
@@ -955,6 +945,56 @@ Respondé SOLO con un array JSON válido. Si no hay eventos válidos respondé [
     guardar_agenda(agenda)
 
 
+# ── Rotación semanal de Turismo ────────────────────────────
+
+def rotar_turismo(historial):
+    """Los domingos: agrega la mejor nota de turismo de la semana al frente
+    de turismo.json y descarta la última. El archivo siempre mantiene 3 entradas."""
+    if datetime.now().weekday() != 6:   # 6 = domingo
+        return
+
+    ruta = os.path.join(os.path.dirname(__file__), "turismo.json")
+    try:
+        with open(ruta, encoding="utf-8") as f:
+            turismo_actual = json.load(f)
+    except Exception:
+        turismo_actual = []
+
+    ids_en_turismo = {t["id"] for t in turismo_actual}
+
+    # Buscar la nota de turismo más reciente en historial que no esté ya en turismo.json
+    nueva = None
+    for art in historial:
+        if art.get("id") in ids_en_turismo or es_propio(art):
+            continue
+        cat = art.get("categoria", "").lower()
+        if cat in ("turismo", "turismo y guías", "guías"):
+            nueva = art
+            break
+
+    if not nueva:
+        print("  Turismo: sin nota nueva para rotar este domingo.")
+        return
+
+    entrada = {
+        "id":     nueva["id"],
+        "badge":  "TURISMO",
+        "titulo": nueva["titulo"],
+        "bajada": nueva.get("bajada", ""),
+        "imagen": nueva.get("imagen", ""),
+        "meta":   nueva.get("meta", ""),
+        "url_original": nueva.get("url_original", ""),
+    }
+
+    # Insertar al frente, mantener máximo 3
+    turismo_nuevo = [entrada] + turismo_actual[:2]
+
+    with open(ruta, "w", encoding="utf-8") as f:
+        json.dump(turismo_nuevo, f, ensure_ascii=False, indent=2)
+
+    print(f"  Turismo rotado (domingo): [{nueva['id']}] '{nueva['titulo'][:60]}…'")
+
+
 # ── Main ───────────────────────────────────────────────────
 
 def main():
@@ -1009,12 +1049,15 @@ def main():
     print(f"\n  Artículos nuevos agregados: {len(todos_nuevos)}")
     print(f"  Total en historial: {min(len(historial), MAX_HISTORIAL)}")
 
+    # 5b. Rotación semanal de turismo.json (solo domingos)
+    rotar_turismo(historial)
+
     # 6. Construir y guardar noticias.json
     datos = construir_noticias_json(tapa, historial, ticker)
 
     # 6b. Garantía final: ningún artículo en el feed puede tener imagen inexistente
     fotos_usadas_final = set()
-    todos_en_feed = [datos["tapa"]] + datos["secundarias"] + datos["noticias"] + datos.get("turismo", [])
+    todos_en_feed = [datos["tapa"]] + datos["secundarias"] + datos["noticias"]
     for art in todos_en_feed:
         img = art.get("imagen", "")
         if not img or not os.path.exists(img):
