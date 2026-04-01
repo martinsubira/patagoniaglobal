@@ -580,18 +580,73 @@ def buscar_imagen_unsplash(keywords):
     return _unsplash_query("patagonia landscape argentina")
 
 
-def resolver_imagen(nota, fotos_propias, fotos_usadas):
-    """RSS > og:image fuente > foto propia > Unsplash."""
-    # 1. Imagen del RSS
-    if nota.get("imagen") and str(nota["imagen"]).startswith("http"):
-        print(f"    [{nota['id']}] imagen RSS ✓")
-        return nota["imagen"]
+def _descargar_imagen_externa(url_http, nota_id, sufijo=""):
+    """Descarga una URL de imagen externa y la guarda en fotos/. Retorna ruta local o None."""
+    if not url_http or not url_http.startswith("http"):
+        return None
+    try:
+        ext = url_http.split("?")[0].rsplit(".", 1)[-1].lower()
+        if ext not in ("jpg", "jpeg", "png", "webp"):
+            ext = "jpg"
+        filename = f"foto-{nota_id}{sufijo}.{ext}"
+        ruta_local = os.path.join(os.path.dirname(__file__), "fotos", filename)
+        if os.path.exists(ruta_local):
+            return f"fotos/{filename}"
+        req = urllib.request.Request(url_http, headers={
+            "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36"
+        })
+        with urllib.request.urlopen(req, timeout=12) as resp:
+            contenido = resp.read()
+        if len(contenido) < 5_000:   # descarte imágenes insignificantes
+            return None
+        with open(ruta_local, "wb") as f:
+            f.write(contenido)
+        return f"fotos/{filename}"
+    except Exception:
+        return None
 
-    # 2. og:image de la URL original del artículo
+
+def _foto_fallback(fotos_propias, fotos_usadas):
+    """Devuelve una foto genérica de patagonia del repositorio como último recurso."""
+    fallbacks = [
+        "fotos/fitz-roy-chalten-nevada.jpg",
+        "fotos/ruta-estepa-patagonica.jpg",
+        "fotos/bariloche-lago-nahuel-huapi.jpg",
+        "fotos/Calafate.jpg",
+        "fotos/porvenir.jpg",
+        "fotos/punta-arenas.jpg",
+    ]
+    for f in fallbacks:
+        if os.path.exists(f) and f not in fotos_usadas:
+            fotos_usadas.add(f)
+            return f
+    # Si todas están usadas, reusar la primera disponible
+    for f in fallbacks:
+        if os.path.exists(f):
+            return f
+    return None
+
+
+def resolver_imagen(nota, fotos_propias, fotos_usadas):
+    """Siempre retorna una ruta local fotos/... — nunca una URL externa.
+    Jerarquía: RSS (descargada) > og:image (descargada) > foto propia > Unsplash (descargada) > fallback."""
+    nota_id = nota.get("id", "sin-id")
+
+    # 1. Imagen del RSS → descargar localmente
+    rss_url = nota.get("imagen", "")
+    if rss_url and str(rss_url).startswith("http"):
+        print(f"    [{nota_id}] imagen RSS...", end=" ", flush=True)
+        local = _descargar_imagen_externa(rss_url, nota_id, "-rss")
+        if local:
+            print(f"OK → {local}")
+            return local
+        print("falló descarga")
+
+    # 2. og:image de la URL original del artículo (ya descarga internamente)
     url_original = nota.get("url_original", "")
     if url_original:
-        print(f"    [{nota['id']}] og:image fuente...", end=" ", flush=True)
-        og_img = extraer_og_image(url_original, nota["id"])
+        print(f"    [{nota_id}] og:image fuente...", end=" ", flush=True)
+        og_img = extraer_og_image(url_original, nota_id)
         if og_img:
             print(f"OK → {og_img}")
             return og_img
@@ -601,17 +656,26 @@ def resolver_imagen(nota, fotos_propias, fotos_usadas):
     foto_propia = buscar_foto_propia(nota, fotos_propias)
     if foto_propia and foto_propia not in fotos_usadas:
         fotos_usadas.add(foto_propia)
-        print(f"    [{nota['id']}] foto propia: {foto_propia} ✓")
+        print(f"    [{nota_id}] foto propia: {foto_propia} ✓")
         return foto_propia
 
-    # 4. Unsplash
+    # 4. Unsplash → descargar localmente
     keywords = nota.get("imagen_keywords", "patagonia landscape")
-    print(f"    [{nota['id']}] Unsplash: '{keywords}' ...", end=" ", flush=True)
+    print(f"    [{nota_id}] Unsplash: '{keywords}' ...", end=" ", flush=True)
     url = buscar_imagen_unsplash(keywords)
     if url:
-        print("OK")
-        return url
+        local = _descargar_imagen_externa(url, nota_id, "-unsplash")
+        if local:
+            print(f"OK → {local}")
+            return local
     print("sin resultado")
+
+    # 5. Fallback: foto genérica del repositorio
+    fallback = _foto_fallback(fotos_propias, fotos_usadas)
+    if fallback:
+        print(f"    [{nota_id}] fallback: {fallback}")
+        return fallback
+
     return None
 
 
@@ -947,6 +1011,20 @@ def main():
 
     # 6. Construir y guardar noticias.json
     datos = construir_noticias_json(tapa, historial, ticker)
+
+    # 6b. Garantía final: ningún artículo en el feed puede tener imagen inexistente
+    fotos_usadas_final = set()
+    todos_en_feed = [datos["tapa"]] + datos["secundarias"] + datos["noticias"] + datos.get("turismo", [])
+    for art in todos_en_feed:
+        img = art.get("imagen", "")
+        if not img or not os.path.exists(img):
+            fb = _foto_fallback([], fotos_usadas_final)
+            if fb:
+                print(f"  ⚠ Sin foto: [{art.get('id')}] → asignando fallback {fb}")
+                art["imagen"] = fb
+        else:
+            fotos_usadas_final.add(img)
+
     guardar_json(datos)
 
     print(f"\n  Feed visible: tapa + {len(datos['secundarias'])} secundarias + {len(datos['noticias'])} cards")

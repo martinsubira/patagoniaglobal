@@ -466,10 +466,18 @@
       gap: 12px;
     }
 
+    .informe-item-img {
+      height: 120px;
+      background: linear-gradient(135deg, #1c2d3d, #3a5a7a);
+      background-size: cover;
+      background-position: center;
+      border-radius: 4px 4px 0 0;
+    }
+
     .informe-item {
       background: white;
       border-left: 4px solid #7aadcc;
-      padding: 14px 16px;
+      padding: 0;
       border-radius: 0 4px 4px 0;
       cursor: pointer;
       box-shadow: 0 1px 3px rgba(0,0,0,0.05);
@@ -477,6 +485,8 @@
     }
 
     .informe-item:hover { border-left-color: var(--verde); }
+
+    .informe-item-body { padding: 12px 14px; }
 
     .informe-item .inf-label { color: #3a5a7a; }
 
@@ -1535,11 +1545,17 @@ function renderInformes(propios) {
   if (resto.length > 0) {
     html += '<div class="informes-lista">';
     resto.forEach(n => {
+      const bgSec = n.imagen
+        ? `background-image:url('${n.imagen}');background-size:cover;background-position:center;`
+        : "background:linear-gradient(135deg,#1c2d3d,#3a5a7a);";
       html += `
         <div class="informe-item" onclick="irANota('${n.id}')">
-          <div class="inf-label">· ${n.tag || 'Informe'} ·</div>
-          <h4>${n.titulo}</h4>
-          <p>${n.bajada || ''}</p>
+          <div class="informe-item-img" style="${bgSec}"></div>
+          <div class="informe-item-body">
+            <div class="inf-label">· ${n.tag || 'Informe'} ·</div>
+            <h4>${n.titulo}</h4>
+            <p>${n.bajada || ''}</p>
+          </div>
         </div>`;
     });
     html += '</div>';
