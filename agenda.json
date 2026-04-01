@@ -178,5 +178,65 @@
     "categoria": "deportes",
     "emoji": "🏃",
     "descripcion": "Maratón internacional en el corazón del Parque Nacional Torres del Paine. Una de las carreras más icónicas del mundo, con el macizo Torres como telón de fondo."
+  },
+  {
+    "id": "ultra-trail-patagonia-2026",
+    "titulo": "Ultra Trail Patagonia — Torres del Paine",
+    "fecha": "2026-04-19",
+    "fecha_display": "19 de abril",
+    "lugar": "Torres del Paine, Magallanes",
+    "region": "Magallanes, Chile",
+    "pais": "CL",
+    "categoria": "deportes",
+    "emoji": "🏔️",
+    "descripcion": "Ultratrail por los senderos del Parque Nacional Torres del Paine."
+  },
+  {
+    "id": "triatlon-golfo-nuevo-2026",
+    "titulo": "Triatlón Golfo Nuevo — Puerto Madryn",
+    "fecha": "2026-05-03",
+    "fecha_display": "3 de mayo",
+    "lugar": "Puerto Madryn, Chubut",
+    "region": "Chubut, Argentina",
+    "pais": "AR",
+    "categoria": "deportes",
+    "emoji": "🏊",
+    "descripcion": "Triatlón en las aguas del Golfo Nuevo. Natación, ciclismo y running en la costa atlántica patagónica."
+  },
+  {
+    "id": "titan-desert-patagonia-2026",
+    "titulo": "Titan Desert Patagonia — Bariloche",
+    "fecha": "2026-05-17",
+    "fecha_display": "17 de mayo",
+    "lugar": "San Carlos de Bariloche, Río Negro",
+    "region": "Río Negro, Argentina",
+    "pais": "AR",
+    "categoria": "deportes",
+    "emoji": "🚵",
+    "descripcion": "Etapas de mountain bike entre lagos y montañas, con base en Bariloche."
+  },
+  {
+    "id": "ushuaia-ski-classic-2026",
+    "titulo": "Ushuaia Ski Classic — Cerro Castor",
+    "fecha": "2026-06-07",
+    "fecha_display": "7 de junio",
+    "lugar": "Cerro Castor, Ushuaia",
+    "region": "Tierra del Fuego, Argentina",
+    "pais": "AR",
+    "categoria": "deportes",
+    "emoji": "⛷️",
+    "descripcion": "Carrera clásica de esquí en el centro invernal más austral del mundo."
+  },
+  {
+    "id": "patagonian-expedition-race-2026",
+    "titulo": "Patagonian Expedition Race — Coyhaique",
+    "fecha": "2026-06-21",
+    "fecha_display": "21 de junio",
+    "lugar": "Coyhaique, Aysén",
+    "region": "Aysén, Chile",
+    "pais": "CL",
+    "categoria": "deportes",
+    "emoji": "🧭",
+    "descripcion": "Una de las carreras de aventura más extremas del mundo, en los paisajes salvajes de la Patagonia chilena."
   }
 ]
