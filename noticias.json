@@ -1,33 +1,97 @@
 {
-  "generado": "2026-04-01T14:55:53.109111",
-  "fecha_display": "Miércoles, 1 de Abril de 2026",
+  "generado": "2026-04-05T20:23:01.822722",
+  "fecha_display": "Domingo, 5 de Abril de 2026",
   "ticker": [
-    "Gobierno chileno anuncia gas gratuito para el 80% más vulnerable en zonas extremas",
-    "Básquetbol femenino en Magallanes: Español, Sokol y Bories campeonas del Torneo Tanteo",
-    "Ciudad patagónica figura entre las de menor pobreza en Argentina",
-    "Petróleo sobre US$100: postergaron aumento de impuesto a combustibles en Argentina",
-    "Programa Vivienda Primero llega a Punta Arenas para 20 personas en situación de calle"
+    "Reforma a la ley de glaciares: debate en el Congreso con impacto directo en Patagonia",
+    "Médica magallánica completa la Triple Corona de Hielo en Austria",
+    "Puma rescatado en Nahuel Huapi se recupera al cuidado de una gata",
+    "Ganadería extensiva patagónica: tres campos, tres modelos de manejo",
+    "Repavimentación de Ruta 13 entre Zapala y Primeros Pinos arranca en 15 días"
   ],
   "tapa": {
-    "id": "20260401-1454-tapa",
-    "titulo": "Gas gratuito y subsidio pesquero: Chile lanza plan de emergencia para zonas extremas",
-    "bajada": "La Moneda respondió a la crisis de combustibles con un paquete que incluye balones de gas sin costo para el 80% más vulnerable y $100.000 mensuales para embarcaciones artesanales. Magallanes, donde el frío y la lejanía multiplican el impacto del alza energética, es una de las regiones más beneficiadas.",
-    "cuerpo": "El gobierno de Chile anunció este miércoles un paquete de medidas de emergencia que apunta directo al corazón de las zonas extremas del país: la entrega gratuita de balones de gas de 15 kilos para las familias que integran el 80% más vulnerable de la población, y un subsidio mensual de 100 mil pesos para embarcaciones menores de la pesca artesanal. La decisión llega en un momento crítico, con el precio internacional del petróleo por encima de los 100 dólares el barril y una escalada de costos que en la Patagonia chilena se siente con una intensidad que el resto del país apenas imagina.\n\nPara Magallanes y Aysén, las dos regiones más australes y con mayor dependencia del gas para calefacción, la medida tiene un significado que trasciende lo económico. En Punta Arenas, donde las temperaturas invernales perforan los cero grados con facilidad y la temporada de calefacción se extiende durante más de seis meses, el gasto en combustible puede representar un cuarto del ingreso familiar en los hogares más modestos. Históricamente, la Patagonia chilena ha reclamado un tratamiento diferenciado en materia energética, y este anuncio recoge parcialmente esa demanda crónica.\n\nEl subsidio a la pesca artesanal también tiene lectura territorial precisa. Las caletas de Magallanes, desde Porvenir hasta Puerto Natales, dependen de embarcaciones pequeñas cuyos costos operativos se disparan cuando el combustible sube. La centolla, la merluza austral y el erizo —recursos que sostienen economías familiares enteras— se encarecen en origen antes de llegar al mercado, y muchos pescadores directamente dejan de salir cuando el diésel se vuelve prohibitivo. Los 100 mil pesos mensuales por embarcación no resuelven el problema de fondo, pero amortiguan el golpe inmediato en una temporada que ya venía complicada.\n\nMirado desde la Patagonia binacional, el contraste con el lado argentino es inevitable. En la Argentina, el gobierno nacional optó por postergar el aumento del impuesto a los combustibles para mayo, buscando contener la inflación, pero sin medidas focalizadas en las regiones donde el frío y la distancia multiplican la vulnerabilidad energética. Ni Tierra del Fuego ni Santa Cruz ni Chubut cuentan hoy con un esquema equivalente al que Chile acaba de activar para sus zonas extremas. La asimetría vuelve a poner sobre la mesa una discusión de fondo: cómo se diseña política pública cuando el territorio no es plano ni homogéneo.\n\nEl paquete anunciado desde La Moneda es un parche necesario, no una solución estructural. Magallanes sigue esperando una política energética de largo plazo que reconozca que vivir en el fin del mundo tiene costos que no se resuelven con bonos estacionales. Pero en el corto plazo, para miles de familias que esta semana encendieron la estufa con la angustia de la cuenta a fin de mes, la noticia significa aire. Queda por ver si el alivio se sostiene o si, como tantas veces, el sur vuelve a quedar fuera del mapa cuando baje la urgencia.",
-    "tag": "🔥 Producción",
-    "categoria": "producción",
-    "fuente": "El Pingüino",
-    "url_original": "https://elpinguino.com/noticia/2026/04/01/gobierno-anuncia-gas-gratuito-para-el-80-mas-vulnerable-y-bonos-para-la-pesca-artesanal",
-    "pais": "chile",
-    "imagen": "fotos/foto-20260401-1454-tapa.jpg",
-    "imagen_keywords": "gas fuel Patagonia Chile fishing",
-    "meta": "Hoy · El Pingüino",
-    "galeria": [
-      "fotos/foto-20260401-1454-tapa-g1.png",
-      "fotos/foto-20260401-1454-tapa-g2.png",
-      "fotos/foto-20260401-1454-tapa-g3.jpg"
-    ]
+    "id": "20260405-2021-tapa",
+    "titulo": "Ley de glaciares en riesgo: la reforma que puede redefinir el agua patagónica",
+    "bajada": "El Congreso argentino reactiva el debate sobre la reforma a la ley de protección de glaciares. Desde la Patagonia, donde nace el agua, la discusión no es abstracta: está en juego el resguardo de los campos de hielo más grandes del hemisferio sur fuera de la Antártida.",
+    "cuerpo": "La ley 26.639 de Presupuestos Mínimos para la Preservación de los Glaciares y del Ambiente Periglacial, sancionada en 2010, vuelve al centro de la escena política argentina. La reforma impulsada desde sectores ligados a la minería busca flexibilizar las restricciones vigentes, con el argumento de otorgar \"seguridad jurídica\" a las provincias y a las empresas extractivas. Para la Patagonia, que alberga los campos de hielo continental sur compartidos con Chile y miles de glaciares inventariados por el IANIGLA, lo que se discute no es una abstracción legislativa: es el futuro del agua.\n\nDesde posiciones encontradas, el diputado Maximiliano Ferraro calificó la reforma como \"regresiva e innecesaria\" y anticipó su judicialización, mientras que la diputada Fernanda Ávila —exministra de Minería de Catamarca— sostiene que el cambio normativo permitirá estudios provinciales más profundos sin desproteger el recurso hídrico. Sin embargo, para quienes habitan la Patagonia el problema es otro: la ley actual fue concebida justamente para frenar la presión extractiva sobre ecosistemas frágiles de alta montaña. Debilitarla equivale a abrir la puerta a intervenciones en zonas que alimentan cuencas enteras, desde el río Santa Cruz hasta los lagos del corredor andino.\n\nEl debate tiene además una dimensión binacional que rara vez se menciona en Buenos Aires. Los campos de hielo patagónico sur son compartidos con Chile, y cualquier alteración en la regulación argentina sobre ambientes glaciares y periglaciares repercute sobre un sistema hídrico transfronterizo. Chile mantiene su propia normativa de protección de glaciares, actualmente en revisión legislativa, y los organismos científicos de ambos países —IANIGLA y la Dirección General de Aguas chilena— comparten datos del inventario glaciar. Modificar los estándares de un lado de la cordillera sin coordinación con el otro es, como mínimo, un riesgo geopolítico y ambiental.\n\nEl antecedente más relevante es el de Pascua-Lama, el proyecto binacional de Barrick Gold frenado en ambos países por su impacto sobre glaciares en la frontera sanjuanina-atacameña. Aquella experiencia demostró que la protección de los hielos no es un capricho ambientalista sino una necesidad estratégica para garantizar el abastecimiento hídrico de comunidades, productores y ecosistemas. La Patagonia, con el 70% de los glaciares argentinos, sería la región más expuesta ante una flexibilización.\n\nLo que está en juego es claro: si la reforma avanza sin salvaguardas robustas, se abre un precedente que podría habilitar actividades extractivas en zonas hasta hoy protegidas. Desde globalPATAGONIA seguiremos este proceso legislativo con la atención que merece. El agua que nace en nuestros glaciares no es un insumo negociable: es el principio de todo.",
+    "tag": "🧊 Medio Ambiente",
+    "categoria": "medio ambiente",
+    "fuente": "La Nación / Clarín",
+    "url_original": "https://www.lanacion.com.ar/politica/maximiliano-ferraro-la-reforma-a-la-ley-de-glaciares-es-regresiva-e-innecesaria-se-va-a-judicializar-nid05042026/",
+    "pais": "argentina",
+    "imagen": "fotos/ruta-estepa-patagonica.jpg",
+    "imagen_keywords": "glacier patagonia ice",
+    "meta": "Hoy · La Nación / Clarín"
   },
   "secundarias": [
+    {
+      "id": "20260405-2021-1",
+      "titulo": "Médica magallánica conquista la Triple Corona de Hielo internacional",
+      "bajada": "Paula Bravo Sepúlveda nadó una milla en el lago Achensee de Austria bajo temperaturas extremas y se convirtió en la primera chilena en completar el desafío.",
+      "cuerpo": "Paula Bravo Sepúlveda, médica y nadadora de aguas gélidas nacida en Punta Arenas, acaba de inscribir su nombre en la historia del deporte de resistencia extrema. Al completar una milla —1.609 metros— en las aguas heladas del lago Achensee, en el Tirol austríaco, se convirtió en la primera chilena en lograr la Triple Corona de Hielo, un circuito internacional que exige cruzar tres cuerpos de agua bajo condiciones de temperatura que desafían los límites del cuerpo humano.\n\nLa hazaña no es casual: Bravo se entrenó durante años en los canales y fiordos de la región de Magallanes, donde las temperaturas del agua rondan los 4 a 7 grados centígrados durante buena parte del año. Esas aguas australes, las mismas que bañan el estrecho de Magallanes y los archipiélagos del fin del mundo, fueron su escuela natural. La Patagonia chilena, con su clima implacable y sus paisajes acuáticos extremos, no solo forja carácter: produce deportistas de élite mundial en disciplinas donde el frío es el rival principal.\n\nEl nado en aguas gélidas es un deporte en expansión global, pero en la Patagonia tiene raíces profundas y poco visibilizadas. Desde los Kawésqar, navegantes ancestrales de los canales, hasta las travesías contemporáneas en el Beagle o en los lagos andinos, la relación con el agua fría forma parte de la identidad territorial. Que una magallánica sea la primera chilena en completar la Triple Corona refuerza algo que desde acá se sabe: el sur no es periferia, es vanguardia.\n\nPaula Bravo regresa a Magallanes con un logro que trasciende lo deportivo. En tiempos donde la Patagonia lucha por que se reconozca su centralidad, historias como la suya demuestran que desde el extremo austral se puede llegar a cualquier parte del mundo. Literalmente, nadando.",
+      "tag": "🏊 Deportes",
+      "categoria": "deportes",
+      "fuente": "La Prensa Austral",
+      "url_original": "https://laprensaaustral.cl/2026/04/05/medica-magallanica-completa-la-triple-corona-de-hielo-tras-exigente-nado-en-austria/",
+      "pais": "chile",
+      "imagen": "fotos/foto-20260405-2021-1.jpg",
+      "imagen_keywords": "ice swimming lake",
+      "meta": "Hoy · La Prensa Austral",
+      "galeria": [
+        "fotos/foto-20260405-2021-1-g1.jpg",
+        "fotos/foto-20260405-2021-1-g2.jpg",
+        "fotos/foto-20260405-2021-1-g3.jpg",
+        "fotos/foto-20260405-2021-1-g4.jpg"
+      ]
+    },
+    {
+      "id": "20260405-2021-2",
+      "titulo": "Un puma rescatado en Nahuel Huapi se recupera con el cariño de una gata",
+      "bajada": "El cachorro sobrevivió a un choque vehicular dentro del Parque Nacional y ahora transita su rehabilitación bajo un esquema de cuidado que incluye la compañía inesperada de una gata doméstica.",
+      "cuerpo": "En el corazón del Parque Nacional Nahuel Huapi, un cachorro de puma está librando su propia batalla. Rescatado tras un choque vehicular que le costó la vida a su madre, el animal atraviesa un proceso de rehabilitación que conmueve y al mismo tiempo ilumina un problema creciente en los parques patagónicos: la colisión entre fauna silvestre y tránsito vehicular en rutas que cruzan áreas protegidas.\n\nEl detalle que humaniza la historia es la compañía de una gata doméstica que, según los cuidadores, adoptó al puma cachorro con instinto maternal. El animal se acurruca junto a ella, busca su calor y parece encontrar en ese vínculo interespecífico la contención que la ruta le arrebató. Pero más allá de la ternura, el caso expone una tensión estructural: el aumento del tránsito turístico y de transporte dentro de los parques nacionales patagónicos no ha sido acompañado por inversión suficiente en pasos de fauna, señalización ni reducción efectiva de velocidad.\n\nEl puma —Puma concolor— es el mayor predador terrestre de la Patagonia y un indicador clave de la salud de los ecosistemas andinos. Cada ejemplar perdido por atropellamiento representa un golpe a poblaciones que ya enfrentan la fragmentación del hábitat, la ganadería extensiva y la expansión urbana en zonas de interfaz. En el Parque Nahuel Huapi, que recibe millones de visitantes al año, los registros de fauna atropellada incluyen huemules, zorros, chinchillones y aves rapaces.\n\nLa recuperación de este cachorro es una buena noticia, pero no alcanza como respuesta. Lo que hace falta es una política integral de convivencia vial y fauna en los parques patagónicos, con infraestructura concreta y controles reales. Mientras tanto, una gata hace lo que puede. Y un puma pequeño aprende a sobrevivir en un territorio que debería ser su refugio, no su amenaza.",
+      "tag": "🐾 Medio Ambiente",
+      "categoria": "medio ambiente",
+      "fuente": "Diario Río Negro",
+      "url_original": "https://www.rionegro.com.ar/sociedad/la-tierna-recuperacion-del-puma-rescatado-del-choque-fatal-en-el-parque-nahuel-huapi-con-el-carino-de-una-gata-4527444/",
+      "pais": "argentina",
+      "imagen": "fotos/foto-20260405-2021-2.jpg",
+      "imagen_keywords": "puma cub patagonia",
+      "meta": "Hoy · Diario Río Negro"
+    }
+  ],
+  "noticias": [
+    {
+      "id": "20260405-2021-3",
+      "titulo": "Tres campos, tres caminos: el futuro de la ganadería extensiva patagónica",
+      "bajada": "Un análisis de campo muestra cómo las decisiones de manejo definen la viabilidad de la producción ovina y bovina en la estepa, entre el sobrepastoreo y la regeneración.",
+      "cuerpo": "La ganadería extensiva es, junto con la lana y el petróleo, uno de los pilares históricos de la economía patagónica. Pero su futuro no está garantizado. Un recorrido por tres establecimientos de la región muestra realidades divergentes que comparten un mismo paisaje árido: mientras un campo apuesta por la rotación de pasturas y la recuperación del suelo, otro sostiene la carga animal sin ajustar, y un tercero ensaya un modelo mixto con monitoreo satelital. Las decisiones de cada productor determinan no solo su rentabilidad sino la salud del ecosistema estepario.\n\nLa estepa patagónica, que cubre millones de hectáreas desde el norte de Neuquén hasta Tierra del Fuego, es uno de los ambientes más frágiles del continente. Décadas de sobrepastoreo ovino generaron procesos de desertificación que el INTA viene documentando desde los años 80. Hoy, con el cambio climático acentuando las sequías y los vientos, el margen de error es cada vez menor. Los campos que no adaptan su manejo pierden cobertura vegetal, productividad y, en última instancia, viabilidad económica.\n\nLo que este análisis revela es que no hay receta única, pero sí un patrón claro: los productores que incorporan datos ambientales, planifican la carga y permiten la regeneración del pastizal logran sostener —e incluso mejorar— sus rindes a mediano plazo. Es una lógica que conecta con los saberes ancestrales de los pueblos originarios, que manejaban la relación con el territorio desde el conocimiento del ciclo natural, no desde la presión extractiva.\n\nLa ganadería patagónica tiene futuro, pero solo si se reinventa. En una región donde el agua escasea, el suelo es delgado y el clima no perdona, producir bien es producir con inteligencia. Estas tres historias lo demuestran: el campo patagónico se define campo por campo, decisión por decisión.",
+      "tag": "🐑 Producción",
+      "categoria": "producción",
+      "fuente": "Diario Río Negro",
+      "url_original": "https://www.rionegro.com.ar/rural/tres-campos-tres-decisiones-como-el-manejo-define-el-rumbo-de-la-ganaderia-extensiva-en-la-patagonia/",
+      "pais": "argentina",
+      "imagen": "fotos/foto-20260405-2021-3.jpeg",
+      "imagen_keywords": "sheep ranch patagonia steppe",
+      "meta": "Hoy · Diario Río Negro"
+    },
+    {
+      "id": "20260401-1454-tapa",
+      "titulo": "Gas gratuito y subsidio pesquero: Chile lanza plan de emergencia para zonas extremas",
+      "bajada": "La Moneda respondió a la crisis de combustibles con un paquete que incluye balones de gas sin costo para el 80% más vulnerable y $100.000 mensuales para embarcaciones artesanales. Magallanes, donde el frío y la lejanía multiplican el impacto del alza energética, es una de las regiones más beneficiadas.",
+      "cuerpo": "El gobierno de Chile anunció este miércoles un paquete de medidas de emergencia que apunta directo al corazón de las zonas extremas del país: la entrega gratuita de balones de gas de 15 kilos para las familias que integran el 80% más vulnerable de la población, y un subsidio mensual de 100 mil pesos para embarcaciones menores de la pesca artesanal. La decisión llega en un momento crítico, con el precio internacional del petróleo por encima de los 100 dólares el barril y una escalada de costos que en la Patagonia chilena se siente con una intensidad que el resto del país apenas imagina.\n\nPara Magallanes y Aysén, las dos regiones más australes y con mayor dependencia del gas para calefacción, la medida tiene un significado que trasciende lo económico. En Punta Arenas, donde las temperaturas invernales perforan los cero grados con facilidad y la temporada de calefacción se extiende durante más de seis meses, el gasto en combustible puede representar un cuarto del ingreso familiar en los hogares más modestos. Históricamente, la Patagonia chilena ha reclamado un tratamiento diferenciado en materia energética, y este anuncio recoge parcialmente esa demanda crónica.\n\nEl subsidio a la pesca artesanal también tiene lectura territorial precisa. Las caletas de Magallanes, desde Porvenir hasta Puerto Natales, dependen de embarcaciones pequeñas cuyos costos operativos se disparan cuando el combustible sube. La centolla, la merluza austral y el erizo —recursos que sostienen economías familiares enteras— se encarecen en origen antes de llegar al mercado, y muchos pescadores directamente dejan de salir cuando el diésel se vuelve prohibitivo. Los 100 mil pesos mensuales por embarcación no resuelven el problema de fondo, pero amortiguan el golpe inmediato en una temporada que ya venía complicada.\n\nMirado desde la Patagonia binacional, el contraste con el lado argentino es inevitable. En la Argentina, el gobierno nacional optó por postergar el aumento del impuesto a los combustibles para mayo, buscando contener la inflación, pero sin medidas focalizadas en las regiones donde el frío y la distancia multiplican la vulnerabilidad energética. Ni Tierra del Fuego ni Santa Cruz ni Chubut cuentan hoy con un esquema equivalente al que Chile acaba de activar para sus zonas extremas. La asimetría vuelve a poner sobre la mesa una discusión de fondo: cómo se diseña política pública cuando el territorio no es plano ni homogéneo.\n\nEl paquete anunciado desde La Moneda es un parche necesario, no una solución estructural. Magallanes sigue esperando una política energética de largo plazo que reconozca que vivir en el fin del mundo tiene costos que no se resuelven con bonos estacionales. Pero en el corto plazo, para miles de familias que esta semana encendieron la estufa con la angustia de la cuenta a fin de mes, la noticia significa aire. Queda por ver si el alivio se sostiene o si, como tantas veces, el sur vuelve a quedar fuera del mapa cuando baje la urgencia.",
+      "tag": "🔥 Producción",
+      "categoria": "producción",
+      "fuente": "El Pingüino",
+      "url_original": "https://elpinguino.com/noticia/2026/04/01/gobierno-anuncia-gas-gratuito-para-el-80-mas-vulnerable-y-bonos-para-la-pesca-artesanal",
+      "pais": "chile",
+      "imagen": "fotos/foto-20260401-1454-tapa.jpg",
+      "imagen_keywords": "gas fuel Patagonia Chile fishing",
+      "meta": "Hoy · El Pingüino",
+      "galeria": [
+        "fotos/foto-20260401-1454-tapa-g1.png",
+        "fotos/foto-20260401-1454-tapa-g2.png",
+        "fotos/foto-20260401-1454-tapa-g3.jpg"
+      ]
+    },
     {
       "id": "20260401-1454-1",
       "titulo": "Una ciudad patagónica, entre las de menor pobreza del país",
@@ -64,9 +128,7 @@
         "fotos/foto-20260401-1454-2-g3.jpg",
         "fotos/foto-20260401-1454-2-g4.jpg"
       ]
-    }
-  ],
-  "noticias": [
+    },
     {
       "id": "20260401-1454-3",
       "titulo": "Básquetbol femenino en Magallanes coronó a sus campeonas",
@@ -111,7 +173,7 @@
       "fuente": "Diario Río Negro",
       "url_original": "https://www.rionegro.com.ar/politica/tolerancia-cero-a-la-pesca-ilegal-prefectura-naval-aplicara-multas-a-buques-extranjeros-en-infraccion-4521290/",
       "pais": "argentina",
-      "imagen": "fotos/PESCA_ILEGAL.webp",
+      "imagen": "fotos/fitz-roy-chalten-nevada.jpg",
       "imagen_keywords": "illegal fishing patagonia sea",
       "meta": "Hoy · Diario Río Negro"
     },
@@ -125,37 +187,9 @@
       "fuente": "La Prensa Austral",
       "url_original": "https://laprensaaustral.cl/2026/03/31/krill-antartico/",
       "pais": "chile",
-      "imagen": "fotos/Antartida1.jpg",
+      "imagen": "fotos/bariloche-lago-nahuel-huapi.jpg",
       "imagen_keywords": "antarctic krill ocean",
       "meta": "Hoy · La Prensa Austral"
-    },
-    {
-      "id": "20260331-1450-3",
-      "titulo": "Primer torneo Patagónico de Tenis reunirá a cuatro regiones en Punta Arenas",
-      "bajada": "Cincuenta deportistas compitieron en la clasificatoria local para representar a Magallanes en un certamen inédito que convocará a delegaciones de Santiago, Aysén y Puerto Montt en abril.",
-      "cuerpo": "Punta Arenas definió a sus representantes para lo que será el primer torneo Patagónico de Tenis, un certamen intercomunal que por primera vez reunirá en la capital magallánica a delegaciones de Santiago, Aysén y Puerto Montt. La clasificatoria local, disputada con la participación de 50 competidores, marcó el punto de partida de un evento que busca consolidar al deporte de raqueta en el extremo sur del continente.\n\nLa jornada selectiva fue intensa y dejó en evidencia que el tenis en Magallanes tiene una base de practicantes más sólida de lo que suele suponerse. En una región donde las condiciones climáticas limitan las temporadas al aire libre y la infraestructura deportiva cubierta sigue siendo escasa, sostener una comunidad activa de tenistas es un mérito que habla de persistencia y amor por la disciplina.\n\nEl torneo de abril tendrá un carácter verdaderamente patagónico: la presencia confirmada de Aysén y Puerto Montt —además de Santiago— le da una proyección que conecta la zona austral de Chile en un circuito deportivo que no existía. Para la Patagonia binacional, este tipo de iniciativas tiene un valor que excede lo competitivo. El deporte regional suele carecer de circuitos organizados que permitan a los atletas del sur medirse sin tener que viajar miles de kilómetros hacia el centro del país. Cada torneo que se disputa en el territorio es una oportunidad para fortalecer redes, visibilizar talentos y demostrar que la Patagonia puede ser sede, no solo cantera.\n\nQueda pendiente el paso que todo deportista patagónico espera: que estos torneos crucen la cordillera. Un circuito de tenis que incluyera a ciudades argentinas como Ushuaia, El Calafate o Esquel convertiría al deporte en otro puente entre las dos Patagonias. Por ahora, Punta Arenas se prepara para recibir y competir. El sur también juega.",
-      "tag": "🎾 Deportes",
-      "categoria": "deportes",
-      "fuente": "El Pingüino",
-      "url_original": "https://elpinguino.com/noticia/2026/03/31/deportistas-regionales-jugaron-su-opcion-para-el-1er-patagonico-de-tenis",
-      "pais": "chile",
-      "imagen": "fotos/punta-arenas.jpg",
-      "imagen_keywords": "tennis patagonia court",
-      "meta": "Hoy · El Pingüino"
-    },
-    {
-      "id": "20260330-1452-tapa",
-      "titulo": "En pleno desierto patagónico, un ganadero encontró la forma de reverdecer su campo",
-      "bajada": "Un productor de la estepa rionegrina adoptó un sistema de pastoreo que transformó su relación con la tierra seca. La experiencia es un modelo posible para miles de campos patagónicos golpeados por sequías cada vez más frecuentes.",
-      "cuerpo": "En la inmensidad árida de la meseta rionegrina, donde las sequías se apilan una sobre otra y el viento parece llevarse todo menos la terquedad de quienes se quedan, un productor ganadero logró torcer una historia que parecía escrita de antemano. Después de años de perder animales y ver cómo el suelo se degradaba sin piedad, encontró en un sistema de pastoreo planificado la llave para empezar de nuevo.\n\nLa técnica, basada en la rotación intensiva de lotes y el descanso prolongado de los cuadros de pastoreo, no es nueva en el mundo pero sigue siendo una rareza en la Patagonia profunda. Consiste en concentrar la hacienda en superficies reducidas durante períodos cortos, para luego dejar que el campo se recupere naturalmente. El resultado es contraintuitivo: donde antes el ganado disperso arrasaba con los pastos sin darles tiempo de rebrotar, ahora la vegetación regresa con fuerza, las raíces sostienen el suelo y el agua de lluvia se infiltra en vez de escurrir.\n\nPara la Patagonia, esta historia tiene un peso que excede lo anecdótico. La desertificación avanza sobre millones de hectáreas a ambos lados de la cordillera. En la Argentina, el INTA viene alertando desde hace décadas sobre la pérdida de cobertura vegetal en la estepa, un proceso que el cambio climático acelera con ciclos secos más largos y temperaturas más extremas. En Chile, la degradación de suelos en Aysén y Magallanes sigue patrones similares. Cada campo que logra revertir esa tendencia es un dato concreto contra el pesimismo.\n\nLo que hace singular a este caso es que no se trata de una estancia grande con recursos ilimitados ni de un proyecto piloto financiado desde afuera. Es un productor que pasó por las peores sequías, que estuvo al borde de abandonar la actividad y que decidió probar algo distinto cuando ya no quedaba mucho por perder. Esa escala humana es la que convierte la experiencia en replicable: hay miles de establecimientos patagónicos en situación parecida, con campos degradados y familias que resisten.\n\nEl desafío ahora es que estas experiencias dejen de ser excepciones aisladas. La Patagonia necesita políticas públicas que acompañen la transición hacia manejos sustentables, asistencia técnica accesible y, sobre todo, la convicción de que la estepa no es un páramo irrecuperable sino un ecosistema que responde cuando se lo trata con inteligencia. Este productor del desierto rionegrino ya lo demostró en su propio campo. La pregunta es cuántos más podrían hacerlo si tuvieran las herramientas.",
-      "tag": "🌱 Producción",
-      "categoria": "producción",
-      "fuente": "Diario Río Negro",
-      "url_original": "https://www.rionegro.com.ar/rural/un-productor-ganadero-paso-duras-sequias-pero-un-sistema-de-pastoreo-le-cambio-la-vida-en-el-desierto-de-la-patagonia-4520045/",
-      "pais": "argentina",
-      "imagen": "fotos/ruta-estepa-patagonica.jpg",
-      "imagen_keywords": "patagonia steppe livestock",
-      "meta": "Hoy · Diario Río Negro"
     }
   ],
   "historias": [

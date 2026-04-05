@@ -1,5 +1,14 @@
 [
   {
+    "id": "20260330-1452-2",
+    "badge": "TURISMO",
+    "titulo": "Camino de la Fe: Semana Santa entre montañas y pueblos neuquinos",
+    "bajada": "Un circuito espiritual y paisajístico recorre localidades de Neuquén y propone una forma distinta de vivir la Pascua en la Patagonia norte.",
+    "imagen": "https://images.unsplash.com/photo-1626920648043-4ef6d4c82088?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTAwNjB8MHwxfHNlYXJjaHwxfHxOZXVxdWVuJTIwcGF0YWdvbmlhfGVufDB8MHx8fDE3NzQ4ODI0NTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+    "meta": "Hoy · Diario Río Negro",
+    "url_original": "https://www.rionegro.com.ar/voy-turismo/camino-de-la-fe-un-viaje-entre-paisajes-espiritualidad-para-vivir-semana-santa-en-los-pueblos-de-neuquen-4520116/"
+  },
+  {
     "id": "turismo-calafate-guia",
     "badge": "GUÍA COMPLETA",
     "titulo": "Cómo llegar, moverse y disfrutar El Calafate en 4 días",
@@ -14,14 +23,6 @@
     "titulo": "El secreto de Bariloche: la Ruta de los Siete Lagos en lancha",
     "bajada": "La mayoría la hace en auto. Pero desde el lago Nahuel Huapi cambia todo.",
     "imagen": "fotos/bariloche-lago-nahuel-huapi.jpg",
-    "url_original": ""
-  },
-  {
-    "id": "turismo-rio-pico-lugar",
-    "badge": "LUGAR DESCONOCIDO",
-    "titulo": "Río Pico: el pueblo sin señal donde el tiempo se detuvo en 1950",
-    "bajada": "A 300 km de Esquel. Ganadería trashumante y hospitalidad que ya no existe en otros lugares.",
-    "imagen": "fotos/estepa-nevada-ruta-patagonica.jpg",
     "url_original": ""
   }
 ]

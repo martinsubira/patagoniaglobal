@@ -1,17 +1,5 @@
 [
   {
-    "id": "vinilo-punta-arenas-2026",
-    "titulo": "Muestra e intercambio de discos de vinilo",
-    "fecha": "2026-04-04",
-    "fecha_display": "4 de abril",
-    "lugar": "Punta Arenas",
-    "region": "Magallanes, Chile",
-    "pais": "CL",
-    "categoria": "cultura",
-    "emoji": "🎵",
-    "descripcion": "Evento de intercambio y exhibición musical en Punta Arenas. Una jornada para coleccionistas y amantes de la música analógica en el extremo sur del mundo."
-  },
-  {
     "id": "patagonia-run-2026",
     "titulo": "Patagonia Run 2026",
     "fecha": "2026-04-08",
