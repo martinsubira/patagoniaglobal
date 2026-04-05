@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-PatagoniaGLOBAL — Actualizador de Noticias
+globalPATAGONIA — Actualizador de Noticias
 Obtiene noticias de fuentes RSS, filtra las patagónicas y las reescribe con Claude.
 Acumula artículos en historial.json (1-3 nuevos por corrida).
 Genera noticias.json que el sitio web carga automáticamente.
@@ -195,7 +195,7 @@ def urls_ya_publicadas(historial):
 def fetch_noticias_crudas():
     noticias = []
     print(f"\n{'='*55}")
-    print(f"  PatagoniaGLOBAL — Actualizando noticias")
+    print(f"  globalPATAGONIA — Actualizando noticias")
     print(f"  {fecha_display()}")
     print(f"{'='*55}\n")
 
@@ -256,7 +256,7 @@ URL: {n['url']}
 
     hoy = datetime.now().strftime('%Y%m%d-%H%M')
 
-    prompt = f"""Sos el editor jefe de PatagoniaGLOBAL, el primer medio digital panpatagónico. Slogan: "Sur Global, principio de todo." Cobertura: Argentina y Chile sin fronteras.
+    prompt = f"""Sos el editor jefe de globalPATAGONIA, el primer medio digital panpatagónico. Slogan: "Sur Global, principio de todo." Cobertura: Argentina y Chile sin fronteras.
 
 IDENTIDAD EDITORIAL:
 - La Patagonia no es periferia — es el comienzo. Escribís desde adentro, no desde Buenos Aires ni Santiago.
@@ -294,7 +294,7 @@ Tenés estas noticias nuevas disponibles hoy:
 Tu tarea:
 1. Elegí LA MEJOR para la tapa del día (medio ambiente y pueblos originarios tienen prioridad automática)
 2. Elegí entre 1 y 3 noticias adicionales para el feed del día
-3. Escribí el artículo completo de cada una con voz propia de PatagoniaGLOBAL
+3. Escribí el artículo completo de cada una con voz propia de globalPATAGONIA
 4. Generá 5 titulares breves para el ticker (hechos concretos, sin clickbait)
 
 Estructura del artículo (campo "cuerpo"):
@@ -695,7 +695,7 @@ def cargar_historias_permanentes():
 
 
 def cargar_propios():
-    """Carga las notas propias (PatagoniaGLOBAL / J. Martineau) desde propios.json.
+    """Carga las notas propias (globalPATAGONIA / J. Martineau) desde propios.json.
     Este archivo es el archivo permanente de notas de producción propia.
     El script AGREGA notas nuevas pero NUNCA borra las existentes."""
     ruta = os.path.join(os.path.dirname(__file__), "propios.json")
@@ -737,13 +737,13 @@ def auto_archivar_propios(historial):
 
 
 def es_propio(articulo):
-    """Artículo escrito por PatagoniaGLOBAL / J. Martineau."""
+    """Artículo escrito por globalPATAGONIA / J. Martineau."""
     fuente = articulo.get("fuente", "") or ""
     autor  = articulo.get("autor", "")  or ""
     return (
-        "PatagoniaGLOBAL" in fuente or
+        "globalPATAGONIA" in fuente or
         "Martineau" in autor or
-        "PatagoniaGLOBAL" in autor or
+        "globalPATAGONIA" in autor or
         articulo.get("propio") is True
     )
 
@@ -762,7 +762,7 @@ def construir_noticias_json(tapa, historial, ticker):
     """Arma noticias.json con tapa + feed.
 
     REGLAS:
-    - Los artículos propios (J. Martineau / PatagoniaGLOBAL) van EXCLUSIVAMENTE
+    - Los artículos propios (J. Martineau / globalPATAGONIA) van EXCLUSIVAMENTE
       a INFORMES (propios.json). NUNCA aparecen en tapa ni en el feed de noticias.
     - INFORMES solo se renueva cuando se agrega una nota nueva manualmente.
     - No puede haber el mismo artículo dos veces en el feed (deduplicación por ID).
@@ -885,7 +885,7 @@ URL: {n['url']}
 """
 
     client = anthropic.Anthropic(api_key=API_KEY)
-    prompt = f"""Sos el editor de agenda de PatagoniaGLOBAL. Hoy es {hoy}.
+    prompt = f"""Sos el editor de agenda de globalPATAGONIA. Hoy es {hoy}.
 
 Analizá estas noticias y extraé SOLO las que corresponden a un evento futuro concreto (festival, carrera, muestra, fiesta, torneo, congreso, etc.) con fecha definida en la Patagonia argentina o chilena. Ignorá inauguraciones de obras, nombramientos, noticias sin fecha de evento.
 
@@ -1030,7 +1030,7 @@ def main():
         nota["imagen"] = resolver_imagen(nota, fotos_propias, fotos_usadas)
         # Agregar meta si no tiene
         if "meta" not in nota:
-            nota["meta"] = f"Hoy · {nota.get('fuente','PatagoniaGLOBAL')}"
+            nota["meta"] = f"Hoy · {nota.get('fuente','globalPATAGONIA')}"
 
     # 4b. Descargar galería de fotos internas del artículo fuente
     print("\n  Descargando galería de fotos internas...")

@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>PatagoniaGLOBAL — Noticias de la Patagonia Argentina y Chilena</title>
+  <title>globalPATAGONIA — Noticias de la Patagonia Argentina y Chilena</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
   <link rel="canonical" href="https://globalpatagonia.org/"/>
-  <meta name="description" content="PatagoniaGLOBAL: el primer medio digital que cubre la Patagonia argentina y chilena sin fronteras. Noticias de medio ambiente, deportes, cultura, pueblos originarios y turismo patagónico."/>
+  <meta name="description" content="globalPATAGONIA: el primer medio digital que cubre la Patagonia argentina y chilena sin fronteras. Noticias de medio ambiente, deportes, cultura, pueblos originarios y turismo patagónico."/>
   <meta name="keywords" content="patagonia, noticias patagonia, patagonia argentina, patagonia chilena, glaciares, pueblos originarios patagonia, trail running patagonia, turismo patagonia, medio ambiente patagonia, santa cruz, neuquén, río negro, chubut, tierra del fuego, magallanes, bariloche, ushuaia, el calafate, torres del paine, fitz roy"/>
   <meta name="robots" content="index, follow"/>
-  <meta name="author" content="PatagoniaGLOBAL"/>
+  <meta name="author" content="globalPATAGONIA"/>
   <meta property="og:type" content="website"/>
-  <meta property="og:site_name" content="PatagoniaGLOBAL"/>
-  <meta property="og:title" content="PatagoniaGLOBAL — Noticias de la Patagonia Argentina y Chilena"/>
+  <meta property="og:site_name" content="globalPATAGONIA"/>
+  <meta property="og:title" content="globalPATAGONIA — Noticias de la Patagonia Argentina y Chilena"/>
   <meta property="og:description" content="El primer medio digital panpatagónico. Noticias de medio ambiente, deportes, cultura, pueblos originarios y turismo de la Patagonia argentina y chilena."/>
   <meta property="og:image" content="https://globalpatagonia.org/fotos/torres-del-paine.webp"/>
   <meta property="og:url" content="https://globalpatagonia.org/"/>
@@ -23,8 +23,8 @@
   {
     "@context": "https://schema.org",
     "@type": "NewsMediaOrganization",
-    "name": "PatagoniaGLOBAL",
-    "alternateName": ["Patagonia Global", "PatagoniaGLOBAL noticias"],
+    "name": "globalPATAGONIA",
+    "alternateName": ["Patagonia Global", "globalPATAGONIA noticias"],
     "url": "https://globalpatagonia.org/",
     "logo": {
       "@type": "ImageObject",
@@ -51,7 +51,7 @@
     gtag('js', new Date());
     gtag('config', 'G-5FP2F41BZG');
   </script>
-  <meta name="twitter:title" content="PatagoniaGLOBAL — Noticias de la Patagonia Argentina y Chilena"/>
+  <meta name="twitter:title" content="globalPATAGONIA — Noticias de la Patagonia Argentina y Chilena"/>
   <meta name="twitter:description" content="El primer medio digital panpatagónico. Medio ambiente, deportes, cultura y pueblos originarios de la Patagonia sin fronteras."/>
   <meta name="twitter:image" content="https://globalpatagonia.org/fotos/torres-del-paine.webp"/>
   <style>
@@ -121,11 +121,16 @@
       font-size: 58px;
       font-weight: 900;
       color: var(--blanco);
-      letter-spacing: -1px;
+      letter-spacing: 1px;
       line-height: 1;
     }
 
-    .logo span { color: #8ab8d4; }
+    .logo span {
+      color: #8ab8d4;
+      font-weight: 400;
+      font-style: italic;
+      letter-spacing: 2px;
+    }
 
     .logo-sub {
       font-size: 12px;
@@ -810,11 +815,13 @@
     .footer-logo {
       font-family: 'Playfair Display', serif;
       font-size: 28px;
+      font-weight: 900;
       color: white;
+      letter-spacing: 1px;
       margin-bottom: 8px;
     }
 
-    .footer-logo span { color: var(--verde-claro); }
+    .footer-logo span { color: var(--verde-claro); font-weight: 400; font-style: italic; letter-spacing: 2px; }
 
     .footer-tagline {
       font-size: 12px;
@@ -933,7 +940,7 @@
   </div>
   <div class="header-main">
     <div class="logo-tagline">Sur Global, principio de todo.</div>
-    <div class="logo">Patagonia<span>GLOBAL</span></div>
+    <div class="logo"><span>global</span>PATAGONIA</div>
     <div class="logo-sub">Argentina · Chile · Sin fronteras</div>
   </div>
   <nav>
@@ -1336,12 +1343,12 @@
     <a href="privacidad.html">Privacidad</a>
   </div>
   <div class="footer-copy">
-    © 2026 PatagoniaGLOBAL · globalpatagonia.org · Argentina · Chile
+    © 2026 globalPATAGONIA · globalpatagonia.org · Argentina · Chile
   </div>
 </footer>
 
 <script>
-/* PatagoniaGLOBAL — Carga dinámica desde noticias.json */
+/* globalPATAGONIA — Carga dinámica desde noticias.json */
 
 const CARD_COLORS = ["card-azul","card-verde","card-gris","card-cafe"];
 const SEC_COLORS  = ["nota-sec-1","nota-sec-2"];
