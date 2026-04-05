@@ -945,6 +945,106 @@ Respondé SOLO con un array JSON válido. Si no hay eventos válidos respondé [
     guardar_agenda(agenda)
 
 
+# ── Rotación diaria de Deportes ────────────────────────────
+
+def rotar_deportes(historial):
+    """Cada día: agrega la nota de deportes más reciente del historial
+    al frente de row_cards en deportes_feed.json. Mantiene máximo 4 entradas."""
+    ruta = os.path.join(os.path.dirname(__file__), "deportes_feed.json")
+    try:
+        with open(ruta, encoding="utf-8") as f:
+            feed = json.load(f)
+    except Exception:
+        return
+
+    row_cards = feed.get("row_cards", [])
+    ids_en_feed = (
+        {feed.get("principal", {}).get("id")}
+        | {s.get("id") for s in feed.get("secundarias", [])}
+        | {c.get("id") for c in row_cards}
+    )
+
+    nueva = None
+    cats_deportes = ("deportes", "aventura", "escalada", "trail", "ski", "kayak")
+    for art in historial:
+        if art.get("id") in ids_en_feed or es_propio(art):
+            continue
+        if art.get("categoria", "").lower() in cats_deportes:
+            nueva = art
+            break
+
+    if not nueva:
+        return
+
+    nueva_card = {
+        "id":     nueva["id"],
+        "tag":    nueva.get("tag", "🏃 Deportes"),
+        "titulo": nueva["titulo"],
+        "imagen": nueva.get("imagen", ""),
+        "meta":   nueva.get("meta", ""),
+    }
+    feed["row_cards"] = [nueva_card] + row_cards[:3]
+
+    with open(ruta, "w", encoding="utf-8") as f:
+        json.dump(feed, f, ensure_ascii=False, indent=2)
+    print(f"  Deportes rotado: [{nueva['id']}] '{nueva['titulo'][:55]}…'")
+
+
+# ── Rotación semanal de Cultura ───────────────────────────
+
+def rotar_cultura(historial):
+    """Los sábados: agrega la nota de cultura/historia más reciente del historial
+    al frente de cultura.json. Mantiene máximo 6 entradas (grilla 2×3)."""
+    if datetime.now().weekday() != 5:   # 5 = sábado
+        return
+
+    ruta = os.path.join(os.path.dirname(__file__), "cultura.json")
+    try:
+        with open(ruta, encoding="utf-8") as f:
+            cultura_actual = json.load(f)
+    except Exception:
+        cultura_actual = []
+
+    ids_en_cultura = {c["id"] for c in cultura_actual}
+    ids_historias  = {a.get("id") for a in cargar_historias_permanentes()}
+
+    # Categorías consideradas "cultura"
+    cats_cultura = ("cultura", "historia", "pueblos originarios")
+
+    nueva = None
+    for art in historial:
+        if art.get("id") in ids_en_cultura or art.get("id") in ids_historias:
+            continue
+        if es_propio(art):
+            continue
+        if art.get("categoria", "").lower() in cats_cultura:
+            nueva = art
+            break
+
+    if not nueva:
+        print("  Cultura: sin nota nueva para rotar este sábado.")
+        return
+
+    entrada = {
+        "id":        nueva["id"],
+        "titulo":    nueva["titulo"],
+        "bajada":    nueva.get("bajada", ""),
+        "imagen":    nueva.get("imagen", ""),
+        "tag":       nueva.get("tag", "🎭 Cultura"),
+        "categoria": nueva.get("categoria", "cultura"),
+        "meta":      nueva.get("meta", ""),
+        "pais":      nueva.get("pais", "argentina"),
+    }
+
+    # Insertar al frente, mantener máximo 6
+    cultura_nuevo = [entrada] + cultura_actual[:5]
+
+    with open(ruta, "w", encoding="utf-8") as f:
+        json.dump(cultura_nuevo, f, ensure_ascii=False, indent=2)
+
+    print(f"  Cultura rotada (sábado): [{nueva['id']}] '{nueva['titulo'][:60]}…'")
+
+
 # ── Rotación semanal de Turismo ────────────────────────────
 
 def rotar_turismo(historial):
@@ -1049,7 +1149,13 @@ def main():
     print(f"\n  Artículos nuevos agregados: {len(todos_nuevos)}")
     print(f"  Total en historial: {min(len(historial), MAX_HISTORIAL)}")
 
-    # 5b. Rotación semanal de turismo.json (solo domingos)
+    # 5b. Rotación diaria de deportes_feed.json
+    rotar_deportes(historial)
+
+    # 5c. Rotación semanal de cultura.json (solo sábados)
+    rotar_cultura(historial)
+
+    # 5d. Rotación semanal de turismo.json (solo domingos)
     rotar_turismo(historial)
 
     # 6. Construir y guardar noticias.json

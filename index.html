@@ -1098,25 +1098,38 @@
   })();
   </script>
 
-  <!-- Fila noticias aventura rápidas -->
-  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:4px;">
-    <div style="background:white;border-radius:4px;padding:14px;border-left:3px solid #b03a2e;box-shadow:0 1px 3px rgba(0,0,0,0.05);">
-      <div style="font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#b03a2e;margin-bottom:5px;">🧗 Escalada</div>
-      <div style="font-family:'Playfair Display',serif;font-size:13px;font-weight:700;line-height:1.3;color:#252830;">Temporada de escalada en Bariloche: las paredes de granito que el mundo está descubriendo</div>
-    </div>
-    <div style="background:white;border-radius:4px;padding:14px;border-left:3px solid #3a5a7a;box-shadow:0 1px 3px rgba(0,0,0,0.05);">
-      <div style="font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#3a5a7a;margin-bottom:5px;">🏃 Trail</div>
-      <div style="font-family:'Playfair Display',serif;font-size:13px;font-weight:700;line-height:1.3;color:#252830;">Patagonia Run: perfil completo de los 100k más duros de la Patagonia argentina</div>
-    </div>
-    <div style="background:white;border-radius:4px;padding:14px;border-left:3px solid #8c6b4a;box-shadow:0 1px 3px rgba(0,0,0,0.05);">
-      <div style="font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8c6b4a;margin-bottom:5px;">🚵 Ciclismo</div>
-      <div style="font-family:'Playfair Display',serif;font-size:13px;font-weight:700;line-height:1.3;color:#252830;">Gravel en la Ruta 40 patagónica: la nueva meca del cicloturismo de aventura mundial</div>
-    </div>
-    <div style="background:white;border-radius:4px;padding:14px;border-left:3px solid #b03a2e;box-shadow:0 1px 3px rgba(0,0,0,0.05);">
-      <div style="font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#b03a2e;margin-bottom:5px;">🆘 Rescate</div>
-      <div style="font-family:'Playfair Display',serif;font-size:13px;font-weight:700;line-height:1.3;color:#252830;">Protocolo de emergencia en alta montaña: qué hacer y a quién llamar en cada provincia</div>
-    </div>
-  </div>
+  <!-- Fila noticias aventura rápidas — dinámico desde deportes_feed.json -->
+  <div id="deportes-row" style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:4px;"></div>
+  <script>
+  (function(){
+    const ACCENT_COLORS = ['#b03a2e','#3a5a7a','#8c6b4a','#2a6a4a'];
+    fetch('deportes_feed.json?v=' + Date.now())
+      .then(r => r.json())
+      .then(feed => {
+        const row = document.getElementById('deportes-row');
+        const cards = feed.row_cards || [];
+        if (!cards.length) { row.style.display='none'; return; }
+        row.innerHTML = cards.map((c, i) => {
+          const color = ACCENT_COLORS[i % ACCENT_COLORS.length];
+          const bg = c.imagen
+            ? `background-image:url('${c.imagen}');background-size:cover;background-position:center;height:90px;border-radius:4px 4px 0 0;`
+            : '';
+          const href = c.id ? `nota.html?id=${c.id}` : '#';
+          return `<a href="${href}" style="text-decoration:none;color:inherit;">
+            <div style="background:white;border-radius:4px;border-left:3px solid ${color};box-shadow:0 1px 3px rgba(0,0,0,0.05);overflow:hidden;">
+              ${c.imagen ? `<div style="${bg}"></div>` : ''}
+              <div style="padding:12px 14px;">
+                <div style="font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:${color};margin-bottom:5px;">${c.tag || '🏃 Deportes'}</div>
+                <div style="font-family:'Playfair Display',serif;font-size:13px;font-weight:700;line-height:1.3;color:#252830;">${c.titulo}</div>
+                ${c.meta ? `<div style="font-size:10px;color:#888;margin-top:5px;">${c.meta}</div>` : ''}
+              </div>
+            </div>
+          </a>`;
+        }).join('');
+      })
+      .catch(() => {});
+  })();
+  </script>
 
 
   <div class="divider" style="margin:32px 0;"></div>
@@ -1205,6 +1218,42 @@
     </div>
 
   </div>
+
+  <div class="divider" style="margin:32px 0;"></div>
+
+  <!-- ══ CULTURA — grilla 2×3 dinámica desde cultura.json ══ -->
+  <div id="sec-cultura" class="section-header">
+    <div class="section-title">Cultura & Arte</div>
+    <div class="section-line"></div>
+    <div class="section-badge badge-dorado">Semanal</div>
+  </div>
+
+  <div id="cultura-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:4px;"></div>
+  <script>
+  (function(){
+    fetch('cultura.json?v=' + Date.now())
+      .then(r => r.json())
+      .then(items => {
+        const grid = document.getElementById('cultura-grid');
+        if (!items || !items.length) { grid.style.display='none'; return; }
+        grid.innerHTML = items.slice(0,6).map(c => {
+          const href = c.id ? `nota.html?id=${c.id}` : '#';
+          const bandera = c.pais === 'chile' ? '🇨🇱' : c.pais === 'ambos' ? '🇦🇷🇨🇱' : '🇦🇷';
+          return `<a href="${href}" style="text-decoration:none;color:inherit;">
+            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);border-top:2px solid #a07840;border-radius:6px;overflow:hidden;transition:background 0.18s,transform 0.18s;" onmouseover="this.style.background='rgba(160,120,64,0.12)';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(255,255,255,0.04)';this.style.transform='translateY(0)'">
+              ${c.imagen ? `<div style="height:120px;background-image:url('${c.imagen}');background-size:cover;background-position:center;"></div>` : ''}
+              <div style="padding:14px;">
+                <div style="font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#c9a060;margin-bottom:6px;">${c.tag || '🎭 Cultura'}</div>
+                <div style="font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:white;line-height:1.35;margin-bottom:6px;">${c.titulo}</div>
+                <div style="font-size:10px;color:rgba(255,255,255,0.38);">${bandera} ${c.meta || ''}</div>
+              </div>
+            </div>
+          </a>`;
+        }).join('');
+      })
+      .catch(() => { document.getElementById('cultura-grid').style.display='none'; });
+  })();
+  </script>
 
   <div class="divider" style="margin:32px 0;"></div>
 

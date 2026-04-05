@@ -1,0 +1,32 @@
+[
+  {
+    "id": "20260330-1452-1",
+    "titulo": "Punta Arenas enciende su invierno con el calendario de las Invernadas 2026",
+    "bajada": "Desde fines de mayo hasta agosto, más de una decena de actividades culturales y comunitarias transformarán el frío magallánico en punto de encuentro.",
+    "imagen": "fotos/tedx-punta-arenas.jpg",
+    "tag": "🎭 Cultura",
+    "categoria": "cultura",
+    "meta": "Marzo 2026 · El Pingüino",
+    "pais": "chile"
+  },
+  {
+    "id": "20260330-0745-2",
+    "titulo": "Homenaje histórico a los soldados patagónicos que combatieron en Malvinas",
+    "bajada": "Veteranos de Río Gallegos, Comodoro y Punta Arenas participaron en un acto binacional en Puerto Deseado que reunió a las familias de los caídos de ambas riberas.",
+    "imagen": "fotos/monumento-malvinas.jpg",
+    "tag": "📜 Historia",
+    "categoria": "historia",
+    "meta": "Marzo 2026 · La Opinión Austral",
+    "pais": "argentina"
+  },
+  {
+    "id": "cultura-ruben-patagonia",
+    "titulo": "Rubén Patagonia: la voz tehuelche que cantó lo que otros no podían nombrar",
+    "bajada": "A pocos meses de su muerte, revisamos la trayectoria del músico de Comodoro Rivadavia que convirtió la memoria de los pueblos originarios en canciones.",
+    "imagen": "fotos/ruben-patagonia.jpg",
+    "tag": "🎵 Cultura",
+    "categoria": "cultura",
+    "meta": "Enero 2026 · globalPATAGONIA",
+    "pais": "argentina"
+  }
+]

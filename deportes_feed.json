@@ -26,5 +26,21 @@
       "badge_bg": "#7aadcc",
       "badge_color": "#1c2d3d"
     }
+  ],
+  "row_cards": [
+    {
+      "id": "20260401-1454-3",
+      "tag": "🏀 Deportes",
+      "titulo": "Básquetbol femenino en Magallanes coronó a sus campeonas",
+      "imagen": "fotos/foto-20260401-1454-3.jpg",
+      "meta": "Hoy · La Prensa Austral"
+    },
+    {
+      "id": "20260331-1450-3",
+      "tag": "🎾 Deportes",
+      "titulo": "Primer torneo Patagónico de Tenis reunirá a cuatro regiones en Punta Arenas",
+      "imagen": "fotos/foto-20260331-1450-3.jpg",
+      "meta": "Hoy · El Pingüino"
+    }
   ]
 }
