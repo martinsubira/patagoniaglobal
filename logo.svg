@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     viewBox="0 0 880 150" width="880" height="150">
+
+  <!-- Ícono montaña + globo (PNG transparente) -->
+  <image href="logo-icono.png" x="-30" y="-5" width="268" height="160"/>
+
+  <!-- Texto: GLOBAL bold azul glacial + patagonia blanco liviano -->
+  <text y="104" font-size="82" letter-spacing="-1">
+    <tspan x="210"
+           font-family="'Arial Black', 'Helvetica Neue', Arial, sans-serif"
+           font-weight="900"
+           fill="#8ab8d4"
+           letter-spacing="1">GLOBAL</tspan><tspan
+           font-family="'Arial', 'Helvetica Neue', sans-serif"
+           font-weight="300"
+           fill="rgba(255,255,255,0.92)"
+           letter-spacing="0">patagonia</tspan>
+  </text>
+
+  <!-- Línea separadora fina bajo el texto -->
+  <line x1="210" y1="118" x2="875" y2="118"
+        stroke="#8ab8d4" stroke-width="1.2" stroke-opacity="0.45"/>
+
+</svg>
