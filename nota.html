@@ -8,7 +8,7 @@
   <meta name="description" content="Noticias de la Patagonia argentina y chilena — PatagoniaGLOBAL"/>
   <meta property="og:site_name" content="PatagoniaGLOBAL"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:image" content="https://patagoniaglobal.org/fotos/torres-del-paine.webp"/>
+  <meta property="og:image" content="https://globalpatagonia.org/fotos/torres-del-paine.webp"/>
   <meta name="twitter:card" content="summary_large_image"/>
   <!-- JSON-LD base (se sobreescribe dinámicamente al cargar la nota) -->
   <script type="application/ld+json" id="jsonld-nota">
@@ -18,7 +18,7 @@
     "publisher": {
       "@type": "NewsMediaOrganization",
       "name": "PatagoniaGLOBAL",
-      "url": "https://patagoniaglobal.org/"
+      "url": "https://globalpatagonia.org/"
     }
   }
   </script>
@@ -476,7 +476,7 @@
 <footer>
   <div class="footer-logo">Patagonia<span>GLOBAL</span></div>
   <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-top:4px;">Argentina · Chile · Sin fronteras</div>
-  <div class="footer-copy">© 2026 PatagoniaGLOBAL · patagoniaglobal.org</div>
+  <div class="footer-copy">© 2026 PatagoniaGLOBAL · globalpatagonia.org</div>
 </footer>
 
 <script>
@@ -552,12 +552,12 @@ function renderNota(nota, fechaDisplay, data) {
       "description": nota.bajada || nota.titulo,
       "url": window.location.href,
       "datePublished": fechaDisplay || "",
-      "image": nota.imagen || "https://patagoniaglobal.org/fotos/torres-del-paine.webp",
+      "image": nota.imagen || "https://globalpatagonia.org/fotos/torres-del-paine.webp",
       "publisher": {
         "@type": "NewsMediaOrganization",
         "name": "PatagoniaGLOBAL",
-        "url": "https://patagoniaglobal.org/",
-        "logo": { "@type": "ImageObject", "url": "https://patagoniaglobal.org/favicon.svg" }
+        "url": "https://globalpatagonia.org/",
+        "logo": { "@type": "ImageObject", "url": "https://globalpatagonia.org/favicon.svg" }
       },
       "author": { "@type": "Organization", "name": nota.fuente || "PatagoniaGLOBAL" }
     };
@@ -687,12 +687,13 @@ const id = getParam("id");
 if (!id) {
   document.getElementById("loading").textContent = "Nota no encontrada.";
 } else {
-  // Busca en noticias.json, historias.json y propios.json en paralelo
+  // Busca en noticias.json, historias.json, propios.json y turismo.json en paralelo
   Promise.all([
     fetch("noticias.json").then(r => r.json()).catch(() => ({})),
     fetch("historias.json").then(r => r.json()).catch(() => ({})),
-    fetch("propios.json").then(r => r.json()).catch(() => ([]))
-  ]).then(([noticias, historias, propios]) => {
+    fetch("propios.json").then(r => r.json()).catch(() => ([])),
+    fetch("turismo.json").then(r => r.json()).catch(() => ([]))
+  ]).then(([noticias, historias, propios, turismo]) => {
     // Primero busca en noticias.json
     let nota = buscarNota(noticias, id);
     let data = noticias;
@@ -704,6 +705,10 @@ if (!id) {
     // Si no está, busca en propios.json
     if (!nota && Array.isArray(propios)) {
       nota = propios.find(n => n.id === id) || null;
+    }
+    // Si no está, busca en turismo.json
+    if (!nota && Array.isArray(turismo)) {
+      nota = turismo.find(n => n.id === id) || null;
     }
     if (nota) {
       renderNota(nota, noticias.fecha_display, { ...noticias, historias: historias.notas || [] });

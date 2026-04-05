@@ -33,7 +33,7 @@ Mensaje:
 ${mensaje}
 
 ---
-Enviado desde patagoniaglobal.org/acerca.html
+Enviado desde globalpatagonia.org/acerca.html
     `.trim();
 
     // Enviar email

@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://patagoniaglobal.org/</loc>
+    <loc>https://globalpatagonia.org/</loc>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://patagoniaglobal.org/index.html</loc>
+    <loc>https://globalpatagonia.org/index.html</loc>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://patagoniaglobal.org/nota.html</loc>
+    <loc>https://globalpatagonia.org/nota.html</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://patagoniaglobal.org/acerca.html</loc>
+    <loc>https://globalpatagonia.org/acerca.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
