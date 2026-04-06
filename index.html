@@ -589,6 +589,68 @@
     }
     .turismo-sec p { font-size: 11px; color: #888; line-height: 1.45; }
 
+    /* ── ECONOMÍA Y EMPRESAS ── */
+    .negocios-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 20px;
+    }
+    @media (max-width: 700px) {
+      .negocios-grid { grid-template-columns: 1fr; }
+    }
+    .negocio-card {
+      background: var(--gris-oscuro);
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+      transition: transform .15s;
+    }
+    .negocio-card:hover { transform: translateY(-3px); }
+    .negocio-img {
+      height: 160px;
+      background: linear-gradient(135deg, #1a2a1a, #2d4a2d);
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+    .negocio-tag {
+      position: absolute;
+      top: 10px; left: 10px;
+      background: rgba(28,45,61,0.88);
+      color: #7aadcc;
+      font-size: 9px; font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 3px;
+    }
+    .negocio-body {
+      padding: 14px;
+      flex: 1;
+    }
+    .negocio-body h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 14px; font-weight: 700;
+      color: white;
+      line-height: 1.4;
+      margin: 0 0 8px;
+    }
+    .negocio-body p {
+      font-size: 11px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.5;
+      margin: 0;
+    }
+    .negocio-meta {
+      font-size: 10px;
+      color: rgba(255,255,255,0.3);
+      margin-top: 10px;
+    }
+
     /* ── HISTORIA ── */
     .historia-grid {
       display: grid;
@@ -943,6 +1005,7 @@
     <a href="#sec-deportes">Deportes & Aventura</a>
     <a href="#sec-turismo">Turismo en Patagonia</a>
     <a href="#sec-guias">Guías</a>
+    <a href="#sec-negocios">Economía</a>
     <a href="#sec-historia">Cultura Patagónica</a>
     <a href="agenda.html">Agenda</a>
     <a href="videos.html">Cinemateca</a>
@@ -1164,6 +1227,19 @@
 
   <div class="divider" style="margin:32px 0;"></div>
 
+  <!-- ══ ECONOMÍA Y EMPRESAS ══ -->
+  <div id="sec-negocios" class="section-header">
+    <div class="section-title">Economía y Empresas</div>
+    <div class="section-line"></div>
+    <div class="section-badge badge-azul">Negocios & Inversión</div>
+  </div>
+
+  <div class="negocios-grid" id="negocios-container">
+    <!-- Se rellena dinámicamente desde negocios.json -->
+  </div>
+
+  <div class="divider" style="margin:32px 0;"></div>
+
   <!-- ══ HISTORIA & CULTURA ══ -->
   <div id="sec-historia" class="section-header">
     <div class="section-title">Cultura Patagónica & Pueblos Originarios</div>
@@ -1286,6 +1362,7 @@
     <a href="#sec-noticias">Noticias</a>
     <a href="#sec-turismo">Turismo en Patagonia</a>
     <a href="#sec-deportes">Deportes & Aventura</a>
+    <a href="#sec-negocios">Economía y Empresas</a>
     <a href="#sec-historia">Cultura Patagónica</a>
     <a href="#sec-noticias">Medio Ambiente</a>
     <a href="acerca.html">Acerca de</a>
@@ -1510,6 +1587,34 @@ function renderGuias(guias) {
 fetch("guias.json")
   .then(r => r.json())
   .then(data => renderGuias(data))
+  .catch(() => {});
+
+// ── ECONOMÍA Y EMPRESAS: carga desde negocios.json — máx 6, el más nuevo primero ──
+function renderNegocios(arts) {
+  const container = document.getElementById("negocios-container");
+  if (!container || !arts || !arts.length) return;
+  const visibles = arts.slice(0, 6);
+  container.innerHTML = visibles.map(a => {
+    const bg = a.imagen
+      ? `background-image:url('${a.imagen}');background-size:cover;background-position:center;`
+      : "background:linear-gradient(135deg,#1a2a1a,#2d4a2d);";
+    return `
+      <a href="nota.html?id=${a.id}" class="negocio-card">
+        <div class="negocio-img" style="${bg}">
+          <span class="negocio-tag">${a.tag || 'Economía'}</span>
+        </div>
+        <div class="negocio-body">
+          <h3>${a.titulo}</h3>
+          <p>${a.bajada}</p>
+          <div class="negocio-meta">${a.meta || ''}</div>
+        </div>
+      </a>`;
+  }).join("");
+}
+
+fetch("negocios.json")
+  .then(r => r.json())
+  .then(data => renderNegocios(data))
   .catch(() => {});
 
 // ── INFORMES: carga desde propios.json (no afectado por el script diario) ──

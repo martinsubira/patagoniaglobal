@@ -686,14 +686,15 @@ const id = getParam("id");
 if (!id) {
   document.getElementById("loading").textContent = "Nota no encontrada.";
 } else {
-  // Busca en noticias.json, historias.json, propios.json, turismo.json y historial.json
+  // Busca en noticias.json, historias.json, propios.json, negocios.json, turismo.json y historial.json
   Promise.all([
     fetch("noticias.json").then(r => r.json()).catch(() => ({})),
     fetch("historias.json").then(r => r.json()).catch(() => ({})),
     fetch("propios.json").then(r => r.json()).catch(() => ([])),
     fetch("turismo.json").then(r => r.json()).catch(() => ([])),
-    fetch("historial.json").then(r => r.json()).catch(() => ([]))
-  ]).then(([noticias, historias, propios, turismo, historial]) => {
+    fetch("historial.json").then(r => r.json()).catch(() => ([])),
+    fetch("negocios.json").then(r => r.json()).catch(() => ([]))
+  ]).then(([noticias, historias, propios, turismo, historial, negocios]) => {
     let nota = buscarNota(noticias, id);
     let data = noticias;
     if (!nota && historias.notas) {
@@ -702,6 +703,9 @@ if (!id) {
     }
     if (!nota && Array.isArray(propios)) {
       nota = propios.find(n => n.id === id) || null;
+    }
+    if (!nota && Array.isArray(negocios)) {
+      nota = negocios.find(n => n.id === id) || null;
     }
     // Último recurso: buscar en historial completo (notas de deportes, manuales, etc.)
     if (!nota && Array.isArray(historial)) {
