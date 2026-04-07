@@ -1327,8 +1327,112 @@ def main():
     print(f"\n  Actualizando agenda...")
     actualizar_agenda(noticias_crudas)
 
+    # 9. Publicar en Telegram
+    print(f"\n  Publicando en Telegram...")
+    publicar_telegram(tapa)
+
     print(f"\n  ✓ Listo — {fecha_display()}")
     print(f"{'='*55}\n")
+
+
+# ══════════════════════════════════════════════════════════
+#  TELEGRAM
+# ══════════════════════════════════════════════════════════
+
+def _telegram_request(token, method, fields, file_path=None):
+    """Hace un POST a la API de Telegram. Si file_path está presente, sube la imagen."""
+    import http.client, uuid, mimetypes
+
+    boundary = uuid.uuid4().hex
+    lines = []
+
+    for key, val in fields.items():
+        lines += [
+            f"--{boundary}",
+            f'Content-Disposition: form-data; name="{key}"',
+            "",
+            str(val),
+        ]
+
+    if file_path and os.path.exists(file_path):
+        filename = os.path.basename(file_path)
+        mime     = mimetypes.guess_type(filename)[0] or "image/jpeg"
+        with open(file_path, "rb") as f:
+            img_bytes = f.read()
+        lines += [
+            f"--{boundary}",
+            f'Content-Disposition: form-data; name="photo"; filename="{filename}"',
+            f"Content-Type: {mime}",
+            "",
+        ]
+        body = ("\r\n".join(lines) + "\r\n").encode() + img_bytes + f"\r\n--{boundary}--\r\n".encode()
+    else:
+        lines.append(f"--{boundary}--")
+        body = "\r\n".join(lines).encode()
+
+    conn = http.client.HTTPSConnection("api.telegram.org", timeout=20)
+    conn.request(
+        "POST",
+        f"/bot{token}/{method}",
+        body,
+        {"Content-Type": f"multipart/form-data; boundary={boundary}"},
+    )
+    resp = conn.getresponse()
+    return json.loads(resp.read())
+
+
+def publicar_telegram(tapa):
+    """Publica la tapa del día en el canal de Telegram con foto."""
+    token   = os.environ.get("TELEGRAM_BOT_TOKEN", "")
+    channel = os.environ.get("TELEGRAM_CHANNEL_ID", "")
+    if not token or not channel:
+        print("  Telegram: sin credenciales, se omite.")
+        return
+
+    titulo  = tapa.get("titulo", "")
+    bajada  = tapa.get("bajada", "")
+    nota_id = tapa.get("id", "")
+    imagen  = tapa.get("imagen", "")
+    pais    = tapa.get("pais", "")
+    tag     = tapa.get("tag", "🗞️")
+
+    banderas = {"argentina": "🇦🇷", "chile": "🇨🇱", "ambos": "🇦🇷🇨🇱", "malvinas": "🗺️"}
+    bandera  = banderas.get(pais, "")
+    link     = f"https://globalpatagonia.org/nota.html?id={nota_id}"
+
+    # HTML es más seguro que Markdown para caracteres especiales
+    caption = (
+        f"{tag} {bandera}\n\n"
+        f"<b>{titulo}</b>\n\n"
+        f"{bajada}\n\n"
+        f'<a href="{link}">Leer nota completa →</a>\n\n'
+        f"<i>globalPATAGONIA · Sur Global, principio de todo.</i>"
+    )
+
+    ruta_img = os.path.join(os.path.dirname(__file__), imagen) if imagen else ""
+    ruta_img = ruta_img if os.path.exists(ruta_img) else ""
+
+    try:
+        if ruta_img:
+            resultado = _telegram_request(token, "sendPhoto", {
+                "chat_id":    channel,
+                "caption":    caption,
+                "parse_mode": "HTML",
+            }, file_path=ruta_img)
+        else:
+            resultado = _telegram_request(token, "sendMessage", {
+                "chat_id":                  channel,
+                "text":                     caption,
+                "parse_mode":               "HTML",
+                "disable_web_page_preview": "false",
+            })
+
+        if resultado.get("ok"):
+            print(f"  Telegram OK ✓ [{nota_id}]")
+        else:
+            print(f"  Telegram error: {resultado.get('description')}")
+    except Exception as e:
+        print(f"  Telegram falló: {e}")
 
 
 if __name__ == "__main__":
