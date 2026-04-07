@@ -56,12 +56,16 @@ FUENTES_RSS = [
     {"nombre": "La Nación",               "url": "https://www.lanacion.com.ar/arc/outboundfeeds/rss/",   "region": "Nacional"},
     {"nombre": "Infobae",                 "url": "https://www.infobae.com/feeds/rss/",                   "region": "Nacional"},
     {"nombre": "Clarín",                  "url": "https://www.clarin.com/rss/lo-ultimo/",                "region": "Nacional"},
+    # ── Chile · Nacional ──
+    {"nombre": "La Nación Chile",           "url": "https://www.lanacion.cl/feed/",                        "region": "Nacional Chile"},
     # ── Chile · Regionales ──
     {"nombre": "La Prensa Austral",       "url": "https://laprensaaustral.cl/feed/",                     "region": "Magallanes"},
     {"nombre": "El Divisadero",           "url": "https://www.eldivisadero.cl/feed/",                    "region": "Aysén"},
     {"nombre": "El Llanquihue",           "url": "https://www.elllanquihue.cl/feed/",                    "region": "Los Lagos"},
     {"nombre": "El Pingüino",             "url": "https://www.elpinguino.com/feed/",                     "region": "Magallanes"},
     {"nombre": "Diario de Valdivia",      "url": "https://www.diariodevaldivia.cl/feed/",                "region": "Los Ríos"},
+    # ── Islas Malvinas / Falkland Islands ──
+    {"nombre": "Penguin News",            "url": "https://penguin-news.com/feed/",                        "region": "Malvinas", "idioma": "en"},
 ]
 
 PALABRAS_CLAVE = [
@@ -114,6 +118,9 @@ PALABRAS_CLAVE = [
     # Cultura e historia
     "historia patagónica", "pionero", "inmigrante patagónico",
     "fiesta regional", "festival", "artista patagónico",
+    # Islas Malvinas / Falkland Islands
+    "malvinas", "falkland", "falklands", "stanley", "islas malvinas",
+    "soberanía malvinas", "atlántico sur",
     # Servicios cotidianos
     "clima", "alerta meteorológica", "viento", "nevada", "temporal",
 ]
@@ -284,7 +291,7 @@ URL: {n['url']}
     "categoria": "cultura|historia|pueblos originarios",
     "fuente": "...",
     "url_original": "url completa",
-    "pais": "argentina|chile|ambos",
+    "pais": "argentina|chile|ambos|malvinas",
     "imagen": null,
     "imagen_keywords": "2-3 palabras en español",
     "excluir_feed": true
@@ -298,7 +305,7 @@ URL: {n['url']}
     "categoria": "turismo",
     "fuente": "...",
     "url_original": "url completa",
-    "pais": "argentina|chile|ambos",
+    "pais": "argentina|chile|ambos|malvinas",
     "imagen": null,
     "imagen_keywords": "2-3 palabras en español",
     "excluir_feed": true
@@ -337,6 +344,8 @@ TAPA: si la misma historia aparece en múltiples medios, tiene prioridad automá
 
 DESCARTAR SIEMPRE: policiales, accidentes de tránsito, crónica roja, economía nacional sin anclaje patagónico, política sin efecto territorial concreto.
 
+FUENTES EN INGLÉS (Penguin News — Malvinas/Falkland Islands): las notas pueden llegar en inglés. Traducí y reescribí en español con voz propia. El campo "pais" para estas notas es "malvinas".
+
 Tenés estas noticias NUEVAS de hoy disponibles:
 {listado}
 
@@ -353,7 +362,7 @@ Devolvé EXACTAMENTE este JSON (sin texto adicional):
     "categoria": "medio ambiente|pueblos originarios|turismo|cultura|ciencia|producción|conectividad|bienestar|pesca|historia|general",
     "fuente": "Nombre del medio original",
     "url_original": "url completa",
-    "pais": "argentina|chile|ambos",
+    "pais": "argentina|chile|ambos|malvinas",
     "imagen": null,
     "imagen_keywords": "2-3 palabras en español"
   }},
@@ -367,7 +376,7 @@ Devolvé EXACTAMENTE este JSON (sin texto adicional):
       "categoria": "...",
       "fuente": "...",
       "url_original": "url completa",
-      "pais": "argentina|chile|ambos",
+      "pais": "argentina|chile|ambos|malvinas",
       "imagen": null,
       "imagen_keywords": "2-3 palabras en español"
     }},
@@ -380,7 +389,7 @@ Devolvé EXACTAMENTE este JSON (sin texto adicional):
       "categoria": "...",
       "fuente": "...",
       "url_original": "url completa",
-      "pais": "argentina|chile|ambos",
+      "pais": "argentina|chile|ambos|malvinas",
       "imagen": null,
       "imagen_keywords": "2-3 palabras en español"
     }}
@@ -394,7 +403,7 @@ Devolvé EXACTAMENTE este JSON (sin texto adicional):
     "categoria": "deportes",
     "fuente": "...",
     "url_original": "url completa",
-    "pais": "argentina|chile|ambos",
+    "pais": "argentina|chile|ambos|malvinas",
     "imagen": null,
     "imagen_keywords": "2-3 palabras en español",
     "excluir_feed": true
@@ -408,7 +417,7 @@ Devolvé EXACTAMENTE este JSON (sin texto adicional):
     "categoria": "economia",
     "fuente": "...",
     "url_original": "url completa",
-    "pais": "argentina|chile|ambos",
+    "pais": "argentina|chile|ambos|malvinas",
     "imagen": null,
     "imagen_keywords": "2-3 palabras en español",
     "excluir_feed": true
