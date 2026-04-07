@@ -509,9 +509,14 @@ def extraer_og_image(url_articulo, nota_id):
         if ext not in ("jpg", "jpeg", "png", "webp"):
             ext = "jpg"
 
-        filename   = f"foto-{nota_id}.{ext}"
-        ruta_local = os.path.join(os.path.dirname(__file__), "fotos", filename)
+        base_dir      = os.path.dirname(__file__)
+        filename      = f"foto-{nota_id}.{ext}"
+        filename_webp = f"foto-{nota_id}.webp"
+        ruta_local    = os.path.join(base_dir, "fotos", filename)
+        ruta_webp     = os.path.join(base_dir, "fotos", filename_webp)
 
+        if os.path.exists(ruta_webp):
+            return f"fotos/{filename_webp}"
         if os.path.exists(ruta_local):
             return f"fotos/{filename}"
 
@@ -524,7 +529,8 @@ def extraer_og_image(url_articulo, nota_id):
         with open(ruta_local, "wb") as f:
             f.write(contenido)
 
-        return f"fotos/{filename}"
+        ruta_final = _convertir_a_webp(ruta_local)
+        return f"fotos/{os.path.basename(ruta_final)}"
 
     except Exception as e:
         print(f"(og:image error: {e})")
@@ -699,15 +705,38 @@ def _recortar_banner(ruta_local):
         pass
 
 
+def _convertir_a_webp(ruta_original):
+    """Convierte una imagen a WebP, borra el original y retorna la nueva ruta.
+    Si falla o ya es WebP, retorna la ruta original sin cambios."""
+    if not ruta_original or ruta_original.endswith(".webp"):
+        return ruta_original
+    try:
+        from PIL import Image
+        ruta_webp = ruta_original.rsplit(".", 1)[0] + ".webp"
+        with Image.open(ruta_original) as img:
+            modo = "RGBA" if img.mode in ("RGBA", "LA", "P") else "RGB"
+            img.convert(modo).save(ruta_webp, "WEBP", quality=85, method=4)
+        os.remove(ruta_original)
+        return ruta_webp
+    except Exception:
+        return ruta_original
+
+
 def _descargar_imagen_externa(url_http, nota_id, sufijo=""):
     if not url_http or not url_http.startswith("http"):
         return None
     try:
+        base_dir = os.path.dirname(__file__)
         ext = url_http.split("?")[0].rsplit(".", 1)[-1].lower()
         if ext not in ("jpg", "jpeg", "png", "webp"):
             ext = "jpg"
-        filename   = f"foto-{nota_id}{sufijo}.{ext}"
-        ruta_local = os.path.join(os.path.dirname(__file__), "fotos", filename)
+        filename      = f"foto-{nota_id}{sufijo}.{ext}"
+        filename_webp = f"foto-{nota_id}{sufijo}.webp"
+        ruta_local    = os.path.join(base_dir, "fotos", filename)
+        ruta_webp     = os.path.join(base_dir, "fotos", filename_webp)
+        # Si ya existe la versión webp, usar esa directamente
+        if os.path.exists(ruta_webp):
+            return f"fotos/{filename_webp}"
         if os.path.exists(ruta_local):
             return f"fotos/{filename}"
         req = urllib.request.Request(url_http, headers={
@@ -720,7 +749,8 @@ def _descargar_imagen_externa(url_http, nota_id, sufijo=""):
         with open(ruta_local, "wb") as f:
             f.write(contenido)
         _recortar_banner(ruta_local)
-        return f"fotos/{filename}"
+        ruta_final = _convertir_a_webp(ruta_local)
+        return f"fotos/{os.path.basename(ruta_final)}"
     except Exception:
         return None
 
