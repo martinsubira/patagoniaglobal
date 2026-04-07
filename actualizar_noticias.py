@@ -361,9 +361,9 @@ Tu tarea — devolvé EXACTAMENTE este JSON (sin texto adicional):
   }}
 }}
 
-REGLA NEGOCIOS: la nota de negocios debe ser sobre empresas, producción, pesca, energía, comercio, turismo de negocios, o economía regional de la Patagonia. Debe ser distinta a la tapa y las secundarias. Si no hay ninguna nota de economía/empresas en el listado, poné null en "negocios".
+REGLA SECUNDARIAS: deben ser EXACTAMENTE 2, distintas a la tapa y entre sí. Categorías diferentes si es posible. NUNCA uses notas de deportes, aventura, trail, escalada, ski, kayak o natación como tapa ni secundarias — esas van exclusivamente a la sección DEPORTES Y AVENTURA. Solo usá una nota deportiva en tapa si es absolutamente el único tema relevante del día y no hay nada más.
 
-REGLA SECUNDARIAS: deben ser EXACTAMENTE 2, distintas a la tapa y entre sí. Categorías diferentes si es posible."""
+REGLA NEGOCIOS: la nota de negocios debe ser sobre empresas, producción, pesca, energía, comercio, turismo de negocios, o economía regional de la Patagonia. Debe ser distinta a la tapa y las secundarias. Si no hay ninguna nota de economía/empresas en el listado, poné null en "negocios"."""
 
     print("  Enviando a Claude para reescritura editorial...", end=" ", flush=True)
     try:
@@ -933,7 +933,7 @@ def es_propio(articulo):
     )
 
 
-def rotar_deportes(historial):
+def rotar_deportes(historial, excluir_ids=None):
     """
     Cascada diaria — 7 posiciones:
       nueva → principal
@@ -942,6 +942,7 @@ def rotar_deportes(historial):
       old secundarias[1] → row_cards[0]
       old row_cards[0..2] → row_cards[1..3]
       old row_cards[3] → eliminado
+    excluir_ids: IDs de notas recién usadas en tapa/secundarias (evita duplicados)
     """
     ruta = os.path.join(os.path.dirname(__file__), "deportes_feed.json")
     try:
@@ -956,10 +957,12 @@ def rotar_deportes(historial):
         | {c.get("id") for c in feed.get("row_cards", [])}
     ) - {None}
 
+    ids_excluir = ids_en_feed | (excluir_ids or set())
+
     cats_deportes = ("deportes", "aventura", "escalada", "trail", "ski", "kayak")
     nueva = None
     for art in historial:
-        if art.get("id") in ids_en_feed or es_propio(art):
+        if art.get("id") in ids_excluir or es_propio(art):
             continue
         if art.get("categoria", "").lower() in cats_deportes:
             nueva = art
@@ -1198,7 +1201,8 @@ def main():
     print(f"\n  Artículos nuevos en historial: {2 + len(secundarias)}")
 
     # 6. Rotaciones de secciones
-    rotar_deportes(historial)         # diario — cascada 7 posiciones
+    nuevos_ids = {tapa.get("id")} | {s.get("id") for s in secundarias}
+    rotar_deportes(historial, excluir_ids=nuevos_ids)   # diario — cascada 7 posiciones
     rotar_negocios(negocios) if negocios else print("  Negocios: sin nota nueva hoy.")
     rotar_cultura(historial)          # solo domingos — max 6
     rotar_turismo(historial)          # solo domingos — max 3
