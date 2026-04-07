@@ -233,13 +233,17 @@ def fetch_noticias_crudas():
 #  CLAUDE — REESCRITURA EDITORIAL
 # ══════════════════════════════════════════════════════════
 
-def reescribir_con_claude(noticias_crudas, historial):
+def reescribir_con_claude(noticias_crudas, historial, es_domingo=False):
     """
-    Claude elige y reescribe:
-      - 1 tapa (la historia con más cobertura / mayor impacto patagónico)
-      - exactamente 2 secundarias
-      - 1 nota de economía/empresas para la sección Negocios
-      - 5 titulares ticker
+    Claude elige y reescribe notas NUEVAS del RSS de hoy para cada sección:
+      - 1 tapa (la más cubierta por múltiples medios)
+      - 2 secundarias (no deportes)
+      - 1 deportes (para rotación diaria de Deportes y Aventura)
+      - 1 negocios (economía/empresas)
+      - 1 cultura (solo domingos)
+      - 1 turismo (solo domingos)
+      - 5 ticker
+    Todo viene del RSS de hoy — nunca de notas viejas.
     """
     if not noticias_crudas:
         print("  ⚠ No se encontraron noticias patagónicas.")
@@ -247,7 +251,7 @@ def reescribir_con_claude(noticias_crudas, historial):
 
     client = anthropic.Anthropic(api_key=API_KEY)
 
-    ya_publicadas  = urls_ya_publicadas(historial)
+    ya_publicadas   = urls_ya_publicadas(historial)
     noticias_nuevas = [n for n in noticias_crudas if n["url"] not in ya_publicadas]
     print(f"  Noticias nuevas (no publicadas aún): {len(noticias_nuevas)}")
 
@@ -255,7 +259,6 @@ def reescribir_con_claude(noticias_crudas, historial):
         print("  ⚠ No hay noticias nuevas para agregar hoy.")
         return None
 
-    # Agrupar por título similar para detectar cobertura múltiple
     listado = ""
     for i, n in enumerate(noticias_nuevas):
         listado += f"""
@@ -267,6 +270,42 @@ URL: {n['url']}
 """
 
     hoy = datetime.now().strftime('%Y%m%d-%H%M')
+
+    seccion_domingo = ""
+    if es_domingo:
+        seccion_domingo = f"""
+  "cultura": {{
+    "id": "{hoy}-cul",
+    "titulo": "Título (máx 12 palabras)",
+    "bajada": "Una oración con dato concreto",
+    "cuerpo": "Artículo completo con párrafos separados por \\n\\n (300-450 palabras)",
+    "tag": "🎭 Cultura",
+    "categoria": "cultura|historia|pueblos originarios",
+    "fuente": "...",
+    "url_original": "url completa",
+    "pais": "argentina|chile|ambos",
+    "imagen": null,
+    "imagen_keywords": "2-3 palabras en español",
+    "excluir_feed": true
+  }},
+  "turismo": {{
+    "id": "{hoy}-tur",
+    "titulo": "Título (máx 12 palabras)",
+    "bajada": "Una oración con dato concreto",
+    "cuerpo": "Artículo completo con párrafos separados por \\n\\n (300-450 palabras)",
+    "tag": "🏔 Turismo",
+    "categoria": "turismo",
+    "fuente": "...",
+    "url_original": "url completa",
+    "pais": "argentina|chile|ambos",
+    "imagen": null,
+    "imagen_keywords": "2-3 palabras en español",
+    "excluir_feed": true
+  }},"""
+    else:
+        seccion_domingo = """
+  "cultura": null,
+  "turismo": null,"""
 
     prompt = f"""Sos el editor jefe de globalPATAGONIA, el primer medio digital panpatagónico. Slogan: "Sur Global, principio de todo." Cobertura: Argentina y Chile sin fronteras.
 
@@ -280,28 +319,28 @@ IDENTIDAD EDITORIAL:
 CRITERIO DE SELECCIÓN:
 ✓ Medio Ambiente: glaciares, agua, fauna, ecosistemas, legislación ambiental, especies invasoras, contaminación
 ✓ Pueblos Originarios: Mapuche, Tehuelche, Kawésqar, Selknam — territorio, derechos, cultura viva
-✓ Deportes Patagónicos: trail, escalada, kayak, ski, triatlón, expediciones, carreras aventura
+✓ Deportes Patagónicos: trail, escalada, kayak, ski, triatlón, expediciones, natación, carreras aventura
 ✓ Desarrollo & Producción: economía regional, pesca, ganadería, energía, infraestructura, conectividad
 ✓ Cultura: arte, música, identidad, historia, gastronomía, fiestas regionales, pioneros
 ✓ Ciencia & Tecnología: hallazgos CONICET, paleontología, innovación aplicada al territorio
 ✓ Turismo & Guías: destinos, temporadas, premios internacionales a Patagonia
+✓ Negocios: empresas, producción, pesca comercial, energía, comercio, economía regional
 
 PRIORIDADES para la TAPA — orden estricto:
-1. MEDIO AMBIENTE CRÍTICO: glaciares, pesca ilegal en ZEE, incendios, especies en peligro, contaminación → TAPA AUTOMÁTICA.
+1. MEDIO AMBIENTE CRÍTICO: glaciares, pesca ilegal en ZEE, incendios, especies en peligro → TAPA AUTOMÁTICA.
 2. PUEBLOS ORIGINARIOS: cualquier nota sobre comunidades originarias patagónicas con hecho concreto.
-3. DEPORTES ÚNICOS: premios internacionales, expediciones históricas.
-4. PRODUCCIÓN CON IDENTIDAD: historia de productor patagónico, primer hito económico local.
-5. TURISMO & CULTURA: destinos, fiestas regionales, artistas, premiaciones.
-6. DESARROLLO: infraestructura, conectividad, energía con impacto concreto.
+3. PRODUCCIÓN CON IDENTIDAD: historia de productor patagónico, primer hito económico local.
+4. TURISMO & CULTURA: destinos, fiestas regionales, artistas, premiaciones.
+5. DESARROLLO: infraestructura, conectividad, energía con impacto concreto.
+TAPA: si la misma historia aparece en múltiples medios, tiene prioridad automática.
 
-CRITERIO DE RELEVANCIA PARA TAPA: elegí la historia que aparece en más fuentes distintas o que tiene mayor impacto regional. Si la misma historia aparece en múltiples medios, es señal de alta relevancia.
+DESCARTAR SIEMPRE: policiales, accidentes de tránsito, crónica roja, economía nacional sin anclaje patagónico, política sin efecto territorial concreto.
 
-DESCARTAR SIEMPRE: policiales, accidentes de tránsito, crónica roja, economía nacional sin anclaje patagónico, política porteña sin efecto territorial.
-
-Tenés estas noticias nuevas disponibles hoy:
+Tenés estas noticias NUEVAS de hoy disponibles:
 {listado}
 
-Tu tarea — devolvé EXACTAMENTE este JSON (sin texto adicional):
+Tu tarea — elegí notas DISTINTAS para cada sección (sin repetir la misma URL en dos secciones).
+Devolvé EXACTAMENTE este JSON (sin texto adicional):
 {{
   "ticker": ["titular corto 1", "titular corto 2", "titular corto 3", "titular corto 4", "titular corto 5"],
   "tapa": {{
@@ -310,12 +349,12 @@ Tu tarea — devolvé EXACTAMENTE este JSON (sin texto adicional):
     "bajada": "Bajada con contexto y ángulo propio (2-3 oraciones)",
     "cuerpo": "Artículo completo con párrafos separados por \\n\\n (350-500 palabras)",
     "tag": "emoji + categoría",
-    "categoria": "medio ambiente|pueblos originarios|deportes|turismo|cultura|ciencia|producción|conectividad|bienestar|pesca|historia|general",
+    "categoria": "medio ambiente|pueblos originarios|turismo|cultura|ciencia|producción|conectividad|bienestar|pesca|historia|general",
     "fuente": "Nombre del medio original",
     "url_original": "url completa",
     "pais": "argentina|chile|ambos",
     "imagen": null,
-    "imagen_keywords": "2-3 palabras en español para buscar foto (ej: glaciar patagonia, trail running montaña)"
+    "imagen_keywords": "2-3 palabras en español"
   }},
   "secundarias": [
     {{
@@ -345,6 +384,20 @@ Tu tarea — devolvé EXACTAMENTE este JSON (sin texto adicional):
       "imagen_keywords": "2-3 palabras en español"
     }}
   ],
+  "deportes": {{
+    "id": "{hoy}-dep",
+    "titulo": "Título (máx 12 palabras)",
+    "bajada": "Una oración con dato concreto",
+    "cuerpo": "Artículo completo con párrafos separados por \\n\\n (300-450 palabras)",
+    "tag": "🏃 Deportes",
+    "categoria": "deportes",
+    "fuente": "...",
+    "url_original": "url completa",
+    "pais": "argentina|chile|ambos",
+    "imagen": null,
+    "imagen_keywords": "2-3 palabras en español",
+    "excluir_feed": true
+  }},{seccion_domingo}
   "negocios": {{
     "id": "{hoy}-neg",
     "titulo": "Título sobre economía/empresas patagónicas (máx 12 palabras)",
@@ -361,9 +414,12 @@ Tu tarea — devolvé EXACTAMENTE este JSON (sin texto adicional):
   }}
 }}
 
-REGLA SECUNDARIAS: deben ser EXACTAMENTE 2, distintas a la tapa y entre sí. Categorías diferentes si es posible. NUNCA uses notas de deportes, aventura, trail, escalada, ski, kayak o natación como tapa ni secundarias — esas van exclusivamente a la sección DEPORTES Y AVENTURA. Solo usá una nota deportiva en tapa si es absolutamente el único tema relevante del día y no hay nada más.
-
-REGLA NEGOCIOS: la nota de negocios debe ser sobre empresas, producción, pesca, energía, comercio, turismo de negocios, o economía regional de la Patagonia. Debe ser distinta a la tapa y las secundarias. Si no hay ninguna nota de economía/empresas en el listado, poné null en "negocios"."""
+REGLAS CRÍTICAS:
+- TAPA y SECUNDARIAS: nunca deportes, aventura, trail, escalada, ski, kayak, natación — esos van solo a "deportes".
+- Cada sección debe usar una noticia DISTINTA (URLs diferentes).
+- Si no hay nota de deportes disponible hoy, poné null en "deportes".
+- Si no hay nota de economía/empresas, poné null en "negocios".
+{"- HOY ES DOMINGO: completar cultura y turismo con notas del RSS de hoy." if es_domingo else "- Hoy no es domingo: cultura y turismo van en null."}"""
 
     print("  Enviando a Claude para reescritura editorial...", end=" ", flush=True)
     try:
@@ -969,17 +1025,20 @@ def es_propio(articulo):
     )
 
 
-def rotar_deportes(historial, excluir_ids=None):
+def rotar_deportes(nota):
     """
-    Cascada diaria — 7 posiciones:
+    Cascada diaria — 7 posiciones. Recibe la nota fresca reescrita por Claude hoy.
       nueva → principal
       old principal → secundarias[0]
       old secundarias[0] → secundarias[1]
       old secundarias[1] → row_cards[0]
       old row_cards[0..2] → row_cards[1..3]
       old row_cards[3] → eliminado
-    excluir_ids: IDs de notas recién usadas en tapa/secundarias (evita duplicados)
     """
+    if not nota:
+        print("  Deportes: sin nota nueva para rotar hoy.")
+        return
+
     ruta = os.path.join(os.path.dirname(__file__), "deportes_feed.json")
     try:
         with open(ruta, encoding="utf-8") as f:
@@ -987,20 +1046,7 @@ def rotar_deportes(historial, excluir_ids=None):
     except Exception:
         return
 
-    ids_excluir = ids_publicados_en_secciones() | (excluir_ids or set())
-
-    cats_deportes = ("deportes", "aventura", "escalada", "trail", "ski", "kayak")
-    nueva = None
-    for art in historial:
-        if art.get("id") in ids_excluir or es_propio(art):
-            continue
-        if art.get("categoria", "").lower() in cats_deportes:
-            nueva = art
-            break
-
-    if not nueva:
-        print("  Deportes: sin nota nueva para rotar hoy.")
-        return
+    nueva = nota
 
     def to_card(art):
         return {
@@ -1075,12 +1121,12 @@ def rotar_negocios(nota):
     print(f"  Negocios rotado: [{nota.get('id')}] '{nota.get('titulo','')[:55]}…'")
 
 
-def rotar_cultura(historial):
+def rotar_cultura(nota):
     """
-    Domingos: agrega nota de cultura/pueblos originarios al frente de cultura.json.
+    Domingos: agrega la nota fresca de Claude al frente de cultura.json.
     Mantiene máximo 6 (posiciones 1,2,3,5,6,7).
     """
-    if datetime.now().weekday() != 6:   # 6 = domingo
+    if not nota:
         return
 
     ruta = os.path.join(os.path.dirname(__file__), "cultura.json")
@@ -1090,46 +1136,29 @@ def rotar_cultura(historial):
     except Exception:
         cultura_actual = []
 
-    ids_excluir = ids_publicados_en_secciones()
-
-    cats_cultura = ("cultura", "historia", "pueblos originarios")
-    nueva = None
-    for art in historial:
-        if art.get("id") in ids_excluir:
-            continue
-        if es_propio(art):
-            continue
-        if art.get("categoria", "").lower() in cats_cultura:
-            nueva = art
-            break
-
-    if not nueva:
-        print("  Cultura: sin nota nueva para rotar este domingo.")
-        return
-
     entrada = {
-        "id":        nueva["id"],
-        "titulo":    nueva["titulo"],
-        "bajada":    nueva.get("bajada", ""),
-        "imagen":    nueva.get("imagen", ""),
-        "tag":       nueva.get("tag", "🎭 Cultura"),
-        "categoria": nueva.get("categoria", "cultura"),
-        "meta":      nueva.get("meta", ""),
-        "pais":      nueva.get("pais", "argentina"),
+        "id":        nota["id"],
+        "titulo":    nota["titulo"],
+        "bajada":    nota.get("bajada", ""),
+        "imagen":    nota.get("imagen", ""),
+        "tag":       nota.get("tag", "🎭 Cultura"),
+        "categoria": nota.get("categoria", "cultura"),
+        "meta":      nota.get("meta", ""),
+        "pais":      nota.get("pais", "argentina"),
     }
 
     cultura_nuevo = [entrada] + cultura_actual[:5]   # max 6
     with open(ruta, "w", encoding="utf-8") as f:
         json.dump(cultura_nuevo, f, ensure_ascii=False, indent=2)
-    print(f"  Cultura rotada (domingo): [{nueva['id']}] '{nueva['titulo'][:60]}…'")
+    print(f"  Cultura rotada (domingo): [{nota['id']}] '{nota['titulo'][:60]}…'")
 
 
-def rotar_turismo(historial):
+def rotar_turismo(nota):
     """
-    Domingos: agrega nota de turismo al frente de turismo.json.
+    Domingos: agrega la nota fresca de Claude al frente de turismo.json.
     Mantiene máximo 3 (posiciones 1, 2, 3).
     """
-    if datetime.now().weekday() != 6:   # 6 = domingo
+    if not nota:
         return
 
     ruta = os.path.join(os.path.dirname(__file__), "turismo.json")
@@ -1139,35 +1168,20 @@ def rotar_turismo(historial):
     except Exception:
         turismo_actual = []
 
-    ids_excluir = ids_publicados_en_secciones()
-
-    nueva = None
-    for art in historial:
-        if art.get("id") in ids_excluir or es_propio(art):
-            continue
-        cat = art.get("categoria", "").lower()
-        if cat in ("turismo", "turismo y guías", "guías"):
-            nueva = art
-            break
-
-    if not nueva:
-        print("  Turismo: sin nota nueva para rotar este domingo.")
-        return
-
     entrada = {
-        "id":           nueva["id"],
+        "id":           nota["id"],
         "badge":        "TURISMO",
-        "titulo":       nueva["titulo"],
-        "bajada":       nueva.get("bajada", ""),
-        "imagen":       nueva.get("imagen", ""),
-        "meta":         nueva.get("meta", ""),
-        "url_original": nueva.get("url_original", ""),
+        "titulo":       nota["titulo"],
+        "bajada":       nota.get("bajada", ""),
+        "imagen":       nota.get("imagen", ""),
+        "meta":         nota.get("meta", ""),
+        "url_original": nota.get("url_original", ""),
     }
 
     turismo_nuevo = [entrada] + turismo_actual[:2]   # max 3
     with open(ruta, "w", encoding="utf-8") as f:
         json.dump(turismo_nuevo, f, ensure_ascii=False, indent=2)
-    print(f"  Turismo rotado (domingo): [{nueva['id']}] '{nueva['titulo'][:60]}…'")
+    print(f"  Turismo rotado (domingo): [{nota['id']}] '{nota['titulo'][:60]}…'")
 
 
 # ══════════════════════════════════════════════════════════
@@ -1179,30 +1193,37 @@ def main():
     historial     = cargar_historial()
     noticias_prev = cargar_noticias_previas()
 
-    prev_tapa       = noticias_prev.get("tapa")
+    prev_tapa        = noticias_prev.get("tapa")
     prev_secundarias = noticias_prev.get("secundarias", [])
-    prev_noticias   = noticias_prev.get("noticias", [])
+    prev_noticias    = noticias_prev.get("noticias", [])
 
+    es_domingo = datetime.now().weekday() == 6
     print(f"\n  Historial actual: {len(historial)} artículos")
+    if es_domingo:
+        print("  Hoy es domingo — se actualizan Cultura y Turismo")
 
     # 2. Obtener noticias crudas de RSS
     noticias_crudas = fetch_noticias_crudas()
 
-    # 3. Claude elige y reescribe: tapa + 2 secundarias + 1 negocios + ticker
-    resultado = reescribir_con_claude(noticias_crudas, historial)
+    # 3. Claude elige y reescribe notas FRESCAS del RSS para cada sección
+    resultado = reescribir_con_claude(noticias_crudas, historial, es_domingo=es_domingo)
     if not resultado:
         print("\n  ✗ No se generaron artículos nuevos.\n")
         sys.exit(1)
 
-    tapa       = resultado.get("tapa", {})
+    tapa        = resultado.get("tapa", {})
     secundarias = resultado.get("secundarias", [])[:2]
-    negocios   = resultado.get("negocios")
-    ticker     = resultado.get("ticker", [])
+    deportes    = resultado.get("deportes")
+    negocios    = resultado.get("negocios")
+    cultura     = resultado.get("cultura") if es_domingo else None
+    turismo     = resultado.get("turismo") if es_domingo else None
+    ticker      = resultado.get("ticker", [])
 
-    # 4. Resolver imágenes (tapa + secundarias + negocios si existe)
+    # 4. Resolver imágenes para todas las notas frescas
     notas_con_imagen = [tapa] + secundarias
-    if negocios:
-        notas_con_imagen.append(negocios)
+    for n in [deportes, negocios, cultura, turismo]:
+        if n:
+            notas_con_imagen.append(n)
 
     fotos_propias = fotos_propias_disponibles()
     if fotos_propias:
@@ -1224,17 +1245,16 @@ def main():
                 nota["galeria"] = galeria
                 print(f"    [{nota['id']}] galería: {len(galeria)} foto(s)")
 
-    # 5. Agregar tapa + secundarias al historial
+    # 5. Agregar al historial solo tapa + secundarias (las de sección van directo a su JSON)
     historial = [tapa] + secundarias + historial
     guardar_historial(historial)
-    print(f"\n  Artículos nuevos en historial: {2 + len(secundarias)}")
+    print(f"\n  Artículos nuevos en historial: {1 + len(secundarias)}")
 
-    # 6. Rotaciones de secciones
-    nuevos_ids = {tapa.get("id")} | {s.get("id") for s in secundarias}
-    rotar_deportes(historial, excluir_ids=nuevos_ids)   # diario — cascada 7 posiciones
-    rotar_negocios(negocios) if negocios else print("  Negocios: sin nota nueva hoy.")
-    rotar_cultura(historial)          # solo domingos — max 6
-    rotar_turismo(historial)          # solo domingos — max 3
+    # 6. Rotaciones — cada sección recibe su nota fresca de Claude
+    rotar_deportes(deportes)
+    rotar_negocios(negocios) if negocios else print("  Negocios: sin nota de economía hoy.")
+    rotar_cultura(cultura)   # solo si es_domingo y cultura no es None
+    rotar_turismo(turismo)   # solo si es_domingo y turismo no es None
 
     # 7. Construir noticias.json con rotación de tapa
     datos = construir_noticias_json(
