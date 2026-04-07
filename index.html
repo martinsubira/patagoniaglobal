@@ -213,7 +213,43 @@
       font-weight: 700;
       color: var(--verde);
       white-space: nowrap;
+      margin: 0;
     }
+
+    .sr-only {
+      position: absolute;
+      width: 1px; height: 1px;
+      padding: 0; margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* ── HAMBURGER ── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 10px 16px;
+      margin-left: auto;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: rgba(255,255,255,0.85);
+      border-radius: 2px;
+      transition: all 0.25s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-links { display: flex; }
 
     .section-line {
       flex: 1;
@@ -291,7 +327,7 @@
       border-radius: 2px;
     }
 
-    .nota-overlay h2 {
+    .nota-overlay h3 {
       font-family: 'Playfair Display', serif;
       font-size: 28px;
       font-weight: 700;
@@ -317,7 +353,7 @@
     .nota-secundaria .nota-overlay {
       padding: 20px 16px 16px;
     }
-    .nota-secundaria .nota-overlay h2 {
+    .nota-secundaria .nota-overlay h3 {
       font-size: 17px;
       display: -webkit-box;
       -webkit-line-clamp: 3;
@@ -954,10 +990,19 @@
       .logo-img { height: 110px; }
       .logo-sub { font-size: 10px; letter-spacing: 2px; }
 
-      /* Nav scrollable horizontal */
-      nav { justify-content: flex-start; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
-      nav::-webkit-scrollbar { display: none; }
-      nav a { font-size: 11px; padding: 12px 14px; white-space: nowrap; flex-shrink: 0; }
+      /* Nav hamburger */
+      nav { flex-wrap: wrap; justify-content: flex-start; position: relative; }
+      .hamburger { display: flex; }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: var(--verde);
+        border-top: 1px solid rgba(255,255,255,0.1);
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { font-size: 13px; padding: 14px 20px; border-bottom: 1px solid rgba(255,255,255,0.07); border-bottom-width: 0; }
+      .nav-links a:not(:last-child) { border-bottom-width: 1px; }
 
       /* Ticker */
       .ticker-label { padding: 2px 10px; font-size: 9px; }
@@ -982,15 +1027,15 @@
       .noticia-card h3 { font-size: 15px; }
 
       /* Tapa overlay */
-      .nota-overlay h2 { font-size: 20px; }
+      .nota-overlay h3 { font-size: 20px; }
       .nota-overlay p { font-size: 13px; }
     }
 
     @media (max-width: 480px) {
       .logo-img { height: 80px; }
       .logo-tagline { font-size: 9px; letter-spacing: 3px; }
-      nav a { font-size: 10px; padding: 11px 12px; }
-      .nota-overlay h2 { font-size: 17px; line-height: 1.3; }
+      .nav-links a { font-size: 13px; padding: 14px 20px; }
+      .nota-overlay h3 { font-size: 17px; line-height: 1.3; }
       .hist-card, .guia-card { font-size: 13px; }
     }
   </style>
@@ -1005,20 +1050,26 @@
     <span class="clima">🌤 Bariloche 12° · Neuquén 18° · Punta Arenas 8° · Puerto Montt 14°</span>
   </div>
   <div class="header-main">
+    <h1 class="sr-only">globalPATAGONIA — Noticias de la Patagonia Argentina y Chilena</h1>
     <div class="logo-tagline">Sur Global, principio de todo.</div>
     <img src="logo-globalpatagonia.png" alt="globalPATAGONIA" class="logo-img">
     <div class="logo-sub">Argentina · Chile · Sin fronteras</div>
   </div>
   <nav>
-    <a href="#inicio" class="active">Inicio</a>
-    <a href="#sec-noticias">Noticias</a>
-    <a href="#sec-deportes">Deportes & Aventura</a>
-    <a href="#sec-turismo">Turismo en Patagonia</a>
-    <a href="#sec-guias">Guías</a>
-    <a href="#sec-negocios">Economía</a>
-    <a href="#sec-historia">Cultura Patagónica</a>
-    <a href="agenda.html">Agenda</a>
-    <a href="videos.html">Cinemateca</a>
+    <button class="hamburger" id="hamburger-btn" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="nav-links">
+      <a href="#inicio" class="active">Inicio</a>
+      <a href="#sec-noticias">Noticias</a>
+      <a href="#sec-deportes">Deportes & Aventura</a>
+      <a href="#sec-turismo">Turismo en Patagonia</a>
+      <a href="#sec-guias">Guías</a>
+      <a href="#sec-negocios">Economía</a>
+      <a href="#sec-historia">Cultura Patagónica</a>
+      <a href="agenda.html">Agenda</a>
+      <a href="videos.html">Cinemateca</a>
+    </div>
   </nav>
 </header>
 
@@ -1035,7 +1086,7 @@
 
   <!-- ══ TAPA ══ -->
   <div class="section-header">
-    <div class="section-title">Nota de Tapa</div>
+    <h2 class="section-title">Nota de Tapa</h2>
     <div class="section-line"></div>
     <div class="section-badge badge-verde">Hoy</div>
   </div>
@@ -1046,7 +1097,7 @@
       <div class="img-placeholder" style="background-image:url('https://images.unsplash.com/photo-1531761535209-180857e963b9?w=1000&q=85&fit=crop&crop=center');background-size:cover;background-position:center;"></div>
       <div class="nota-overlay">
         <div class="tag">🎯 Nota principal</div>
-        <h2>El Fitz Roy vuelve a ser la meca del andinismo mundial: temporada récord de expediciones</h2>
+        <h3>El Fitz Roy vuelve a ser la meca del andinismo mundial: temporada récord de expediciones</h3>
         <p>Más de 200 equipos de 40 países se registraron esta temporada en El Chaltén. La mística del granito patagónico sigue atrayendo a los mejores escaladores del planeta.</p>
       </div>
     </div>
@@ -1056,7 +1107,7 @@
       <div class="img-placeholder nota-sec-1" style="background-image:url('https://images.unsplash.com/photo-1498036882173-b41c28a8ba34?w=700&q=80&fit=crop&crop=center');background-size:cover;background-position:center;"></div>
       <div class="nota-overlay">
         <div class="tag">🐟 Pesca</div>
-        <h2>El Limay bate récords: temporada histórica de trucha marrón</h2>
+        <h3>El Limay bate récords: temporada histórica de trucha marrón</h3>
         <p>Guías y pescadores reportan capturas inusuales en todo el recorrido del río.</p>
       </div>
     </div>
@@ -1066,7 +1117,7 @@
       <div class="img-placeholder nota-sec-2" style="background-image:url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=700&q=80&fit=crop&crop=center');background-size:cover;background-position:center;"></div>
       <div class="nota-overlay">
         <div class="tag">🌿 Medio Ambiente</div>
-        <h2>Alerta en la Patagonia chilena: sequía afecta los glaciares del Parque Pumalín</h2>
+        <h3>Alerta en la Patagonia chilena: sequía afecta los glaciares del Parque Pumalín</h3>
         <p>Científicos de ambos países monitorean el retroceso acelerado del hielo.</p>
       </div>
     </div>
@@ -1074,7 +1125,7 @@
 
   <!-- ══ NOTICIAS DEL DÍA ══ -->
   <div id="sec-noticias" class="section-header" style="margin-top:28px">
-    <div class="section-title">Noticias de la Semana</div>
+    <h2 class="section-title">Noticias de la Semana</h2>
     <div class="section-line"></div>
     <div class="section-badge badge-azul">Diario</div>
   </div>
@@ -1118,7 +1169,7 @@
 
   <!-- ══ INFORMES ══ -->
   <div id="sec-pesca" class="section-header">
-    <div class="section-title">Informes</div>
+    <h2 class="section-title">Informes</h2>
     <div class="section-line"></div>
     <div class="section-badge badge-verde">En profundidad</div>
   </div>
@@ -1131,7 +1182,7 @@
 
   <!-- ══ DEPORTES PATAGÓNICOS ══ -->
   <div id="sec-deportes" class="section-header">
-    <div class="section-title">Deportes & Aventura</div>
+    <h2 class="section-title">Deportes & Aventura</h2>
     <div class="section-line"></div>
     <div class="section-badge" style="background:#7a2020;color:#f4a0a0;">Cumbres · Rescates · Expediciones</div>
   </div>
@@ -1212,7 +1263,7 @@
   <!-- ══ GUÍAS Y TURISMO ══ -->
   <!-- ══ TURISMO EN PATAGONIA ══ -->
   <div id="sec-turismo" class="section-header">
-    <div class="section-title">Turismo en Patagonia</div>
+    <h2 class="section-title">Turismo en Patagonia</h2>
     <div class="section-line"></div>
     <div class="section-badge badge-azul">Guías · El Dato · Lugares</div>
   </div>
@@ -1226,7 +1277,7 @@
 
   <!-- ══ GUIAS ══ -->
   <div id="sec-guias" class="section-header">
-    <div class="section-title">Guías</div>
+    <h2 class="section-title">Guías</h2>
     <div class="section-line"></div>
     <div class="section-badge badge-azul">Planes & Consejos</div>
   </div>
@@ -1239,7 +1290,7 @@
 
   <!-- ══ ECONOMÍA & EMPRESAS ══ -->
   <div id="sec-negocios" class="section-header">
-    <div class="section-title">Economía & Empresas</div>
+    <h2 class="section-title">Economía & Empresas</h2>
     <div class="section-line"></div>
     <div class="section-badge badge-azul">Negocios & Inversión</div>
   </div>
@@ -1252,7 +1303,7 @@
 
   <!-- ══ HISTORIA & CULTURA ══ -->
   <div id="sec-historia" class="section-header">
-    <div class="section-title">Cultura Patagónica & Pueblos Originarios</div>
+    <h2 class="section-title">Cultura Patagónica & Pueblos Originarios</h2>
     <div class="section-line"></div>
     <div class="section-badge badge-dorado">Notas de la semana</div>
   </div>
@@ -1440,7 +1491,7 @@ function renderTapa(data) {
       <div class="${tapaCls}" style="width:100%;height:480px;display:block;${tapaBg}"></div>
       <div class="nota-overlay">
         <div class="tag">${t.tag || '🗞️ Tapa'}</div>
-        <h2>${t.titulo}</h2>
+        <h3>${t.titulo}</h3>
         <p>${bandera(t.pais)}${t.bajada}</p>
       </div>
     </div>`;
@@ -1455,7 +1506,7 @@ function renderTapa(data) {
       <div class="img-placeholder ${cls}" style="width:100%;height:238px;${bg}"></div>
       <div class="nota-overlay">
         <div class="tag">${n.tag || '🗞️ Noticias'}</div>
-        <h2>${n.titulo}</h2>
+        <h3>${n.titulo}</h3>
         <p>${bandera(n.pais)}${n.bajada || ''}</p>
       </div>
     </div>`;
@@ -1674,6 +1725,27 @@ fetch("propios.json")
   .then(r => r.json())
   .then(data => renderInformes(data))
   .catch(() => {});
+</script>
+<script>
+  // ── HAMBURGER MENU ──
+  const hamburgerBtn = document.getElementById('hamburger-btn');
+  const navLinks = document.getElementById('nav-links');
+  if (hamburgerBtn && navLinks) {
+    hamburgerBtn.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      hamburgerBtn.classList.toggle('open', open);
+      hamburgerBtn.setAttribute('aria-expanded', open);
+      hamburgerBtn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+    });
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        hamburgerBtn.classList.remove('open');
+        hamburgerBtn.setAttribute('aria-expanded', 'false');
+        hamburgerBtn.setAttribute('aria-label', 'Abrir menú');
+      });
+    });
+  }
 </script>
 </body>
 </html>
