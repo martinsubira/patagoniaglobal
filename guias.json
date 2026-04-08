@@ -132,7 +132,7 @@
                     { "titulo": "History & culture", "texto": "Founded officially in 1902, the city developed from trade between Chile and Argentina. Migration from Switzerland, Germany, and northern Italy shaped its alpine architectural style. Bariloche gained prominence after the construction of Nahuel Huapi National Park (1934) and improved transport links in the mid-20th century." },
                     { "titulo": "Climate", "texto": "Cool oceanic to alpine climate, with cold, snowy winters and mild, windy summers. Average temperatures range from −1 °C in July to 15 °C in January, making it a year-round destination for snow sports and nature tourism." }
                   ],
-                  "imagenes": ["https://upload.wikimedia.org/wikipedia/commons/6/68/Basecat.JPG"]
+                  "imagenes": ["fotos/guia-bariloche-nahuel-huapi.webp"]
                 }
               },
               { "label": "Cross into Chile via Cardenal Samoré Pass" },
@@ -153,7 +153,7 @@
             ],
             "best_for": "First-time visitors",
             "duracion": "7–10 days",
-            "imagenes": ["fotos/bariloche-lago-nahuel-huapi.jpg", "", ""]
+            "imagenes": ["fotos/guia-bariloche-nahuel-huapi.webp", "", ""]
           },
           {
             "h3": "Glacier & Trekking Route",
