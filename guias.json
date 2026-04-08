@@ -179,7 +179,7 @@
                     { "titulo": "Tourism & economy", "texto": "Tourism dominates Ushuaia's economy, fueled by Antarctic cruises, hiking, skiing, and wildlife excursions. Nearby attractions include Tierra del Fuego National Park, the End of the World Train, and the Beagle Channel's penguin colonies." },
                     { "titulo": "Culture & identity", "texto": "Ushuaia's identity blends indigenous heritage, pioneer history, and frontier symbolism. Its nickname 'El Fin del Mundo' is a defining cultural brand, attracting travelers seeking remote landscapes and scientific expeditions to the Antarctic." }
                   ],
-                  "imagenes": ["fotos/ushuaia-ciudad-montana.jpg"]
+                  "imagenes": ["fotos/guia-ushuaia-canal-beagle.webp"]
                 }
               },
               { "label": "Explore Tierra del Fuego National Park" },
@@ -201,7 +201,7 @@
             ],
             "best_for": "Advanced travelers",
             "duracion": "2–3 weeks",
-            "imagenes": ["fotos/ushuaia-ciudad-montana.jpg", "", ""]
+            "imagenes": ["fotos/guia-ushuaia-canal-beagle.webp", "", ""]
           }
         ]
       },
