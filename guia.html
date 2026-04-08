@@ -358,15 +358,20 @@
     .ruta-puntos li::before { content: '→'; position: absolute; left: 0; color: var(--azul-claro); font-weight: 700; }
     .ruta-meta { display: flex; gap: 20px; font-size: 13px; color: #5a6070; flex-wrap: wrap; }
     /* Expandable destination cards */
+    .ruta-puntos li:has(.punto-btn) { padding: 4px 0; border-bottom: none; }
+    .ruta-puntos li:has(.punto-btn)::before { display: none; }
     .punto-btn {
-      background: none; border: none; cursor: pointer; width: 100%;
-      text-align: left; padding: 5px 0 5px 20px; position: relative;
-      font-size: 14px; color: #3a3a3a; border-bottom: 1px solid #f0ede8;
+      background: #eef4f8; border: 1px solid #d4e4ef; border-radius: 5px;
+      cursor: pointer; width: 100%; text-align: left; padding: 9px 12px;
+      font-size: 14px; color: var(--verde); font-weight: 600;
       display: flex; align-items: center; justify-content: space-between;
+      transition: background 0.15s, border-color 0.15s;
     }
-    .punto-btn::before { content: '→'; position: absolute; left: 0; color: var(--azul-claro); font-weight: 700; }
-    .punto-btn.has-detalle { color: var(--verde); font-weight: 500; }
-    .punto-btn .expand-icon { font-size: 11px; color: var(--azul-claro); transition: transform 0.2s; margin-right: 4px; }
+    .punto-btn:hover { background: #d9ecf7; border-color: var(--azul-claro); }
+    .punto-btn .expand-icon {
+      font-size: 18px; color: var(--azul-claro); transition: transform 0.2s;
+      flex-shrink: 0; margin-left: 8px; line-height: 1;
+    }
     .punto-btn.open .expand-icon { transform: rotate(90deg); }
     .destino-panel {
       display: none; background: #f8f7f5; border-radius: 6px;
