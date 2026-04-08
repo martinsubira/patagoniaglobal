@@ -158,7 +158,115 @@
           {
             "h3": "Glacier & Trekking Route",
             "badge": "Most Popular",
-            "puntos": ["El Chaltén", "El Calafate", "Cross border → Torres del Paine National Park"],
+            "puntos": [
+              {
+                "label": "El Chaltén",
+                "detalle": {
+                  "pais": "Argentina",
+                  "region": "Santa Cruz — Los Glaciares National Park",
+                  "hechos": {
+                    "Founded": "1985",
+                    "Population": "~1,600 (seasonal)",
+                    "Elevation": "400 m / 1,300 ft",
+                    "Distance": "220 km north of El Calafate"
+                  },
+                  "descripcion": "A small mountain village beneath Monte Fitz Roy and Cerro Torre — internationally known as Argentina's trekking capital. Nestled at the confluence of the Río de las Vueltas and Río Fitz Roy, it sits within Los Glaciares National Park surrounded by glacial lakes, lenga forests, and rugged granite spires.",
+                  "info": [
+                    {
+                      "titulo": "Top hikes",
+                      "texto": "Laguna de los Tres (full-day, panoramic views of Fitz Roy), Laguna Torre (Cerro Torre base), Loma del Pliegue Tumbado (360° views). Multi-day expeditions possible for experienced trekkers."
+                    },
+                    {
+                      "titulo": "History",
+                      "texto": "Founded in 1985 during a border dispute between Argentina and Chile over the Southern Patagonian Ice Field. Originally a strategic settlement, it evolved into one of Patagonia's most iconic tourism hubs."
+                    },
+                    {
+                      "titulo": "Wildlife & climate",
+                      "texto": "Subpolar oceanic climate with strong Patagonian winds. Fauna includes guanacos, Andean condors, and foxes. Best season: November–March (austral summer)."
+                    },
+                    {
+                      "titulo": "Getting there",
+                      "texto": "Bus from El Calafate: ~3 hours on Ruta 40. Nearest airport: El Calafate (FTE) with flights from Buenos Aires, Ushuaia, and Bariloche."
+                    }
+                  ],
+                  "imagenes": ["fotos/guia-chalten-glacier.webp"]
+                }
+              },
+              {
+                "label": "El Calafate",
+                "detalle": {
+                  "pais": "Argentina",
+                  "region": "Santa Cruz — Gateway to Los Glaciares National Park",
+                  "hechos": {
+                    "Founded": "1927",
+                    "Population": "~25,000 (2022)",
+                    "Main attraction": "Perito Moreno Glacier",
+                    "Airport": "FTE — Comandante Armando Tola Intl."
+                  },
+                  "descripcion": "A Patagonian city on the southern shore of Lago Argentino — Argentina's largest freshwater lake — and the main gateway to Los Glaciares National Park (UNESCO). Its turquoise glacial waters, Andean backdrop, and world-class glacier access make it one of Patagonia's most visited destinations.",
+                  "info": [
+                    {
+                      "titulo": "Perito Moreno Glacier",
+                      "texto": "One of the few advancing glaciers in the world and the park's most iconic sight. Viewing platforms allow close-up views of the ice wall calving into Lago Rico. Trekking and kayaking excursions available."
+                    },
+                    {
+                      "titulo": "Tourism & infrastructure",
+                      "texto": "Extensive hotel, restaurant, and tour operator network. Excursions range from glacier trekking (Big Ice, Minitrekking) to boat tours around the Magellanic channels. Year-round destination with peak season November–March."
+                    },
+                    {
+                      "titulo": "History & name",
+                      "texto": "Grew from a wool trading post in the early 20th century. Named after the native calafate bush — local legend says anyone who eats a calafate berry will return to Patagonia."
+                    },
+                    {
+                      "titulo": "Climate & access",
+                      "texto": "Cold semi-arid climate with strong winds. Summers mild (Dec–Feb), winters snowy. Flights from Buenos Aires (~3 hrs), Bariloche, and Ushuaia. Bus to El Chaltén: ~3 hrs on Ruta 40."
+                    }
+                  ],
+                  "imagenes": [
+                    "fotos/guia-calafate-lago-argentino.webp",
+                    "fotos/guia-calafate-tolkeyen.webp",
+                    "fotos/guia-calafate-cueva-manos.webp"
+                  ]
+                }
+              },
+              {
+                "label": "Cross border → Torres del Paine National Park",
+                "detalle": {
+                  "pais": "Chile",
+                  "region": "Magallanes — Southern Chilean Patagonia",
+                  "hechos": {
+                    "Established": "1959",
+                    "Area": "2,400 km² / 930 sq mi",
+                    "UNESCO": "Biosphere Reserve (1978)",
+                    "Entry fee": "~USD 35 (high season)"
+                  },
+                  "descripcion": "One of South America's most iconic wilderness areas — granite towers, massive glaciers, and turquoise lakes shaped by the Southern Patagonian Ice Field. The W Trek and O Circuit are among the world's great long-distance hikes. Gateway: Puerto Natales (112 km south).",
+                  "info": [
+                    {
+                      "titulo": "Trekking routes",
+                      "texto": "W Trek (4–5 days): covers the park's main highlights — Mirador Base Torres, Valle del Francés, and Glacier Grey. O Circuit (7–10 days): full loop around the massif, more remote and demanding. Both require advance booking for refugios and campsites."
+                    },
+                    {
+                      "titulo": "Wildlife & ecology",
+                      "texto": "Guanacos, pumas, Andean condors, foxes, and the endangered huemul deer. Vegetation ranges from Magellanic forests to open pampas. Conservation managed by CONAF with strict trail regulations and visitor limits."
+                    },
+                    {
+                      "titulo": "Landscapes",
+                      "texto": "Glaciers Grey and Dickson descend from the Southern Patagonian Ice Field. The Torres del Paine massif and Cuernos del Paine create some of the most photographed skylines on Earth. Microclimates produce dramatic weather changes within hours."
+                    },
+                    {
+                      "titulo": "Planning",
+                      "texto": "Best season: October–April. Book refugios and campsites months ahead for W Trek in high season. Entry fee applies. No open fires permitted. Puerto Natales has full logistics: gear rental, transport, guides."
+                    }
+                  ],
+                  "imagenes": [
+                    "fotos/guia-paine-torres.webp",
+                    "fotos/guia-paine-cuernos.webp",
+                    "fotos/guia-paine-grey.webp"
+                  ]
+                }
+              }
+            ],
             "best_for": "Hikers and photographers",
             "duracion": "10–14 days",
             "imagenes": ["fotos/guia-chalten-glacier.webp", "", ""]
@@ -202,6 +310,108 @@
             "best_for": "Advanced travelers",
             "duracion": "2–3 weeks",
             "imagenes": ["fotos/guia-ushuaia-canal-beagle.webp", "", ""]
+          }
+        ]
+      },
+      {
+        "id": "flights",
+        "h2": "How to Get to Patagonia",
+        "intro": "Patagonia has no single gateway — it depends on your route. Most international travelers enter through Buenos Aires (Argentina) or Santiago (Chile), then connect to regional airports.",
+        "aerolineas": [
+          {
+            "grupo": "International gateways",
+            "items": [
+              { "nombre": "Buenos Aires — Ezeiza (EZE)", "descripcion": "Main international hub for Argentina. Connections to all Patagonian destinations." },
+              { "nombre": "Santiago — Arturo Merino Benítez (SCL)", "descripcion": "Main international hub for Chile. Direct connections to Punta Arenas and Puerto Montt." }
+            ]
+          },
+          {
+            "grupo": "Domestic airlines — Argentina",
+            "items": [
+              { "nombre": "Aerolíneas Argentinas", "url": "https://www.aerolineas.com.ar", "descripcion": "Widest network. Flies to Bariloche (BRC), El Calafate (FTE), Ushuaia (USH), Puerto Madryn (PMY), Neuquén (NQN) and more." },
+              { "nombre": "LATAM Argentina", "url": "https://www.latam.com", "descripcion": "Flies Buenos Aires to Bariloche, El Calafate, and Ushuaia." },
+              { "nombre": "Flybondi", "url": "https://www.flybondi.com", "descripcion": "Low-cost. Buenos Aires to Bariloche, Neuquén, and other destinations." },
+              { "nombre": "JetSmart Argentina", "url": "https://jetsmart.com", "descripcion": "Low-cost. Growing Patagonian network from Buenos Aires and Córdoba." }
+            ]
+          },
+          {
+            "grupo": "Domestic airlines — Chile",
+            "items": [
+              { "nombre": "LATAM Chile", "url": "https://www.latam.com", "descripcion": "Main carrier. Santiago to Punta Arenas (PUQ) and Puerto Montt (PMC) daily." },
+              { "nombre": "Sky Airline", "url": "https://www.skyairline.com", "descripcion": "Santiago to Puerto Montt and Punta Arenas. Good fares with advance booking." },
+              { "nombre": "JetSmart Chile", "url": "https://jetsmart.com", "descripcion": "Low-cost. Santiago to Punta Arenas and Puerto Montt." }
+            ]
+          },
+          {
+            "grupo": "Key Patagonian airports",
+            "items": [
+              { "nombre": "BRC — Bariloche", "descripcion": "Gateway to the Lake District. 15 km from city center." },
+              { "nombre": "FTE — El Calafate", "descripcion": "Gateway to Los Glaciares and Torres del Paine. 23 km from El Calafate." },
+              { "nombre": "USH — Ushuaia", "descripcion": "Southernmost commercial airport. 4 km from city center." },
+              { "nombre": "PMC — Puerto Montt", "descripcion": "Gateway to Carretera Austral and Lake District Chile. Connects to Puerto Varas (60 km)." },
+              { "nombre": "PUQ — Punta Arenas", "descripcion": "Gateway to Torres del Paine and Magallanes. 20 km from city center." }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "parks",
+        "h2": "National Parks of Patagonia",
+        "intro": "Patagonia holds some of the most protected and biodiverse wilderness on Earth. Both Argentina and Chile maintain extensive national park networks — most require entry fees and some demand advance reservations.",
+        "parques": [
+          {
+            "pais": "Argentina",
+            "lista": [
+              { "nombre": "Parque Nacional Los Glaciares", "url": "https://www.parquesnacionales.gob.ar/areas-protegidas/region-patagonia-andina/pn-los-glaciares/", "descripcion": "UNESCO World Heritage. Home to Perito Moreno Glacier, El Chaltén, and El Calafate. Entry fee applies. Reservation required for Laguna de los Tres in high season." },
+              { "nombre": "Parque Nacional Nahuel Huapi", "url": "https://www.parquesnacionales.gob.ar/areas-protegidas/region-patagonia-andina/pn-nahuel-huapi/", "descripcion": "Argentina's oldest national park (1934). Based in Bariloche. Free entry. Lakes, forests, and glaciers in the northern Lake District." },
+              { "nombre": "Parque Nacional Tierra del Fuego", "url": "https://www.parquesnacionales.gob.ar/areas-protegidas/region-patagonia-andina/pn-tierra-del-fuego/", "descripcion": "Argentina's only national park with Atlantic coast access. 12 km from Ushuaia. End of the world trails and Lapataia Bay." },
+              { "nombre": "Parque Nacional Los Alerces", "url": "https://www.parquesnacionales.gob.ar/areas-protegidas/region-patagonia-andina/pn-los-alerces/", "descripcion": "UNESCO World Heritage (2017). Ancient Alerce trees up to 2,600 years old. Near Esquel, Chubut." }
+            ]
+          },
+          {
+            "pais": "Chile",
+            "lista": [
+              { "nombre": "Parque Nacional Torres del Paine", "url": "https://www.conaf.cl/parques/parque-nacional-torres-del-paine/", "descripcion": "Chile's most visited park. Biosphere Reserve. Entry fee: ~USD 35 (high season). W Trek and O Circuit require advance booking months ahead." },
+              { "nombre": "Parque Nacional Pumalín Douglas Tompkins", "url": "https://www.conaf.cl/parques/parque-nacional-pumalin-douglas-tompkins/", "descripcion": "Created from private conservation land donated by the Tompkins family. Carretera Austral, Aysén. Ancient Alerce forests and fjords." },
+              { "nombre": "Parque Nacional Queulat", "url": "https://www.conaf.cl/parques/parque-nacional-queulat/", "descripcion": "Home to the spectacular Ventisquero Colgante (Hanging Glacier). Carretera Austral, Aysén. One of the most visually dramatic parks in Chile." },
+              { "nombre": "Parque Nacional Bernardo O'Higgins", "url": "https://www.conaf.cl/parques/parque-nacional-bernardo-ohiggins/", "descripcion": "Chile's largest national park. Accessible only by boat from Puerto Natales. Remote glaciers and fjords south of Torres del Paine." }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "rentals",
+        "h2": "Getting Around: Car Rentals & Transport",
+        "intro": "Patagonia rewards independent travelers. A rental car gives access to remote valleys, viewpoints, and stops that buses miss entirely. Plan ahead — vehicles are limited and roads vary widely.",
+        "alquiler": [
+          {
+            "grupo": "Key tips for renting in Patagonia",
+            "items": [
+              { "label": "Cross-border permission", "texto": "Most rental companies in Argentina allow crossing into Chile, but you must request authorization in advance and pay a fee (~USD 50–100). Confirm before signing — not all companies permit it." },
+              { "label": "4×4 for Carretera Austral", "texto": "The Carretera Austral is largely unpaved gravel. A high-clearance 4×4 is essential. Standard sedans are not recommended south of Chaitén." },
+              { "label": "Fuel planning", "texto": "Gas stations are scarce south of Coyhaique (Chile) and on Ruta 40 (Argentina). Fill up at every opportunity. Carry a spare jerry can on remote legs." },
+              { "label": "Ferry crossings", "texto": "Several legs of the Carretera Austral require ferry crossings (Hornopirén → Caleta Gonzalo, Chaitén → Castro). Book in advance in peak season — spaces fill fast." },
+              { "label": "Book early", "texto": "In November–March, rental stock runs out quickly in Bariloche, El Calafate, and Punta Arenas. Reserve at least 4–6 weeks ahead." }
+            ]
+          },
+          {
+            "grupo": "Car rental companies",
+            "items": [
+              { "nombre": "Hertz Patagonia", "url": "https://www.hertz.com.ar", "descripcion": "Offices in Bariloche, El Calafate, Ushuaia, and Buenos Aires. Cross-border available." },
+              { "nombre": "Avis Argentina", "url": "https://www.avis.com.ar", "descripcion": "Present in major Patagonian cities. Reliable cross-border authorization process." },
+              { "nombre": "Europcar", "url": "https://www.europcar.com", "descripcion": "Available in Buenos Aires, Bariloche, and Ushuaia. Good 4×4 options." },
+              { "nombre": "Localiza", "url": "https://www.localiza.com/argentina", "descripcion": "Large Latin American chain. Competitive rates in Argentina." },
+              { "nombre": "Econorent (Chile)", "url": "https://www.econorent.cl", "descripcion": "Chilean operator with offices in Santiago, Puerto Montt, and Punta Arenas. Specializes in Patagonia routes." }
+            ]
+          },
+          {
+            "grupo": "Bus & ferry alternatives",
+            "items": [
+              { "nombre": "Bus Sur / Buses Fernández", "descripcion": "Long-distance buses connecting Punta Arenas, Puerto Natales, and Chilean cities." },
+              { "nombre": "Andesmar / Via Bariloche", "descripcion": "Argentina's main long-distance bus operators for Patagonian routes. Comfortable sleeper services." },
+              { "nombre": "Navimag Ferry", "url": "https://www.navimag.com", "descripcion": "Legendary 4-day ferry through Chilean fjords: Puerto Montt → Puerto Natales. Iconic Patagonia experience by sea." },
+              { "nombre": "Balmaceda → Caleta Tortel ferries", "descripcion": "Essential for exploring Aysén by water. Book through CONAF or local operators in Cochrane." }
+            ]
           }
         ]
       },
