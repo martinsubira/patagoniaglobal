@@ -540,6 +540,7 @@ def extraer_og_image(url_articulo, nota_id):
         with open(ruta_local, "wb") as f:
             f.write(contenido)
 
+        _recortar_banner(ruta_local)
         ruta_final = _convertir_a_webp(ruta_local)
         return f"fotos/{os.path.basename(ruta_final)}"
 
