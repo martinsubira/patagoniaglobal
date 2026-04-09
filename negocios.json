@@ -1,5 +1,21 @@
 [
   {
+    "id": "20260409-1210-neg",
+    "titulo": "El conflicto con Irán disparó el crudo y beneficia a petroleras patagónicas",
+    "bajada": "La escalada geopolítica en Medio Oriente impulsó el precio internacional del petróleo y las acciones de empresas argentinas con operaciones en Vaca Muerta subieron con fuerza.",
+    "cuerpo": "La tensión militar entre Estados Unidos e Irán volvió a sacudir los mercados globales de energía y el impacto llegó directo a la Patagonia. El precio internacional del petróleo pegó un salto significativo tras las amenazas cruzadas en Medio Oriente, y las acciones de las principales empresas argentinas vinculadas a la producción hidrocarburífera se beneficiaron de manera inmediata.\n\nPara la cuenca neuquina, epicentro de Vaca Muerta, un barril más caro cambia la ecuación de rentabilidad de decenas de proyectos. Las compañías que operan en la formación no convencional más importante de Sudamérica —desde YPF hasta operadoras privadas de menor escala— ven mejorar sus márgenes cada vez que el Brent sube, lo que a su vez impacta en decisiones de inversión, perforación de nuevos pozos y contratación de servicios.\n\nEl mecanismo es directo: el petróleo que se extrae en Añelo, Rincón de los Sauces o Catriel se comercializa a precios referenciados internacionalmente. Cuando el crudo global sube por factores geopolíticos, el valor del barril patagónico acompaña. Y eso se traduce en más recursos para las provincias productoras a través de regalías.\n\nNeuquén y Río Negro, las dos provincias que concentran la mayor actividad de Vaca Muerta, son las más sensibles a estos movimientos. Cada dólar adicional por barril representa millones en ingresos provinciales que alimentan presupuestos, obras públicas y empleo. Chubut y Santa Cruz, con sus cuencas convencionales del Golfo San Jorge, también reciben el efecto.\n\nSin embargo, el beneficio tiene su contracara. Un precio del crudo impulsado por conflictos bélicos es, por definición, volátil. Lo que hoy sube por la amenaza de una ofensiva estadounidense puede caer abruptamente si se concreta una tregua. Las petroleras patagónicas lo saben y por eso las decisiones de inversión de largo plazo no se toman con el termómetro de una sola semana.\n\nLo cierto es que hoy, en los despachos de las operadoras que trabajan en la estepa neuquina, el conflicto en Medio Oriente se sigue con la misma atención que el parte meteorológico. Porque en Vaca Muerta, lo que pasa en el Golfo Pérsico se siente en el bolsillo.",
+    "tag": "💼 Economía",
+    "categoria": "economia",
+    "fuente": "Diario Río Negro",
+    "autor": "Redacción GLOBALpatagonia",
+    "pais": "argentina",
+    "imagen": "fotos/foto-20260409-1210-neg.webp",
+    "imagen_keywords": "petróleo Vaca Muerta",
+    "url_original": "https://www.rionegro.com.ar/energia/el-conflicto-en-iran-disparo-el-precio-del-petroleo-que-acciones-argentinas-se-beneficiaron/",
+    "meta": "Hoy · GLOBALpatagonia",
+    "excluir_feed": true
+  },
+  {
     "id": "20260408-1208-neg",
     "titulo": "La trucha de Piedra del Águila conquista mercados internacionales",
     "bajada": "La producción acuícola neuquina gana reconocimiento global y se posiciona como referente de calidad patagónica en el exterior.",
@@ -75,21 +91,6 @@
     "imagen": "fotos/EOLICO_PATAGONIA.jpg",
     "imagen_keywords": "energía eólica patagonia molinos viento santa cruz",
     "meta": "Semana del 31 de marzo · GLOBALpatagonia",
-    "excluir_feed": true
-  },
-  {
-    "id": "negocios-turismo-premium-bariloche-2026",
-    "titulo": "Bariloche apunta al turismo de lujo: cinco nuevos lodges de alta gama abrirán antes del próximo invierno",
-    "bajada": "Con inversiones que superan los 40 millones de dólares, la ciudad apuesta a captar un segmento que hoy se va a la Patagonia chilena o a Ushuaia. La ocupación de los establecimientos de lujo existentes fue del 94% en la temporada 2025.",
-    "cuerpo": "San Carlos de Bariloche vive un momento inusual en su historia hotelera: por primera vez en décadas, la demanda del segmento premium supera ampliamente la oferta disponible. La ocupación de los establecimientos de lujo existentes alcanzó el 94% durante la temporada alta 2025, con tarifas que triplicaron el promedio de la ciudad.\n\nEse dato no pasó desapercibido para los inversores. Cinco nuevos proyectos de alojamiento de alta gama están en distintas etapas de construcción o en proceso de habilitación, con una inversión total que la Cámara de Comercio local estima en más de 40 millones de dólares.\n\n<strong>Lodges boutique y experiencias exclusivas</strong>\n\nEl modelo que se está imponiendo no es el gran hotel urbano, sino el lodge boutique con entre 8 y 20 habitaciones, acceso privado al lago o la montaña, y una propuesta gastronómica y de actividades que justifique tarifas de entre 400 y 1.200 dólares por noche.\n\n\"El viajero de lujo no quiere Bariloche masivo. Quiere lo que tiene Bariloche en términos de paisaje y gastronomía, pero en silencio y con exclusividad\", explica Valentina Roca, directora de una consultora especializada en turismo de alto valor.\n\n<strong>El desafío de la conectividad</strong>\n\nEl principal freno sigue siendo la conectividad aérea. Los vuelos directos desde Buenos Aires no alcanzan para abastecer una demanda que cada vez más incluye turistas llegados desde Brasil, Chile y Europa. La ampliación del aeropuerto Teniente Candelaria es, para los inversores, la obra de infraestructura más urgente.",
-    "tag": "🏔 Turismo & Inversión",
-    "categoria": "economia",
-    "fuente": "GLOBALpatagonia",
-    "autor": "Redacción GLOBALpatagonia",
-    "pais": "argentina",
-    "imagen": "fotos/bariloche-lago-nahuel-huapi.jpg",
-    "imagen_keywords": "bariloche lago nahuel huapi hotel lujo patagonia",
-    "meta": "Semana del 24 de marzo · GLOBALpatagonia",
     "excluir_feed": true
   }
 ]

@@ -1,14 +1,22 @@
 {
   "_info": "Feed de la sección Deportes & Aventura. Actualizado por actualizar_deportes.py. NO editar manualmente salvo corrección de emergencia.",
   "principal": {
-    "id": "20260407-1050-dep",
+    "id": "20260409-1210-dep",
     "tag": "🏃 Deportes",
-    "titulo": "Ariela Mansilla, campeona magallánica en la Vuelta de Calama",
-    "bajada": "La ciclista de Punta Arenas se impuso en las cuatro etapas de la 56ª Vuelta Internacional de Calama, una de las pruebas de ruta más tradicionales del ciclismo chileno.",
-    "imagen": "fotos/foto-20260407-1050-dep.jpg",
-    "meta": "Hoy · El Pingüino"
+    "titulo": "Paula y el Patagonia Run: correr para volver a casa",
+    "bajada": "La historia de una corredora que encontró en el trail patagónico una forma de sanar heridas y reconstruir su vida.",
+    "imagen": "fotos/foto-20260409-1210-dep.webp",
+    "meta": "Hoy · Diario Río Negro"
   },
   "secundarias": [
+    {
+      "id": "20260407-1050-dep",
+      "tag": "🏃 Deportes",
+      "titulo": "Ariela Mansilla, campeona magallánica en la Vuelta de Calama",
+      "bajada": "La ciclista de Punta Arenas se impuso en las cuatro etapas de la 56ª Vuelta Internacional de Calama, una de las pruebas de ruta más tradicionales del ciclismo chileno.",
+      "imagen": "fotos/foto-20260407-1050-dep.jpg",
+      "meta": "Hoy · El Pingüino"
+    },
     {
       "id": "20260407-1029-sec2",
       "tag": "🏊 Deportes",
@@ -16,7 +24,9 @@
       "bajada": "La deportista rionegrina compite en natación en aguas abiertas a temperaturas cercanas a los 0 grados y se destaca a nivel internacional.",
       "imagen": "fotos/foto-20260407-1029-sec2.jpeg",
       "meta": "Hoy · Diario Río Negro"
-    },
+    }
+  ],
+  "row_cards": [
     {
       "id": "gran-fondo-calle-calle-2026",
       "titulo": "34 nadadores desafiaron la lluvia y el frío en el Gran Fondo del Calle Calle",
@@ -25,9 +35,7 @@
       "badge_text": "🏊 Aguas Abiertas",
       "badge_bg": "#1c2d3d",
       "badge_color": "white"
-    }
-  ],
-  "row_cards": [
+    },
     {
       "id": "trail-monte-leon-2026",
       "titulo": "Cuatro podios patagónicos: atletas de El Calafate brillaron en el Desafío Monte León",
@@ -50,13 +58,6 @@
       "titulo": "La expedición que busca reconstruir el lazo entre la Isla de los Estados y las Malvinas",
       "imagen": "fotos/isla-estados-arqueologia.jpg",
       "meta": "5 de abril · Tiempo Sur"
-    },
-    {
-      "id": "20260405-2021-1",
-      "tag": "🏊 Deportes",
-      "titulo": "Médica magallánica conquista la Triple Corona de Hielo internacional",
-      "imagen": "fotos/foto-20260405-2021-1.jpg",
-      "meta": "Hoy · La Prensa Austral"
     }
   ]
 }
