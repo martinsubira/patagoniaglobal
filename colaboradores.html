@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Redacción — GLOBALpatagonia</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+  <meta name="robots" content="noindex, nofollow"/>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5FP2F41BZG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-5FP2F41BZG');
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600&display=swap');
+
+    :root {
+      --azul: #1c2d3d;
+      --azul-medio: #3a5a7a;
+      --azul-claro: #7aadcc;
+      --gris-oscuro: #252830;
+      --gris-medio: #6b7280;
+      --fondo: #f0ede8;
+      --arcilla: #8c6b4a;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--fondo);
+      color: var(--gris-oscuro);
+      min-height: 100vh;
+    }
+
+    /* HEADER */
+    header { background: var(--azul); }
+    .top-bar {
+      background: #0e1a26;
+      color: rgba(255,255,255,0.5);
+      font-size: 11px;
+      letter-spacing: 1px;
+      padding: 6px 20px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .header-main {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 24px 12px;
+    }
+    .logo-img { height: 55px; width: auto; display: block; }
+    .logo-tagline { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-top: 2px; }
+    .header-badge {
+      background: rgba(122,173,204,0.15);
+      border: 1px solid rgba(122,173,204,0.3);
+      color: var(--azul-claro);
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 4px;
+    }
+
+    /* PANTALLA LOGIN */
+    #pantalla-login {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: calc(100vh - 100px);
+      padding: 40px 20px;
+    }
+
+    .login-box {
+      background: white;
+      border-radius: 10px;
+      padding: 48px 44px;
+      max-width: 420px;
+      width: 100%;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    }
+
+    .login-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--azul);
+      text-align: center;
+      margin-bottom: 6px;
+    }
+    .login-logo span { color: var(--azul-claro); font-weight: 400; font-style: italic; }
+    .login-subtitulo {
+      text-align: center;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gris-medio);
+      margin-bottom: 36px;
+    }
+
+    .campo-login { margin-bottom: 18px; }
+    .campo-login label {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gris-medio);
+      margin-bottom: 7px;
+    }
+    .campo-login input {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: var(--gris-oscuro);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .campo-login input:focus { border-color: var(--azul-claro); }
+
+    .btn-login {
+      width: 100%;
+      margin-top: 8px;
+      background: var(--azul);
+      color: white;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 14px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-login:hover { background: var(--azul-medio); }
+    .btn-login:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .login-error {
+      margin-top: 14px;
+      padding: 10px 14px;
+      background: rgba(220,80,80,0.1);
+      border: 1px solid rgba(220,80,80,0.25);
+      border-radius: 4px;
+      color: #c0392b;
+      font-size: 13px;
+      text-align: center;
+      display: none;
+    }
+
+    /* PANTALLA FORMULARIO */
+    #pantalla-form { display: none; }
+
+    .bienvenida-bar {
+      background: #0e1a26;
+      color: rgba(255,255,255,0.6);
+      font-size: 12px;
+      padding: 10px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .bienvenida-bar strong { color: var(--azul-claro); }
+    .btn-logout {
+      background: none;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.5);
+      font-size: 11px;
+      padding: 4px 12px;
+      border-radius: 3px;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      transition: all 0.2s;
+    }
+    .btn-logout:hover { border-color: rgba(255,255,255,0.5); color: white; }
+
+    .form-container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    .form-titulo {
+      font-family: 'Playfair Display', serif;
+      font-size: 30px;
+      font-weight: 700;
+      color: var(--azul);
+      margin-bottom: 8px;
+    }
+    .form-subtitulo {
+      font-size: 14px;
+      color: var(--gris-medio);
+      margin-bottom: 40px;
+      line-height: 1.6;
+    }
+
+    .form-seccion {
+      background: white;
+      border-radius: 8px;
+      padding: 32px;
+      margin-bottom: 20px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+    }
+    .form-seccion-titulo {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--azul-claro);
+      border-bottom: 1px solid #eee;
+      padding-bottom: 14px;
+      margin-bottom: 24px;
+    }
+
+    .campo { margin-bottom: 22px; }
+    .campo:last-child { margin-bottom: 0; }
+    .campo label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--azul);
+      margin-bottom: 8px;
+      letter-spacing: 0.3px;
+    }
+    .campo label .requerido { color: var(--arcilla); }
+    .campo-hint {
+      font-size: 11px;
+      color: var(--gris-medio);
+      margin-top: 5px;
+    }
+
+    .campo input[type="text"],
+    .campo input[type="email"],
+    .campo select,
+    .campo textarea {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1px solid #e0dcd6;
+      border-radius: 5px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: var(--gris-oscuro);
+      background: #fafaf9;
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .campo input[type="text"]:focus,
+    .campo input[type="email"]:focus,
+    .campo select:focus,
+    .campo textarea:focus {
+      border-color: var(--azul-claro);
+      background: white;
+    }
+    .campo textarea { resize: vertical; min-height: 340px; line-height: 1.7; }
+    .campo select option { color: var(--gris-oscuro); }
+
+    .campo-fila { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 600px) { .campo-fila { grid-template-columns: 1fr; } }
+
+    /* FILE UPLOAD */
+    .file-zone {
+      border: 2px dashed #d0ccc5;
+      border-radius: 6px;
+      padding: 24px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      background: #fafaf9;
+      position: relative;
+    }
+    .file-zone:hover, .file-zone.drag-over {
+      border-color: var(--azul-claro);
+      background: rgba(122,173,204,0.05);
+    }
+    .file-zone input[type="file"] {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      cursor: pointer;
+      width: 100%;
+      height: 100%;
+    }
+    .file-zone-icon { font-size: 28px; margin-bottom: 8px; }
+    .file-zone-texto { font-size: 13px; color: var(--gris-medio); }
+    .file-zone-texto strong { color: var(--azul); }
+    .file-preview {
+      margin-top: 12px;
+      font-size: 12px;
+      color: var(--azul);
+      display: none;
+    }
+    .file-preview.visible { display: block; }
+
+    /* FOTO PREVIEW */
+    .foto-preview-img {
+      max-width: 100%;
+      max-height: 200px;
+      border-radius: 4px;
+      margin-top: 10px;
+      display: none;
+    }
+    .foto-preview-img.visible { display: block; }
+
+    /* CONTADOR PALABRAS */
+    .contador-cuerpo {
+      font-size: 11px;
+      color: var(--gris-medio);
+      text-align: right;
+      margin-top: 4px;
+    }
+
+    /* KEYWORDS CHIPS */
+    .keywords-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+    }
+    .chip {
+      background: rgba(28,45,61,0.08);
+      color: var(--azul);
+      font-size: 12px;
+      padding: 3px 10px;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .chip-x { cursor: pointer; font-size: 14px; color: var(--gris-medio); line-height: 1; }
+    .chip-x:hover { color: #c0392b; }
+
+    /* BOTÓN ENVIAR */
+    .btn-enviar {
+      width: 100%;
+      background: var(--azul);
+      color: white;
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 18px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 8px;
+    }
+    .btn-enviar:hover { background: var(--azul-medio); }
+    .btn-enviar:disabled { opacity: 0.45; cursor: not-allowed; }
+
+    /* ESTADO ENVIO */
+    .envio-estado {
+      margin-top: 20px;
+      padding: 16px 20px;
+      border-radius: 6px;
+      font-size: 14px;
+      text-align: center;
+      display: none;
+      line-height: 1.6;
+    }
+    .envio-estado.ok {
+      background: rgba(122,173,204,0.15);
+      border: 1px solid rgba(122,173,204,0.35);
+      color: #1a5276;
+      display: block;
+    }
+    .envio-estado.err {
+      background: rgba(220,80,80,0.1);
+      border: 1px solid rgba(220,80,80,0.25);
+      color: #c0392b;
+      display: block;
+    }
+    .envio-estado.procesando {
+      background: rgba(28,45,61,0.06);
+      border: 1px solid rgba(28,45,61,0.15);
+      color: var(--azul);
+      display: block;
+    }
+
+    /* PROGRESS */
+    .progress-bar {
+      height: 4px;
+      background: #e0dcd6;
+      border-radius: 2px;
+      margin-top: 10px;
+      overflow: hidden;
+      display: none;
+    }
+    .progress-bar.visible { display: block; }
+    .progress-fill {
+      height: 100%;
+      background: var(--azul-claro);
+      width: 0%;
+      transition: width 0.5s ease;
+      border-radius: 2px;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--gris-oscuro);
+      color: rgba(255,255,255,0.35);
+      padding: 24px 20px;
+      text-align: center;
+      font-size: 11px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="top-bar">
+    <span>Patagonia Argentina y Chilena</span>
+    <span style="color:#8ab8d4;font-weight:600;">Sur Global, principio de todo.</span>
+  </div>
+  <div class="header-main">
+    <div>
+      <a href="index.html"><img src="logo-globalpatagonia.png" alt="GLOBALpatagonia" class="logo-img"></a>
+      <div class="logo-tagline">Sur Global, principio de todo.</div>
+    </div>
+    <div class="header-badge">Redacción</div>
+  </div>
+</header>
+
+<!-- PANTALLA LOGIN -->
+<div id="pantalla-login">
+  <div class="login-box">
+    <div class="login-logo">GLOBAL<span>patagonia</span></div>
+    <div class="login-subtitulo">Acceso para colaboradores</div>
+    <div class="campo-login">
+      <label for="login-usuario">Usuario</label>
+      <input id="login-usuario" type="text" autocomplete="username" placeholder="tu usuario" />
+    </div>
+    <div class="campo-login">
+      <label for="login-pass">Contraseña</label>
+      <input id="login-pass" type="password" autocomplete="current-password" placeholder="••••••••" />
+    </div>
+    <button class="btn-login" id="btn-login" onclick="hacerLogin()">Ingresar</button>
+    <div class="login-error" id="login-error">Usuario o contraseña incorrectos.</div>
+  </div>
+</div>
+
+<!-- PANTALLA FORMULARIO -->
+<div id="pantalla-form">
+  <div class="bienvenida-bar">
+    <span>Conectado como <strong id="nombre-colaborador">—</strong></span>
+    <button class="btn-logout" onclick="cerrarSesion()">Cerrar sesión</button>
+  </div>
+
+  <div class="form-container">
+    <div class="form-titulo">Enviar artículo</div>
+    <p class="form-subtitulo">
+      Completá el formulario con el contenido de tu nota. Una vez enviada, el equipo editorial la revisará
+      y te avisaremos cuando esté publicada. Los campos marcados con <span style="color:#8c6b4a">*</span> son obligatorios.
+    </p>
+
+    <form id="form-articulo" onsubmit="enviarArticulo(event)">
+
+      <!-- IDENTIFICACIÓN -->
+      <div class="form-seccion">
+        <div class="form-seccion-titulo">Identificación</div>
+        <div class="campo-fila">
+          <div class="campo">
+            <label for="art-firma">Firma / Nombre del autor <span class="requerido">*</span></label>
+            <input id="art-firma" type="text" placeholder="Ej: María González" required />
+          </div>
+          <div class="campo">
+            <label for="art-email">Email de contacto <span class="requerido">*</span></label>
+            <input id="art-email" type="email" placeholder="tu@email.com" required />
+          </div>
+        </div>
+      </div>
+
+      <!-- CONTENIDO -->
+      <div class="form-seccion">
+        <div class="form-seccion-titulo">Contenido del artículo</div>
+
+        <div class="campo">
+          <label for="art-titulo">Título <span class="requerido">*</span></label>
+          <input id="art-titulo" type="text" placeholder="Título de la nota" required minlength="30" maxlength="100" oninput="validarTitulo(this)" />
+          <div class="campo-hint" id="hint-titulo">Óptimo SEO: entre 50 y 70 caracteres · <span id="count-titulo">0</span>/70</div>
+        </div>
+
+        <div class="campo">
+          <label for="art-bajada">Bajada / Entradilla <span class="requerido">*</span></label>
+          <input id="art-bajada" type="text" placeholder="Resumen de 1-2 oraciones (será la meta description)" required minlength="80" maxlength="160" oninput="validarBajada(this)" />
+          <div class="campo-hint" id="hint-bajada">SEO: entre 120 y 160 caracteres · <span id="count-bajada">0</span>/160</div>
+        </div>
+
+        <div class="campo">
+          <label for="art-cuerpo">Cuerpo del artículo <span class="requerido">*</span></label>
+          <textarea id="art-cuerpo" placeholder="Escribí o pegá acá el texto completo de tu nota..." required oninput="contarPalabras()"></textarea>
+          <div class="contador-cuerpo" id="contador-palabras">0 palabras</div>
+        </div>
+
+        <div class="campo">
+          <label>O adjuntá un documento <span style="color:var(--gris-medio);font-weight:400;">(opcional — .txt, .doc, .docx, máx 5MB)</span></label>
+          <div class="file-zone" id="zone-doc">
+            <input type="file" id="art-doc" accept=".txt,.doc,.docx" onchange="previsualizarDoc(this)" />
+            <div class="file-zone-icon">📄</div>
+            <div class="file-zone-texto">
+              <strong>Seleccioná o arrastrá el archivo</strong><br>
+              .txt · .doc · .docx · máx 5 MB
+            </div>
+            <div class="file-preview" id="doc-preview"></div>
+          </div>
+          <div class="campo-hint">Si adjuntás documento, el cuerpo del campo de texto se ignora.</div>
+        </div>
+      </div>
+
+      <!-- CLASIFICACIÓN -->
+      <div class="form-seccion">
+        <div class="form-seccion-titulo">Clasificación editorial</div>
+
+        <div class="campo-fila">
+          <div class="campo">
+            <label for="art-seccion">Sección de destino <span class="requerido">*</span></label>
+            <select id="art-seccion" required>
+              <option value="" disabled selected>Elegí la sección</option>
+              <option value="propios">INFORMES (análisis y reportajes)</option>
+              <option value="noticias">Noticias generales</option>
+              <option value="turismo">Turismo en Patagonia</option>
+              <option value="deportes">Deportes & Aventura</option>
+              <option value="negocios">Economía & Empresas</option>
+              <option value="historia">Cultura Patagónica & Historia</option>
+              <option value="medioambiente">Medio Ambiente</option>
+            </select>
+          </div>
+          <div class="campo">
+            <label for="art-lugar">Lugar / Región principal</label>
+            <input id="art-lugar" type="text" placeholder="Ej: El Calafate, Santa Cruz" />
+          </div>
+        </div>
+
+        <div class="campo">
+          <label for="art-keywords-input">Keywords / Palabras clave <span class="requerido">*</span></label>
+          <input id="art-keywords-input" type="text"
+            placeholder="Escribí una keyword y presioná Enter o coma"
+            onkeydown="agregarKeyword(event)" />
+          <div class="campo-hint" id="hint-keywords">Mínimo 3 keywords para SEO · <span id="count-keywords" style="color:var(--arcilla)">0</span> agregadas</div>
+          <div class="keywords-chips" id="keywords-chips"></div>
+          <input type="hidden" id="art-keywords" />
+        </div>
+
+        <div class="campo">
+          <label for="art-fuentes">Fuentes utilizadas</label>
+          <input id="art-fuentes" type="text" placeholder="Ej: Diario Río Negro, CONICET, entrevista directa" />
+          <div class="campo-hint">Ayuda al editor a verificar la información.</div>
+        </div>
+      </div>
+
+      <!-- FOTO -->
+      <div class="form-seccion">
+        <div class="form-seccion-titulo">Foto principal</div>
+        <div class="campo">
+          <label>Imagen <span class="requerido">*</span> <span style="color:var(--gris-medio);font-weight:400;">(JPG o PNG, mín 300 KB, máx 8 MB — resolución mínima 1200 × 800 px)</span></label>
+          <div class="file-zone" id="zone-foto">
+            <input type="file" id="art-foto" accept="image/jpeg,image/png,image/webp" onchange="previsualizarFoto(this)" required />
+            <div class="file-zone-icon">🖼️</div>
+            <div class="file-zone-texto">
+              <strong>Seleccioná o arrastrá la foto</strong><br>
+              JPG · PNG · WebP · máx 8 MB
+            </div>
+            <div class="file-preview" id="foto-nombre"></div>
+          </div>
+          <img id="foto-preview-img" class="foto-preview-img" alt="Preview" />
+        </div>
+        <div class="campo">
+          <label for="art-foto-epígrafe">Epígrafe / Pie de foto</label>
+          <input id="art-foto-epigrafe" type="text" placeholder="Descripción breve de la imagen y crédito fotográfico" />
+        </div>
+      </div>
+
+      <!-- OBSERVACIONES -->
+      <div class="form-seccion">
+        <div class="form-seccion-titulo">Observaciones para el editor</div>
+        <div class="campo">
+          <label for="art-observaciones">Notas adicionales <span style="color:var(--gris-medio);font-weight:400;">(opcional)</span></label>
+          <textarea id="art-observaciones" style="min-height:90px;" placeholder="Indicaciones especiales, contexto, urgencias, etc."></textarea>
+        </div>
+      </div>
+
+      <button type="submit" class="btn-enviar" id="btn-enviar">Enviar para revisión editorial</button>
+      <div class="progress-bar" id="progress-bar">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+      <div class="envio-estado" id="envio-estado"></div>
+
+    </form>
+  </div>
+</div>
+
+<footer>
+  © 2026 GLOBALpatagonia · Área de redacción interna · <a href="index.html" style="color:rgba(255,255,255,0.4);">← Volver al sitio</a>
+</footer>
+
+<script>
+// ─── CONFIG ──────────────────────────────────────────────────────────────────
+const APPS_SCRIPT_URL = "PEGAR_URL_APPS_SCRIPT_AQUI";
+
+// ─── VALIDACIONES SEO ────────────────────────────────────────────────────────
+function validarTitulo(input) {
+  const n = input.value.length;
+  const span = document.getElementById('count-titulo');
+  const hint = document.getElementById('hint-titulo');
+  span.textContent = n;
+  if (n < 30) {
+    span.style.color = 'var(--arcilla)';
+    hint.style.color = 'var(--arcilla)';
+  } else if (n >= 50 && n <= 70) {
+    span.style.color = '#27ae60';
+    hint.style.color = '#27ae60';
+  } else {
+    span.style.color = 'var(--gris-medio)';
+    hint.style.color = 'var(--gris-medio)';
+  }
+}
+
+function validarBajada(input) {
+  const n = input.value.length;
+  const span = document.getElementById('count-bajada');
+  const hint = document.getElementById('hint-bajada');
+  span.textContent = n;
+  if (n < 80) {
+    span.style.color = 'var(--arcilla)';
+    hint.style.color = 'var(--arcilla)';
+  } else if (n >= 120 && n <= 160) {
+    span.style.color = '#27ae60';
+    hint.style.color = '#27ae60';
+  } else {
+    span.style.color = 'var(--gris-medio)';
+    hint.style.color = 'var(--gris-medio)';
+  }
+}
+
+// ─── KEYWORDS ────────────────────────────────────────────────────────────────
+const keywords = [];
+
+function agregarKeyword(e) {
+  if (e.key !== 'Enter' && e.key !== ',') return;
+  e.preventDefault();
+  const input = document.getElementById('art-keywords-input');
+  const val = input.value.replace(/,/g, '').trim();
+  if (!val || keywords.includes(val)) { input.value = ''; return; }
+  keywords.push(val);
+  input.value = '';
+  renderChips();
+}
+
+function renderChips() {
+  const cont = document.getElementById('keywords-chips');
+  cont.innerHTML = keywords.map((k, i) =>
+    `<span class="chip">${k}<span class="chip-x" onclick="quitarKeyword(${i})">×</span></span>`
+  ).join('');
+  document.getElementById('art-keywords').value = keywords.join(', ');
+  // Actualizar contador
+  const countEl = document.getElementById('count-keywords');
+  countEl.textContent = keywords.length;
+  countEl.style.color = keywords.length >= 3 ? '#27ae60' : 'var(--arcilla)';
+}
+
+function quitarKeyword(i) {
+  keywords.splice(i, 1);
+  renderChips();
+}
+
+// ─── CONTADOR PALABRAS ────────────────────────────────────────────────────────
+function contarPalabras() {
+  const texto = document.getElementById('art-cuerpo').value.trim();
+  const n = texto ? texto.split(/\s+/).length : 0;
+  document.getElementById('contador-palabras').textContent = `${n} palabra${n !== 1 ? 's' : ''}`;
+}
+
+// ─── FILE PREVIEWS ────────────────────────────────────────────────────────────
+function previsualizarDoc(input) {
+  const preview = document.getElementById('doc-preview');
+  if (input.files && input.files[0]) {
+    const f = input.files[0];
+    if (f.size > 5 * 1024 * 1024) {
+      alert('El documento no debe superar 5 MB.');
+      input.value = '';
+      preview.classList.remove('visible');
+      return;
+    }
+    preview.textContent = `✓ ${f.name} (${(f.size / 1024).toFixed(0)} KB)`;
+    preview.classList.add('visible');
+  }
+}
+
+function previsualizarFoto(input) {
+  const preview = document.getElementById('foto-preview-img');
+  const nombre  = document.getElementById('foto-nombre');
+  if (!input.files || !input.files[0]) return;
+
+  const f = input.files[0];
+
+  if (f.size > 8 * 1024 * 1024) {
+    alert('La foto no debe superar 8 MB.');
+    input.value = '';
+    preview.classList.remove('visible');
+    nombre.classList.remove('visible');
+    return;
+  }
+  if (f.size < 300 * 1024) {
+    alert('La foto parece de baja calidad (menos de 300 KB). Subí una imagen de mayor resolución.');
+    input.value = '';
+    preview.classList.remove('visible');
+    nombre.classList.remove('visible');
+    return;
+  }
+
+  const reader = new FileReader();
+  reader.onload = ev => {
+    const img = new Image();
+    img.onload = () => {
+      if (img.width < 1200 || img.height < 800) {
+        alert(`Resolución insuficiente (${img.width}×${img.height} px). La imagen debe ser mínimo 1200×800 px para publicación.`);
+        input.value = '';
+        preview.classList.remove('visible');
+        nombre.classList.remove('visible');
+        return;
+      }
+      nombre.textContent = `✓ ${f.name} — ${img.width}×${img.height} px (${(f.size/1024).toFixed(0)} KB)`;
+      nombre.classList.add('visible');
+      preview.src = ev.target.result;
+      preview.classList.add('visible');
+    };
+    img.src = ev.target.result;
+  };
+  reader.readAsDataURL(f);
+}
+
+// ─── DRAG & DROP ──────────────────────────────────────────────────────────────
+['zone-doc', 'zone-foto'].forEach(id => {
+  const zone = document.getElementById(id);
+  zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('drag-over'); });
+  zone.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
+  zone.addEventListener('drop', e => { e.preventDefault(); zone.classList.remove('drag-over'); });
+});
+
+// ─── LOGIN ────────────────────────────────────────────────────────────────────
+let sesionUsuario = null;
+
+document.getElementById('login-pass').addEventListener('keydown', e => {
+  if (e.key === 'Enter') hacerLogin();
+});
+
+async function hacerLogin() {
+  const usuario = document.getElementById('login-usuario').value.trim();
+  const pass    = document.getElementById('login-pass').value;
+  const btn     = document.getElementById('btn-login');
+  const errDiv  = document.getElementById('login-error');
+
+  if (!usuario || !pass) return;
+
+  btn.disabled = true;
+  btn.textContent = 'Verificando...';
+  errDiv.style.display = 'none';
+
+  try {
+    const res = await fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      body: JSON.stringify({ accion: 'login', usuario, pass })
+    });
+    const data = await res.json();
+    if (data.ok) {
+      sesionUsuario = { usuario, nombre: data.nombre };
+      document.getElementById('nombre-colaborador').textContent = data.nombre;
+      document.getElementById('art-firma').value = data.nombre;
+      document.getElementById('art-email').value = data.email || '';
+      document.getElementById('pantalla-login').style.display = 'none';
+      document.getElementById('pantalla-form').style.display = 'block';
+    } else {
+      errDiv.style.display = 'block';
+    }
+  } catch {
+    errDiv.textContent = 'Error de conexión. Intentá de nuevo.';
+    errDiv.style.display = 'block';
+  }
+
+  btn.disabled = false;
+  btn.textContent = 'Ingresar';
+}
+
+function cerrarSesion() {
+  sesionUsuario = null;
+  document.getElementById('login-usuario').value = '';
+  document.getElementById('login-pass').value = '';
+  document.getElementById('pantalla-form').style.display = 'none';
+  document.getElementById('pantalla-login').style.display = 'flex';
+}
+
+// ─── FILE TO BASE64 ───────────────────────────────────────────────────────────
+function fileToBase64(file) {
+  return new Promise((res, rej) => {
+    const reader = new FileReader();
+    reader.onload  = e => res(e.target.result.split(',')[1]);
+    reader.onerror = rej;
+    reader.readAsDataURL(file);
+  });
+}
+
+// ─── ENVÍO ────────────────────────────────────────────────────────────────────
+async function enviarArticulo(e) {
+  e.preventDefault();
+  if (!sesionUsuario) return;
+
+  const btn      = document.getElementById('btn-enviar');
+  const estadoEl = document.getElementById('envio-estado');
+  const progress = document.getElementById('progress-bar');
+  const fill     = document.getElementById('progress-fill');
+
+  // Validaciones antes de enviar
+  const tituloVal = document.getElementById('art-titulo').value.trim();
+  const bajadaVal = document.getElementById('art-bajada').value.trim();
+  const cuerpoVal = document.getElementById('art-cuerpo').value.trim();
+  const docFile0  = document.getElementById('art-doc').files[0];
+  const fotoFile0 = document.getElementById('art-foto').files[0];
+  const palabras  = cuerpoVal ? cuerpoVal.split(/\s+/).length : 0;
+
+  if (tituloVal.length < 30) {
+    alert('El título es demasiado corto (mínimo 30 caracteres).'); return;
+  }
+  if (bajadaVal.length < 80) {
+    alert('La bajada/entradilla es demasiado corta (mínimo 80 caracteres para SEO).'); return;
+  }
+  if (!docFile0 && palabras < 300) {
+    alert(`El cuerpo del artículo tiene solo ${palabras} palabras. El mínimo aceptable es 300 palabras.`); return;
+  }
+  if (!docFile0 && palabras > 5000) {
+    alert(`El artículo tiene ${palabras} palabras. El máximo es 5000. Considerá dividirlo en partes.`); return;
+  }
+  if (keywords.length < 3) {
+    alert('Agregá al menos 3 keywords para SEO.'); return;
+  }
+  if (!fotoFile0) {
+    alert('La foto es obligatoria para publicación.'); return;
+  }
+
+  btn.disabled = true;
+  estadoEl.className = 'envio-estado procesando';
+  estadoEl.textContent = 'Preparando el envío...';
+  progress.classList.add('visible');
+  fill.style.width = '10%';
+
+  try {
+    // Recolectar datos
+    const datos = {
+      accion:        'enviar_articulo',
+      usuario:       sesionUsuario.usuario,
+      firma:         document.getElementById('art-firma').value.trim(),
+      email:         document.getElementById('art-email').value.trim(),
+      titulo:        document.getElementById('art-titulo').value.trim(),
+      bajada:        document.getElementById('art-bajada').value.trim(),
+      cuerpo:        document.getElementById('art-cuerpo').value.trim(),
+      seccion:       document.getElementById('art-seccion').value,
+      lugar:         document.getElementById('art-lugar').value.trim(),
+      keywords:      document.getElementById('art-keywords').value,
+      fuentes:       document.getElementById('art-fuentes').value.trim(),
+      foto_epigrafe: document.getElementById('art-foto-epigrafe').value.trim(),
+      observaciones: document.getElementById('art-observaciones').value.trim(),
+      timestamp:     new Date().toISOString()
+    };
+
+    fill.style.width = '25%';
+    estadoEl.textContent = 'Adjuntando archivos...';
+
+    // Doc adjunto
+    const docFile = document.getElementById('art-doc').files[0];
+    if (docFile) {
+      datos.doc_base64  = await fileToBase64(docFile);
+      datos.doc_nombre  = docFile.name;
+      datos.doc_tipo    = docFile.type;
+    }
+
+    // Foto
+    const fotoFile = document.getElementById('art-foto').files[0];
+    if (fotoFile) {
+      datos.foto_base64 = await fileToBase64(fotoFile);
+      datos.foto_nombre = fotoFile.name;
+      datos.foto_tipo   = fotoFile.type;
+    }
+
+    fill.style.width = '55%';
+    estadoEl.textContent = 'Enviando al equipo editorial...';
+
+    const res = await fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      body: JSON.stringify(datos)
+    });
+
+    fill.style.width = '85%';
+    const json = await res.json();
+    fill.style.width = '100%';
+
+    if (json.ok) {
+      estadoEl.className = 'envio-estado ok';
+      estadoEl.innerHTML = `
+        <strong>¡Artículo enviado correctamente!</strong><br>
+        El equipo editorial lo revisará en las próximas horas.<br>
+        <span style="font-size:12px;opacity:0.7;">ID: ${json.id || '—'}</span>
+      `;
+      document.getElementById('form-articulo').reset();
+      keywords.length = 0;
+      renderChips();
+      document.getElementById('foto-preview-img').classList.remove('visible');
+      document.getElementById('foto-nombre').classList.remove('visible');
+      document.getElementById('doc-preview').classList.remove('visible');
+      document.getElementById('contador-palabras').textContent = '0 palabras';
+    } else {
+      throw new Error(json.mensaje || 'Error desconocido');
+    }
+
+  } catch (err) {
+    fill.style.width = '100%';
+    estadoEl.className = 'envio-estado err';
+    estadoEl.textContent = `No se pudo enviar: ${err.message}. Intentá de nuevo o escribinos a ficciontvpatagonia@gmail.com`;
+  }
+
+  btn.disabled = false;
+  setTimeout(() => progress.classList.remove('visible'), 800);
+}
+</script>
+
+</body>
+</html>
