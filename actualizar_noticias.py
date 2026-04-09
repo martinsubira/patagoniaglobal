@@ -888,13 +888,18 @@ def ids_publicados_en_secciones():
 
 
 def cargar_noticias_previas():
-    """Carga noticias.json del día anterior para extraer tapa y secundarias."""
+    """Carga noticias.json solo si fue generado AYER o antes (no hoy)."""
     ruta = os.path.join(os.path.dirname(__file__), "noticias.json")
     if not os.path.exists(ruta):
         return {}
     try:
         with open(ruta, encoding="utf-8") as f:
-            return json.load(f)
+            data = json.load(f)
+        generado = data.get("generado", "")
+        hoy = datetime.now().strftime("%Y-%m-%d")
+        if generado.startswith(hoy):
+            return {}  # Mismo día: no usar como "anterior"
+        return data
     except Exception:
         return {}
 
