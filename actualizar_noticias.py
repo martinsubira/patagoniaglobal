@@ -705,9 +705,9 @@ def _recortar_banner(ruta_local, url_fuente=""):
 
         es_tiemposur = "tiemposur" in url_fuente.lower()
 
-        # TiempoSur: siempre recortar el 15% inferior (banner fijo)
+        # TiempoSur: siempre recortar el 22% inferior (banner rojo fijo)
         if es_tiemposur:
-            corte = int(h * 0.85)
+            corte = int(h * 0.78)
             img.crop((0, 0, w, corte)).save(ruta_local, quality=90)
             return
 
