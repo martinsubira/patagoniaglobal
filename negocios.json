@@ -1,5 +1,21 @@
 [
   {
+    "id": "20260409-1708-neg",
+    "titulo": "YPF emite deuda por US$70 millones para acelerar Vaca Muerta",
+    "bajada": "La petrolera estatal lanza una obligación negociable destinada a financiar operaciones en el megayacimiento neuquino y reestructurar pasivos.",
+    "cuerpo": "YPF sale al mercado de capitales con una nueva emisión de obligaciones negociables por 70 millones de dólares, fondos que apuntarán directamente a sostener el ritmo de desarrollo en Vaca Muerta y a mejorar el perfil de su deuda. La operación confirma que el megayacimiento neuquino sigue siendo la principal apuesta energética del país y el motor económico más dinámico de la Patagonia norte.\n\nVaca Muerta atraviesa una fase de expansión sostenida. La producción de petróleo no convencional viene batiendo récords mensuales y el shale gas argentino comienza a posicionarse como alternativa de exportación. Para mantener ese crecimiento se necesitan inversiones permanentes en perforación, terminación de pozos, infraestructura de transporte y procesamiento. Cada pozo no convencional requiere entre 10 y 15 millones de dólares de inversión, lo que explica la necesidad constante de financiamiento.\n\nLa emisión de deuda en dólares refleja además la estrategia de YPF de diversificar sus fuentes de fondeo. En un contexto donde el acceso al crédito internacional para empresas argentinas sigue siendo selectivo, la compañía aprovecha su posición como operador dominante de un recurso de clase mundial para obtener tasas competitivas.\n\nPara la Patagonia, el impacto es directo. Neuquén y Río Negro concentran la actividad de Vaca Muerta, que genera empleo en perforación, servicios petroleros, logística, construcción y comercio. Las ciudades de Añelo, Neuquén capital, Rincón de los Sauces y Allen, entre otras, tienen en la actividad hidrocarburífera su principal fuente de dinamismo económico.\n\nSin embargo, la dependencia de un solo motor productivo también plantea riesgos. Las fluctuaciones del precio internacional del petróleo, las decisiones regulatorias y la capacidad de evacuación de la producción son variables que condicionan el ritmo de inversión. La reciente volatilidad en los mercados energéticos globales agrega incertidumbre a un escenario que, por ahora, sigue siendo favorable.\n\nLa pregunta que la región debe hacerse es cómo capitalizar este ciclo de inversión para diversificar la economía patagónica. La renta petrolera puede financiar infraestructura, educación técnica y desarrollo de proveedores locales, pero solo si existe voluntad política de transformar dólares de shale en capacidades que sobrevivan al próximo ciclo de precios bajos.",
+    "tag": "💼 Economía",
+    "categoria": "economia",
+    "fuente": "Diario Río Negro",
+    "autor": "Redacción GLOBALpatagonia",
+    "pais": "argentina",
+    "imagen": "fotos/foto-20260409-1708-neg.webp",
+    "imagen_keywords": "Vaca Muerta petróleo",
+    "url_original": "https://www.rionegro.com.ar/energia/ypf-lanza-una-nueva-on-por-70-millones-de-dolares-para-financiar-vaca-muerta-y-mejorar-su-deuda-4532251/",
+    "meta": "Hoy · GLOBALpatagonia",
+    "excluir_feed": true
+  },
+  {
     "id": "20260409-1210-neg",
     "titulo": "El conflicto con Irán disparó el crudo y beneficia a petroleras patagónicas",
     "bajada": "La escalada geopolítica en Medio Oriente impulsó el precio internacional del petróleo y las acciones de empresas argentinas con operaciones en Vaca Muerta subieron con fuerza.",
@@ -75,21 +91,6 @@
     "pais": "chile",
     "imagen": "fotos/SALMONERAS.jpg",
     "imagen_keywords": "salmon patagonia magallanes mar fiordo",
-    "meta": "Semana del 31 de marzo · GLOBALpatagonia",
-    "excluir_feed": true
-  },
-  {
-    "id": "negocios-energia-eolica-santa-cruz-2026",
-    "titulo": "Santa Cruz avanza en el mayor parque eólico de la Patagonia argentina: 300 MW para exportar a Chile",
-    "bajada": "El proyecto Cañadón Bola, al norte de Río Gallegos, obtuvo financiamiento del BID y podría conectarse a la red chilena a través de la interconexión que se negocia desde 2024.",
-    "cuerpo": "Santa Cruz da un paso decisivo en su apuesta por convertirse en la principal proveedora de energía eólica de la Patagonia austral. El proyecto Cañadón Bola, impulsado por un consorcio de capitales argentinos y españoles, recibió el aval ambiental provincial y está en conversaciones avanzadas con el Banco Interamericano de Desarrollo para un financiamiento de 180 millones de dólares.\n\nEl parque, con una capacidad instalada proyectada de 300 MW, estaría ubicado en la meseta al norte de Río Gallegos, una de las zonas de mayor recurso eólico del planeta. Los vientos del oeste, que en la Patagonia austral soplan con una constancia y una intensidad notables, garantizarían un factor de planta superior al 55%, uno de los más altos del mundo para energía eólica.\n\n<strong>La posibilidad de exportar a Chile</strong>\n\nLo que convierte a este proyecto en particularmente estratégico es la posibilidad de exportar energía a Chile a través de una interconexión eléctrica que ambos países negocian desde 2024. Magallanes, con escasa generación local y altos costos de abastecimiento, sería el principal beneficiario.\n\nFuentes del Ministerio de Energía argentino confirmaron que las conversaciones técnicas están \"en una etapa muy avanzada\" y que la interconexión podría materializarse entre 2027 y 2028.\n\n<strong>Impacto local y cadena de valor</strong>\n\nEl gobernador de Santa Cruz, Claudio Vidal, destacó que el proyecto incluye compromisos de contenido local: al menos el 40% de los proveedores de servicios deberán ser empresas radicadas en la provincia. La construcción generaría alrededor de 800 puestos de trabajo directos durante la etapa de obras.",
-    "tag": "⚡ Energía",
-    "categoria": "economia",
-    "fuente": "GLOBALpatagonia",
-    "autor": "Redacción GLOBALpatagonia",
-    "pais": "argentina",
-    "imagen": "fotos/EOLICO_PATAGONIA.jpg",
-    "imagen_keywords": "energía eólica patagonia molinos viento santa cruz",
     "meta": "Semana del 31 de marzo · GLOBALpatagonia",
     "excluir_feed": true
   }

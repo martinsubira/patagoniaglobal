@@ -26,6 +26,19 @@
     "descripcion": "Festival internacional de cine documental. Una ventana al mundo desde la llanura pampeana, con producciones nacionales e internacionales."
   },
   {
+    "id": "torneo-voley-sub18-gobernador-gregores-2026",
+    "titulo": "Torneo Provincial de Vóley Sub-18 Femenino",
+    "fecha": "2026-04-10",
+    "fecha_fin": "2026-04-11",
+    "fecha_display": "10 y 11 de abril",
+    "lugar": "Gobernador Gregores",
+    "region": "Santa Cruz, Patagonia",
+    "pais": "AR",
+    "categoria": "deportes",
+    "emoji": "🏐",
+    "descripcion": "Torneo provincial de vóley femenino Sub-18 organizado por la Federación Santacruceña de Vóley en Gobernador Gregores. Participan nueve equipos de distintas localidades de Santa Cruz."
+  },
+  {
     "id": "nodo-industrial-2026",
     "titulo": "Jornadas: Nodo industrial de la Patagonia Austral",
     "fecha": "2026-04-16",
