@@ -1289,6 +1289,12 @@ def main():
     turismo     = resultado.get("turismo") if es_domingo else None
     ticker      = resultado.get("ticker", [])
 
+    # Normalizar tag: "Medio Ambiente" → "Ambiente"
+    for nota in [tapa, deportes, negocios, cultura, turismo] + secundarias:
+        if nota and nota.get("tag"):
+            import re
+            nota["tag"] = re.sub(r"medio ambiente", "Ambiente", nota["tag"], flags=re.IGNORECASE)
+
     # 4. Resolver imágenes para todas las notas frescas
     notas_con_imagen = [tapa] + secundarias
     for n in [deportes, negocios, cultura, turismo]:

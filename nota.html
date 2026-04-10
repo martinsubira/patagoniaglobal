@@ -545,6 +545,10 @@ function tiempoLectura(texto) {
   return minutos + " min de lectura";
 }
 
+function normTag(t) {
+  return (t || '').replace(/medio ambiente/gi, 'Ambiente');
+}
+
 function bandera(pais) {
   if (pais === 'chile') return '🇨🇱 Chile';
   if (pais === 'ambos') return '🇦🇷🇨🇱 Argentina · Chile';
@@ -571,7 +575,7 @@ function renderRelacionadas(data, idActual) {
       <div class="rel-card" onclick="location.href='nota.html?id=${n.id}'">
         ${img}
         <div class="rel-body">
-          <div class="rel-tag">${n.tag || "Patagonia"}</div>
+          <div class="rel-tag">${normTag(n.tag) || "Patagonia"}</div>
           <div class="rel-titulo">${n.titulo}</div>
         </div>
       </div>`;
@@ -736,7 +740,7 @@ function renderNota(nota, fechaDisplay, data) {
 
   document.getElementById("contenido").innerHTML = `
     ${langSwitcherHtml}
-    <div class="nota-tag">${nota.tag || "🗞️ Patagonia"}</div>
+    <div class="nota-tag">${normTag(nota.tag) || "🗞️ Patagonia"}</div>
     <h1 class="nota-titulo">${nota.titulo}</h1>
     <div class="nota-bajada">${nota.bajada || ""}</div>
     <div class="nota-meta">

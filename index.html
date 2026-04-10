@@ -1305,7 +1305,7 @@
             <div style="background:white;border-radius:4px;border-left:3px solid ${color};box-shadow:0 1px 3px rgba(0,0,0,0.05);overflow:hidden;">
               ${c.imagen ? `<div style="${bg}"></div>` : ''}
               <div style="padding:12px 14px;">
-                <div style="font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:${color};margin-bottom:5px;">${c.tag || '🏃 Deportes'}</div>
+                <div style="font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:${color};margin-bottom:5px;">${normTag(c.tag) || '🏃 Deportes'}</div>
                 <div style="font-family:'Playfair Display',serif;font-size:13px;font-weight:700;line-height:1.3;color:#252830;">${c.titulo}</div>
                 ${c.meta ? `<div style="font-size:10px;color:#888;margin-top:5px;">${c.meta}</div>` : ''}
               </div>
@@ -1556,6 +1556,10 @@ function irANota(id) {
   window.location.href = "nota.html?id=" + id;
 }
 
+function normTag(t) {
+  return (t || '').replace(/medio ambiente/gi, 'Ambiente');
+}
+
 function renderTapa(data) {
   const t = data.tapa;
   const s = data.secundarias || [];
@@ -1569,7 +1573,7 @@ function renderTapa(data) {
     <div class="nota-tapa" onclick="irANota('${t.id||'tapa'}')">
       <div class="${tapaCls}" style="width:100%;height:480px;display:block;${tapaBg}"></div>
       <div class="nota-overlay">
-        <div class="tag">${t.tag || '🗞️ Tapa'}</div>
+        <div class="tag">${normTag(t.tag) || '🗞️ Tapa'}</div>
         <h3>${t.titulo}</h3>
         <p>${bandera(t.pais)}${t.bajada}</p>
       </div>
@@ -1584,7 +1588,7 @@ function renderTapa(data) {
     <div class="nota-secundaria" onclick="irANota('${n.id||'sec'+(i+1)}')">
       <div class="img-placeholder ${cls}" style="width:100%;height:238px;${bg}"></div>
       <div class="nota-overlay">
-        <div class="tag">${n.tag || '🗞️ Noticias'}</div>
+        <div class="tag">${normTag(n.tag) || '🗞️ Noticias'}</div>
         <h3>${n.titulo}</h3>
         <p>${bandera(n.pais)}${n.bajada || ''}</p>
       </div>
@@ -1610,7 +1614,7 @@ function renderNoticias(data) {
     <div class="noticia-card" onclick="irANota('${n.id||'n'+(i+1)}')">
       <div class="card-img ${colorCls}" style="${bg}"></div>
       <div class="card-body">
-        <div class="card-tag ${tagCls}">${n.tag}</div>
+        <div class="card-tag ${tagCls}">${normTag(n.tag)}</div>
         <h3>${n.titulo}</h3>
         <div class="card-meta">${bandera(n.pais)} · ${fechaDesdeId(n.id) || n.meta}</div>
       </div>
@@ -1740,7 +1744,7 @@ function renderNegocios(arts) {
     return `
       <a href="nota.html?id=${a.id}" class="negocio-card">
         <div class="negocio-img" style="${bg}">
-          <span class="negocio-tag">${a.tag || 'Economía'}</span>
+          <span class="negocio-tag">${normTag(a.tag) || 'Economía'}</span>
         </div>
         <div class="negocio-body">
           <h3>${a.titulo}</h3>
@@ -1788,7 +1792,7 @@ function renderInformes(propios) {
         <div class="informe-item" onclick="irANota('${n.id}')">
           <div class="informe-item-img" style="${bgSec}"></div>
           <div class="informe-item-body">
-            <div class="inf-label">· ${n.tag || 'Informe'} ·</div>
+            <div class="inf-label">· ${normTag(n.tag) || 'Informe'} ·</div>
             <h4>${n.titulo}</h4>
             <p>${n.bajada || ''}</p>
           </div>
