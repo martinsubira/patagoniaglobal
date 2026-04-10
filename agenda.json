@@ -52,6 +52,19 @@
     "descripcion": "El Festival Ñam Santiago 2026 reúne a 30 emprendimientos de Agricultura Familiar Campesina de 13 regiones de Chile, incluyendo Magallanes, que representará al mundo rural patagónico con su oferta gastronómica identitaria y territorial."
   },
   {
+    "id": "jornada-carne-guanaco-rio-gallegos-2026",
+    "titulo": "Jornada \"Carne de Guanaco: Nueva Identidad Gastronómica de la Patagonia\"",
+    "fecha": "2026-04-10",
+    "fecha_fin": null,
+    "fecha_display": "10 de abril",
+    "lugar": "Sociedad Rural de Río Gallegos",
+    "region": "Santa Cruz, Argentina",
+    "pais": "AR",
+    "categoria": "gastronomia",
+    "emoji": "🦙",
+    "descripcion": "Jornada en la Sociedad Rural de Río Gallegos que reúne a chefs, especialistas en nutrición, productores y emprendedores gastronómicos para promover el consumo de carne de guanaco, destacando sus cualidades nutricionales y su potencial como producto identitario de la Patagonia."
+  },
+  {
     "id": "nodo-industrial-2026",
     "titulo": "Jornadas: Nodo industrial de la Patagonia Austral",
     "fecha": "2026-04-16",
@@ -126,6 +139,19 @@
     "categoria": "gastronomia",
     "emoji": "🍽️",
     "descripcion": "Encuentro gastronómico en la orilla del lago Aluminé. Chefs patagónicos compiten con productos de la región en uno de los destinos más hermosos del Neuquén andino."
+  },
+  {
+    "id": "fiesta-chef-patagonico-pehuenia-2026",
+    "titulo": "Fiesta Nacional del Chef Patagónico",
+    "fecha": "2026-05-01",
+    "fecha_fin": "2026-05-03",
+    "fecha_display": "1 al 3 de mayo",
+    "lugar": "Pehuenia Moquehue",
+    "region": "Neuquén, Argentina",
+    "pais": "AR",
+    "categoria": "gastronomia",
+    "emoji": "👨‍🍳",
+    "descripcion": "Fiesta Nacional del Chef Patagónico en Villa Pehuenia-Moquehue, un evento gastronómico que reúne a chefs de toda la Patagonia durante tres jornadas de cocina, degustaciones y actividades en un entorno de bosques y lagos cordilleranos."
   },
   {
     "id": "triatlon-golfo-nuevo-2026",

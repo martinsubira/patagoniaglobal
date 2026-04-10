@@ -1,14 +1,22 @@
 {
   "_info": "Feed de la sección Deportes & Aventura. Actualizado por actualizar_deportes.py. NO editar manualmente salvo corrección de emergencia.",
   "principal": {
-    "id": "20260410-1205-dep",
+    "id": "20260410-1426-dep",
     "tag": "🏃 Deportes",
-    "titulo": "Adrián Varas, el corredor que encadena 21K, 42K y 100 millas",
-    "bajada": "El atleta participó en tres distancias del Patagonia Run y explica por qué la montaña se convierte en un vicio inevitable.",
-    "imagen": "fotos/foto-20260410-1205-dep.webp",
+    "titulo": "Patagonia Run: la vida interior de un puesto de asistencia en montaña",
+    "bajada": "Los puestos de asistencia son refugios vitales para los corredores de ultra trail en medio de la cordillera neuquina.",
+    "imagen": "fotos/foto-20260410-1426-dep.webp",
     "meta": "Hoy · Diario Río Negro"
   },
   "secundarias": [
+    {
+      "id": "20260410-1205-dep",
+      "tag": "🏃 Deportes",
+      "titulo": "Adrián Varas, el corredor que encadena 21K, 42K y 100 millas",
+      "bajada": "El atleta participó en tres distancias del Patagonia Run y explica por qué la montaña se convierte en un vicio inevitable.",
+      "imagen": "fotos/foto-20260410-1205-dep.webp",
+      "meta": "Hoy · Diario Río Negro"
+    },
     {
       "id": "20260409-1733-dep",
       "tag": "🏃 Deportes",
@@ -16,7 +24,9 @@
       "bajada": "Nueve equipos santacruceños compiten desde mañana en un torneo provincial organizado por la Federación de Vóley.",
       "imagen": "fotos/foto-20260409-1733-dep.webp",
       "meta": "Hoy · Tiempo Sur"
-    },
+    }
+  ],
+  "row_cards": [
     {
       "id": "20260409-1727-dep",
       "tag": "🏃 Deportes",
@@ -24,9 +34,7 @@
       "bajada": "Equipos de Santa Cruz y Punta Arenas se enfrentan en la tercera fecha de la Liga Promesas de la Patagonia, con protagonismo de las categorías juveniles femeninas.",
       "imagen": "fotos/foto-20260409-1727-dep.webp",
       "meta": "Hoy · Tiempo Sur"
-    }
-  ],
-  "row_cards": [
+    },
     {
       "id": "20260409-1708-dep",
       "tag": "🏃 Deportes",
@@ -50,14 +58,6 @@
       "bajada": "La ciclista de Punta Arenas se impuso en las cuatro etapas de la 56ª Vuelta Internacional de Calama, una de las pruebas de ruta más tradicionales del ciclismo chileno.",
       "imagen": "fotos/foto-20260407-1050-dep.jpg",
       "meta": "Hoy · El Pingüino"
-    },
-    {
-      "id": "20260407-1029-sec2",
-      "tag": "🏊 Deportes",
-      "titulo": "Iara Arias, la nadadora de Viedma que hace podio en aguas heladas",
-      "bajada": "La deportista rionegrina compite en natación en aguas abiertas a temperaturas cercanas a los 0 grados y se destaca a nivel internacional.",
-      "imagen": "fotos/foto-20260407-1029-sec2.jpeg",
-      "meta": "Hoy · Diario Río Negro"
     }
   ]
 }
