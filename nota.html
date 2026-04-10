@@ -452,6 +452,44 @@
       .nota-meta { font-size: 11px; gap: 10px; flex-wrap: wrap; }
       .relacionadas-grid { grid-template-columns: 1fr; }
     }
+
+    /* LANG SWITCHER */
+    .lang-switcher { display: flex; gap: 6px; margin-bottom: 20px; }
+    .lang-btn { padding: 5px 16px; border-radius: 3px; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; border: 2px solid #1c2d3d; cursor: pointer; background: transparent; color: #1c2d3d; transition: all 0.15s; }
+    .lang-btn.active { background: #1c2d3d; color: white; }
+    .lang-btn:hover:not(.active) { background: #e8e4de; }
+
+    /* SKI TABLES */
+    .ski-table { width: 100%; border-collapse: collapse; margin: 24px 0 8px; font-size: 14px; border-radius: 6px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .ski-table thead tr { background: #1c2d3d; color: white; text-align: left; }
+    .ski-table thead th { padding: 12px 16px; font-weight: 700; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+    .ski-table tbody tr:nth-child(even) { background: #fff; }
+    .ski-table tbody tr:nth-child(odd) { background: #f7f5f0; }
+    .ski-table tbody td { padding: 11px 16px; color: #2a2a2a; border-bottom: 1px solid #e8e5e0; }
+    .ski-table tbody tr:last-child td { border-bottom: none; }
+    .ski-table td strong { color: #1c2d3d; }
+    .ski-table td.total-col { font-weight: 800; color: #1c2d3d; font-size: 15px; }
+    .ski-table tbody td:nth-child(2), .ski-table tbody td:nth-child(3) { color: #2a4a6a; font-weight: 600; }
+    .ski-nota { font-size: 11px; color: #999; margin-top: 6px; font-style: italic; }
+    .ski-vs thead th { width: 50%; text-align: center; font-size: 14px; }
+    .ski-vs td { text-align: center; font-size: 13px; }
+
+    /* SKI CARDS */
+    .ski-centro-card { display: grid; grid-template-columns: 260px 1fr; gap: 0; background: white; border-radius: 6px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.08); margin: 24px 0; }
+    .ski-centro-img { width: 260px; height: 200px; object-fit: cover; display: block; }
+    .ski-centro-body { padding: 20px 22px; display: flex; flex-direction: column; gap: 10px; }
+    .ski-centro-nombre { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 800; color: #1c2d3d; line-height: 1.2; }
+    .ski-stats-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0; }
+    .ski-stat { background: #f0ede8; border-radius: 4px; padding: 6px 10px; display: flex; flex-direction: column; min-width: 90px; }
+    .ski-stat-label { font-size: 9px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #999; margin-bottom: 2px; }
+    .ski-stat-val { font-size: 13px; font-weight: 800; color: #1c2d3d; }
+    .ski-centro-desc { font-size: 13px !important; color: #666; line-height: 1.6; margin: 0 !important; border: none !important; padding: 0 !important; }
+    @media (max-width: 600px) {
+      .ski-centro-card { grid-template-columns: 1fr; }
+      .ski-centro-img { width: 100%; height: 180px; }
+      .ski-table { font-size: 12px; }
+      .ski-table thead th, .ski-table tbody td { padding: 9px 10px; }
+    }
   </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1924505291132800" crossorigin="anonymous"></script>
 </head>
@@ -493,6 +531,12 @@
 <script>
 function getParam(name) {
   return new URLSearchParams(window.location.search).get(name);
+}
+
+function switchLang(l) {
+  const url = new URL(window.location.href);
+  url.searchParams.set('lang', l);
+  window.location.href = url.toString();
 }
 
 function tiempoLectura(texto) {
@@ -598,7 +642,16 @@ function renderNota(nota, fechaDisplay, data) {
     imgHtml = `<div class="nota-imagen-placeholder"></div>`;
   }
 
+  // Idioma
+  const lang = getParam('lang') || 'es';
+  if (lang !== 'es') {
+    if (nota['titulo_' + lang]) nota = { ...nota, titulo: nota['titulo_' + lang] };
+    if (nota['bajada_' + lang]) nota = { ...nota, bajada: nota['bajada_' + lang] };
+    if (nota['cuerpo_' + lang]) nota = { ...nota, cuerpo: nota['cuerpo_' + lang] };
+  }
+
   // Cuerpo — detecta subtítulos y los renderiza como h3, intercalando fotos de galería
+  // Bloques que empiezan con < se renderizan como HTML crudo (tablas, cards, etc.)
   const parrafos = (nota.cuerpo || "").split(/\n\n+/).filter(p => p.trim());
   const fotos = nota.galeria || [];
   let fotoIdx = 0;
@@ -608,6 +661,11 @@ function renderNota(nota, fechaDisplay, data) {
   let secActual = [];
   parrafos.forEach(p => {
     const t = p.trim();
+    if (t.startsWith('<')) {
+      if (secActual.length > 0) { secciones.push(secActual); secActual = []; }
+      secciones.push([{ tipo: 'raw', texto: t }]);
+      return;
+    }
     const esH3 = t.length < 90 && !t.endsWith('.') && !t.endsWith(',') && !t.endsWith('?') && !t.startsWith('"') && !t.match(/^\d/);
     if (esH3 && secActual.length > 0) {
       secciones.push(secActual);
@@ -624,7 +682,7 @@ function renderNota(nota, fechaDisplay, data) {
   let cuerpoHtml = "";
   secciones.forEach((sec, i) => {
     sec.forEach(item => {
-      cuerpoHtml += item.tipo === 'h3' ? `<h3>${item.texto}</h3>` : `<p>${item.texto}</p>`;
+      cuerpoHtml += item.tipo === 'raw' ? item.texto : item.tipo === 'h3' ? `<h3>${item.texto}</h3>` : `<p>${item.texto}</p>`;
     });
     // Intercalar foto después de la sección correspondiente (no al final)
     if (fotoIdx < fotos.length && (i + 1) % intervalo === 0 && i < secciones.length - 1) {
@@ -668,7 +726,16 @@ function renderNota(nota, fechaDisplay, data) {
       <button class="btn-compartir btn-copy" onclick="navigator.clipboard.writeText(window.location.href);this.textContent='¡Copiado!'">Copiar enlace</button>
     </div>`;
 
+  const hasMultilang = nota.titulo_en || nota.titulo_pt;
+  const langSwitcherHtml = hasMultilang ? `
+    <div class="lang-switcher">
+      <button class="lang-btn ${lang==='es'?'active':''}" onclick="switchLang('es')">ES</button>
+      <button class="lang-btn ${lang==='en'?'active':''}" onclick="switchLang('en')">EN</button>
+      <button class="lang-btn ${lang==='pt'?'active':''}" onclick="switchLang('pt')">PT</button>
+    </div>` : '';
+
   document.getElementById("contenido").innerHTML = `
+    ${langSwitcherHtml}
     <div class="nota-tag">${nota.tag || "🗞️ Patagonia"}</div>
     <h1 class="nota-titulo">${nota.titulo}</h1>
     <div class="nota-bajada">${nota.bajada || ""}</div>
