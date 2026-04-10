@@ -1599,17 +1599,30 @@ def publicar_facebook(tapa):
     ruta_img = os.path.join(os.path.dirname(__file__), imagen) if imagen else ""
     ruta_img = ruta_img if os.path.exists(ruta_img) else ""
 
+    # Convertir WebP a JPEG si es necesario (Facebook no acepta WebP)
+    jpg_tmp = None
+    if ruta_img and ruta_img.lower().endswith(".webp"):
+        import tempfile, subprocess
+        jpg_tmp  = tempfile.mktemp(suffix=".jpg")
+        resultado_conv = subprocess.run(
+            ["magick", ruta_img, "-quality", "88", jpg_tmp],
+            capture_output=True
+        )
+        if resultado_conv.returncode == 0 and os.path.exists(jpg_tmp):
+            ruta_img = jpg_tmp
+        else:
+            ruta_img = ""
+
     try:
         api_url = f"https://graph.facebook.com/v21.0/{page_id}"
 
         if ruta_img:
-            # Publicar con foto
+            # Publicar con foto via /photos
             with open(ruta_img, "rb") as img_file:
-                import io
                 boundary = "----PatagoniaGLOBAL"
                 body = (
                     f"--{boundary}\r\n"
-                    f'Content-Disposition: form-data; name="message"\r\n\r\n'
+                    f'Content-Disposition: form-data; name="caption"\r\n\r\n'
                     f"{mensaje}\r\n"
                     f"--{boundary}\r\n"
                     f'Content-Disposition: form-data; name="access_token"\r\n\r\n'
@@ -1619,12 +1632,15 @@ def publicar_facebook(tapa):
                     f"Content-Type: image/jpeg\r\n\r\n"
                 ).encode() + img_file.read() + f"\r\n--{boundary}--\r\n".encode()
 
-                req = urllib.request.Request(
-                    f"{api_url}/photos",
-                    data=body,
-                    headers={"Content-Type": f"multipart/form-data; boundary={boundary}"},
-                    method="POST"
-                )
+            if jpg_tmp and os.path.exists(jpg_tmp):
+                os.unlink(jpg_tmp)
+
+            req = urllib.request.Request(
+                f"{api_url}/photos",
+                data=body,
+                headers={"Content-Type": f"multipart/form-data; boundary={boundary}"},
+                method="POST"
+            )
         else:
             # Publicar solo texto + link
             data = urllib.parse.urlencode({
@@ -1698,6 +1714,20 @@ def publicar_facebook_informe_nuevo():
     ruta_img = os.path.join(base_dir, imagen) if imagen else ""
     ruta_img = ruta_img if os.path.exists(ruta_img) else ""
 
+    # Convertir WebP a JPEG si es necesario (Facebook no acepta WebP)
+    jpg_tmp = None
+    if ruta_img and ruta_img.lower().endswith(".webp"):
+        import tempfile, subprocess
+        jpg_tmp  = tempfile.mktemp(suffix=".jpg")
+        resultado_conv = subprocess.run(
+            ["magick", ruta_img, "-quality", "88", jpg_tmp],
+            capture_output=True
+        )
+        if resultado_conv.returncode == 0 and os.path.exists(jpg_tmp):
+            ruta_img = jpg_tmp
+        else:
+            ruta_img = ""
+
     try:
         api_url = f"https://graph.facebook.com/v21.0/{page_id}"
 
@@ -1706,7 +1736,7 @@ def publicar_facebook_informe_nuevo():
             with open(ruta_img, "rb") as img_file:
                 body = (
                     f"--{boundary}\r\n"
-                    f'Content-Disposition: form-data; name="message"\r\n\r\n'
+                    f'Content-Disposition: form-data; name="caption"\r\n\r\n'
                     f"{mensaje}\r\n"
                     f"--{boundary}\r\n"
                     f'Content-Disposition: form-data; name="access_token"\r\n\r\n'
@@ -1716,12 +1746,15 @@ def publicar_facebook_informe_nuevo():
                     f"Content-Type: image/jpeg\r\n\r\n"
                 ).encode() + img_file.read() + f"\r\n--{boundary}--\r\n".encode()
 
-                req = urllib.request.Request(
-                    f"{api_url}/photos",
-                    data=body,
-                    headers={"Content-Type": f"multipart/form-data; boundary={boundary}"},
-                    method="POST"
-                )
+            if jpg_tmp and os.path.exists(jpg_tmp):
+                os.unlink(jpg_tmp)
+
+            req = urllib.request.Request(
+                f"{api_url}/photos",
+                data=body,
+                headers={"Content-Type": f"multipart/form-data; boundary={boundary}"},
+                method="POST"
+            )
         else:
             data = urllib.parse.urlencode({
                 "message":      mensaje,
