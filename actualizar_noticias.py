@@ -1877,7 +1877,7 @@ def _generar_imagen_ig(ruta_local, titulo, tag=""):
         words    = titulo_s.split()
         lines    = []
         current  = ""
-        for word in words:
+        for idx_w, word in enumerate(words):
             test = (current + " " + word).strip() if current else word
             bb   = draw.textbbox((0, 0), test, font=font_titulo)
             if bb[2] - bb[0] <= MAX_PX:
@@ -1885,9 +1885,12 @@ def _generar_imagen_ig(ruta_local, titulo, tag=""):
             else:
                 if current:
                     lines.append(current)
+                if len(lines) >= 2:
+                    # Línea 3: juntar todas las palabras restantes
+                    remaining = word + " " + " ".join(words[idx_w+1:])
+                    current = remaining.strip()
+                    break
                 current = word
-            if len(lines) >= 2:
-                break   # solo 3 líneas en total
         if current:
             lines.append(current)
         lines = lines[:3]
