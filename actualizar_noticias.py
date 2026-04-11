@@ -1634,14 +1634,16 @@ def publicar_facebook(tapa):
     # Convertir WebP a JPEG si es necesario (Facebook no acepta WebP)
     jpg_tmp = None
     if ruta_img and ruta_img.lower().endswith(".webp"):
-        import tempfile, subprocess
-        jpg_tmp  = tempfile.mktemp(suffix=".jpg")
-        resultado_conv = subprocess.run(
-            ["magick", ruta_img, "-quality", "88", jpg_tmp],
-            capture_output=True
-        )
-        if resultado_conv.returncode == 0 and os.path.exists(jpg_tmp):
+        import tempfile
+        from PIL import Image as _PilImg
+        jpg_tmp = tempfile.mktemp(suffix=".jpg")
+        try:
+            with _PilImg.open(ruta_img) as _wim:
+                _wim.convert("RGB").save(jpg_tmp, "JPEG", quality=88)
             ruta_img = jpg_tmp
+        except Exception as _we:
+            print(f"  WebP→JPEG falló: {_we}")
+            jpg_tmp = None
         else:
             ruta_img = ""
 
@@ -1749,14 +1751,16 @@ def publicar_facebook_informe_nuevo():
     # Convertir WebP a JPEG si es necesario (Facebook no acepta WebP)
     jpg_tmp = None
     if ruta_img and ruta_img.lower().endswith(".webp"):
-        import tempfile, subprocess
-        jpg_tmp  = tempfile.mktemp(suffix=".jpg")
-        resultado_conv = subprocess.run(
-            ["magick", ruta_img, "-quality", "88", jpg_tmp],
-            capture_output=True
-        )
-        if resultado_conv.returncode == 0 and os.path.exists(jpg_tmp):
+        import tempfile
+        from PIL import Image as _PilImg
+        jpg_tmp = tempfile.mktemp(suffix=".jpg")
+        try:
+            with _PilImg.open(ruta_img) as _wim:
+                _wim.convert("RGB").save(jpg_tmp, "JPEG", quality=88)
             ruta_img = jpg_tmp
+        except Exception as _we:
+            print(f"  WebP→JPEG falló: {_we}")
+            jpg_tmp = None
         else:
             ruta_img = ""
 
