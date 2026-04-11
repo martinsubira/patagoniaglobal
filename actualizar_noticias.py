@@ -1373,8 +1373,26 @@ def main():
     print(f"\n  Actualizando agenda...")
     actualizar_agenda(noticias_crudas)
 
-    # 9. Publicar en Telegram y Facebook
+    # 9. Publicar en Telegram, Facebook e Instagram
     notas_tapa = _seleccionar_notas_binacionales(tapa, secundarias)
+
+    # Generar imágenes con overlay de texto para Instagram
+    print(f"\n  Generando imágenes para Instagram...")
+    _base_dir = os.path.dirname(__file__)
+    for _nota_ig in notas_tapa:
+        _img_local = os.path.join(_base_dir, _nota_ig.get("imagen", ""))
+        if os.path.exists(_img_local):
+            _generar_imagen_ig(_img_local, _nota_ig.get("titulo", ""), _nota_ig.get("tag", ""))
+    try:
+        with open(os.path.join(_base_dir, "propios.json"), encoding="utf-8") as _fp:
+            _propios_ig = json.load(_fp)
+        if _propios_ig:
+            _p0 = _propios_ig[0]
+            _img_p = os.path.join(_base_dir, _p0.get("imagen", ""))
+            if os.path.exists(_img_p):
+                _generar_imagen_ig(_img_p, _p0.get("titulo", ""), _p0.get("tag", "📋 Informe"))
+    except Exception:
+        pass
 
     print(f"\n  Publicando en Telegram...")
     for nota in notas_tapa:
@@ -1795,6 +1813,135 @@ def publicar_facebook_informe_nuevo():
         print(f"  Facebook informe falló: {e}")
 
 
+
+def _generar_imagen_ig(ruta_local, titulo, tag=""):
+    """Genera imagen cuadrada 1080×1080 con overlay de texto para Instagram.
+    Guarda como {base}_ig.jpg junto al original. Retorna la ruta o None si falla."""
+    try:
+        from PIL import Image, ImageDraw, ImageFont
+        import textwrap as tw_mod, os as _os, numpy as np
+
+        # ── Cargar y recortar a cuadrado 1:1 ────────────────────────────────────────────────
+        img = Image.open(ruta_local).convert("RGB")
+        w, h = img.size
+        lado = min(w, h)
+        left = (w - lado) // 2
+        top  = (h - lado) // 2
+        img  = img.crop((left, top, left + lado, top + lado))
+        img  = img.resize((1080, 1080), Image.LANCZOS)
+
+        # ── Gradiente oscuro en mitad inferior ────────────────────────────────────────────
+        arr = np.array(img, dtype=np.float32)
+        grad_start = 480
+        azul = np.array([28, 45, 61], dtype=np.float32)
+        for y in range(grad_start, 1080):
+            t     = (y - grad_start) / (1080 - grad_start)
+            alpha = t * 0.85
+            arr[y] = arr[y] * (1 - alpha) + azul * alpha
+        img  = Image.fromarray(arr.clip(0, 255).astype(np.uint8))
+        draw = ImageDraw.Draw(img)
+
+        # ── Colores paleta GLOBALpatagonia ──────────────────────────────────────────
+        C_TITULO = (240, 237, 232)   # #f0ede8 crema
+        C_TAG    = (122, 173, 204)   # #7aadcc azul glacial
+        C_MARCA  = (180, 177, 172)   # crema suave para watermark
+        C_SHADOW = (10,  20,  30)    # sombra casi negra
+
+        # ── Fuentes (disponibles en Ubuntu/GitHub Actions) ──────────────────────
+        def _fuente(paths, size):
+            for p in paths:
+                if _os.path.exists(p):
+                    try:
+                        return ImageFont.truetype(p, size)
+                    except Exception:
+                        pass
+            return ImageFont.load_default()
+
+        font_titulo = _fuente([
+            "/usr/share/fonts/truetype/liberation/LiberationSerif-Bold.ttf",
+            "/usr/share/fonts/truetype/dejavu/DejaVuSerif-Bold.ttf",
+            "/usr/share/fonts/truetype/freefont/FreeSerifBold.ttf",
+        ], 66)
+        font_tag = _fuente([
+            "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf",
+            "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
+        ], 34)
+        font_marca = _fuente([
+            "/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf",
+            "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+        ], 26)
+
+        # ── Wrap dinámico del título (max 3 líneas, ~950px ancho) ────────────────────────
+        MAX_PX   = 940
+        titulo_s = titulo.replace("\n", " ").strip()
+        words    = titulo_s.split()
+        lines    = []
+        current  = ""
+        for word in words:
+            test = (current + " " + word).strip() if current else word
+            bb   = draw.textbbox((0, 0), test, font=font_titulo)
+            if bb[2] - bb[0] <= MAX_PX:
+                current = test
+            else:
+                if current:
+                    lines.append(current)
+                current = word
+            if len(lines) >= 2:
+                break   # solo 3 líneas en total
+        if current:
+            lines.append(current)
+        lines = lines[:3]
+        # Truncar última línea con ellipsis si sobrepasa el ancho
+        if lines:
+            last = lines[-1]
+            bb   = draw.textbbox((0, 0), last, font=font_titulo)
+            if bb[2] - bb[0] > MAX_PX:
+                while " " in last:
+                    last = last.rsplit(" ", 1)[0]
+                    bb   = draw.textbbox((0, 0), last + "…", font=font_titulo)
+                    if bb[2] - bb[0] <= MAX_PX:
+                        break
+                lines[-1] = last + "…"
+
+        # ── Calcular posición del bloque de texto ──────────────────────────────────────────────────────
+        LINE_H   = 82
+        total_h  = len(lines) * LINE_H
+        tag_area = 58 if tag else 0
+        texto_y  = 1080 - 52 - total_h - tag_area
+
+        # ── Badge de tag ─────────────────────────────────────────────────────────────────────
+        if tag:
+            tag_txt  = tag.strip()
+            bb_tag   = draw.textbbox((0, 0), tag_txt, font=font_tag)
+            tag_w    = bb_tag[2] - bb_tag[0] + 30
+            tag_h    = bb_tag[3] - bb_tag[1] + 14
+            tag_x, tag_y = 48, texto_y - tag_h - 12
+            draw.rectangle([(tag_x, tag_y), (tag_x + tag_w, tag_y + tag_h)], fill=C_TAG)
+            draw.text((tag_x + 15, tag_y + 7), tag_txt, font=font_tag, fill=(28, 45, 61))
+
+        # ── Título ───────────────────────────────────────────────────────────────────────────────
+        for linea in lines:
+            draw.text((50, texto_y + 2), linea, font=font_titulo, fill=C_SHADOW)
+            draw.text((48, texto_y),     linea, font=font_titulo, fill=C_TITULO)
+            texto_y += LINE_H
+
+        # ── Marca GLOBALpatagonia (esquina inferior derecha) ────────────────────────────────────────────────────────
+        marca   = "GLOBALpatagonia"
+        bb_m    = draw.textbbox((0, 0), marca, font=font_marca)
+        marca_w = bb_m[2] - bb_m[0]
+        draw.text((1080 - marca_w - 30, 1080 - 40), marca, font=font_marca, fill=C_MARCA)
+
+        # ── Guardar _ig.jpg ──────────────────────────────────────────────────────────────────────────────────
+        base    = ruta_local.rsplit(".", 1)[0]
+        ruta_ig = base + "_ig.jpg"
+        img.save(ruta_ig, "JPEG", quality=92)
+        print(f"  IG overlay → {_os.path.basename(ruta_ig)}")
+        return ruta_ig
+
+    except Exception as e:
+        print(f"  _generar_imagen_ig falló: {e}")
+        return None
+
 # ══════════════════════════════════════════════════════════
 #  INSTAGRAM
 # ══════════════════════════════════════════════════════════
@@ -1819,7 +1966,12 @@ def publicar_instagram(tapa):
 
     banderas  = {"argentina": "🇦🇷", "chile": "🇨🇱", "ambos": "🇦🇷🇨🇱", "malvinas": "🗺️"}
     bandera   = banderas.get(pais, "")
-    image_url = f"https://globalpatagonia.org/{imagen}"
+    base_dir  = os.path.dirname(__file__)
+    imagen_ig = imagen.rsplit(".", 1)[0] + "_ig.jpg"
+    if os.path.exists(os.path.join(base_dir, imagen_ig)):
+        image_url = f"https://globalpatagonia.org/{imagen_ig}"
+    else:
+        image_url = f"https://globalpatagonia.org/{imagen}"
 
     caption = (
         f"{bandera} {titulo}\n\n"
@@ -1934,7 +2086,12 @@ def publicar_instagram_informe_nuevo():
     if not imagen:
         return
 
-    image_url = f"https://globalpatagonia.org/{imagen}"
+    base_dir_i  = os.path.dirname(__file__)
+    imagen_ig_i = imagen.rsplit(".", 1)[0] + "_ig.jpg"
+    if os.path.exists(os.path.join(base_dir_i, imagen_ig_i)):
+        image_url = f"https://globalpatagonia.org/{imagen_ig_i}"
+    else:
+        image_url = f"https://globalpatagonia.org/{imagen}"
     caption = (
         f"{tag} {titulo}\n\n"
         f"{bajada}\n\n"
@@ -2021,11 +2178,18 @@ def solo_instagram():
     except Exception as e:
         print(f"  Instagram (post-push): no se pudo leer noticias.json — {e}")
         return
-    tapa = noticias.get("tapa", {})
-    print("\n  Publicando tapa en Instagram (post-push)…")
-    publicar_instagram(tapa)
+    tapa        = noticias.get("tapa", {})
+    secundarias = noticias.get("secundarias", [])
+    notas_ig    = _seleccionar_notas_binacionales(tapa, secundarias)
+
+    for nota_ig in notas_ig:
+        pais_ig = nota_ig.get("pais", "")
+        print(f"\n  Publicando nota ({pais_ig}) en Instagram (post-push)…")
+        publicar_instagram(nota_ig)
+
     print("\n  Publicando informe en Instagram (post-push)…")
     publicar_instagram_informe_nuevo()
+
     print("\n  ✓ Instagram post-push listo")
 
 
