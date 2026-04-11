@@ -1,14 +1,22 @@
 {
   "_info": "Feed de la sección Deportes & Aventura. Actualizado por actualizar_deportes.py. NO editar manualmente salvo corrección de emergencia.",
   "principal": {
-    "id": "20260410-1426-dep",
+    "id": "20260411-0415-dep",
     "tag": "🏃 Deportes",
-    "titulo": "Patagonia Run: la vida interior de un puesto de asistencia en montaña",
-    "bajada": "Los puestos de asistencia son refugios vitales para los corredores de ultra trail en medio de la cordillera neuquina.",
-    "imagen": "fotos/foto-20260410-1426-dep.webp",
+    "titulo": "Largaron las 100 millas de la Patagonia Run 2026",
+    "bajada": "Los ultramaratonistas partieron desde San Martín de los Andes hacia la montaña en la prueba reina del evento más convocante del trail patagónico.",
+    "imagen": "fotos/foto-20260411-0415-dep.webp",
     "meta": "Hoy · Diario Río Negro"
   },
   "secundarias": [
+    {
+      "id": "20260410-1426-dep",
+      "tag": "🏃 Deportes",
+      "titulo": "Patagonia Run: la vida interior de un puesto de asistencia en montaña",
+      "bajada": "Los puestos de asistencia son refugios vitales para los corredores de ultra trail en medio de la cordillera neuquina.",
+      "imagen": "fotos/foto-20260410-1426-dep.webp",
+      "meta": "Hoy · Diario Río Negro"
+    },
     {
       "id": "20260410-1205-dep",
       "tag": "🏃 Deportes",
@@ -16,7 +24,9 @@
       "bajada": "El atleta participó en tres distancias del Patagonia Run y explica por qué la montaña se convierte en un vicio inevitable.",
       "imagen": "fotos/foto-20260410-1205-dep.webp",
       "meta": "Hoy · Diario Río Negro"
-    },
+    }
+  ],
+  "row_cards": [
     {
       "id": "20260409-1733-dep",
       "tag": "🏃 Deportes",
@@ -24,9 +34,7 @@
       "bajada": "Nueve equipos santacruceños compiten desde mañana en un torneo provincial organizado por la Federación de Vóley.",
       "imagen": "fotos/foto-20260409-1733-dep.webp",
       "meta": "Hoy · Tiempo Sur"
-    }
-  ],
-  "row_cards": [
+    },
     {
       "id": "20260409-1727-dep",
       "tag": "🏃 Deportes",
@@ -50,14 +58,6 @@
       "bajada": "La historia de una corredora que encontró en el trail patagónico una forma de sanar heridas y reconstruir su vida.",
       "imagen": "fotos/foto-20260409-1210-dep.webp",
       "meta": "Hoy · Diario Río Negro"
-    },
-    {
-      "id": "20260407-1050-dep",
-      "tag": "🏃 Deportes",
-      "titulo": "Ariela Mansilla, campeona magallánica en la Vuelta de Calama",
-      "bajada": "La ciclista de Punta Arenas se impuso en las cuatro etapas de la 56ª Vuelta Internacional de Calama, una de las pruebas de ruta más tradicionales del ciclismo chileno.",
-      "imagen": "fotos/foto-20260407-1050-dep.jpg",
-      "meta": "Hoy · El Pingüino"
     }
   ]
 }

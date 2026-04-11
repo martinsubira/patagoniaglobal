@@ -52,17 +52,30 @@
     "descripcion": "El Festival Ñam Santiago 2026 reúne a 30 emprendimientos de Agricultura Familiar Campesina de 13 regiones de Chile, incluyendo Magallanes, que representará al mundo rural patagónico con su oferta gastronómica identitaria y territorial."
   },
   {
-    "id": "jornada-carne-guanaco-rio-gallegos-2026",
-    "titulo": "Jornada \"Carne de Guanaco: Nueva Identidad Gastronómica de la Patagonia\"",
-    "fecha": "2026-04-10",
-    "fecha_fin": null,
-    "fecha_display": "10 de abril",
-    "lugar": "Sociedad Rural de Río Gallegos",
-    "region": "Santa Cruz, Argentina",
+    "id": "patagonia-run-2026-san-martin-andes",
+    "titulo": "Patagonia Run 2026 - 100 Millas",
+    "fecha": "2026-04-11",
+    "fecha_fin": "2026-04-13",
+    "fecha_display": "11 al 13 de abril",
+    "lugar": "San Martín de los Andes",
+    "region": "Neuquén, Patagonia",
     "pais": "AR",
-    "categoria": "gastronomia",
-    "emoji": "🦙",
-    "descripcion": "Jornada en la Sociedad Rural de Río Gallegos que reúne a chefs, especialistas en nutrición, productores y emprendedores gastronómicos para promover el consumo de carne de guanaco, destacando sus cualidades nutricionales y su potencial como producto identitario de la Patagonia."
+    "categoria": "deportes",
+    "emoji": "🏔️",
+    "descripcion": "Patagonia Run 2026, la icónica carrera de ultra trail en la Patagonia, con su prueba estrella de 100 millas por senderos de montaña. Miles de corredores de todo el mundo se reúnen en San Martín de los Andes para enfrentar los desafiantes circuitos de la cordillera."
+  },
+  {
+    "id": "karting-local-segunda-fecha-rio-gallegos-2026",
+    "titulo": "Segunda fecha del Campeonato Local de Karting \"Premio Ramírez Inmobiliaria\"",
+    "fecha": "2026-04-12",
+    "fecha_fin": "2026-04-13",
+    "fecha_display": "12 y 13 de abril",
+    "lugar": "Río Gallegos",
+    "region": "Santa Cruz, Patagonia",
+    "pais": "AR",
+    "categoria": "deportes",
+    "emoji": "🏎️",
+    "descripcion": "Segunda fecha del campeonato local de karting en Santa Cruz. El sábado se realizan las pruebas comunitarias y el domingo se desarrollan ensayos, clasificación y series de competición."
   },
   {
     "id": "nodo-industrial-2026",
