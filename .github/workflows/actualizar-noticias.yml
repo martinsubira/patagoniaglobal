@@ -42,3 +42,12 @@ jobs:
           git add noticias.json historial.json agenda.json fotos/ propios.json propios_historial.json deportes_feed.json negocios.json turismo.json telegram_state.json
           git diff --staged --quiet || git commit -m "Noticias actualizadas — $(date +'%d/%m/%Y')"
           git push
+
+      - name: Esperar propagación GitHub Pages
+        run: sleep 90
+
+      - name: Publicar tapa e informes en Instagram
+        env:
+          FACEBOOK_PAGE_TOKEN: ${{ secrets.FACEBOOK_PAGE_TOKEN }}
+          INSTAGRAM_BUSINESS_ACCOUNT_ID: ${{ secrets.INSTAGRAM_BUSINESS_ACCOUNT_ID }}
+        run: python3 actualizar_noticias.py --solo-instagram
