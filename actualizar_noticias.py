@@ -1664,7 +1664,6 @@ def publicar_facebook(tapa):
         except Exception as _we:
             print(f"  WebP→JPEG falló: {_we}")
             jpg_tmp = None
-        else:
             ruta_img = ""
 
     try:
@@ -1781,7 +1780,6 @@ def publicar_facebook_informe_nuevo():
         except Exception as _we:
             print(f"  WebP→JPEG falló: {_we}")
             jpg_tmp = None
-        else:
             ruta_img = ""
 
     try:
