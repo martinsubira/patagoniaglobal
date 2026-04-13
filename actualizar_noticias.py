@@ -2077,21 +2077,20 @@ def _generar_imagen_ig(ruta_local, titulo, tag=""):
             "/Library/Fonts/Arial.ttf",
             "/System/Library/Fonts/Helvetica.ttc",
         ]
-        _serif_bold = [
-            "/usr/share/fonts/truetype/liberation/LiberationSerif-Bold.ttf",
-            "/usr/share/fonts/truetype/dejavu/DejaVuSerif-Bold.ttf",
-            "/usr/share/fonts/truetype/freefont/FreeSerifBold.ttf",
-            "/Library/Fonts/Georgia Bold.ttf",
-            "/Library/Fonts/Times New Roman Bold.ttf",
-            "/System/Library/Fonts/Times.ttc",
-            "/Library/Fonts/Arial Bold.ttf",
+        _arial_black = [
+            "/usr/share/fonts/truetype/noto/NotoSans-Black.ttf",          # Ubuntu con fonts-noto
+            "/usr/share/fonts/noto/NotoSans-Black.ttf",
+            "/System/Library/Fonts/Supplemental/Arial Black.ttf",         # macOS
+            "/Library/Fonts/Arial Black.ttf",
+            "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf",  # fallback
+            "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
         ]
 
-        font_logo_bold = _fuente(_sans_bold, 38)
-        font_logo_reg  = _fuente(_sans_reg,  38)
-        font_titulo    = _fuente(_serif_bold, 82)
-        font_tag       = _fuente(_sans_bold,  34)
-        font_cta       = _fuente(_sans_bold,  38)
+        font_logo_bold = _fuente(_sans_bold,   38)
+        font_logo_reg  = _fuente(_sans_reg,    38)
+        font_titulo    = _fuente(_arial_black, 82)
+        font_tag       = _fuente(_sans_bold,   34)
+        font_cta       = _fuente(_sans_bold,   38)
 
         # ── Header: "GLOBALpatagonia" centrado ───────────────────────────────────
         bb_g    = draw.textbbox((0, 0), "GLOBAL",     font=font_logo_bold)
@@ -2105,7 +2104,9 @@ def _generar_imagen_ig(ruta_local, titulo, tag=""):
         # ── Badge de tag (al inicio de la sección oscura, sobre la foto) ─────────
         PADDING = 60
         if tag:
-            tag_txt = f"- {tag.strip().lstrip('- ').rstrip(' -')} -"
+            import re as _re
+            _tag_limpio = _re.sub(r"[^\w\sáéíóúüñÁÉÍÓÚÜÑ&/\-]", "", tag).strip().strip("- ").strip()
+            tag_txt = f"- {_tag_limpio} -"
             bb_tag  = draw.textbbox((0, 0), tag_txt, font=font_tag)
             tag_w   = (bb_tag[2] - bb_tag[0]) + 44
             tag_h   = (bb_tag[3] - bb_tag[1]) + 18
