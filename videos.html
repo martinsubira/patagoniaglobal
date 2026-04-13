@@ -473,8 +473,8 @@ const CATS = {
 };
 const CAT_ORDER = ["ficcion", "serie_ficcion", "documental", "serie_documental", "musica"];
 
-function thumb(id)   { return `https://img.youtube.com/vi/${id}/hqdefault.jpg`; }
-function thumbHD(id) { return `https://img.youtube.com/vi/${id}/maxresdefault.jpg`; }
+function thumb(item)   { return item.thumbnail || `https://img.youtube.com/vi/${item.youtube_id}/hqdefault.jpg`; }
+function thumbHD(item) { return item.thumbnail || `https://img.youtube.com/vi/${item.youtube_id}/maxresdefault.jpg`; }
 
 // ── LIGHTBOX (video individual) ──
 function abrirVideo(v) {
@@ -495,7 +495,7 @@ document.addEventListener("keydown", e => { if (e.key === "Escape") { cerrar(); 
 
 // ── SERIE DETAIL PANEL ──
 function abrirSerie(s) {
-  document.getElementById("sd-bg").style.backgroundImage = `url(${thumbHD(s.youtube_id)})`;
+  document.getElementById("sd-bg").style.backgroundImage = `url(${thumbHD(s)})`;
   document.getElementById("sd-badge").textContent = `${CATS[s.categoria]||'Serie'} · ${s.episodios.length} episodios`;
   document.getElementById("sd-titulo").textContent = s.titulo;
   document.getElementById("sd-desc").textContent = s.descripcion || "";
@@ -513,7 +513,7 @@ function abrirSerie(s) {
     row.innerHTML = `
       <div class="ep-num">${ep.episodio || (i + 1)}</div>
       <div class="ep-thumb">
-        <img src="${thumb(ep.youtube_id)}" loading="lazy" alt="${epTitulo}">
+        <img src="${thumb(ep)}" loading="lazy" alt="${epTitulo}">
         <div class="ep-thumb-play">▶</div>
       </div>
       <div class="ep-body">
@@ -594,7 +594,7 @@ function renderCard(item) {
   el.className = "vcard";
   el.innerHTML = `
     <div class="vcard-thumb">
-      <img src="${thumb(item.youtube_id)}" alt="${item.titulo}" loading="lazy">
+      <img src="${thumb(item)}" alt="${item.titulo}" loading="lazy">
     </div>
     <div class="vcard-info">
       <div class="vcard-cat">${CATS[item.categoria]||item.categoria}</div>
@@ -615,7 +615,7 @@ function renderSerieCard(s) {
   el.className = "vcard";
   el.innerHTML = `
     <div class="vcard-thumb">
-      <img src="${thumb(s.youtube_id)}" alt="${s.titulo}" loading="lazy">
+      <img src="${thumb(s)}" alt="${s.titulo}" loading="lazy">
       <div class="serie-badge-thumb">SERIE · ${s.episodios.length} ep.</div>
     </div>
     <div class="vcard-info">
@@ -641,7 +641,7 @@ function buildSlide(item) {
   const el = document.createElement("div");
   el.className = "carousel-slide";
   el.innerHTML = `
-    <div class="slide-bg" style="background-image:url(${thumbHD(item.youtube_id)})"></div>
+    <div class="slide-bg" style="background-image:url(${thumbHD(item)})"></div>
     <div class="slide-content">
       <div class="hero-badge">${isSerie ? `${CATS[item.categoria]||'Serie'} · ${item.episodios.length} ep.` : (CATS[item.categoria]||item.categoria)}</div>
       <h1 class="hero-titulo">${item.titulo}</h1>

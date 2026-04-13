@@ -1,5 +1,17 @@
 [
   {
+    "id": "la-araucana-1971",
+    "titulo": "La Araucana",
+    "descripcion": "Basada en el poema épico de Alonso de Ercilla, narra la conquista de Chile emprendida por Pedro de Valdivia. La resistencia araucana (mapuche) la encabeza el joven guerrero Lautaro (Leftraru), que cruza el Gran Río (Bío Bío) para auxiliar a los picunche del valle del Mapocho. Contra los defensores de la tradición, Lautaro decide aprender las artes del enemigo para usarlas en su contra.",
+    "youtube_id": "I46hbYmYE4Q",
+    "thumbnail": "fotos/la-araucana-poster.webp",
+    "categoria": "ficcion",
+    "año": 1971,
+    "duracion": "110 min",
+    "lugar": "Chile",
+    "pais": "CL"
+  },
+  {
     "id": "dogo-al-caido",
     "titulo": "Al Caído — DOGO",
     "descripcion": "Videoclip oficial del tema 'Al Caído' de la banda patagónica DOGO. Un homenaje a los soldados caídos en la Guerra de Malvinas (1982), filmado en la Patagonia austral. Música que une identidad regional y memoria colectiva.",
