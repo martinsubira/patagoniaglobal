@@ -1428,8 +1428,76 @@ def main():
     publicar_instagram(tapa)
     publicar_instagram_informe_nuevo()
 
+    print(f"\n  Actualizando sitemap...")
+    actualizar_sitemap()
+
     print(f"\n  ✓ Listo — {fecha_display()}")
     print(f"{'='*55}\n")
+
+
+# ══════════════════════════════════════════════════════════
+#  SITEMAP
+# ══════════════════════════════════════════════════════════
+
+def actualizar_sitemap():
+    """Regenera sitemap.xml con todas las notas actualmente accesibles."""
+    base = os.path.dirname(__file__)
+    today = datetime.now().strftime("%Y-%m-%d")
+
+    fuentes = [
+        "historial.json", "noticias.json", "historias.json",
+        "turismo.json", "guias.json", "deportes_feed.json", "propios.json",
+    ]
+    ids = {}
+    for nombre in fuentes:
+        path = os.path.join(base, nombre)
+        if not os.path.exists(path):
+            continue
+        try:
+            with open(path, encoding="utf-8") as f:
+                data = json.load(f)
+            if not isinstance(data, list):
+                continue
+            for nota in data:
+                if isinstance(nota, dict) and nota.get("id"):
+                    nid = nota["id"]
+                    if nid not in ids:
+                        ids[nid] = nota.get("fecha", today) or today
+        except Exception:
+            pass
+
+    static = [
+        ("https://globalpatagonia.org/",              today, "daily",   "1.0"),
+        ("https://globalpatagonia.org/agenda.html",   today, "daily",   "0.7"),
+        ("https://globalpatagonia.org/videos.html",   today, "weekly",  "0.7"),
+        ("https://globalpatagonia.org/acerca.html",   today, "monthly", "0.5"),
+        ("https://globalpatagonia.org/privacidad.html", today, "monthly", "0.3"),
+    ]
+
+    lines = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+    ]
+    for loc, lastmod, freq, prio in static:
+        lines += [f"  <url>", f"    <loc>{loc}</loc>",
+                  f"    <lastmod>{lastmod}</lastmod>",
+                  f"    <changefreq>{freq}</changefreq>",
+                  f"    <priority>{prio}</priority>", f"  </url>"]
+
+    for nid, fecha in sorted(ids.items(), key=lambda x: x[1], reverse=True):
+        lines += [f"  <url>",
+                  f"    <loc>https://globalpatagonia.org/nota.html?id={nid}</loc>",
+                  f"    <lastmod>{fecha}</lastmod>",
+                  f"    <changefreq>weekly</changefreq>",
+                  f"    <priority>0.8</priority>", f"  </url>"]
+
+    lines.append("</urlset>")
+
+    sitemap_path = os.path.join(base, "sitemap.xml")
+    with open(sitemap_path, "w", encoding="utf-8") as f:
+        f.write("\n".join(lines))
+
+    print(f"    Sitemap OK — {len(ids)} notas + {len(static)} páginas estáticas")
 
 
 # ══════════════════════════════════════════════════════════
