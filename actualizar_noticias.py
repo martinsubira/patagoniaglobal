@@ -649,17 +649,52 @@ def extraer_galeria_articulo(url_articulo, nota_id):
 
 
 def buscar_foto_propia(nota, fotos):
-    keywords_nota = nota.get("imagen_keywords", "").lower()
-    if not keywords_nota:
-        return None
+    """Busca la foto propia más relevante para una nota.
+
+    Scoring (acumulativo):
+    - keyword de la foto aparece en imagen_keywords de la nota (+2 por match exacto de palabra, +1 por substring)
+    - keyword de la foto aparece en el título de la nota (+2)
+    - keyword de la foto aparece en fuente/pais de la nota (+1)
+
+    Retorna (ruta, score) — score 0 significa sin match."""
+    import re as _re
+
+    def _tokenize(s):
+        return set(_re.findall(r'[a-záéíóúüñ]+', s.lower())) if s else set()
+
+    kw_img   = nota.get("imagen_keywords", "").lower()
+    titulo   = nota.get("titulo", "").lower()
+    fuente   = nota.get("fuente", "").lower()
+    pais     = nota.get("pais", "").lower()
+    contexto = f"{kw_img} {titulo} {fuente} {pais}"
+
+    tokens_kw     = _tokenize(kw_img)
+    tokens_titulo = _tokenize(titulo)
+
     mejor = None
     mejor_score = 0
+
     for foto in fotos:
-        score = sum(1 for kw in foto.get("keywords", []) if kw in keywords_nota)
+        score = 0
+        for kw in foto.get("keywords", []):
+            kw_l      = kw.lower()
+            tokens_kw_foto = _tokenize(kw_l)
+            # Match exacto de palabra (todos los tokens del keyword están en el contexto)
+            if tokens_kw_foto and tokens_kw_foto.issubset(_tokenize(contexto)):
+                score += 2 * len(tokens_kw_foto)
+            # Match de substrings en imagen_keywords
+            elif kw_l in kw_img:
+                score += 1
+            # Match en título (más peso)
+            if tokens_kw_foto and tokens_kw_foto.issubset(tokens_titulo):
+                score += 2
         if score > mejor_score:
             mejor_score = score
             mejor = foto
-    return f"fotos/{mejor['archivo']}" if mejor else None
+
+    if mejor and mejor_score > 0:
+        return f"fotos/{mejor['archivo']}", mejor_score
+    return None, 0
 
 
 def _unsplash_query(keywords):
@@ -831,10 +866,12 @@ def resolver_imagen(nota, fotos_propias, fotos_usadas):
             return og_img
         print("no encontrada")
 
-    foto_propia = buscar_foto_propia(nota, fotos_propias)
-    if foto_propia and foto_propia not in fotos_usadas:
+    foto_propia, foto_score = buscar_foto_propia(nota, fotos_propias)
+    if foto_propia:
+        # Si hay match real (score > 0), usar la foto aunque ya fue usada por otra nota.
+        # Solo respetar fotos_usadas cuando no hay match (fallback aleatorio).
         fotos_usadas.add(foto_propia)
-        print(f"    [{nota_id}] foto propia: {foto_propia} ✓")
+        print(f"    [{nota_id}] foto propia: {foto_propia} (score {foto_score}) ✓")
         return foto_propia
 
     keywords = nota.get("imagen_keywords", "patagonia landscape")
