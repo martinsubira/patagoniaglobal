@@ -8,7 +8,23 @@
   <meta name="description" content="Noticias de la Patagonia argentina y chilena — GLOBALpatagonia"/>
   <link rel="canonical" id="canonical-tag"/>
   <script>
-    document.getElementById('canonical-tag').href = window.location.href;
+    (function() {
+      var params = new URLSearchParams(window.location.search);
+      var id = params.get('id');
+      // Si no hay ?id= redirigir al inicio
+      if (!id) { window.location.replace('/'); }
+      // Canonical siempre apunta a la URL sin ?lang= (versión española canónica)
+      var canonicalUrl = 'https://globalpatagonia.org/nota.html?id=' + encodeURIComponent(id);
+      document.getElementById('canonical-tag').href = canonicalUrl;
+      // hreflang: agregar dinámicamente si hay versiones multiidioma
+      var lang = params.get('lang');
+      var base = 'https://globalpatagonia.org/nota.html?id=' + encodeURIComponent(id);
+      var head = document.head;
+      var hES = document.createElement('link'); hES.rel='alternate'; hES.hreflang='es'; hES.href=base; head.appendChild(hES);
+      var hEN = document.createElement('link'); hEN.rel='alternate'; hEN.hreflang='en'; hEN.href=base+'&lang=en'; head.appendChild(hEN);
+      var hPT = document.createElement('link'); hPT.rel='alternate'; hPT.hreflang='pt'; hPT.href=base+'&lang=pt'; head.appendChild(hPT);
+      var hDef = document.createElement('link'); hDef.rel='alternate'; hDef.hreflang='x-default'; hDef.href=base; head.appendChild(hDef);
+    })();
   </script>
   <meta property="og:site_name" content="GLOBALpatagonia"/>
   <meta property="og:type" content="article"/>
@@ -630,7 +646,11 @@ function renderNota(nota, fechaDisplay, data) {
   setMeta('meta[name="twitter:description"]', nota.bajada || nota.titulo);
   setMeta('meta[name="twitter:image"]', imgAbsoluta);
   const canonical = document.querySelector('link[rel="canonical"]');
-  if (canonical) canonical.href = window.location.href;
+  if (canonical) {
+    // Canonical apunta siempre a la versión española (sin ?lang=)
+    const _cParams = new URLSearchParams(window.location.search);
+    canonical.href = 'https://globalpatagonia.org/nota.html?id=' + encodeURIComponent(_cParams.get('id') || '');
+  }
 
   // JSON-LD dinámico para Google
   const jsonld = document.getElementById("jsonld-nota");

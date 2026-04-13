@@ -1448,7 +1448,8 @@ def actualizar_sitemap():
         "historial.json", "noticias.json", "historias.json",
         "turismo.json", "guias.json", "deportes_feed.json", "propios.json",
     ]
-    ids = {}
+    ids = {}        # id → fecha
+    historias_ids = set()  # IDs de historias permanentes (priority alta, monthly)
     for nombre in fuentes:
         path = os.path.join(base, nombre)
         if not os.path.exists(path):
@@ -1456,13 +1457,22 @@ def actualizar_sitemap():
         try:
             with open(path, encoding="utf-8") as f:
                 data = json.load(f)
-            if not isinstance(data, list):
+            # historias.json tiene estructura {"_info": ..., "notas": [...]}
+            if isinstance(data, dict) and "notas" in data:
+                lista = data["notas"]
+                es_historias = True
+            elif isinstance(data, list):
+                lista = data
+                es_historias = False
+            else:
                 continue
-            for nota in data:
+            for nota in lista:
                 if isinstance(nota, dict) and nota.get("id"):
                     nid = nota["id"]
                     if nid not in ids:
                         ids[nid] = nota.get("fecha", today) or today
+                    if es_historias:
+                        historias_ids.add(nid)
         except Exception:
             pass
 
@@ -1485,11 +1495,14 @@ def actualizar_sitemap():
                   f"    <priority>{prio}</priority>", f"  </url>"]
 
     for nid, fecha in sorted(ids.items(), key=lambda x: x[1], reverse=True):
+        es_historia = nid in historias_ids
+        freq = "monthly" if es_historia else "weekly"
+        prio = "0.9" if es_historia else "0.8"
         lines += [f"  <url>",
                   f"    <loc>https://globalpatagonia.org/nota.html?id={nid}</loc>",
                   f"    <lastmod>{fecha}</lastmod>",
-                  f"    <changefreq>weekly</changefreq>",
-                  f"    <priority>0.8</priority>", f"  </url>"]
+                  f"    <changefreq>{freq}</changefreq>",
+                  f"    <priority>{prio}</priority>", f"  </url>"]
 
     lines.append("</urlset>")
 
