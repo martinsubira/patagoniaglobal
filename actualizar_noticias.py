@@ -1766,7 +1766,7 @@ def publicar_facebook(tapa):
         if ruta_img:
             # Publicar con foto via /photos
             with open(ruta_img, "rb") as img_file:
-                boundary = "----PatagoniaGLOBAL"
+                boundary = "----GLOBALpatagonia"
                 body = (
                     f"--{boundary}\r\n"
                     f'Content-Disposition: form-data; name="caption"\r\n\r\n'
@@ -1881,7 +1881,7 @@ def publicar_facebook_informe_nuevo():
         api_url = f"https://graph.facebook.com/v21.0/{page_id}"
 
         if ruta_img:
-            boundary = "----PatagoniaGLOBAL"
+            boundary = "----GLOBALpatagonia"
             with open(ruta_img, "rb") as img_file:
                 body = (
                     f"--{boundary}\r\n"
@@ -2097,7 +2097,7 @@ def publicar_instagram(tapa):
         f"{bandera} {titulo}\n\n"
         f"{bajada}\n\n"
         f"🔗 Nota completa en bio\n\n"
-        f"#Patagonia #PatagoniaGlobal #Noticias #SurGlobal #GLOBALpatagonia"
+        f"#Patagonia #GLOBALpatagonia #Noticias #SurGlobal #PatagoniaArgentina"
     )
 
     try:
@@ -2216,7 +2216,7 @@ def publicar_instagram_informe_nuevo():
         f"{tag} {titulo}\n\n"
         f"{bajada}\n\n"
         f"🔗 Nota completa en bio\n\n"
-        f"#Patagonia #PatagoniaGlobal #Informe #SurGlobal #GLOBALpatagonia"
+        f"#Patagonia #GLOBALpatagonia #Informe #SurGlobal #PatagoniaArgentina"
     )
 
     try:

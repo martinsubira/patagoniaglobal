@@ -39,8 +39,8 @@ jobs:
 
       - name: Publicar cambios
         run: |
-          git config user.name "PatagoniaGLOBAL Bot"
-          git config user.email "bot@patagoniaglobal.ar"
+          git config user.name "GLOBALpatagonia Bot"
+          git config user.email "bot@globalpatagonia.org"
           git add noticias.json noticias_ayer.json historial.json agenda.json fotos/ propios.json propios_historial.json deportes_feed.json negocios.json turismo.json cultura.json telegram_state.json sitemap.xml
           git diff --staged --quiet || git commit -m "Noticias actualizadas — $(date +'%d/%m/%Y')"
           git push
