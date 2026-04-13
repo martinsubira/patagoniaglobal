@@ -1704,12 +1704,14 @@ def _seleccionar_notas_binacionales(tapa, secundarias):
 
 
 def _renovar_token_facebook(token):
-    """Intercambia el token actual por uno nuevo de 60 días usando App ID + App Secret."""
+    """Intercambia el token actual por uno long-lived y obtiene el Page Access Token real."""
     app_id     = os.environ.get("FACEBOOK_APP_ID", "")
     app_secret = os.environ.get("FACEBOOK_APP_SECRET", "")
+    page_id    = os.environ.get("FACEBOOK_PAGE_ID", "")
     if not app_id or not app_secret or not token:
         return token
     try:
+        # Paso 1: exchange → long-lived token (user o page según lo que haya en FACEBOOK_PAGE_TOKEN)
         params = urllib.parse.urlencode({
             "grant_type":        "fb_exchange_token",
             "client_id":         app_id,
@@ -1720,9 +1722,25 @@ def _renovar_token_facebook(token):
         with urllib.request.urlopen(url, timeout=15) as resp:
             data = json.loads(resp.read().decode())
         nuevo = data.get("access_token", "")
-        if nuevo:
-            print("  Facebook: token renovado automáticamente ✓")
-            return nuevo
+        if not nuevo:
+            return token
+
+        # Paso 2: si el token renovado es un User Token, obtener el Page Access Token real.
+        # /me/accounts devuelve los Page Tokens derivados del user token (nunca expiran).
+        if page_id:
+            try:
+                accounts_url = f"https://graph.facebook.com/me/accounts?access_token={nuevo}"
+                with urllib.request.urlopen(accounts_url, timeout=15) as resp2:
+                    accounts = json.loads(resp2.read().decode())
+                for page in accounts.get("data", []):
+                    if page.get("id") == page_id:
+                        print("  Facebook: token renovado automáticamente ✓")
+                        return page["access_token"]
+            except Exception:
+                pass  # si /me/accounts falla, usar el token renovado tal cual
+
+        print("  Facebook: token renovado automáticamente ✓")
+        return nuevo
     except Exception as e:
         print(f"  Facebook: no se pudo renovar el token ({e}), se usa el existente.")
     return token
@@ -2101,10 +2119,9 @@ def publicar_instagram(tapa):
     bandera   = banderas.get(pais, "")
     base_dir  = os.path.dirname(__file__)
     imagen_ig = imagen.rsplit(".", 1)[0] + "_ig.jpg"
-    if os.path.exists(os.path.join(base_dir, imagen_ig)):
-        image_url = f"https://globalpatagonia.org/{imagen_ig}"
-    else:
-        image_url = f"https://globalpatagonia.org/{imagen}"
+    image_url_ig  = f"https://globalpatagonia.org/{imagen_ig}" if os.path.exists(os.path.join(base_dir, imagen_ig)) else None
+    image_url_orig = f"https://globalpatagonia.org/{imagen}"
+    image_url = image_url_ig or image_url_orig
 
     caption = (
         f"{bandera} {titulo}\n\n"
@@ -2116,20 +2133,33 @@ def publicar_instagram(tapa):
     try:
         api_base = f"https://graph.facebook.com/v21.0/{ig_user_id}"
 
-        # Paso 1: crear media container
-        data = urllib.parse.urlencode({
-            "image_url":    image_url,
-            "caption":      caption,
-            "access_token": access_token,
-        }).encode()
-        req = urllib.request.Request(f"{api_base}/media", data=data, method="POST")
-        try:
+        # Paso 1: crear media container (con fallback a imagen original si _ig.jpg falla)
+        def _crear_container_ig(url_img):
+            data = urllib.parse.urlencode({
+                "image_url":    url_img,
+                "caption":      caption,
+                "access_token": access_token,
+            }).encode()
+            req = urllib.request.Request(f"{api_base}/media", data=data, method="POST")
             with urllib.request.urlopen(req, timeout=30) as resp:
-                resultado = json.loads(resp.read().decode())
+                return json.loads(resp.read().decode())
+
+        try:
+            resultado = _crear_container_ig(image_url)
         except urllib.error.HTTPError as http_err:
             detalle = http_err.read().decode("utf-8", errors="replace")
-            print(f"  Instagram container falló {http_err.code}: {detalle}")
-            return
+            # Si falló con la imagen _ig.jpg, reintentar con la original
+            if image_url_ig and image_url != image_url_orig:
+                print(f"  Instagram _ig.jpg falló ({http_err.code}), reintentando con imagen original...")
+                try:
+                    resultado = _crear_container_ig(image_url_orig)
+                except urllib.error.HTTPError as http_err2:
+                    detalle2 = http_err2.read().decode("utf-8", errors="replace")
+                    print(f"  Instagram container falló {http_err2.code}: {detalle2}")
+                    return
+            else:
+                print(f"  Instagram container falló {http_err.code}: {detalle}")
+                return
 
         creation_id = resultado.get("id")
         if not creation_id:
@@ -2219,12 +2249,12 @@ def publicar_instagram_informe_nuevo():
     if not imagen:
         return
 
-    base_dir_i  = os.path.dirname(__file__)
-    imagen_ig_i = imagen.rsplit(".", 1)[0] + "_ig.jpg"
-    if os.path.exists(os.path.join(base_dir_i, imagen_ig_i)):
-        image_url = f"https://globalpatagonia.org/{imagen_ig_i}"
-    else:
-        image_url = f"https://globalpatagonia.org/{imagen}"
+    base_dir_i    = os.path.dirname(__file__)
+    imagen_ig_i   = imagen.rsplit(".", 1)[0] + "_ig.jpg"
+    image_url_ig_i  = f"https://globalpatagonia.org/{imagen_ig_i}" if os.path.exists(os.path.join(base_dir_i, imagen_ig_i)) else None
+    image_url_orig_i = f"https://globalpatagonia.org/{imagen}"
+    image_url = image_url_ig_i or image_url_orig_i
+
     caption = (
         f"{tag} {titulo}\n\n"
         f"{bajada}\n\n"
@@ -2235,20 +2265,32 @@ def publicar_instagram_informe_nuevo():
     try:
         api_base = f"https://graph.facebook.com/v21.0/{ig_user_id}"
 
-        # Paso 1: crear container
-        data = urllib.parse.urlencode({
-            "image_url":    image_url,
-            "caption":      caption,
-            "access_token": access_token,
-        }).encode()
-        req = urllib.request.Request(f"{api_base}/media", data=data, method="POST")
-        try:
+        # Paso 1: crear container (con fallback a imagen original si _ig.jpg falla)
+        def _crear_container_informe_ig(url_img):
+            data = urllib.parse.urlencode({
+                "image_url":    url_img,
+                "caption":      caption,
+                "access_token": access_token,
+            }).encode()
+            req = urllib.request.Request(f"{api_base}/media", data=data, method="POST")
             with urllib.request.urlopen(req, timeout=30) as resp:
-                resultado = json.loads(resp.read().decode())
+                return json.loads(resp.read().decode())
+
+        try:
+            resultado = _crear_container_informe_ig(image_url)
         except urllib.error.HTTPError as http_err:
             detalle = http_err.read().decode("utf-8", errors="replace")
-            print(f"  Instagram informe container falló {http_err.code}: {detalle}")
-            return
+            if image_url_ig_i and image_url != image_url_orig_i:
+                print(f"  Instagram informe _ig.jpg falló ({http_err.code}), reintentando con imagen original...")
+                try:
+                    resultado = _crear_container_informe_ig(image_url_orig_i)
+                except urllib.error.HTTPError as http_err2:
+                    detalle2 = http_err2.read().decode("utf-8", errors="replace")
+                    print(f"  Instagram informe container falló {http_err2.code}: {detalle2}")
+                    return
+            else:
+                print(f"  Instagram informe container falló {http_err.code}: {detalle}")
+                return
 
         creation_id = resultado.get("id")
         if not creation_id:
