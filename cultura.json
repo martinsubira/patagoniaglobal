@@ -1,5 +1,29 @@
 [
   {
+    "id": "cultura-cantautores-malvinas",
+    "titulo": "La Patagonia le canta a Malvinas: Río Grande reunió voces de toda la región en un homenaje histórico",
+    "bajada": "Cantautores de Río Grande, Río Gallegos, Ushuaia, Viedma, Neuquén y El Calafate se unieron en la Vigilia del 2 de Abril para rendir tributo a los caídos y a los grandes nombres de la música patagónica.",
+    "imagen": "fotos/foto-cantautores-malvinas.jpg",
+    "tag": "🎵 Cultura",
+    "categoria": "cultura",
+    "meta": "Abril 2026 · BriefTDF",
+    "pais": "argentina",
+    "excluir_feed": true,
+    "postear_redes": true
+  },
+  {
+    "id": "cultura-patrimonio-aysen",
+    "titulo": "Aysén apuesta fuerte por su patrimonio: $53 mil millones para rescatar la memoria construida de la región",
+    "bajada": "El Gobierno Regional y la Universidad de La Frontera presentaron el plan patrimonial más ambicioso de la historia de Aysén, con proyectos que incluyen las iglesias del Padre Ronchi, el Puente Ibáñez y la Carretera Austral.",
+    "imagen": "fotos/foto-patrimonio-aysen.jpg",
+    "tag": "🏛️ Patrimonio",
+    "categoria": "cultura",
+    "meta": "Abril 2026 · Diario Regional Aysén",
+    "pais": "chile",
+    "excluir_feed": true,
+    "postear_redes": true
+  },
+  {
     "id": "20260330-1452-1",
     "titulo": "Punta Arenas enciende su invierno con el calendario de las Invernadas 2026",
     "bajada": "Desde fines de mayo hasta agosto, más de una decena de actividades culturales y comunitarias transformarán el frío magallánico en punto de encuentro.",

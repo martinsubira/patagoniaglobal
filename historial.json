@@ -1,5 +1,35 @@
 [
   {
+    "id": "cultura-cantautores-malvinas",
+    "titulo": "La Patagonia le canta a Malvinas: Río Grande reunió voces de toda la región en un homenaje histórico",
+    "bajada": "Cantautores de Río Grande, Río Gallegos, Ushuaia, Viedma, Neuquén y El Calafate se unieron en la Vigilia del 2 de Abril para rendir tributo a los caídos y a los grandes nombres de la música patagónica.",
+    "cuerpo": "La Vigilia del 2 de Abril encontró en Río Grande un formato nuevo y poderoso: un encuentro de cantautores patagónicos que convirtió la Casa de la Cultura en un gran escenario regional. \"La Patagonia le canta a Malvinas\" reunió voces de toda la región en un homenaje que cruzó generaciones, estilos y geografías.\n\nEl evento fue organizado por el Municipio de Río Grande con articulación del Municipio de Río Gallegos, y convocó a artistas de al menos ocho localidades: Río Grande, Río Gallegos, Ushuaia, El Calafate, Viedma, 28 de Noviembre y Neuquén. Entre los participantes: Los Berbel, Flor Rupayán (Viedma), Ignacio Boreal (Ushuaia), Cala Gallardo (El Calafate) y los fueguinos Facu Armas, Fredy Gallardo y Leda Soto.\n\nEl punto alto de la noche fue el homenaje a Hugo Giménez Agüero, el cantor patagónico más grande de la historia, cuya esposa Perla y su hija Ana estuvieron presentes en la sala. También se recordó a Marcelo Berbel en el centenario de su nacimiento, una figura capital de la identidad cultural patagónica que sigue inspirando generaciones.\n\nEn paralelo, el Centro Cultural Leandro N. Alem albergó talleres de danza patagónica Kaani y la Fiesta Tehuelche, ampliando el encuentro más allá de la música hacia las expresiones de los pueblos originarios que habitaron estas tierras antes que nadie.\n\nEl público fue masivo. Veteranos de Malvinas, autoridades y vecinos de todas las edades llenaron las salas. La propuesta —que combina el dolor del recuerdo con la celebración de la identidad cultural patagónica— quedó instalada como un modelo que merece repetirse y crecer.\n\nLa Patagonia tiene canciones propias. Y cuando las canta junta, la voz llega lejos.",
+    "tag": "🎵 Cultura",
+    "categoria": "cultura",
+    "fuente": "BriefTDF",
+    "url_original": "https://brieftdf.com.ar/institucionales/2026/04/05/gran-convocatoria-en-el-primer-encuentro-de-cantautores-la-patagonia-le-canta-a-malvinas",
+    "pais": "argentina",
+    "imagen": "fotos/foto-cantautores-malvinas.jpg",
+    "meta": "Abril 2026 · BriefTDF",
+    "excluir_feed": true,
+    "postear_redes": true
+  },
+  {
+    "id": "cultura-patrimonio-aysen",
+    "titulo": "Aysén apuesta fuerte por su patrimonio: $53 mil millones para rescatar la memoria construida de la región",
+    "bajada": "El Gobierno Regional y la Universidad de La Frontera presentaron el plan patrimonial más ambicioso de la historia de Aysén, con proyectos que incluyen las iglesias del Padre Ronchi, el Puente Ibáñez y la Carretera Austral.",
+    "cuerpo": "La región de Aysén da un paso histórico para proteger lo que queda de su pasado construido. El Gobierno Regional y el Instituto de Medio Ambiente de la Universidad de La Frontera presentaron el Plan Regional de Infraestructura Patrimonial: una hoja de ruta de largo plazo que compromete más de 53 mil millones de pesos para el período 2025-2030.\n\nEl diagnóstico que motivó el plan es elocuente: Aysén cuenta apenas con 23 Monumentos Nacionales declarados, pero tiene identificados más de 260 inmuebles y 50 áreas con valor patrimonial. Una brecha enorme entre lo que existe y lo que el Estado ha decidido proteger formalmente.\n\nEntre los proyectos prioritarios figuran nombres que son parte del alma de la región: el Archivo Regional de Aysén, la Casa Hopperdietzel de Puerto Puyuhuapi, el Puente Colgante Presidente Ibáñez, las bodegas portuarias de Puerto Ibáñez y la Escuela Pedro Quintana Mansilla. También se incluye la Ruta de iglesias del Padre Antonio Ronchi, ese cura italiano que recorrió la Patagonia chilena en bote y a caballo dejando capillas de madera que son patrimonio cultural y espiritual de toda la región.\n\nLa inversión involucra a la Mesa Regional de Patrimonio, al Ministerio de las Culturas, al Ministerio de Obras Públicas y al Servicio de Biodiversidad y Áreas Protegidas. Es la apuesta más articulada que ha hecho Aysén para poner en valor su historia.\n\nPara una región que lleva el peso del aislamiento como marca identitaria, preservar su patrimonio construido es también una forma de decirle al mundo que aquí hay historia, que hubo gente que construyó con esfuerzo y que esas paredes merecen estar en pie.\n\nLa Patagonia chilena no solo tiene glaciares y bosques. Tiene casas que contaron historias. Y ahora, por primera vez, tiene un plan para que sigan contándolas.",
+    "tag": "🏛️ Patrimonio",
+    "categoria": "cultura",
+    "fuente": "Diario Regional Aysén",
+    "url_original": "https://www.diarioregionalaysen.cl/noticia/actualidad/2026/04/region-de-aysen-presenta-historico-plan-de-inversion-para-rescatar-su-patrimonio",
+    "pais": "chile",
+    "imagen": "fotos/foto-patrimonio-aysen.jpg",
+    "meta": "Abril 2026 · Diario Regional Aysén",
+    "excluir_feed": true,
+    "postear_redes": true
+  },
+  {
     "id": "20260413-1212-tapa",
     "titulo": "Neuquén exige a Comarsa retirar basurero petrolero para recuperar terrenos contaminados",
     "bajada": "El gobierno neuquino acelera gestiones para que la empresa de tratamiento de residuos petroleros desocupe un predio clave. El caso pone en foco la remediación ambiental en zonas hidrocarburíferas y la tensión entre desarrollo energético y territorio limpio.",
