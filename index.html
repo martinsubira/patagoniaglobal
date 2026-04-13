@@ -1370,73 +1370,8 @@
     <div class="section-badge badge-dorado">Notas de la semana</div>
   </div>
 
-  <div class="historia-grid">
-    <a href="nota.html?id=historia-huelgas-1921" style="text-decoration:none;color:inherit;">
-    <div class="historia-card">
-      <div class="hist-img hist-img-1" style="background-image:url('fotos/huelgas-1921-patagonia.jpg');background-size:cover;background-position:center top;"></div>
-      <div class="hist-badge">Historia</div>
-      <div class="hist-body">
-        <div class="hist-periodo">· 1920 · La Patagonia Rebelde ·</div>
-        <h3>Las huelgas de 1921: cuando los peones rurales de Santa Cruz se enfrentaron al Estado</h3>
-        <p>A 105 años de la masacre, revisamos los hechos que inspiraron la película de Olivera y siguen siendo un capítulo pendiente de la historia argentina.</p>
-      </div>
-    </div>
-    </a>
-    <a href="nota.html?id=historia-perito-moreno" style="text-decoration:none;color:inherit;">
-    <div class="historia-card">
-      <div class="hist-img hist-img-2" style="background-image:url('fotos/perito-moreno.jpg');background-size:cover;background-position:center top;"></div>
-      <div class="hist-badge">Historia</div>
-      <div class="hist-body">
-        <div class="hist-periodo">· 1879 · Expedición ·</div>
-        <h3>El viaje de Perito Moreno al Nahuel Huapi: 147 años del primer registro científico de la Patagonia andina</h3>
-        <p>Francisco Moreno llegó al lago en enero de 1879. Su bitácora de viaje es una obra maestra de la observación científica y la narración de aventuras.</p>
-      </div>
-    </div>
-    </a>
-    <a href="nota.html?id=historia-kawesqar" style="text-decoration:none;color:inherit;">
-    <div class="historia-card">
-      <div class="hist-img hist-img-3" style="background-image:url('fotos/kawesqar-canal-beagle.jpg');background-size:cover;background-position:center top;"></div>
-      <div class="hist-badge">Historia</div>
-      <div class="hist-body">
-        <div class="hist-periodo">· Pueblos Originarios ·</div>
-        <h3>Los Kawésqar: los últimos nómades del mar en el canal Beagle y su lucha por la memoria</h3>
-        <p>Quedan menos de 20 personas que hablan el idioma Kawésqar. Esta es la historia de un pueblo que navegó los canales más inhóspitos del planeta por siglos.</p>
-      </div>
-    </div>
-    </a>
-    <a href="nota.html?id=cultura-ruben-patagonia" style="text-decoration:none;color:inherit;">
-    <div class="historia-card">
-      <div class="hist-img" style="background-image:url('fotos/ruben-patagonia.jpg');background-size:cover;background-position:center top;height:180px;"></div>
-      <div class="hist-badge" style="background:#3a5a7a;">Cultura</div>
-      <div class="hist-body">
-        <div class="hist-periodo">· Enero 2026 · In memoriam ·</div>
-        <h3>Rubén Patagonia: la voz tehuelche que cantó lo que otros no podían nombrar</h3>
-        <p>Murió el 15 de enero de 2026 a los 69 años. Revisamos la trayectoria del músico de Comodoro Rivadavia que convirtió la memoria de los pueblos originarios en canciones.</p>
-      </div>
-    </div>
-    </a>
-    <a href="nota.html?id=cultura-cantautores-malvinas" style="text-decoration:none;color:inherit;">
-    <div class="historia-card">
-      <div class="hist-img" style="background-image:url('fotos/foto-cantautores-malvinas.jpg');background-size:cover;background-position:center top;height:180px;"></div>
-      <div class="hist-badge" style="background:#3a5a7a;">Cultura</div>
-      <div class="hist-body">
-        <div class="hist-periodo">· Abril 2026 · Río Grande ·</div>
-        <h3>La Patagonia le canta a Malvinas: Río Grande reunió voces de toda la región en un homenaje histórico</h3>
-        <p>Cantautores de ocho localidades patagónicas se unieron en la Vigilia del 2 de Abril. Homenaje a Hugo Giménez Agüero y Marcelo Berbel.</p>
-      </div>
-    </div>
-    </a>
-    <a href="nota.html?id=cultura-patrimonio-aysen" style="text-decoration:none;color:inherit;">
-    <div class="historia-card">
-      <div class="hist-img" style="background-image:url('fotos/foto-patrimonio-aysen.jpg');background-size:cover;background-position:center top;height:180px;"></div>
-      <div class="hist-badge" style="background:#5a7a5a;">Patrimonio</div>
-      <div class="hist-body">
-        <div class="hist-periodo">· Abril 2026 · Aysén, Chile ·</div>
-        <h3>Aysén apuesta fuerte por su patrimonio: $53 mil millones para rescatar la memoria construida de la región</h3>
-        <p>El plan más ambicioso de la historia incluye las iglesias del Padre Ronchi, el Puente Ibáñez y la Carretera Austral.</p>
-      </div>
-    </div>
-    </a>
+  <div class="historia-grid" id="cultura-container">
+    <!-- Se rellena dinámicamente desde cultura.json — máx 6, la más nueva primero -->
   </div>
 
 </div>
@@ -1787,6 +1722,37 @@ function renderNegocios(arts) {
 fetch("negocios.json")
   .then(r => r.json())
   .then(data => renderNegocios(data))
+  .catch(() => {});
+
+// ── CULTURA PATAGÓNICA: carga desde cultura.json — máx 6, la más nueva primero ──
+function renderCultura(arts) {
+  const container = document.getElementById("cultura-container");
+  if (!container || !arts || !arts.length) return;
+  const visibles = arts.slice(0, 6);
+  container.innerHTML = visibles.map(a => {
+    const bg = a.imagen
+      ? `background-image:url('${a.imagen}');background-size:cover;background-position:center top;`
+      : "background:linear-gradient(135deg,#1c2d3d,#2d3a4d);";
+    const tag = normTag(a.tag) || a.categoria || "Cultura";
+    const meta = a.meta || "";
+    return `
+      <a href="nota.html?id=${a.id}" style="text-decoration:none;color:inherit;">
+      <div class="historia-card">
+        <div class="hist-img" style="${bg}height:180px;"></div>
+        <div class="hist-badge" style="background:#3a5a7a;">${tag}</div>
+        <div class="hist-body">
+          <div class="hist-periodo">${meta ? "· " + meta + " ·" : ""}</div>
+          <h3>${a.titulo}</h3>
+          <p>${a.bajada || ""}</p>
+        </div>
+      </div>
+      </a>`;
+  }).join("");
+}
+
+fetch("cultura.json")
+  .then(r => r.json())
+  .then(data => renderCultura(data))
   .catch(() => {});
 
 // ── INFORMES: carga desde propios.json (no afectado por el script diario) ──
