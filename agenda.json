@@ -1,57 +1,5 @@
 [
   {
-    "id": "patagonia-run-2026-san-martin-andes",
-    "titulo": "Patagonia Run 2026 - 100 Millas",
-    "fecha": "2026-04-11",
-    "fecha_fin": "2026-04-13",
-    "fecha_display": "11 al 13 de abril",
-    "lugar": "San Martín de los Andes",
-    "region": "Neuquén, Patagonia",
-    "pais": "AR",
-    "categoria": "deportes",
-    "emoji": "🏔️",
-    "descripcion": "Patagonia Run 2026, la icónica carrera de ultra trail en la Patagonia, con su prueba estrella de 100 millas por senderos de montaña. Miles de corredores de todo el mundo se reúnen en San Martín de los Andes para enfrentar los desafiantes circuitos de la cordillera."
-  },
-  {
-    "id": "patagonia-run-2026-san-martin-de-los-andes",
-    "titulo": "Patagonia Run 2026 - 100 Millas",
-    "fecha": "2026-04-11",
-    "fecha_fin": "2026-04-13",
-    "fecha_display": "11 al 13 de abril",
-    "lugar": "San Martín de los Andes",
-    "region": "Neuquén, Argentina",
-    "pais": "AR",
-    "categoria": "deportes",
-    "emoji": "🏔️",
-    "descripcion": "Edición 2026 de la Patagonia Run, una de las carreras de ultra trail más importantes de Sudamérica. Largaron las 100 millas con los mejores corredores de montaña en un recorrido exigente por la cordillera patagónica."
-  },
-  {
-    "id": "karting-local-segunda-fecha-rio-gallegos-2026",
-    "titulo": "Segunda fecha del Campeonato Local de Karting \"Premio Ramírez Inmobiliaria\"",
-    "fecha": "2026-04-12",
-    "fecha_fin": "2026-04-13",
-    "fecha_display": "12 y 13 de abril",
-    "lugar": "Río Gallegos",
-    "region": "Santa Cruz, Patagonia",
-    "pais": "AR",
-    "categoria": "deportes",
-    "emoji": "🏎️",
-    "descripcion": "Segunda fecha del campeonato local de karting en Santa Cruz. El sábado se realizan las pruebas comunitarias y el domingo se desarrollan ensayos, clasificación y series de competición."
-  },
-  {
-    "id": "karting-rio-gallegos-fecha2-2026",
-    "titulo": "Segunda fecha del Campeonato Local de Karting \"Premio Ramírez Inmobiliaria\"",
-    "fecha": "2026-04-12",
-    "fecha_fin": "2026-04-13",
-    "fecha_display": "12 y 13 de abril",
-    "lugar": "Río Gallegos",
-    "region": "Santa Cruz, Argentina",
-    "pais": "AR",
-    "categoria": "deportes",
-    "emoji": "🏎️",
-    "descripcion": "Segunda fecha del campeonato local de karting en Río Gallegos, con pruebas comunitarias el sábado y clasificación, series y finales el domingo."
-  },
-  {
     "id": "conciertos-solidarios-teatro-colon-rio-gallegos-2026",
     "titulo": "Conciertos Solidarios de Músicos del Teatro Colón en Santa Cruz",
     "fecha": "2026-04-14",
@@ -63,6 +11,19 @@
     "categoria": "cultura",
     "emoji": "🎻",
     "descripcion": "Músicos del Teatro Colón brindarán conciertos solidarios a partir de las 10:00 horas en el Hospital Regional de Río Gallegos, destinados a pacientes, personal sanitario y la comunidad. También se presentarán en Comandante Luis Piedra Buena y Puerto San Julián."
+  },
+  {
+    "id": "encuentro-binacional-cannabis-roca-2026",
+    "titulo": "Encuentro Binacional de Cannabis Medicinal y Cáñamo Industrial",
+    "fecha": "2026-04-14",
+    "fecha_fin": null,
+    "fecha_display": "abril de 2026",
+    "lugar": "General Roca",
+    "region": "Río Negro, Patagonia",
+    "pais": "AR",
+    "categoria": "desarrollo",
+    "emoji": "🌿",
+    "descripcion": "General Roca será sede de un encuentro binacional dedicado al cannabis medicinal y el cáñamo industrial, reuniendo a especialistas y actores del sector de Argentina y Chile."
   },
   {
     "id": "nodo-industrial-2026",
