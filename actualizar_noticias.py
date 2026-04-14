@@ -1445,12 +1445,12 @@ def main():
     for _nota_ig in notas_tapa:
         _img_local = os.path.join(_base_dir, _nota_ig.get("imagen", ""))
         if os.path.exists(_img_local):
-            _generar_imagen_ig(_img_local, _nota_ig.get("titulo", ""), _nota_ig.get("tag", ""))
+            _generar_imagen_ig(_img_local, _nota_ig.get("titulo", ""), _nota_ig.get("tag", ""), nota_id=_nota_ig.get("id", ""))
     # Secciones automáticas
     for _nota_sec_ig in [n for n in [deportes, negocios, cultura, turismo] if n]:
         _img_sec_ig = os.path.join(_base_dir, _nota_sec_ig.get("imagen", ""))
         if os.path.exists(_img_sec_ig):
-            _generar_imagen_ig(_img_sec_ig, _nota_sec_ig.get("titulo", ""), _nota_sec_ig.get("tag", ""))
+            _generar_imagen_ig(_img_sec_ig, _nota_sec_ig.get("titulo", ""), _nota_sec_ig.get("tag", ""), nota_id=_nota_sec_ig.get("id", ""))
     try:
         with open(os.path.join(_base_dir, "propios.json"), encoding="utf-8") as _fp:
             _propios_ig = json.load(_fp)
@@ -1458,7 +1458,7 @@ def main():
             _p0 = _propios_ig[0]
             _img_p = os.path.join(_base_dir, _p0.get("imagen", ""))
             if os.path.exists(_img_p):
-                _generar_imagen_ig(_img_p, _p0.get("titulo", ""), _p0.get("tag", "📋 Informe"))
+                _generar_imagen_ig(_img_p, _p0.get("titulo", ""), _p0.get("tag", "📋 Informe"), nota_id=_p0.get("id", ""))
     except Exception:
         pass
 
@@ -1472,9 +1472,7 @@ def main():
         publicar_facebook(nota)
     publicar_facebook_informe_nuevo()
 
-    print(f"\n  Publicando en Instagram...")
-    publicar_instagram(tapa)
-    publicar_instagram_informe_nuevo()
+    # Instagram solo se publica en --solo-instagram (después del push, cuando las imágenes están en Pages)
 
     # 9b. Publicar secciones automáticas (deportes / negocios / turismo / cultura)
     _sec_state_path = os.path.join(_base_dir, "telegram_state.json")
@@ -1787,14 +1785,15 @@ def _seleccionar_notas_binacionales(tapa, secundarias):
 
 
 def _renovar_token_facebook(token):
-    """Intercambia el token actual por uno long-lived y obtiene el Page Access Token real."""
+    """Intercambia el token actual por uno long-lived y obtiene el Page Access Token real.
+    Retorna (page_token, page_id_real) — usa el page_id correcto aunque el secret esté mal."""
     app_id     = os.environ.get("FACEBOOK_APP_ID", "")
     app_secret = os.environ.get("FACEBOOK_APP_SECRET", "")
     page_id    = os.environ.get("FACEBOOK_PAGE_ID", "")
     if not app_id or not app_secret or not token:
-        return token
+        return token, page_id
     try:
-        # Paso 1: exchange → long-lived token (user o page según lo que haya en FACEBOOK_PAGE_TOKEN)
+        # Paso 1: exchange → long-lived token
         params = urllib.parse.urlencode({
             "grant_type":        "fb_exchange_token",
             "client_id":         app_id,
@@ -1806,37 +1805,47 @@ def _renovar_token_facebook(token):
             data = json.loads(resp.read().decode())
         nuevo = data.get("access_token", "")
         if not nuevo:
-            return token
+            return token, page_id
 
-        # Paso 2: si el token renovado es un User Token, obtener el Page Access Token real.
-        # /me/accounts devuelve los Page Tokens derivados del user token (nunca expiran).
-        if page_id:
-            try:
-                accounts_url = f"https://graph.facebook.com/me/accounts?access_token={nuevo}"
-                with urllib.request.urlopen(accounts_url, timeout=15) as resp2:
-                    accounts = json.loads(resp2.read().decode())
-                for page in accounts.get("data", []):
-                    if page.get("id") == page_id:
-                        print("  Facebook: token renovado automáticamente ✓")
-                        return page["access_token"]
-            except Exception:
-                pass  # si /me/accounts falla, usar el token renovado tal cual
+        # Paso 2: obtener el Page Access Token real via /me/accounts
+        try:
+            accounts_url = f"https://graph.facebook.com/me/accounts?access_token={nuevo}"
+            with urllib.request.urlopen(accounts_url, timeout=15) as resp2:
+                accounts = json.loads(resp2.read().decode())
+            pages = accounts.get("data", [])
+            # Buscar la página que coincide con page_id del secret
+            for page in pages:
+                if page.get("id") == page_id:
+                    print("  Facebook: token renovado automáticamente ✓")
+                    return page["access_token"], page["id"]
+            # Si no coincide, usar la primera página disponible (el secret puede estar mal)
+            if pages:
+                first = pages[0]
+                if page_id and page_id != first["id"]:
+                    print(f"  Facebook: ADVERTENCIA — page_id '{page_id}' no encontrado, usando '{first['id']}'")
+                print("  Facebook: token renovado automáticamente ✓")
+                return first["access_token"], first["id"]
+        except Exception:
+            pass  # si /me/accounts falla, continuar con token renovado
 
         print("  Facebook: token renovado automáticamente ✓")
-        return nuevo
+        return nuevo, page_id
     except Exception as e:
         print(f"  Facebook: no se pudo renovar el token ({e}), se usa el existente.")
-    return token
+    return token, page_id
 
 
 def publicar_facebook(tapa):
     """Publica la tapa del día en la página de Facebook con foto y link."""
     page_id    = os.environ.get("FACEBOOK_PAGE_ID", "")
     page_token = os.environ.get("FACEBOOK_PAGE_TOKEN", "")
-    if not page_id or not page_token:
+    if not page_token:
         print("  Facebook: sin credenciales, se omite.")
         return
-    page_token = _renovar_token_facebook(page_token)
+    page_token, page_id = _renovar_token_facebook(page_token)
+    if not page_id:
+        print("  Facebook: no se encontró página, se omite.")
+        return
 
     titulo  = tapa.get("titulo", "")
     bajada  = tapa.get("bajada", "")
@@ -1930,9 +1939,11 @@ def publicar_facebook_informe_nuevo():
     """Publica en Facebook el informe más reciente de propios.json si es nuevo."""
     page_id    = os.environ.get("FACEBOOK_PAGE_ID", "")
     page_token = os.environ.get("FACEBOOK_PAGE_TOKEN", "")
-    if not page_id or not page_token:
+    if not page_token:
         return
-    page_token = _renovar_token_facebook(page_token)
+    page_token, page_id = _renovar_token_facebook(page_token)
+    if not page_id:
+        return
 
     base_dir     = os.path.dirname(__file__)
     state_path   = os.path.join(base_dir, "telegram_state.json")
@@ -2045,10 +2056,10 @@ def publicar_facebook_informe_nuevo():
 
 
 
-def _generar_imagen_ig(ruta_local, titulo, tag=""):
+def _generar_imagen_ig(ruta_local, titulo, tag="", nota_id=""):
     """Genera imagen portrait 4:5 (1080×1350) con diseño GLOBALpatagonia para Instagram.
     Layout: header con logo | foto grande | sección oscura con tag + título + CTA.
-    Guarda como {base}_ig.jpg junto al original. Retorna la ruta o None si falla."""
+    Guarda como fotos/{nota_id}_ig.jpg (o {base}_ig.jpg si no hay nota_id). Retorna la ruta o None si falla."""
     try:
         from PIL import Image, ImageDraw, ImageFont
         import os as _os, numpy as np
@@ -2200,8 +2211,13 @@ def _generar_imagen_ig(ruta_local, titulo, tag=""):
         draw.text((PADDING, ALTO - 60), "ver nota completa", font=font_cta, fill=C_TEAL)
 
         # ── Guardar _ig.jpg ───────────────────────────────────────────────────────
-        base    = ruta_local.rsplit(".", 1)[0]
-        ruta_ig = base + "_ig.jpg"
+        # Usar nota_id como nombre de archivo para evitar que Instagram cachee 404 de runs anteriores
+        if nota_id:
+            fotos_dir = _os.path.join(_os.path.dirname(ruta_local))
+            ruta_ig = _os.path.join(fotos_dir, nota_id + "_ig.jpg")
+        else:
+            base    = ruta_local.rsplit(".", 1)[0]
+            ruta_ig = base + "_ig.jpg"
         canvas.save(ruta_ig, "JPEG", quality=92)
         print(f"  IG overlay → {_os.path.basename(ruta_ig)}")
         return ruta_ig
@@ -2235,8 +2251,16 @@ def publicar_instagram(tapa):
     banderas  = {"argentina": "🇦🇷", "chile": "🇨🇱", "ambos": "🇦🇷🇨🇱", "malvinas": "🗺️"}
     bandera   = banderas.get(pais, "")
     base_dir  = os.path.dirname(__file__)
-    imagen_ig = imagen.rsplit(".", 1)[0] + "_ig.jpg"
-    image_url_ig  = f"https://globalpatagonia.org/{imagen_ig}" if os.path.exists(os.path.join(base_dir, imagen_ig)) else None
+    # Buscar _ig.jpg: primero por nota_id (nombre único), fallback por nombre de imagen
+    _ig_by_id   = os.path.join(base_dir, "fotos", nota_id + "_ig.jpg") if nota_id else ""
+    _ig_by_name = os.path.join(base_dir, imagen.rsplit(".", 1)[0] + "_ig.jpg") if imagen else ""
+    if _ig_by_id and os.path.exists(_ig_by_id):
+        imagen_ig     = f"fotos/{nota_id}_ig.jpg"
+    elif _ig_by_name and os.path.exists(_ig_by_name):
+        imagen_ig     = imagen.rsplit(".", 1)[0] + "_ig.jpg"
+    else:
+        imagen_ig     = None
+    image_url_ig   = f"https://globalpatagonia.org/{imagen_ig}" if imagen_ig else None
     image_url_orig = f"https://globalpatagonia.org/{imagen}"
     image_url = image_url_ig or image_url_orig
 
@@ -2267,7 +2291,7 @@ def publicar_instagram(tapa):
             detalle = http_err.read().decode("utf-8", errors="replace")
             # Si falló con la imagen _ig.jpg, reintentar con la original
             if image_url_ig and image_url != image_url_orig:
-                print(f"  Instagram _ig.jpg falló ({http_err.code}), reintentando con imagen original...")
+                print(f"  Instagram _ig.jpg falló ({http_err.code}): {detalle[:200]}, reintentando con imagen original...")
                 try:
                     resultado = _crear_container_ig(image_url_orig)
                 except urllib.error.HTTPError as http_err2:
@@ -2512,10 +2536,10 @@ def publicar_notas_manuales_nuevas():
     print(f"\n  Notas manuales a publicar: {len(nuevas)}")
     for nota in nuevas:
         nota_id = nota.get("id", "")
-        # Generar _ig.jpg
+        # Generar _ig.jpg con nota_id como nombre de archivo
         img_local = os.path.join(base_dir, nota.get("imagen", ""))
         if os.path.exists(img_local):
-            _generar_imagen_ig(img_local, nota.get("titulo", ""), nota.get("tag", ""))
+            _generar_imagen_ig(img_local, nota.get("titulo", ""), nota.get("tag", ""), nota_id=nota_id)
         # Telegram
         print(f"  Manual Telegram: [{nota_id}]...")
         publicar_telegram(nota)
@@ -2588,6 +2612,12 @@ def solo_instagram():
 
     # Notas manuales en Instagram
     manuales_ig_posteadas = set(ig_state.get("manuales_ig_posteadas", []))
+    # También excluir notas que ya se postearon como sección en este mismo run
+    _ya_posteadas_como_seccion = {
+        ig_state.get(f"ultimo_{c}_instagram") for c in ["deportes", "negocios", "cultura", "turismo"]
+    } - {None}
+    manuales_ig_posteadas |= _ya_posteadas_como_seccion
+
     fuentes_manuales_ig = [
         ("turismo.json",       lambda d: d if isinstance(d, list) else []),
         ("deportes_feed.json", lambda d: [d.get("principal")] + d.get("secundarias", []) + d.get("row_cards", [])),
