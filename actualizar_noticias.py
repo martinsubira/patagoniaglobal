@@ -1808,26 +1808,38 @@ def _renovar_token_facebook(token):
         if not nuevo:
             return token, page_id
 
-        # Paso 2: obtener el Page Access Token real via /me/accounts
+        # Paso 2a: intentar /me/accounts (funciona si el token es un User Token)
         try:
             accounts_url = f"https://graph.facebook.com/me/accounts?access_token={nuevo}"
             with urllib.request.urlopen(accounts_url, timeout=15) as resp2:
                 accounts = json.loads(resp2.read().decode())
             pages = accounts.get("data", [])
-            # Buscar la página que coincide con page_id del secret
             for page in pages:
                 if page.get("id") == page_id:
                     print("  Facebook: token renovado automáticamente ✓")
                     return page["access_token"], page["id"]
-            # Si no coincide, usar la primera página disponible (el secret puede estar mal)
             if pages:
                 first = pages[0]
                 if page_id and page_id != first["id"]:
-                    print(f"  Facebook: ADVERTENCIA — page_id '{page_id}' no encontrado, usando '{first['id']}'")
+                    print(f"  Facebook: ADVERTENCIA — page_id '{page_id}' no coincide, usando página '{first.get('name','')}' ({first['id']})")
                 print("  Facebook: token renovado automáticamente ✓")
                 return first["access_token"], first["id"]
-        except Exception:
-            pass  # si /me/accounts falla, continuar con token renovado
+        except Exception as e_acc:
+            print(f"  Facebook: /me/accounts no disponible ({e_acc.__class__.__name__}), probando /me...")
+
+        # Paso 2b: si el token YA ES un page token, /me devuelve el ID de la propia página
+        try:
+            me_url = f"https://graph.facebook.com/me?fields=id,name&access_token={nuevo}"
+            with urllib.request.urlopen(me_url, timeout=15) as resp3:
+                me_data = json.loads(resp3.read().decode())
+            actual_id = me_data.get("id", "")
+            if actual_id:
+                if page_id and page_id != actual_id:
+                    print(f"  Facebook: page_id del secret ('{page_id}') != real ('{actual_id}' — {me_data.get('name','')}). Usando el real.")
+                print("  Facebook: token renovado automáticamente ✓")
+                return nuevo, actual_id
+        except Exception as e_me:
+            print(f"  Facebook: /me también falló ({e_me.__class__.__name__})")
 
         print("  Facebook: token renovado automáticamente ✓")
         return nuevo, page_id
