@@ -2121,12 +2121,10 @@ def _generar_imagen_ig(ruta_local, titulo, tag=""):
             "/System/Library/Fonts/Helvetica.ttc",
         ]
         _arial_black = [
-            "/usr/share/fonts/truetype/noto/NotoSans-Black.ttf",          # Ubuntu con fonts-noto
-            "/usr/share/fonts/noto/NotoSans-Black.ttf",
-            "/System/Library/Fonts/Supplemental/Arial Black.ttf",         # macOS
+            "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf",  # Ubuntu (pre-instalado)
+            "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",          # Ubuntu fallback
+            "/System/Library/Fonts/Supplemental/Arial Black.ttf",            # macOS
             "/Library/Fonts/Arial Black.ttf",
-            "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf",  # fallback
-            "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
         ]
 
         font_logo_bold = _fuente(_sans_bold,   38)
