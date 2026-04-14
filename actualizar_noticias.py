@@ -1261,7 +1261,7 @@ def rotar_negocios(nota):
 def rotar_cultura(nota):
     """
     Domingos: agrega la nota fresca de Claude al frente de cultura.json.
-    Mantiene máximo 6 (posiciones 1,2,3,5,6,7).
+    Mantiene máximo 6: hasta 3 rotativos al frente + permanentes al final (nunca se borran).
     """
     if not nota:
         return
@@ -1272,6 +1272,11 @@ def rotar_cultura(nota):
             cultura_actual = json.load(f)
     except Exception:
         cultura_actual = []
+
+    permanentes  = [n for n in cultura_actual if n.get("permanente")]
+    rotativos    = [n for n in cultura_actual if not n.get("permanente")]
+
+    max_rotativos = max(1, 6 - len(permanentes))   # cuántos slots quedan para rotativos
 
     entrada = {
         "id":        nota["id"],
@@ -1284,7 +1289,8 @@ def rotar_cultura(nota):
         "pais":      nota.get("pais", "argentina"),
     }
 
-    cultura_nuevo = [entrada] + cultura_actual[:5]   # max 6
+    nuevos_rotativos = [entrada] + rotativos[:max_rotativos - 1]
+    cultura_nuevo = nuevos_rotativos + permanentes
     with open(ruta, "w", encoding="utf-8") as f:
         json.dump(cultura_nuevo, f, ensure_ascii=False, indent=2)
     print(f"  Cultura rotada (domingo): [{nota['id']}] '{nota['titulo'][:60]}…'")
