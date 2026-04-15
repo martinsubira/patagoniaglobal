@@ -831,7 +831,7 @@ function renderNota(nota, fechaDisplay, data) {
            <strong>Por ${nota.autor || "GLOBALpatagonia"}</strong> · Nota de producción propia · <strong>GLOBALpatagonia</strong>
          </div>`
       : `<div class="nota-fuente">
-           <strong>Fuente original:</strong> Esta nota fue elaborada con información de <strong>${nota.fuente || "medios locales"}</strong>. Es elaboración de <strong>GLOBALpatagonia</strong>.
+           <strong>Fuente original:</strong> Esta nota fue elaborada con información de <strong>${nota.fuente || "medios locales"}</strong>${nota.url_original ? '.' : '. Es elaboración de <strong>GLOBALpatagonia</strong>.'}
          </div>`
     }
     ${compartirHtml}
