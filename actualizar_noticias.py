@@ -2280,7 +2280,7 @@ def publicar_instagram(tapa):
     caption = (
         f"{bandera} {titulo}\n\n"
         f"{bajada}\n\n"
-        f"🔗 Nota completa en bio\n\n"
+        f"🔗 Ver nota completa → link en bio\n\n"
         f"#Patagonia #GLOBALpatagonia #Noticias #SurGlobal #PatagoniaArgentina"
     )
 
@@ -2353,6 +2353,22 @@ def publicar_instagram(tapa):
                 resultado = json.loads(resp.read().decode())
             if resultado.get("id"):
                 print(f"  Instagram OK ✓ [{nota_id}]")
+                # Paso 3: actualizar el link de la bio al artículo publicado
+                nota_url = f"https://globalpatagonia.org/nota.html?id={nota_id}"
+                try:
+                    bio_data = urllib.parse.urlencode({
+                        "website":      nota_url,
+                        "access_token": access_token,
+                    }).encode()
+                    bio_req = urllib.request.Request(f"{api_base}", data=bio_data, method="POST")
+                    with urllib.request.urlopen(bio_req, timeout=15) as bio_resp:
+                        bio_result = json.loads(bio_resp.read().decode())
+                    if bio_result.get("success"):
+                        print(f"  Instagram bio actualizada → {nota_url}")
+                    else:
+                        print(f"  Instagram bio: respuesta inesperada {bio_result}")
+                except Exception as e_bio:
+                    print(f"  Instagram bio no actualizada ({e_bio.__class__.__name__}: {e_bio})")
             else:
                 print(f"  Instagram publish error: {resultado}")
         except urllib.error.HTTPError as http_err:
@@ -2412,7 +2428,7 @@ def publicar_instagram_informe_nuevo():
     caption = (
         f"{tag} {titulo}\n\n"
         f"{bajada}\n\n"
-        f"🔗 Nota completa en bio\n\n"
+        f"🔗 Ver nota completa → link en bio\n\n"
         f"#Patagonia #GLOBALpatagonia #Informe #SurGlobal #PatagoniaArgentina"
     )
 
