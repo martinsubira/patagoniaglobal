@@ -1,5 +1,17 @@
 [
   {
+    "id": "cultura-rodrigo-binet-fotografia",
+    "titulo": "Rodrigo Binet: \"Siempre trato de que un pedacito de Santa Cruz aparezca en mi trabajo\"",
+    "bajada": "El fotógrafo de Río Gallegos que llevó la Patagonia a ferias internacionales y a las paredes de la UNESCO habla de su proceso creativo, de la escena fotográfica sureña y del nuevo trabajo que está a punto de mostrar.",
+    "imagen": "fotos/rodrigo-binet-foto4.jpg",
+    "tag": "📷 Cultura",
+    "categoria": "cultura",
+    "meta": "Abril 2026 · GLOBALpatagonia",
+    "pais": "argentina",
+    "excluir_feed": true,
+    "postear_redes": true
+  },
+  {
     "id": "cultura-cantautores-malvinas",
     "titulo": "La Patagonia le canta a Malvinas: Río Grande reunió voces de toda la región en un homenaje histórico",
     "bajada": "Cantautores de Río Grande, Río Gallegos, Ushuaia, Viedma, Neuquén y El Calafate se unieron en la Vigilia del 2 de Abril para rendir tributo a los caídos y a los grandes nombres de la música patagónica.",
