@@ -181,27 +181,133 @@ def cargar_historial():
         return []
 
 
+def _id_a_año_mes(nid):
+    """Extrae YYYY-MM del ID de nota: '20260416-1210-tapa' → '2026-04'."""
+    import re
+    m = re.match(r'^(\d{4})(\d{2})\d{2}-', str(nid))
+    return f"{m.group(1)}-{m.group(2)}" if m else None
+
+
 def guardar_historial(articulos):
-    """Guarda los últimos MAX_HISTORIAL artículos. Los que salen van a archivo.json."""
-    path         = os.path.join(os.path.dirname(__file__), "historial.json")
-    archivo_path = os.path.join(os.path.dirname(__file__), "archivo.json")
+    """Guarda los últimos MAX_HISTORIAL artículos. Los que salen van a archivo/YYYY-MM.json."""
+    base         = os.path.dirname(__file__)
+    path         = os.path.join(base, "historial.json")
+    archivo_dir  = os.path.join(base, "archivo")
+    os.makedirs(archivo_dir, exist_ok=True)
 
     descartadas = articulos[MAX_HISTORIAL:]
     if descartadas:
-        try:
-            with open(archivo_path, encoding="utf-8") as f:
-                archivo = json.load(f)
-        except Exception:
-            archivo = {"_info": "Notas que rotaron del feed principal.", "notas": []}
-        ids_existentes = {n.get("id") for n in archivo.get("notas", [])}
-        nuevas = [n for n in descartadas if n.get("id") not in ids_existentes]
-        archivo["notas"] = archivo.get("notas", []) + nuevas
-        with open(archivo_path, "w", encoding="utf-8") as f:
-            json.dump(archivo, f, ensure_ascii=False, indent=2)
-        print(f"  → {len(nuevas)} nota(s) movidas a archivo.json")
+        # Agrupar por año-mes según el ID
+        por_mes = {}
+        for nota in descartadas:
+            ym = _id_a_año_mes(nota.get("id", "")) or datetime.now().strftime("%Y-%m")
+            por_mes.setdefault(ym, []).append(nota)
+
+        total_nuevas = 0
+        for ym, notas_mes in sorted(por_mes.items()):
+            path_mes = os.path.join(archivo_dir, f"{ym}.json")
+            try:
+                with open(path_mes, encoding="utf-8") as f:
+                    existentes = json.load(f)
+            except Exception:
+                existentes = []
+            ids_existentes = {n.get("id") for n in existentes}
+            nuevas = [n for n in notas_mes if n.get("id") not in ids_existentes]
+            if nuevas:
+                existentes.extend(nuevas)
+                with open(path_mes, "w", encoding="utf-8") as f:
+                    json.dump(existentes, f, ensure_ascii=False, indent=2)
+                total_nuevas += len(nuevas)
+        if total_nuevas:
+            print(f"  → {total_nuevas} nota(s) archivadas en archivo/YYYY-MM.json")
 
     with open(path, "w", encoding="utf-8") as f:
         json.dump(articulos[:MAX_HISTORIAL], f, ensure_ascii=False, indent=2)
+
+
+def actualizar_search_index():
+    """Construye/actualiza search-index.json con todas las notas publicadas."""
+    base       = os.path.dirname(__file__)
+    index_path = os.path.join(base, "search-index.json")
+
+    try:
+        with open(index_path, encoding="utf-8") as f:
+            indice = json.load(f)
+    except Exception:
+        indice = []
+
+    ids_existentes = {n["id"] for n in indice if n.get("id")}
+    nuevas = []
+
+    def _agregar(nota):
+        nid = nota.get("id")
+        if not nid or nid in ids_existentes:
+            return
+        ids_existentes.add(nid)
+        nuevas.append({
+            "id":       nid,
+            "titulo":   nota.get("titulo", ""),
+            "bajada":   nota.get("bajada", ""),
+            "fecha":    nota.get("fecha", ""),
+            "categoria": nota.get("categoria", nota.get("tag", "")),
+            "imagen":   nota.get("imagen", ""),
+        })
+
+    fuentes = [
+        "historial.json", "noticias.json", "historias.json",
+        "turismo.json", "deportes_feed.json", "propios.json",
+        "propios_historial.json", "negocios.json", "guias.json",
+    ]
+    for nombre in fuentes:
+        ruta = os.path.join(base, nombre)
+        if not os.path.exists(ruta):
+            continue
+        try:
+            with open(ruta, encoding="utf-8") as f:
+                data = json.load(f)
+            if isinstance(data, dict):
+                if data.get("tapa"):
+                    _agregar(data["tapa"])
+                for clave in ("secundarias", "noticias", "historias", "notas"):
+                    for n in data.get(clave, []):
+                        _agregar(n)
+            elif isinstance(data, list):
+                for n in data:
+                    _agregar(n)
+        except Exception:
+            pass
+
+    # Escanear archivo/YYYY-MM.json
+    archivo_dir = os.path.join(base, "archivo")
+    if os.path.isdir(archivo_dir):
+        for fname in sorted(os.listdir(archivo_dir)):
+            if fname.endswith(".json"):
+                try:
+                    with open(os.path.join(archivo_dir, fname), encoding="utf-8") as f:
+                        for n in json.load(f):
+                            _agregar(n)
+                except Exception:
+                    pass
+
+    # Migración: leer archivo.json legado si existe
+    archivo_legado = os.path.join(base, "archivo.json")
+    if os.path.exists(archivo_legado):
+        try:
+            with open(archivo_legado, encoding="utf-8") as f:
+                data = json.load(f)
+            for n in data.get("notas", []):
+                _agregar(n)
+        except Exception:
+            pass
+
+    if nuevas:
+        indice = nuevas + indice
+        indice.sort(key=lambda n: n.get("fecha", ""), reverse=True)
+        with open(index_path, "w", encoding="utf-8") as f:
+            json.dump(indice, f, ensure_ascii=False, indent=2)
+        print(f"  → {len(nuevas)} nota(s) agregadas al índice ({len(indice)} total)")
+    else:
+        print(f"  → Índice de búsqueda sin cambios ({len(indice)} notas)")
 
 
 def urls_ya_publicadas(historial):
@@ -1510,6 +1616,9 @@ def main():
     # 9c. Publicar notas manuales nuevas (cualquier nota con "postear_redes": true no posteada aún)
     publicar_notas_manuales_nuevas()
 
+    print(f"\n  Actualizando índice de búsqueda...")
+    actualizar_search_index()
+
     print(f"\n  Actualizando sitemap...")
     actualizar_sitemap()
 
@@ -1529,6 +1638,7 @@ def actualizar_sitemap():
     fuentes = [
         "historial.json", "noticias.json", "historias.json",
         "turismo.json", "guias.json", "deportes_feed.json", "propios.json",
+        "propios_historial.json", "negocios.json",
     ]
     ids = {}        # id → fecha
     historias_ids = set()  # IDs de historias permanentes (priority alta, monthly)
@@ -1555,6 +1665,34 @@ def actualizar_sitemap():
                         ids[nid] = nota.get("fecha", today) or today
                     if es_historias:
                         historias_ids.add(nid)
+        except Exception:
+            pass
+
+    # Escanear archivo/YYYY-MM.json para incluir notas históricas
+    archivo_dir = os.path.join(base, "archivo")
+    if os.path.isdir(archivo_dir):
+        for fname in sorted(os.listdir(archivo_dir)):
+            if not fname.endswith(".json"):
+                continue
+            try:
+                with open(os.path.join(archivo_dir, fname), encoding="utf-8") as f:
+                    for nota in json.load(f):
+                        nid = nota.get("id")
+                        if nid and nid not in ids:
+                            ids[nid] = nota.get("fecha", today) or today
+            except Exception:
+                pass
+
+    # Migración: archivo.json legado
+    archivo_legado = os.path.join(base, "archivo.json")
+    if os.path.exists(archivo_legado):
+        try:
+            with open(archivo_legado, encoding="utf-8") as f:
+                data = json.load(f)
+            for nota in data.get("notas", []):
+                nid = nota.get("id")
+                if nid and nid not in ids:
+                    ids[nid] = nota.get("fecha", today) or today
         except Exception:
             pass
 

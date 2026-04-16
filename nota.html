@@ -846,6 +846,11 @@ function renderNota(nota, fechaDisplay, data) {
   document.getElementById("contenido").style.display = "block";
 }
 
+function idAArchivoMes(id) {
+  const m = id.match(/^(\d{4})(\d{2})\d{2}-/);
+  return m ? `${m[1]}-${m[2]}` : null;
+}
+
 function buscarNota(data, id) {
   if (data.tapa && data.tapa.id === id) return data.tapa;
   for (const arr of ['secundarias', 'noticias', 'historias']) {
@@ -898,7 +903,25 @@ if (!id) {
     if (nota) {
       renderNota(nota, noticias.fecha_display, { ...noticias, historias: historias.notas || [], historial: historial || [] });
     } else {
-      document.getElementById("loading").textContent = "Nota no encontrada.";
+      // Fallback: buscar en archivo mensual según fecha del ID
+      const ym = idAArchivoMes(id);
+      const fetchMes = ym
+        ? fetch(`archivo/${ym}.json`).then(r => r.json()).catch(() => [])
+        : Promise.resolve([]);
+      // También intentar archivo.json legado
+      const fetchLegado = fetch("archivo.json").then(r => r.json()).catch(() => ({}));
+      Promise.all([fetchMes, fetchLegado]).then(([archivoMes, archivoLegado]) => {
+        let notaArchivo = Array.isArray(archivoMes) ? archivoMes.find(n => n.id === id) : null;
+        if (!notaArchivo) {
+          const legadoNotas = Array.isArray(archivoLegado?.notas) ? archivoLegado.notas : [];
+          notaArchivo = legadoNotas.find(n => n.id === id) || null;
+        }
+        if (notaArchivo) {
+          renderNota(notaArchivo, noticias.fecha_display, { ...noticias, historias: historias.notas || [], historial: historial || [] });
+        } else {
+          document.getElementById("loading").textContent = "Nota no encontrada.";
+        }
+      });
     }
   }).catch(() => {
     document.getElementById("loading").textContent = "Error al cargar la nota.";
