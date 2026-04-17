@@ -1,6 +1,6 @@
 {
-  "generado": "2026-04-16T12:12:22.589637",
-  "fecha_display": "Jueves, 16 de Abril de 2026",
+  "generado": "2026-04-17T09:00:00",
+  "fecha_display": "Viernes, 17 de Abril de 2026",
   "ticker": [
     "Más de 100.000 personas visitaron Chubut en la temporada de pingüinos",
     "Dichos de contraalmirante argentino sobre boca del Estrecho de Magallanes generan tensión en Chile",
@@ -9,20 +9,64 @@
     "Combustibles vuelven a subir en Chile este jueves"
   ],
   "tapa": {
-    "id": "20260416-1210-tapa",
-    "titulo": "Más de 100.000 personas visitaron Chubut durante la temporada de pingüinos de Magallanes",
-    "bajada": "La provincia cerró una temporada récord de avistaje entre septiembre de 2025 y abril de 2026. Las pingüineras se consolidan como uno de los grandes atractivos de la Patagonia atlántica, con impacto directo en la economía de las comunidades costeras.",
-    "cuerpo": "La temporada de pingüinos de Magallanes en Chubut cerró con números que confirman el crecimiento sostenido del turismo de naturaleza en la costa patagónica: más de 100.000 personas recorrieron las áreas protegidas de la provincia entre septiembre de 2025 y los primeros días de abril de 2026, según datos preliminares del Ministerio de Turismo y Áreas Protegidas provincial.\n\nLas colonias de Spheniscus magellanicus —el pingüino patagónico por excelencia— se distribuyen a lo largo del litoral chubutense, con epicentro en Punta Tombo, la mayor concentración continental de la especie. Pero el circuito se extiende también a Cabo Dos Bahías y otras reservas menos masivas que fueron ganando visitantes en los últimos años, lo que ayuda a descomprimir la presión sobre un solo punto.\n\nPara las localidades costeras como Rawson, Camarones y Trelew, cada temporada de pingüinos representa un motor económico que se traduce en ocupación hotelera, gastronomía, transporte y servicios de guías especializados. Los operadores turísticos locales vienen apostando a experiencias más cuidadas, con cupos limitados y recorridos interpretativos que suman valor sin aumentar el impacto sobre las colonias.\n\nDesde la perspectiva ambiental, el dato es doble. Por un lado, el interés creciente del público genera recursos que pueden reinvertirse en conservación y monitoreo. Por otro, obliga a gestionar con rigor la capacidad de carga de los sitios: más visitantes significan más pisadas, más residuos, más presión sobre un ecosistema que depende de la tranquilidad para la reproducción exitosa de las aves.\n\nEl pingüino de Magallanes es una especie compartida por Argentina y Chile. Las colonias más australes se extienden hasta Tierra del Fuego y el estrecho de Magallanes en territorio chileno, donde también se desarrollan programas de avistaje. La salud de la especie a nivel binacional depende de factores que exceden las fronteras: la disponibilidad de alimento en el mar —anchoa y merluza, principalmente—, la contaminación por hidrocarburos y los efectos del cambio climático sobre las corrientes que definen su área de alimentación.\n\nChubut viene posicionándose como referencia mundial en turismo de fauna marina, con ballenas francas en invierno y pingüinos en primavera-verano como dos pilares de un calendario que atrae visitantes de los cinco continentes. Los números de esta temporada refuerzan esa tendencia y plantean el desafío de seguir creciendo sin comprometer aquello que hace único al destino: la posibilidad de estar a metros de una colonia salvaje, sin jaulas ni intermediarios, en uno de los rincones más intensos de la Patagonia atlántica.",
-    "tag": "🐧 Ambiente",
+    "id": "20260417-ajuste-en-el-servicio-meteorologico-nacional-golpea-la-tapa",
+    "titulo": "Ajuste en el Servicio Meteorológico Nacional golpea la cobertura climática en la Patagonia",
+    "bajada": "Despidos y recortes de contratos en el SMN ponen en riesgo la emisión de alertas y pronósticos en una de las regiones más expuestas a fenómenos extremos. Los trabajadores anuncian un paro que podría dejar a aeropuertos y poblaciones patagónicas sin información meteorológica oficial.",
+    "cuerpo": "El Gobierno nacional anunció la reestructuración del Servicio Meteorológico Nacional con el despido de 140 empleados contratados, principalmente observadores de estaciones que serán reemplazados por sistemas automáticos. La medida, enmarcada en el ajuste del gasto público, generó alarma en la Patagonia: la región concentra algunas de las condiciones climáticas más extremas y variables del país, y depende de la red de observación del SMN para operar aeropuertos, actividades agropecuarias y alerta temprana ante eventos como nevadas, vientos patagónicos y tormentas.\n\nLa reestructuración reducirá las dotaciones de personal en cada estación de entre siete y nueve personas a cuatro o cinco, con el argumento de que la automatización cubre las funciones básicas. Según el Gobierno, el plan generará un ahorro de más de 3.500 millones de pesos anuales y permitirá modernizar la red con mayor cobertura y precisión. Los afectados son personal contratado dedicado principalmente a la observación manual y funciones administrativas; las autoridades aseguran que no hay meteorólogos profesionales entre los despedidos.\n\nLos trabajadores del SMN rechazaron la medida y convocaron a un paro para el 24 de abril, una medida de fuerza que amenaza con interrumpir los informes meteorológicos aeronáuticos que los aeropuertos necesitan para operar. En la Patagonia, esto afectaría directamente a aeropuertos como el de Bariloche, Neuquén, Comodoro Rivadavia, Ushuaia y Río Gallegos, claves para la conectividad de una región donde el avión es muchas veces el único transporte disponible.\n\nDesde el Senado bonaerense y distintas organizaciones ambientalistas también se alzaron voces de preocupación. Para los especialistas, el debate de fondo no es solo laboral sino estratégico: si Argentina necesita un servicio meteorológico con capacidad de observación humana o si puede depender únicamente de instrumentos automáticos en un contexto de cambio climático que hace cada vez más frecuentes los fenómenos extremos.",
+    "tag": "🌧️ Ambiente",
     "categoria": "medio ambiente",
-    "fuente": "Tiempo Sur",
-    "url_original": "https://www.tiemposur.com.ar/turismo-y-ambiente/mas-de-100-000-personas-visitaron-chubut-en-la-temporada-de-pinguinos-de-magallanes",
+    "fuente": "La Nación",
+    "url_original": "https://www.lanacion.com.ar/sociedad/desmantelamiento-o-modernizacion-menos-empleados-mas-maquinas-que-implican-los-cambios-impulsados-nid16042026/",
     "pais": "argentina",
-    "imagen": "fotos/foto-20260416-1210-tapa.jpg",
-    "imagen_keywords": "pingüinos Magallanes Chubut",
-    "meta": "Hoy · Tiempo Sur"
+    "imagen": "fotos/foto-20260417-ajuste-en-el-servicio-meteorologico-nacional-golpea-la-tapa.jpg",
+    "imagen_keywords": "servicio meteorológico nacional Argentina ajuste",
+    "meta": "Hoy · GLOBALpatagonia"
   },
   "secundarias": [
+    {
+      "id": "20260417-magallanes-movilizo-miles-de-personas-en-simulacro-de-sec1",
+      "titulo": "Magallanes movilizó miles de personas en simulacro de sismo y tsunami",
+      "bajada": "Punta Arenas, Puerto Natales, Porvenir, Cabo de Hornos y Timaukel ensayaron su respuesta ante un escenario sísmico y de maremoto coordinado por Senapred.",
+      "cuerpo": "La Región de Magallanes realizó el jueves 16 de abril su mayor simulacro de sismo y tsunami, con la participación de ocho comunas del borde costero y miles de residentes evacuando hacia puntos de encuentro designados. El operativo, organizado por el Servicio Nacional de Prevención y Respuesta ante Desastres (SENAPRED), puso a prueba los planes de evacuación de Punta Arenas, Puerto Natales, Porvenir, Cabo de Hornos y Timaukel.\n\nA las 11 de la mañana, sirenas de vehículos de emergencia y del puerto alertaron a la población, complementadas con mensajes del Sistema de Alerta de Emergencias (SAE) enviados a teléfonos celulares. En Puerto Natales, más de 1.500 estudiantes participaron en los ejercicios de evacuación. En total, 106 evaluadores desplegados en distintos puntos de la región supervisaron 54 rutas de evacuación y 38 puntos de encuentro establecidos.\n\nEl director regional de SENAPRED destacó la respuesta ciudadana como ordenada y superior a las expectativas. Magallanes es una de las regiones más expuestas a riesgos sísmicos y de tsunamis de la Patagonia chilena: su borde costero da al Pacífico a través del Estrecho de Magallanes y canales interiores, y la memoria colectiva de terremotos históricos en el sur de Chile hace que la preparación ante estos fenómenos sea una prioridad.\n\nEl simulacro forma parte de la política nacional de gestión de riesgos que SENAPRED viene impulsando en regiones costeras de alta vulnerabilidad, y se realiza periódicamente para actualizar los tiempos de respuesta y la familiarización de la comunidad con los protocolos de evacuación.",
+      "tag": "⚠️ Prevención",
+      "categoria": "sociedad",
+      "fuente": "El Divisadero",
+      "url_original": "https://senapred.cl/2026/04/16/masiva-evacuacion-en-comunas-costeras-de-la-region-de-magallanes-tras-simulacro-de-sismo-y-tsunami/",
+      "pais": "chile",
+      "imagen": "fotos/foto-20260417-magallanes-movilizo-miles-de-personas-en-simulacro-de-sec1.jpg",
+      "imagen_keywords": "simulacro sismo tsunami Magallanes Patagonia",
+      "meta": "Hoy · GLOBALpatagonia"
+    },
+    {
+      "id": "20260417-el-primer-refugio-de-montana-de-sudamerica-ya-tiene-sec2",
+      "titulo": "El primer refugio de montaña de Sudamérica ya tiene nombre propio",
+      "bajada": "El histórico refugio de Bariloche, pionero en todo el continente, fue rebautizado en honor a quien lo construyó con sus propias manos.",
+      "cuerpo": "El Refugio López, considerado el primer refugio de montaña de toda Sudamérica, recibió un reconocimiento simbólico que el Club Andino Bariloche venía debiendo desde hacía décadas: llevar el nombre de Carlos Sonntag, el hombre que lo construyó piedra por piedra y convirtió al Cerro López en un destino de montaña de referencia continental.\n\nUbicado a 1.620 metros sobre el nivel del mar sobre el Cerro López, a pocas horas de caminata desde el Circuito Chico, el refugio es el más grande y cómodo de los cuatro refugios emblemáticos de Bariloche. Con capacidad para cien personas, cuenta con dormitorios, comedor, cocina y sanitarios con agua corriente. Es el más accesible entre los refugios no habilitados para vehículos, lo que lo convierte en punto de partida de gran parte del montañismo local.\n\nLa historia del lugar es inseparable de la historia del andinismo patagónico. Fue construido en la primera mitad del siglo XX en los tiempos en que Bariloche comenzaba a consolidarse como destino de montaña, cuando el Club Andino era el eje de toda la actividad y los refugios eran literalmente la única forma de sobrevivir una noche en la altura. El rebautizo en nombre de Sonntag cierra un ciclo de reconocimiento hacia quienes pusieron el cuerpo —y la piedra— para hacer posible el montañismo en la Patagonia argentina.\n\nEl Refugio López también es uno de los cuatro puntos de la carrera \"4 Refugios Non Stop\", competencia de skyrunning de 40 kilómetros que conecta los refugios más emblemáticos de la región y que en 2026 abrió las Skyrunner World Series.",
+      "tag": "🏔️ Historia",
+      "categoria": "cultura",
+      "fuente": "Río Negro",
+      "url_original": "https://bariloche.org/tag/refugio/",
+      "pais": "argentina",
+      "imagen": "fotos/foto-20260417-el-primer-refugio-de-montana-de-sudamerica-ya-tiene-sec2.jpg",
+      "imagen_keywords": "refugio montaña Bariloche Patagonia",
+      "meta": "Hoy · GLOBALpatagonia"
+    }
+  ],
+  "noticias": [
+    {
+      "id": "20260416-1210-tapa",
+      "titulo": "Más de 100.000 personas visitaron Chubut durante la temporada de pingüinos de Magallanes",
+      "bajada": "La provincia cerró una temporada récord de avistaje entre septiembre de 2025 y abril de 2026. Las pingüineras se consolidan como uno de los grandes atractivos de la Patagonia atlántica, con impacto directo en la economía de las comunidades costeras.",
+      "cuerpo": "La temporada de pingüinos de Magallanes en Chubut cerró con números que confirman el crecimiento sostenido del turismo de naturaleza en la costa patagónica: más de 100.000 personas recorrieron las áreas protegidas de la provincia entre septiembre de 2025 y los primeros días de abril de 2026, según datos preliminares del Ministerio de Turismo y Áreas Protegidas provincial.\n\nLas colonias de Spheniscus magellanicus —el pingüino patagónico por excelencia— se distribuyen a lo largo del litoral chubutense, con epicentro en Punta Tombo, la mayor concentración continental de la especie. Pero el circuito se extiende también a Cabo Dos Bahías y otras reservas menos masivas que fueron ganando visitantes en los últimos años, lo que ayuda a descomprimir la presión sobre un solo punto.\n\nPara las localidades costeras como Rawson, Camarones y Trelew, cada temporada de pingüinos representa un motor económico que se traduce en ocupación hotelera, gastronomía, transporte y servicios de guías especializados. Los operadores turísticos locales vienen apostando a experiencias más cuidadas, con cupos limitados y recorridos interpretativos que suman valor sin aumentar el impacto sobre las colonias.\n\nDesde la perspectiva ambiental, el dato es doble. Por un lado, el interés creciente del público genera recursos que pueden reinvertirse en conservación y monitoreo. Por otro, obliga a gestionar con rigor la capacidad de carga de los sitios: más visitantes significan más pisadas, más residuos, más presión sobre un ecosistema que depende de la tranquilidad para la reproducción exitosa de las aves.\n\nEl pingüino de Magallanes es una especie compartida por Argentina y Chile. Las colonias más australes se extienden hasta Tierra del Fuego y el estrecho de Magallanes en territorio chileno, donde también se desarrollan programas de avistaje. La salud de la especie a nivel binacional depende de factores que exceden las fronteras: la disponibilidad de alimento en el mar —anchoa y merluza, principalmente—, la contaminación por hidrocarburos y los efectos del cambio climático sobre las corrientes que definen su área de alimentación.\n\nChubut viene posicionándose como referencia mundial en turismo de fauna marina, con ballenas francas en invierno y pingüinos en primavera-verano como dos pilares de un calendario que atrae visitantes de los cinco continentes. Los números de esta temporada refuerzan esa tendencia y plantean el desafío de seguir creciendo sin comprometer aquello que hace único al destino: la posibilidad de estar a metros de una colonia salvaje, sin jaulas ni intermediarios, en uno de los rincones más intensos de la Patagonia atlántica.",
+      "tag": "🐧 Ambiente",
+      "categoria": "medio ambiente",
+      "fuente": "Tiempo Sur",
+      "url_original": "https://www.tiemposur.com.ar/turismo-y-ambiente/mas-de-100-000-personas-visitaron-chubut-en-la-temporada-de-pinguinos-de-magallanes",
+      "pais": "argentina",
+      "imagen": "fotos/foto-20260416-1210-tapa.jpg",
+      "imagen_keywords": "pingüinos Magallanes Chubut",
+      "meta": "Hoy · Tiempo Sur"
+    },
     {
       "id": "20260416-1210-sec1",
       "titulo": "Tensión binacional por dichos argentinos sobre la boca del Estrecho de Magallanes",
@@ -50,9 +94,7 @@
       "imagen": "fotos/foto-20260416-1210-sec2.webp",
       "imagen_keywords": "lago Bariloche subacuático",
       "meta": "Hoy · Diario Río Negro"
-    }
-  ],
-  "noticias": [
+    },
     {
       "id": "20260415-1205-tapa",
       "titulo": "Ley de Glaciares en riesgo: geógrafos patagónicos alertan sobre la reforma que debilita su protección",
@@ -122,48 +164,6 @@
       "imagen": "fotos/foto-20260414-1404-sec1.webp",
       "imagen_keywords": "represas Santa Cruz",
       "meta": "Hoy · Diario Río Negro"
-    },
-    {
-      "id": "20260414-1404-sec2",
-      "titulo": "Roca será sede de un encuentro binacional sobre cannabis y cáñamo",
-      "bajada": "La ciudad rionegrina recibirá a referentes de Argentina y Chile para debatir sobre cannabis medicinal y cáñamo industrial como oportunidad productiva regional.",
-      "cuerpo": "General Roca, en el corazón del Alto Valle rionegrino, se prepara para recibir un encuentro que pone a la Patagonia en el mapa de una industria en plena expansión continental: el cannabis medicinal y el cáñamo industrial. La cita reunirá a investigadores, productores y funcionarios de ambos lados de la cordillera en un formato binacional que refleja la naturaleza transfronteriza de este sector emergente.\n\nEl evento llega en un momento de creciente interés regulatorio y productivo en la región. Argentina avanzó en los últimos años con un marco legal que habilita el cultivo de cannabis con fines medicinales e industriales, mientras que Chile desarrolló su propio camino regulatorio con programas pioneros en América Latina. La Patagonia, con sus condiciones agroecológicas particulares y su tradición de agricultura bajo riego, aparece como un territorio con potencial concreto para diversificar su matriz productiva a través de estos cultivos.\n\nEl cáñamo industrial —variedad de cannabis con bajo contenido de THC— tiene aplicaciones que van desde la construcción y la industria textil hasta la alimentación y la cosmética. Para una región que busca alternativas a la fruticultura tradicional en crisis, esta actividad representa una oportunidad de reconversión que ya está siendo explorada por productores del Valle.\n\nEn el plano medicinal, la demanda de aceites y derivados de cannabis no deja de crecer en ambos países. Varias provincias patagónicas han impulsado programas locales, y la cercanía con Chile —donde la investigación lleva más años— genera un ecosistema de intercambio que este tipo de encuentros busca fortalecer.\n\nEl carácter binacional de la convocatoria es un dato que no pasa desapercibido. La Patagonia comparte con la zona centro-sur chilena desafíos productivos similares: distancia de los grandes centros de consumo, necesidad de agregar valor en origen y una base agrícola que necesita diversificarse. El cannabis y el cáñamo aparecen como cultivos donde la escala no es tan determinante como la calidad, lo que favorece a productores medianos y pequeños.\n\nRoca se posiciona así como un nodo de discusión sobre el futuro agroindustrial del norte patagónico. El encuentro abordará regulación, experiencias productivas, investigación aplicada y oportunidades de comercialización, con la premisa de que la innovación no tiene por qué llegar siempre desde las capitales.",
-      "tag": "· Producción ·",
-      "categoria": "producción",
-      "fuente": "Diario Río Negro",
-      "url_original": "https://www.rionegro.com.ar/sociedad/cannabis-medicinal-y-canamo-industrial-roca-sera-sede-de-un-encuentro-binacional-4537760/",
-      "pais": "ambos",
-      "imagen": "fotos/foto-20260414-1404-sec2.webp",
-      "imagen_keywords": "cáñamo producción Valle",
-      "meta": "Hoy · Diario Río Negro"
-    },
-    {
-      "id": "20260413-1212-tapa",
-      "titulo": "Neuquén exige a Comarsa retirar basurero petrolero para recuperar terrenos contaminados",
-      "bajada": "El gobierno neuquino acelera gestiones para que la empresa de tratamiento de residuos petroleros desocupe un predio clave. El caso pone en foco la remediación ambiental en zonas hidrocarburíferas y la tensión entre desarrollo energético y territorio limpio.",
-      "cuerpo": "La provincia de Neuquén avanza con presión concreta para que la empresa Comarsa retire su basurero de residuos petroleros y entregue los terrenos antes de que termine 2026. Se trata de un predio que durante años funcionó como sitio de disposición de desechos generados por la actividad hidrocarburífera, en una zona donde la expansión urbana y los planes de desarrollo territorial colisionan con el pasivo ambiental acumulado.\n\nEl reclamo no es nuevo, pero cobra urgencia en un contexto donde Neuquén busca ordenar el uso del suelo en áreas que históricamente quedaron atadas a la lógica extractiva. La remediación de estos terrenos es condición indispensable para cualquier reconversión, ya sea residencial, productiva o de infraestructura pública.\n\nComarsa, una de las firmas más conocidas del sector de tratamiento de residuos en la cuenca neuquina, enfrenta ahora plazos más estrictos. Las autoridades provinciales dejaron en claro que la permanencia del basurero ya no es compatible con la planificación territorial vigente y que la empresa debe hacerse cargo del retiro y la remediación del sitio conforme a la normativa ambiental.\n\nEl caso es emblemático porque refleja una tensión que atraviesa toda la Patagonia petrolera: el crecimiento acelerado de Vaca Muerta multiplicó la generación de residuos industriales, pero la infraestructura de gestión ambiental no siempre acompañó ese ritmo. Basureros petroleros a cielo abierto, piletas de lodo sin tratamiento adecuado y suelos contaminados siguen siendo parte del paisaje en varias localidades neuquinas.\n\nPara las comunidades vecinas, la resolución del caso Comarsa funciona como termómetro de la voluntad política real de anteponer la salud ambiental al negocio energético. La Patagonia produce buena parte de los hidrocarburos del país, pero el costo territorial de esa producción rara vez llega a los titulares con la misma fuerza que los números de inversión.\n\nSi los plazos se cumplen, Neuquén podría sentar un precedente valioso: demostrar que es posible exigir remediación efectiva sin frenar la actividad productiva. El desafío, como siempre en estas latitudes, está en que la promesa se convierta en hecho concreto antes de que el calendario vuelva a correr en contra del territorio.",
-      "tag": "🌿 Ambiente",
-      "categoria": "medio ambiente",
-      "fuente": "Diario Río Negro",
-      "url_original": "https://www.rionegro.com.ar/politica/buscan-que-comarsa-retire-el-basurero-petrolero-en-neuquen-para-entregar-los-terrenos-este-ano/",
-      "pais": "argentina",
-      "imagen": "fotos/foto-20260413-1212-tapa.webp",
-      "imagen_keywords": "basurero petrolero Neuquén",
-      "meta": "Hoy · Diario Río Negro"
-    },
-    {
-      "id": "20260413-1212-sec1",
-      "titulo": "Bariloche hizo historia: primer remate ganadero de la Región Andina facturó $1300 millones",
-      "bajada": "La ciudad rionegrina fue sede de un inédito remate de hacienda que posiciona a la zona cordillerana como polo ganadero con identidad propia.",
-      "cuerpo": "San Carlos de Bariloche vivió una jornada sin precedentes para su economía rural: el primer remate de hacienda de la Región Andina de Río Negro cerró con una facturación de 1300 millones de pesos, una cifra que sorprendió incluso a los organizadores y que instala a la zona cordillerana en el mapa ganadero nacional con peso propio.\n\nEl evento reunió a productores de toda la franja andina rionegrina, una región tradicionalmente asociada al turismo y la actividad forestal pero que sostiene una ganadería de montaña con características únicas. Campos de altura, pasturas naturales y un manejo extensivo adaptado al clima patagónico definen a estos establecimientos, que hasta ahora carecían de un espacio formal de comercialización a la altura de su potencial.\n\nLa realización del remate en Bariloche tiene un valor simbólico que va más allá de los números. Durante décadas, los productores andinos debieron trasladar su hacienda cientos de kilómetros hacia los centros tradicionales de venta en el valle o la meseta. Contar con un evento propio reduce costos logísticos, mejora los precios para el productor y visibiliza una actividad que muchas veces queda opacada por la marca turística de la ciudad.\n\nPara la economía regional, el dato es significativo: demuestra que la diversificación productiva en la Patagonia andina es viable y que la ganadería puede convivir con el turismo como motor de desarrollo. Los organizadores ya anticipan que el remate se convertirá en un evento regular, con proyección hacia otras localidades cordilleranas tanto de Río Negro como de Neuquén.\n\nEl hito llega en un momento donde la producción patagónica busca nuevos canales y mayor visibilidad. Bariloche, ciudad que el mundo conoce por sus chocolates y su centro de esquí, empieza a escribir otro capítulo de su identidad económica: el de la ganadería andina con sello propio.",
-      "tag": "· Producción ·",
-      "categoria": "producción",
-      "fuente": "La Nación",
-      "url_original": "https://www.lanacion.com.ar/economia/campo/facturaron-1300-millones-bariloche-tuvo-un-dia-historico-con-la-ganaderia-nid13042026/",
-      "pais": "argentina",
-      "imagen": "fotos/bariloche-lago-nahuel-huapi.jpg",
-      "imagen_keywords": "ganadería Bariloche remate",
-      "meta": "Hoy · La Nación"
     }
   ],
   "historias": [

@@ -1,14 +1,40 @@
 {
   "_info": "Feed de la sección Deportes & Aventura. Actualizado por actualizar_deportes.py. NO editar manualmente salvo corrección de emergencia.",
   "principal": {
-    "id": "20260415-1205-dep",
+    "id": "20260417-los-xvii-juegos-paraepade-cerraron-con-350-deportistas-dep",
     "tag": "🏃 Deportes",
-    "titulo": "Cerro Catedral lanza pase de esquí low cost para captar turismo brasileño",
-    "bajada": "El cerro barilochense ofrece un pase de temporada a $160.000 con el objetivo de posicionarse como destino accesible para el mercado de Brasil.",
-    "imagen": "fotos/foto-20260415-1205-dep.webp",
-    "meta": "Hoy · Diario Río Negro"
+    "titulo": "Los XVII Juegos PARAEPADE cerraron con 350 deportistas patagónicos",
+    "bajada": "Atletas de seis provincias del sur argentino compitieron en Chubut en una edición que reafirmó el crecimiento del deporte adaptado en la región.",
+    "imagen": "fotos/foto-20260417-los-xvii-juegos-paraepade-cerraron-con-350-deportistas-dep.jpg",
+    "meta": "Hoy · GLOBALpatagonia"
   },
   "secundarias": [
+    {
+      "id": "20260415-1205-dep",
+      "tag": "🏃 Deportes",
+      "titulo": "Cerro Catedral lanza pase de esquí low cost para captar turismo brasileño",
+      "bajada": "El cerro barilochense ofrece un pase de temporada a $160.000 con el objetivo de posicionarse como destino accesible para el mercado de Brasil.",
+      "imagen": "fotos/foto-20260415-1205-dep.webp",
+      "meta": "Hoy · Diario Río Negro"
+    },
+    {
+      "id": "20260412-1105-dep",
+      "tag": "🏃 Deportes",
+      "titulo": "Patagonia Run: la gran fiesta del trail en San Martín de los Andes",
+      "bajada": "Miles de corredores de distintos países protagonizaron una edición épica de la carrera de montaña más emblemática de la región, entre bosques de lengas y vistas al volcán Lanín.",
+      "imagen": "fotos/foto-20260412-1105-dep.webp",
+      "meta": "Hoy · Diario Río Negro"
+    }
+  ],
+  "row_cards": [
+    {
+      "id": "20260415-1205-dep",
+      "tag": "🏃 Deportes",
+      "titulo": "Cerro Catedral lanza pase de esquí low cost para captar turismo brasileño",
+      "bajada": "El cerro barilochense ofrece un pase de temporada a $160.000 con el objetivo de posicionarse como destino accesible para el mercado de Brasil.",
+      "imagen": "fotos/foto-20260415-1205-dep.webp",
+      "meta": "Hoy · Diario Río Negro"
+    },
     {
       "id": "20260412-1105-dep",
       "tag": "🏃 Deportes",
@@ -24,9 +50,7 @@
       "bajada": "El corredor que dominó el Tetratlón Chapelco ahora controla los cronómetros de una de las carreras de trail más importantes de Sudamérica.",
       "imagen": "fotos/foto-20260411-1059-dep.webp",
       "meta": "Hoy · Diario Río Negro"
-    }
-  ],
-  "row_cards": [
+    },
     {
       "id": "20260411-0435-dep",
       "tag": "🏃 Deportes",
@@ -34,30 +58,6 @@
       "bajada": "El piloto santacruceño dominó las dos tandas de entrenamientos y la primera clasificación de la tercera fecha del Campeonato Argentino de Clase 1 de Turismo Pista.",
       "imagen": "fotos/foto-20260411-0435-dep.webp",
       "meta": "Hoy · Tiempo Sur"
-    },
-    {
-      "id": "20260411-0415-dep",
-      "tag": "🏃 Deportes",
-      "titulo": "Largaron las 100 millas de la Patagonia Run 2026",
-      "bajada": "Los ultramaratonistas partieron desde San Martín de los Andes hacia la montaña en la prueba reina del evento más convocante del trail patagónico.",
-      "imagen": "fotos/foto-20260411-0415-dep.webp",
-      "meta": "Hoy · Diario Río Negro"
-    },
-    {
-      "id": "20260410-1426-dep",
-      "tag": "🏃 Deportes",
-      "titulo": "Patagonia Run: la vida interior de un puesto de asistencia en montaña",
-      "bajada": "Los puestos de asistencia son refugios vitales para los corredores de ultra trail en medio de la cordillera neuquina.",
-      "imagen": "fotos/foto-20260410-1426-dep.webp",
-      "meta": "Hoy · Diario Río Negro"
-    },
-    {
-      "id": "20260410-1205-dep",
-      "tag": "🏃 Deportes",
-      "titulo": "Adrián Varas, el corredor que encadena 21K, 42K y 100 millas",
-      "bajada": "El atleta participó en tres distancias del Patagonia Run y explica por qué la montaña se convierte en un vicio inevitable.",
-      "imagen": "fotos/foto-20260410-1205-dep.webp",
-      "meta": "Hoy · Diario Río Negro"
     }
   ]
 }
