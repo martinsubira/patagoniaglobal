@@ -825,7 +825,7 @@ def _unsplash_query(keywords):
             data    = json.loads(resp.read())
             results = data.get("results", [])
             if results:
-                return results[0]["urls"]["regular"]
+                return results[0]["urls"]["full"]
     except Exception:
         pass
     return None
