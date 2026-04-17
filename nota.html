@@ -649,7 +649,7 @@ function renderNota(nota, fechaDisplay, data) {
   if (jsonld) {
     const schema = {
       "@context": "https://schema.org",
-      "@type": nota.categoria === 'turismo' ? "TravelAction" : "NewsArticle",
+      "@type": "NewsArticle",
       "headline": nota.titulo,
       "description": nota.bajada || nota.titulo,
       "url": window.location.href,
