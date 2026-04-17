@@ -1666,12 +1666,33 @@ def main():
 
 
 # ══════════════════════════════════════════════════════════
-#  PÁGINAS OG ESTÁTICAS (para compartir en WhatsApp / redes)
+#  PÁGINAS ESTÁTICAS PARA SEO (contenido completo, sin JS)
 # ══════════════════════════════════════════════════════════
 
+def _render_cuerpo_html(cuerpo):
+    """Convierte cuerpo de nota a HTML. Bloques que empiezan con '<' van como raw HTML."""
+    import html as htmllib
+    if not cuerpo:
+        return ""
+    if cuerpo.strip().startswith("<"):
+        return cuerpo
+    out = []
+    for bloque in cuerpo.split("\n\n"):
+        bloque = bloque.strip()
+        if not bloque:
+            continue
+        if bloque.startswith("## "):
+            out.append(f"<h3>{htmllib.escape(bloque[3:])}</h3>")
+        else:
+            out.append(f"<p>{htmllib.escape(bloque)}</p>")
+    return "\n".join(out)
+
+
 def generar_paginas_og(notas):
-    """Genera notas/[id].html para cada nota — OG tags estáticos + redirect a nota.html?id=X.
-    WhatsApp y otros scrapers leen el HTML estático sin ejecutar JS, así el preview es correcto."""
+    """Genera notas/[id].html con contenido completo — indexable por Google sin JS."""
+    import html as htmllib
+    import json as _json
+
     base = os.path.dirname(__file__)
     notas_dir = os.path.join(base, "notas")
     os.makedirs(notas_dir, exist_ok=True)
@@ -1681,45 +1702,173 @@ def generar_paginas_og(notas):
         nid = nota.get("id", "")
         if not nid:
             continue
-        titulo   = nota.get("titulo", "GLOBALpatagonia")
-        bajada   = nota.get("bajada", "Noticias de la Patagonia argentina y chilena.")
-        imagen   = nota.get("imagen", "")
-        imagen_abs = f"https://globalpatagonia.org/{imagen}" if imagen else "https://globalpatagonia.org/fotos/torres-del-paine.webp"
-        nota_url = f"https://globalpatagonia.org/nota.html?id={nid}"
-        share_url = f"https://globalpatagonia.org/notas/{nid}.html"
 
-        titulo_escaped  = titulo.replace('"', '&quot;').replace('<', '&lt;').replace('>', '&gt;')
-        bajada_escaped  = bajada.replace('"', '&quot;').replace('<', '&lt;').replace('>', '&gt;')
+        titulo    = nota.get("titulo", "GLOBALpatagonia")
+        bajada    = nota.get("bajada", "")
+        cuerpo    = nota.get("cuerpo", "")
+        tag       = nota.get("tag", "")
+        fuente    = nota.get("fuente", "GLOBALpatagonia")
+        fecha_raw = nota.get("fecha", nota.get("meta", ""))
+        pais      = nota.get("pais", "")
+        imagen    = nota.get("imagen", "")
+        imagen_abs = (f"https://globalpatagonia.org/{imagen}"
+                      if imagen else "https://globalpatagonia.org/fotos/torres-del-paine.webp")
+        static_url = f"https://globalpatagonia.org/notas/{nid}.html"
+        interactive_url = f"https://globalpatagonia.org/nota.html?id={nid}"
 
-        html = f"""<!DOCTYPE html>
+        def e(s): return htmllib.escape(str(s or ""))
+        def ea(s): return htmllib.escape(str(s or ""), quote=True)
+
+        # Fecha ISO para JSON-LD
+        fecha_iso = datetime.now().strftime("%Y-%m-%d")
+        if fecha_raw:
+            m = re.match(r"(\d{4}-\d{2}-\d{2})", str(fecha_raw))
+            if m:
+                fecha_iso = m.group(1)
+
+        pais_label = {"argentina": "Argentina", "chile": "Chile",
+                      "ambos": "Argentina y Chile", "malvinas": "Malvinas"}.get(pais, "Patagonia")
+
+        jsonld = _json.dumps({
+            "@context": "https://schema.org",
+            "@type": "NewsArticle",
+            "headline": titulo,
+            "description": bajada,
+            "image": imagen_abs,
+            "datePublished": fecha_iso,
+            "dateModified": fecha_iso,
+            "url": static_url,
+            "inLanguage": "es",
+            "keywords": f"patagonia, {pais_label.lower()}, {tag}",
+            "publisher": {
+                "@type": "NewsMediaOrganization",
+                "name": "GLOBALpatagonia",
+                "url": "https://globalpatagonia.org/",
+                "logo": {"@type": "ImageObject", "url": "https://globalpatagonia.org/favicon.svg"}
+            },
+            "author": {"@type": "Organization", "name": fuente or "GLOBALpatagonia"},
+            "isPartOf": {"@type": "CreativeWork", "name": "GLOBALpatagonia"}
+        }, ensure_ascii=False, indent=2)
+
+        cuerpo_html = _render_cuerpo_html(cuerpo)
+        imagen_block = (f'<div class="nota-imagen-wrap"><img src="{ea(imagen_abs)}" '
+                        f'alt="{ea(titulo)}" class="nota-imagen" loading="eager"/></div>'
+                        if imagen else '<div class="nota-imagen-placeholder"></div>')
+
+        html_out = f"""<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8"/>
-  <title>{titulo_escaped} — GLOBALpatagonia</title>
-  <meta name="description" content="{bajada_escaped}"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{e(titulo)} — GLOBALpatagonia</title>
+  <meta name="description" content="{ea(bajada)}"/>
+  <link rel="canonical" href="{ea(static_url)}"/>
   <meta property="og:site_name" content="GLOBALpatagonia"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:url" content="{share_url}"/>
-  <meta property="og:title" content="{titulo_escaped} — GLOBALpatagonia"/>
-  <meta property="og:description" content="{bajada_escaped}"/>
-  <meta property="og:image" content="{imagen_abs}"/>
+  <meta property="og:url" content="{ea(static_url)}"/>
+  <meta property="og:title" content="{ea(titulo)} — GLOBALpatagonia"/>
+  <meta property="og:description" content="{ea(bajada)}"/>
+  <meta property="og:image" content="{ea(imagen_abs)}"/>
   <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content="{titulo_escaped} — GLOBALpatagonia"/>
-  <meta name="twitter:description" content="{bajada_escaped}"/>
-  <meta name="twitter:image" content="{imagen_abs}"/>
-  <meta http-equiv="refresh" content="0;url={nota_url}"/>
+  <meta name="twitter:site" content="@GLOBALpatagonia"/>
+  <meta name="twitter:title" content="{ea(titulo)} — GLOBALpatagonia"/>
+  <meta name="twitter:description" content="{ea(bajada)}"/>
+  <meta name="twitter:image" content="{ea(imagen_abs)}"/>
+  <script type="application/ld+json">{jsonld}</script>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg"/>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5FP2F41BZG"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments);}}gtag('js',new Date());gtag('config','G-5FP2F41BZG');</script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600&display=swap');
+    :root{{--verde:#1c2d3d;--azul-claro:#8ab8d4;--gris-oscuro:#252830;--gris-medio:#5a6070;--crema:#f0ede8;}}
+    *{{margin:0;padding:0;box-sizing:border-box;}}
+    body{{font-family:'Inter',sans-serif;background:var(--crema);color:var(--gris-oscuro);}}
+    header{{background:var(--verde);}}
+    .top-bar{{background:#252830;display:flex;justify-content:space-between;align-items:center;padding:6px 40px;font-size:11px;color:#aaa;}}
+    .header-main{{display:flex;flex-direction:column;align-items:center;padding:20px 40px 14px;}}
+    .logo-tagline{{font-size:11px;color:#8ab8d4;letter-spacing:4px;text-transform:uppercase;margin-bottom:4px;}}
+    .logo-img{{height:60px;width:auto;max-width:100%;display:block;}}
+    nav{{background:var(--verde);display:flex;justify-content:center;gap:0;border-top:1px solid rgba(255,255,255,0.08);}}
+    nav a{{color:rgba(255,255,255,0.75);text-decoration:none;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:12px 18px;border-bottom:3px solid transparent;transition:all 0.2s;}}
+    nav a:hover{{color:#8ab8d4;border-bottom-color:#8ab8d4;}}
+    .container{{max-width:800px;margin:0 auto;padding:0 20px;}}
+    .volver{{display:inline-flex;align-items:center;gap:6px;margin:28px 0 24px;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:#3a5a7a;text-decoration:none;}}
+    .volver:hover{{color:var(--verde);}}
+    .nota-tag{{display:inline-block;background:var(--verde);color:#8ab8d4;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:2px;margin-bottom:18px;}}
+    .nota-titulo{{font-family:'Playfair Display',serif;font-size:clamp(28px,5vw,48px);font-weight:900;line-height:1.15;color:var(--gris-oscuro);margin-bottom:20px;letter-spacing:-0.5px;}}
+    .nota-bajada{{font-size:19px;font-weight:400;color:var(--gris-medio);line-height:1.65;margin-bottom:24px;border-left:4px solid #8ab8d4;padding-left:18px;font-style:italic;}}
+    .nota-meta{{font-size:11px;color:#aaa;letter-spacing:1px;text-transform:uppercase;margin-bottom:28px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding-bottom:16px;border-bottom:1px solid #e0ddd8;}}
+    .nota-imagen-wrap{{width:100%;background:#0e1a26;border-radius:4px;margin-bottom:32px;display:flex;justify-content:center;align-items:center;overflow:hidden;max-height:480px;}}
+    .nota-imagen{{width:100%;max-height:480px;object-fit:contain;display:block;}}
+    .nota-imagen-placeholder{{width:100%;height:320px;background:linear-gradient(160deg,#0e1a26 0%,#1c2d3d 45%,#4a7a9a 100%);border-radius:4px;margin-bottom:32px;}}
+    .nota-cuerpo p{{font-size:17.5px;line-height:1.85;color:#2a2a2a;margin-bottom:24px;}}
+    .nota-cuerpo p:first-of-type{{font-size:20px;line-height:1.8;color:#1c2d3d;font-weight:400;border-left:4px solid #7aadcc;padding-left:20px;margin-bottom:32px;}}
+    .nota-cuerpo h3{{font-family:'Playfair Display',serif;font-size:clamp(20px,3vw,28px);font-weight:700;color:var(--verde);margin:48px 0 16px;padding-bottom:10px;border-bottom:3px solid var(--azul-claro);line-height:1.2;}}
+    .ver-completo{{display:inline-flex;align-items:center;gap:8px;margin:32px 0;padding:12px 24px;background:var(--verde);color:white;text-decoration:none;border-radius:3px;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;}}
+    .ver-completo:hover{{opacity:0.85;}}
+    .divider-footer{{height:2px;background:linear-gradient(90deg,#1c2d3d,#7aadcc,#1c2d3d);}}
+    footer{{background:#1c2d3d;color:rgba(255,255,255,0.6);text-align:center;padding:32px 20px;}}
+    .footer-logo{{font-family:'Playfair Display',serif;font-size:22px;font-weight:900;color:white;letter-spacing:1px;margin-bottom:6px;}}
+    .footer-logo span{{color:#8ab8d4;font-weight:400;font-style:italic;}}
+    .footer-copy{{font-size:11px;letter-spacing:1px;margin-top:12px;color:rgba(255,255,255,0.35);}}
+    @media(max-width:600px){{.top-bar{{padding:6px 16px;}}.logo-img{{height:46px;}}nav a{{padding:10px 10px;font-size:10px;}}}}
+  </style>
 </head>
 <body>
-  <script>window.location.replace("{nota_url}");</script>
-  <p><a href="{nota_url}">{titulo_escaped}</a></p>
+<header>
+  <div class="top-bar">
+    <span>Patagonia Argentina y Chilena</span>
+    <span style="color:#8ab8d4;font-weight:600;">Sur Global, principio de todo.</span>
+  </div>
+  <div class="header-main">
+    <div class="logo-tagline">Sur Global, principio de todo.</div>
+    <a href="../index.html" style="text-decoration:none">
+      <img src="../logo-globalpatagonia.png" alt="GLOBALpatagonia" class="logo-img"/>
+    </a>
+  </div>
+  <nav>
+    <a href="../index.html">Inicio</a>
+    <a href="../index.html#sec-noticias">Noticias</a>
+    <a href="../index.html#sec-deportes">Deportes &amp; Actividades</a>
+    <a href="../index.html#sec-turismo">Turismo &amp; Guías</a>
+    <a href="../index.html#sec-historia">Cultura Patagónica</a>
+    <a href="../buscar.html">Buscar</a>
+  </nav>
+</header>
+
+<div class="container">
+  <a href="../index.html" class="volver">← Inicio</a>
+  <article>
+    {f'<div class="nota-tag">{e(tag)}</div>' if tag else ''}
+    <h1 class="nota-titulo">{e(titulo)}</h1>
+    {f'<p class="nota-bajada">{e(bajada)}</p>' if bajada else ''}
+    <div class="nota-meta">
+      <span>📰 {e(fuente)}</span>
+      {f'<span>🌎 {e(pais_label)}</span>' if pais else ''}
+      <span>{fecha_iso}</span>
+    </div>
+    {imagen_block}
+    <div class="nota-cuerpo">{cuerpo_html}</div>
+    <a href="{ea(interactive_url)}" class="ver-completo">Ver nota completa con notas relacionadas →</a>
+  </article>
+</div>
+
+<div class="divider-footer"></div>
+<footer>
+  <div class="footer-logo"><span>global</span>PATAGONIA</div>
+  <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-top:4px;">Argentina · Chile · Sin fronteras</div>
+  <div class="footer-copy">© 2026 GLOBALpatagonia · globalpatagonia.org</div>
+</footer>
 </body>
 </html>"""
+
         ruta = os.path.join(notas_dir, f"{nid}.html")
         with open(ruta, "w", encoding="utf-8") as f:
-            f.write(html)
+            f.write(html_out)
         generadas += 1
 
-    print(f"  Páginas OG generadas: {generadas}")
+    print(f"  Páginas estáticas generadas: {generadas}")
 
 
 # ══════════════════════════════════════════════════════════
@@ -1815,7 +1964,7 @@ def actualizar_sitemap():
         freq = "monthly" if es_historia else "weekly"
         prio = "0.9" if es_historia else "0.8"
         lines += [f"  <url>",
-                  f"    <loc>https://globalpatagonia.org/nota.html?id={nid}</loc>",
+                  f"    <loc>https://globalpatagonia.org/notas/{nid}.html</loc>",
                   f"    <lastmod>{fecha}</lastmod>",
                   f"    <changefreq>{freq}</changefreq>",
                   f"    <priority>{prio}</priority>", f"  </url>"]
