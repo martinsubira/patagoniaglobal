@@ -2536,8 +2536,35 @@ def publicar_facebook_informe_nuevo():
         print(f"  Facebook informe falló: {e}")
 
 
+def _nl_seccion_html(label, nota, color_label="#7aadcc"):
+    """Genera bloque HTML de una sección para el newsletter (deportes, turismo, etc.)."""
+    if not nota:
+        return ""
+    n_id    = nota.get("id", "")
+    titulo  = nota.get("titulo", "")
+    bajada  = nota.get("bajada", "")
+    imagen  = nota.get("imagen", "")
+    link    = f"https://globalpatagonia.org/nota.html?id={n_id}"
+    if imagen and not imagen.startswith("http"):
+        imagen = f"https://globalpatagonia.org/{imagen}"
+    img_tag = f'<img src="{imagen}" alt="" width="520" style="width:100%;max-width:520px;height:220px;object-fit:cover;display:block;border-radius:4px;margin-bottom:14px;" />' if imagen else ""
+    return f"""
+        <tr><td style="padding:28px 40px 0 40px;border-top:1px solid #e8e4de;">
+          {img_tag}
+          <div style="font-family:Inter,sans-serif;font-size:0.68rem;font-weight:700;letter-spacing:0.12em;
+                      color:{color_label};text-transform:uppercase;margin-bottom:8px;">{label}</div>
+          <div style="font-family:'Playfair Display',Georgia,serif;font-size:1.15rem;font-weight:700;
+                      color:#1c2d3d;line-height:1.3;margin-bottom:8px;">{titulo}</div>
+          <div style="font-family:Inter,sans-serif;font-size:0.88rem;color:#555;line-height:1.55;
+                      margin-bottom:12px;">{bajada}</div>
+          <a href="{link}" style="font-family:Inter,sans-serif;font-size:0.83rem;font-weight:600;
+                                   color:#1c2d3d;text-decoration:underline;">Leer más →</a>
+        </td></tr>"""
+
+
 def enviar_newsletter():
-    """Crea y envía la campaña diaria de newsletter via Brevo."""
+    """Crea y envía la campaña diaria de newsletter via Brevo.
+    Incluye: tapa (3 notas) + informes nuevos + deportes + economía + turismo (semanal) + cultura (semanal) + guías nuevas."""
     if not BREVO_API_KEY:
         print("  Newsletter: BREVO_API_KEY no configurada, saltando.")
         return
@@ -2545,7 +2572,6 @@ def enviar_newsletter():
     base_dir   = os.path.dirname(__file__)
     state_path = os.path.join(base_dir, "telegram_state.json")
 
-    # Verificar si ya se envió hoy
     try:
         with open(state_path, encoding="utf-8") as f:
             state = json.load(f)
@@ -2557,72 +2583,128 @@ def enviar_newsletter():
         print(f"  Newsletter: ya enviado hoy ({hoy}), saltando.")
         return
 
-    # Leer noticias
+    # ── Leer noticias del día ────────────────────────────────────────────────
     try:
         with open(os.path.join(base_dir, "noticias.json"), encoding="utf-8") as f:
-            noticias = json.load(f)
+            noticias_data = json.load(f)
     except Exception:
-        noticias = []
+        noticias_data = {}
 
-    if not noticias:
-        print("  Newsletter: noticias.json vacío, saltando.")
+    tapa        = noticias_data.get("tapa") or {}
+    secundarias = noticias_data.get("secundarias", [])[:2]
+
+    if not tapa:
+        print("  Newsletter: noticias.json sin tapa, saltando.")
         return
 
-    tapa       = noticias[0]
-    secundarias = noticias[1:4]
+    # ── Leer secciones ──────────────────────────────────────────────────────
+    def _leer_json(nombre):
+        try:
+            with open(os.path.join(base_dir, nombre), encoding="utf-8") as f:
+                return json.load(f)
+        except Exception:
+            return None
 
-    # Leer propios
-    try:
-        with open(os.path.join(base_dir, "propios.json"), encoding="utf-8") as f:
-            propios = json.load(f)
-    except Exception:
-        propios = []
+    dep_data     = _leer_json("deportes_feed.json")
+    deportes     = dep_data.get("principal") if isinstance(dep_data, dict) else (dep_data[0] if isinstance(dep_data, list) and dep_data else None)
 
-    informe = propios[0] if propios else None
+    neg_data     = _leer_json("negocios.json")
+    economia     = neg_data[0] if isinstance(neg_data, list) and neg_data else None
+
+    tur_data     = _leer_json("turismo.json")
+    turismo_nota = None
+    if isinstance(tur_data, list) and tur_data:
+        tur_id = tur_data[0].get("id", "")
+        if state.get("ultimo_turismo_newsletter") != tur_id:
+            turismo_nota = tur_data[0]
+            state["ultimo_turismo_newsletter"] = tur_id
+    elif isinstance(tur_data, dict):
+        tur_id = tur_data.get("principal", {}).get("id", "") if tur_data.get("principal") else ""
+        if tur_id and state.get("ultimo_turismo_newsletter") != tur_id:
+            turismo_nota = tur_data.get("principal")
+            state["ultimo_turismo_newsletter"] = tur_id
+
+    cul_data     = _leer_json("cultura.json")
+    cultura_nota = None
+    if isinstance(cul_data, list) and cul_data:
+        cul_id = cul_data[0].get("id", "")
+        if state.get("ultimo_cultura_newsletter") != cul_id:
+            cultura_nota = cul_data[0]
+            state["ultimo_cultura_newsletter"] = cul_id
+
+    propios_data = _leer_json("propios.json") or []
+    informe_nota = None
+    if propios_data:
+        inf_id = propios_data[0].get("id", "")
+        if state.get("ultimo_informe_newsletter") != inf_id:
+            informe_nota = propios_data[0]
+            state["ultimo_informe_newsletter"] = inf_id
+
+    guias_data  = _leer_json("guias.json") or []
+    nl_guias_enviadas = set(state.get("guias_newsletter_enviadas", []))
+    guias_nuevas = [g for g in guias_data if g.get("postear_redes") and g.get("id", "") not in nl_guias_enviadas]
+    guia_nota   = guias_nuevas[0] if guias_nuevas else None
+    if guia_nota:
+        nl_guias_enviadas.add(guia_nota.get("id", ""))
+        state["guias_newsletter_enviadas"] = list(nl_guias_enviadas)
 
     fecha_dd_mm = datetime.now().strftime("%d/%m/%Y")
 
-    # Construir HTML del email
-    tapa_id    = tapa.get("id", "")
+    # ── Bloque tapa ─────────────────────────────────────────────────────────
+    tapa_id     = tapa.get("id", "")
     tapa_titulo = tapa.get("titulo", "")
     tapa_bajada = tapa.get("bajada", "")
     tapa_imagen = tapa.get("imagen", "")
     tapa_link   = f"https://globalpatagonia.org/nota.html?id={tapa_id}"
-
     if tapa_imagen and not tapa_imagen.startswith("http"):
         tapa_imagen = f"https://globalpatagonia.org/{tapa_imagen}"
+    tapa_img_tag = f'<img src="{tapa_imagen}" alt="" width="520" style="width:100%;max-width:520px;height:auto;display:block;border-radius:4px;margin-bottom:20px;" />' if tapa_imagen else ""
 
-    secundarias_html = ""
+    # ── Bloques secundarias ─────────────────────────────────────────────────
+    sec_rows = ""
     for s in secundarias:
-        s_id     = s.get("id", "")
-        s_titulo = s.get("titulo", "")
-        s_link   = f"https://globalpatagonia.org/nota.html?id={s_id}"
-        secundarias_html += (
+        s_id    = s.get("id", "")
+        s_tit   = s.get("titulo", "")
+        s_link  = f"https://globalpatagonia.org/nota.html?id={s_id}"
+        sec_rows += (
             f'<tr><td style="padding:10px 0;border-bottom:1px solid #e8e4de;">'
-            f'<a href="{s_link}" style="font-family:Inter,sans-serif;font-size:0.95rem;color:#1c2d3d;'
-            f'text-decoration:none;font-weight:500;">{s_titulo}</a>'
-            f'</td></tr>\n'
+            f'<a href="{s_link}" style="font-family:Inter,sans-serif;font-size:0.93rem;color:#1c2d3d;'
+            f'text-decoration:none;font-weight:500;">{s_tit}</a></td></tr>\n'
         )
+    sec_block = (
+        f'<tr><td style="padding:24px 40px 0 40px;">'
+        f'<div style="font-family:Inter,sans-serif;font-size:0.68rem;font-weight:700;letter-spacing:0.12em;'
+        f'color:#7aadcc;text-transform:uppercase;margin-bottom:14px;">Más noticias</div>'
+        f'<table width="100%" cellpadding="0" cellspacing="0">{sec_rows}</table></td></tr>'
+    ) if sec_rows else ""
 
-    informe_html = ""
-    if informe:
-        inf_id     = informe.get("id", "")
-        inf_titulo = informe.get("titulo", "")
-        inf_bajada = informe.get("bajada", "")
-        inf_link   = f"https://globalpatagonia.org/nota.html?id={inf_id}"
-        informe_html = f"""
-        <tr><td style="padding:32px 0 0 0;">
+    # ── Bloque informe ──────────────────────────────────────────────────────
+    informe_block = ""
+    if informe_nota:
+        inf_id    = informe_nota.get("id", "")
+        inf_tit   = informe_nota.get("titulo", "")
+        inf_baj   = informe_nota.get("bajada", "")
+        inf_link  = f"https://globalpatagonia.org/nota.html?id={inf_id}"
+        informe_block = f"""
+        <tr><td style="padding:28px 40px 0 40px;border-top:1px solid #e8e4de;">
           <div style="background:#f0ede8;border-left:4px solid #7aadcc;padding:20px 24px;border-radius:4px;">
-            <div style="font-family:Inter,sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:0.12em;
+            <div style="font-family:Inter,sans-serif;font-size:0.68rem;font-weight:700;letter-spacing:0.12em;
                         color:#7aadcc;text-transform:uppercase;margin-bottom:8px;">Informe especial</div>
             <div style="font-family:'Playfair Display',Georgia,serif;font-size:1.15rem;font-weight:700;
-                        color:#1c2d3d;margin-bottom:8px;">{inf_titulo}</div>
+                        color:#1c2d3d;margin-bottom:8px;">{inf_tit}</div>
             <div style="font-family:Inter,sans-serif;font-size:0.88rem;color:#444;margin-bottom:14px;
-                        line-height:1.5;">{inf_bajada}</div>
+                        line-height:1.5;">{inf_baj}</div>
             <a href="{inf_link}" style="font-family:Inter,sans-serif;font-size:0.85rem;font-weight:600;
                                         color:#1c2d3d;text-decoration:underline;">Leer informe →</a>
           </div>
         </td></tr>"""
+
+    # ── Secciones dinámicas ─────────────────────────────────────────────────
+    dep_block     = _nl_seccion_html("Deportes & Aventura",       deportes,     "#8c6b4a")
+    eco_block     = _nl_seccion_html("Economía & Empresas",       economia,     "#7aadcc")
+    tur_block     = _nl_seccion_html("Turismo en Patagonia",      turismo_nota, "#7aadcc")
+    cul_block     = _nl_seccion_html("Cultura Patagónica",        cultura_nota, "#7aadcc")
+    guia_block    = _nl_seccion_html("Guía",                      guia_nota,    "#8c6b4a")
 
     html_content = f"""<!DOCTYPE html>
 <html lang="es">
@@ -2638,16 +2720,16 @@ def enviar_newsletter():
                       color:#f0ede8;letter-spacing:0.02em;">
             GLOBAL<span style="color:#7aadcc">patagonia</span>
           </div>
-          <div style="font-family:Inter,sans-serif;font-size:0.75rem;color:#7aadcc;
+          <div style="font-family:Inter,sans-serif;font-size:0.72rem;color:#7aadcc;
                       letter-spacing:0.1em;margin-top:6px;text-transform:uppercase;">
-            Sur Global, principio de todo.
+            Sur Global, principio de todo &nbsp;·&nbsp; {fecha_dd_mm}
           </div>
         </td></tr>
 
         <!-- Tapa -->
         <tr><td style="padding:32px 40px 0 40px;">
-          {"<img src='" + tapa_imagen + "' alt='' width='520' style='width:100%;max-width:520px;height:auto;display:block;border-radius:4px;margin-bottom:20px;' />" if tapa_imagen else ""}
-          <div style="font-family:Inter,sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:0.12em;
+          {tapa_img_tag}
+          <div style="font-family:Inter,sans-serif;font-size:0.68rem;font-weight:700;letter-spacing:0.12em;
                       color:#7aadcc;text-transform:uppercase;margin-bottom:10px;">Tapa del día</div>
           <div style="font-family:'Playfair Display',Georgia,serif;font-size:1.5rem;font-weight:700;
                       color:#1c2d3d;line-height:1.25;margin-bottom:12px;">{tapa_titulo}</div>
@@ -2660,20 +2742,25 @@ def enviar_newsletter():
           </a>
         </td></tr>
 
-        <!-- Más noticias -->
-        {"<tr><td style='padding:28px 40px 0 40px;'><div style='font-family:Inter,sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:0.12em;color:#7aadcc;text-transform:uppercase;margin-bottom:14px;'>Más noticias</div><table width='100%' cellpadding='0' cellspacing='0'>" + secundarias_html + "</table></td></tr>" if secundarias_html else ""}
+        {sec_block}
+        {informe_block}
+        {dep_block}
+        {eco_block}
+        {tur_block}
+        {cul_block}
+        {guia_block}
 
-        <!-- Informe especial -->
-        {"<tr><td style='padding:0 40px;'><table width='100%' cellpadding='0' cellspacing='0'>" + informe_html + "</table></td></tr>" if informe_html else ""}
+        <!-- Separador -->
+        <tr><td style="padding:32px 40px 0 40px;"></td></tr>
 
         <!-- Footer -->
-        <tr><td style="background:#1c2d3d;padding:24px 40px;margin-top:32px;text-align:center;">
+        <tr><td style="background:#1c2d3d;padding:24px 40px;text-align:center;">
           <a href="https://globalpatagonia.org" style="font-family:'Playfair Display',Georgia,serif;
                                                         font-size:1rem;font-weight:900;color:#f0ede8;
                                                         text-decoration:none;">
             GLOBAL<span style="color:#7aadcc">patagonia</span>
           </a>
-          <div style="font-family:Inter,sans-serif;font-size:0.75rem;color:rgba(240,237,232,0.5);
+          <div style="font-family:Inter,sans-serif;font-size:0.72rem;color:rgba(240,237,232,0.5);
                       margin-top:10px;line-height:1.6;">
             Recibiste este email porque te suscribiste en
             <a href="https://globalpatagonia.org" style="color:#7aadcc;text-decoration:none;">globalpatagonia.org</a>
@@ -2686,7 +2773,7 @@ def enviar_newsletter():
 </body>
 </html>"""
 
-    # Crear campaña en Brevo
+    # ── Crear y enviar campaña en Brevo ─────────────────────────────────────
     try:
         campaign_payload = json.dumps({
             "name":        f"GLOBALpatagonia — {fecha_dd_mm}",
@@ -2715,7 +2802,6 @@ def enviar_newsletter():
             print(f"  Newsletter: error al crear campaña — {resultado}")
             return
 
-        # Enviar campaña
         req_send = urllib.request.Request(
             f"https://api.brevo.com/v3/emailCampaigns/{campaign_id}/sendNow",
             data=b"{}",
