@@ -1,5 +1,15 @@
 [
   {
+    "id": "turismo-pucheguin-cochamo-2026",
+    "badge": "CONSERVACIÓN",
+    "titulo": "Pucheguín: cómo una campaña histórica salvó 133.000 hectáreas en la Patagonia chilena",
+    "bajada": "Una coalición de organizaciones locales e internacionales recaudó 78 millones de dólares para comprar y proteger para siempre uno de los últimos territorios vírgenes del norte de la Patagonia chilena. La historia de una hacienda casi perdida, una presa bloqueada y el corredor biológico más grande de América Latina.",
+    "imagen": "fotos/foto-turismo-pucheguin-cochamo-2026.jpg",
+    "meta": "17 de Abril de 2026 · El País",
+    "url_original": "https://elpais.com/america-futura/2026-02-19/pucheguin-un-ejemplo-historico-de-colaboracion-para-proteger-la-naturaleza.html",
+    "excluir_feed": true
+  },
+  {
     "id": "20260412-1105-tur",
     "badge": "TURISMO",
     "titulo": "El Calafate cierra temporada positiva y planifica lo que viene",
