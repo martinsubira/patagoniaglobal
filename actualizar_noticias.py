@@ -1619,11 +1619,82 @@ def main():
     print(f"\n  Actualizando índice de búsqueda...")
     actualizar_search_index()
 
+    print(f"\n  Generando páginas OG para compartir...")
+    _notas_og = [tapa] + secundarias + [n for n in [deportes, negocios, cultura, turismo] if n]
+    try:
+        with open(os.path.join(os.path.dirname(__file__), "propios.json"), encoding="utf-8") as _f:
+            _notas_og += json.load(_f)
+    except Exception:
+        pass
+    try:
+        with open(os.path.join(os.path.dirname(__file__), "historias.json"), encoding="utf-8") as _f:
+            _notas_og += json.load(_f)
+    except Exception:
+        pass
+    generar_paginas_og([n for n in _notas_og if n])
+
     print(f"\n  Actualizando sitemap...")
     actualizar_sitemap()
 
     print(f"\n  ✓ Listo — {fecha_display()}")
     print(f"{'='*55}\n")
+
+
+# ══════════════════════════════════════════════════════════
+#  PÁGINAS OG ESTÁTICAS (para compartir en WhatsApp / redes)
+# ══════════════════════════════════════════════════════════
+
+def generar_paginas_og(notas):
+    """Genera notas/[id].html para cada nota — OG tags estáticos + redirect a nota.html?id=X.
+    WhatsApp y otros scrapers leen el HTML estático sin ejecutar JS, así el preview es correcto."""
+    base = os.path.dirname(__file__)
+    notas_dir = os.path.join(base, "notas")
+    os.makedirs(notas_dir, exist_ok=True)
+
+    generadas = 0
+    for nota in notas:
+        nid = nota.get("id", "")
+        if not nid:
+            continue
+        titulo   = nota.get("titulo", "GLOBALpatagonia")
+        bajada   = nota.get("bajada", "Noticias de la Patagonia argentina y chilena.")
+        imagen   = nota.get("imagen", "")
+        imagen_abs = f"https://globalpatagonia.org/{imagen}" if imagen else "https://globalpatagonia.org/fotos/torres-del-paine.webp"
+        nota_url = f"https://globalpatagonia.org/nota.html?id={nid}"
+        share_url = f"https://globalpatagonia.org/notas/{nid}.html"
+
+        titulo_escaped  = titulo.replace('"', '&quot;').replace('<', '&lt;').replace('>', '&gt;')
+        bajada_escaped  = bajada.replace('"', '&quot;').replace('<', '&lt;').replace('>', '&gt;')
+
+        html = f"""<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <title>{titulo_escaped} — GLOBALpatagonia</title>
+  <meta name="description" content="{bajada_escaped}"/>
+  <meta property="og:site_name" content="GLOBALpatagonia"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:url" content="{share_url}"/>
+  <meta property="og:title" content="{titulo_escaped} — GLOBALpatagonia"/>
+  <meta property="og:description" content="{bajada_escaped}"/>
+  <meta property="og:image" content="{imagen_abs}"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="{titulo_escaped} — GLOBALpatagonia"/>
+  <meta name="twitter:description" content="{bajada_escaped}"/>
+  <meta name="twitter:image" content="{imagen_abs}"/>
+  <meta http-equiv="refresh" content="0;url={nota_url}"/>
+</head>
+<body>
+  <script>window.location.replace("{nota_url}");</script>
+  <p><a href="{nota_url}">{titulo_escaped}</a></p>
+</body>
+</html>"""
+        ruta = os.path.join(notas_dir, f"{nid}.html")
+        with open(ruta, "w", encoding="utf-8") as f:
+            f.write(html)
+        generadas += 1
+
+    print(f"  Páginas OG generadas: {generadas}")
 
 
 # ══════════════════════════════════════════════════════════
@@ -2415,7 +2486,7 @@ def publicar_instagram(tapa):
     image_url_orig = f"https://globalpatagonia.org/{imagen}"
     image_url = image_url_ig or image_url_orig
 
-    nota_url = f"https://globalpatagonia.org/nota.html?id={nota_id}" if nota_id else "https://globalpatagonia.org"
+    nota_url = f"https://globalpatagonia.org/notas/{nota_id}.html" if nota_id else "https://globalpatagonia.org"
     caption = (
         f"{bandera} {titulo}\n\n"
         f"{bajada}\n\n"
