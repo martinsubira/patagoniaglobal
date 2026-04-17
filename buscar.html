@@ -336,9 +336,15 @@ async function cargarIndice() {
     fetch('negocios.json').then(r => r.json()).catch(() => []),
     fetch('historial.json').then(r => r.json()).catch(() => []),
     fetch('deportes_feed.json').then(r => r.json()).catch(() => []),
-    fetch('guias.json').then(r => r.json()).catch(() => [])
+    fetch('guias.json').then(r => r.json()).catch(() => []),
+    fetch('cultura.json').then(r => r.json()).catch(() => []),
+    fetch('deportes_historial.json').then(r => r.json()).catch(() => []),
+    fetch('guias_historial.json').then(r => r.json()).catch(() => []),
+    fetch('propios_historial.json').then(r => r.json()).catch(() => []),
+    fetch('archivo.json').then(r => r.json()).catch(() => ({}))
   ];
-  const [noticias, historias, propios, turismo, negocios, historial, deportes, guias] = await Promise.all(fuentes);
+  const [noticias, historias, propios, turismo, negocios, historial, deportes, guias,
+         cultura, deportesHist, guiasHist, propiosHist, archivo] = await Promise.all(fuentes);
 
   const notas = [];
   const vistos = new Set();
@@ -359,6 +365,12 @@ async function cargarIndice() {
   deportes.forEach ? deportes.forEach(agregar) : null;
   guias.forEach ? guias.forEach(agregar) : null;
   historial.forEach ? historial.forEach(agregar) : null;
+  cultura.forEach ? cultura.forEach(agregar) : null;
+  deportesHist.forEach ? deportesHist.forEach(agregar) : null;
+  guiasHist.forEach ? guiasHist.forEach(agregar) : null;
+  propiosHist.forEach ? propiosHist.forEach(agregar) : null;
+  const archNotas = Array.isArray(archivo?.notas) ? archivo.notas : (Array.isArray(archivo) ? archivo : []);
+  archNotas.forEach(agregar);
 
   fuseIndex = new Fuse(notas, {
     keys: [
