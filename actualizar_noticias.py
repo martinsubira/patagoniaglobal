@@ -1656,7 +1656,11 @@ def main():
             _notas_og += json.load(_f)
     except Exception:
         pass
-    generar_paginas_og([n for n in _notas_og if n])
+    _notas_og_filtradas = [n for n in _notas_og if n]
+    generar_paginas_og(_notas_og_filtradas)
+
+    print(f"\n  Actualizando archivo estático en index.html...")
+    actualizar_archivo_en_index(_notas_og_filtradas)
 
     print(f"\n  Actualizando sitemap...")
     actualizar_sitemap()
@@ -1869,6 +1873,72 @@ def generar_paginas_og(notas):
         generadas += 1
 
     print(f"  Páginas estáticas generadas: {generadas}")
+
+
+# ══════════════════════════════════════════════════════════
+#  ARCHIVO ESTÁTICO EN INDEX.HTML (crawl budget)
+# ══════════════════════════════════════════════════════════
+
+def actualizar_archivo_en_index(notas):
+    """Inyecta links estáticos a todas las notas en index.html entre marcadores.
+    Google sigue estos links al rastrear el home, aumentando el crawl budget de cada nota."""
+    import html as htmllib
+    base = os.path.dirname(__file__)
+    index_path = os.path.join(base, "index.html")
+    if not os.path.exists(index_path):
+        return
+
+    with open(index_path, encoding="utf-8") as f:
+        contenido = f.read()
+
+    if "<!-- ARCHIVO-STATIC-START -->" not in contenido:
+        print("  ⚠ Marcadores ARCHIVO-STATIC no encontrados en index.html — omitiendo")
+        return
+
+    # Ordenar por fecha descendente
+    def _fecha_nota(n):
+        return n.get("fecha") or n.get("id", "") or ""
+    notas_ord = sorted(notas, key=_fecha_nota, reverse=True)
+
+    links = []
+    for n in notas_ord:
+        nid = n.get("id", "")
+        titulo = n.get("titulo", "")
+        if not nid or not titulo:
+            continue
+        url = f"/notas/{nid}.html"
+        cat = n.get("categoria", n.get("tag", "")).replace("·", "").strip()
+        cat_html = f'<span class="arc-cat">{htmllib.escape(cat)}</span> ' if cat else ""
+        links.append(f'    <li>{cat_html}<a href="{url}">{htmllib.escape(titulo)}</a></li>')
+
+    bloque = (
+        "<!-- ARCHIVO-STATIC-START -->\n"
+        '<section id="archivo-notas" style="background:#f0ede8;padding:32px 20px 40px;border-top:1px solid #ddd;">\n'
+        '  <div style="max-width:900px;margin:0 auto;">\n'
+        '    <p style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#8c6b4a;font-weight:700;margin-bottom:16px;">Archivo de notas</p>\n'
+        '    <ul style="list-style:none;columns:2;column-gap:32px;" id="archivo-lista">\n'
+        + "\n".join(links) + "\n"
+        '    </ul>\n'
+        '  </div>\n'
+        '</section>\n'
+        '<style>\n'
+        '#archivo-notas a{font-size:13px;color:#1c2d3d;text-decoration:none;line-height:1.9;}\n'
+        '#archivo-notas a:hover{text-decoration:underline;}\n'
+        '#archivo-notas .arc-cat{font-size:10px;color:#8c6b4a;font-weight:600;letter-spacing:1px;text-transform:uppercase;}\n'
+        '@media(max-width:600px){#archivo-notas ul{columns:1;}}\n'
+        '</style>\n'
+        "<!-- ARCHIVO-STATIC-END -->"
+    )
+
+    nuevo = re.sub(
+        r"<!-- ARCHIVO-STATIC-START -->.*?<!-- ARCHIVO-STATIC-END -->",
+        bloque,
+        contenido,
+        flags=re.DOTALL
+    )
+    with open(index_path, "w", encoding="utf-8") as f:
+        f.write(nuevo)
+    print(f"  Archivo estático: {len(links)} links en index.html")
 
 
 # ══════════════════════════════════════════════════════════
