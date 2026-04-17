@@ -35,6 +35,7 @@ jobs:
           FACEBOOK_APP_ID: ${{ secrets.FACEBOOK_APP_ID }}
           FACEBOOK_APP_SECRET: ${{ secrets.FACEBOOK_APP_SECRET }}
           INSTAGRAM_BUSINESS_ACCOUNT_ID: ${{ secrets.INSTAGRAM_BUSINESS_ACCOUNT_ID }}
+          BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
         run: python3 actualizar_noticias.py
 
       - name: Publicar cambios

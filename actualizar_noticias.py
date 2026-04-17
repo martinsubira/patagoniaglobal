@@ -51,6 +51,8 @@ if os.path.exists(_env_path):
 
 API_KEY             = os.environ.get("ANTHROPIC_API_KEY", "")
 UNSPLASH_ACCESS_KEY = os.environ.get("UNSPLASH_ACCESS_KEY", "")
+BREVO_API_KEY       = os.environ.get("BREVO_API_KEY", "")
+BREVO_LIST_ID       = 3
 
 FUENTES_RSS = [
     # ── Argentina · Regionales ──
@@ -1613,6 +1615,9 @@ def main():
         publicar_facebook(nota)
     publicar_facebook_informe_nuevo()
 
+    print(f"\n  Enviando newsletter...")
+    enviar_newsletter()
+
     # Instagram solo se publica en --solo-instagram (después del push, cuando las imágenes están en Pages)
 
     # 9b. Publicar secciones automáticas (deportes / negocios / turismo / cultura)
@@ -2530,6 +2535,210 @@ def publicar_facebook_informe_nuevo():
     except Exception as e:
         print(f"  Facebook informe falló: {e}")
 
+
+def enviar_newsletter():
+    """Crea y envía la campaña diaria de newsletter via Brevo."""
+    if not BREVO_API_KEY:
+        print("  Newsletter: BREVO_API_KEY no configurada, saltando.")
+        return
+
+    base_dir   = os.path.dirname(__file__)
+    state_path = os.path.join(base_dir, "telegram_state.json")
+
+    # Verificar si ya se envió hoy
+    try:
+        with open(state_path, encoding="utf-8") as f:
+            state = json.load(f)
+    except Exception:
+        state = {}
+
+    hoy = datetime.now().strftime("%Y-%m-%d")
+    if state.get("ultimo_newsletter") == hoy:
+        print(f"  Newsletter: ya enviado hoy ({hoy}), saltando.")
+        return
+
+    # Leer noticias
+    try:
+        with open(os.path.join(base_dir, "noticias.json"), encoding="utf-8") as f:
+            noticias = json.load(f)
+    except Exception:
+        noticias = []
+
+    if not noticias:
+        print("  Newsletter: noticias.json vacío, saltando.")
+        return
+
+    tapa       = noticias[0]
+    secundarias = noticias[1:4]
+
+    # Leer propios
+    try:
+        with open(os.path.join(base_dir, "propios.json"), encoding="utf-8") as f:
+            propios = json.load(f)
+    except Exception:
+        propios = []
+
+    informe = propios[0] if propios else None
+
+    fecha_dd_mm = datetime.now().strftime("%d/%m/%Y")
+
+    # Construir HTML del email
+    tapa_id    = tapa.get("id", "")
+    tapa_titulo = tapa.get("titulo", "")
+    tapa_bajada = tapa.get("bajada", "")
+    tapa_imagen = tapa.get("imagen", "")
+    tapa_link   = f"https://globalpatagonia.org/nota.html?id={tapa_id}"
+
+    if tapa_imagen and not tapa_imagen.startswith("http"):
+        tapa_imagen = f"https://globalpatagonia.org/{tapa_imagen}"
+
+    secundarias_html = ""
+    for s in secundarias:
+        s_id     = s.get("id", "")
+        s_titulo = s.get("titulo", "")
+        s_link   = f"https://globalpatagonia.org/nota.html?id={s_id}"
+        secundarias_html += (
+            f'<tr><td style="padding:10px 0;border-bottom:1px solid #e8e4de;">'
+            f'<a href="{s_link}" style="font-family:Inter,sans-serif;font-size:0.95rem;color:#1c2d3d;'
+            f'text-decoration:none;font-weight:500;">{s_titulo}</a>'
+            f'</td></tr>\n'
+        )
+
+    informe_html = ""
+    if informe:
+        inf_id     = informe.get("id", "")
+        inf_titulo = informe.get("titulo", "")
+        inf_bajada = informe.get("bajada", "")
+        inf_link   = f"https://globalpatagonia.org/nota.html?id={inf_id}"
+        informe_html = f"""
+        <tr><td style="padding:32px 0 0 0;">
+          <div style="background:#f0ede8;border-left:4px solid #7aadcc;padding:20px 24px;border-radius:4px;">
+            <div style="font-family:Inter,sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:0.12em;
+                        color:#7aadcc;text-transform:uppercase;margin-bottom:8px;">Informe especial</div>
+            <div style="font-family:'Playfair Display',Georgia,serif;font-size:1.15rem;font-weight:700;
+                        color:#1c2d3d;margin-bottom:8px;">{inf_titulo}</div>
+            <div style="font-family:Inter,sans-serif;font-size:0.88rem;color:#444;margin-bottom:14px;
+                        line-height:1.5;">{inf_bajada}</div>
+            <a href="{inf_link}" style="font-family:Inter,sans-serif;font-size:0.85rem;font-weight:600;
+                                        color:#1c2d3d;text-decoration:underline;">Leer informe →</a>
+          </div>
+        </td></tr>"""
+
+    html_content = f"""<!DOCTYPE html>
+<html lang="es">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
+<body style="margin:0;padding:0;background:#f0ede8;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#f0ede8;">
+    <tr><td align="center" style="padding:0;">
+      <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background:#ffffff;">
+
+        <!-- Header -->
+        <tr><td style="background:#1c2d3d;padding:28px 40px;text-align:center;">
+          <div style="font-family:'Playfair Display',Georgia,serif;font-size:1.6rem;font-weight:900;
+                      color:#f0ede8;letter-spacing:0.02em;">
+            GLOBAL<span style="color:#7aadcc">patagonia</span>
+          </div>
+          <div style="font-family:Inter,sans-serif;font-size:0.75rem;color:#7aadcc;
+                      letter-spacing:0.1em;margin-top:6px;text-transform:uppercase;">
+            Sur Global, principio de todo.
+          </div>
+        </td></tr>
+
+        <!-- Tapa -->
+        <tr><td style="padding:32px 40px 0 40px;">
+          {"<img src='" + tapa_imagen + "' alt='' width='520' style='width:100%;max-width:520px;height:auto;display:block;border-radius:4px;margin-bottom:20px;' />" if tapa_imagen else ""}
+          <div style="font-family:Inter,sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:0.12em;
+                      color:#7aadcc;text-transform:uppercase;margin-bottom:10px;">Tapa del día</div>
+          <div style="font-family:'Playfair Display',Georgia,serif;font-size:1.5rem;font-weight:700;
+                      color:#1c2d3d;line-height:1.25;margin-bottom:12px;">{tapa_titulo}</div>
+          <div style="font-family:Inter,sans-serif;font-size:0.92rem;color:#444;
+                      line-height:1.6;margin-bottom:18px;">{tapa_bajada}</div>
+          <a href="{tapa_link}" style="display:inline-block;background:#1c2d3d;color:#f0ede8;
+                                       font-family:Inter,sans-serif;font-size:0.85rem;font-weight:600;
+                                       padding:10px 22px;border-radius:5px;text-decoration:none;">
+            Leer más →
+          </a>
+        </td></tr>
+
+        <!-- Más noticias -->
+        {"<tr><td style='padding:28px 40px 0 40px;'><div style='font-family:Inter,sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:0.12em;color:#7aadcc;text-transform:uppercase;margin-bottom:14px;'>Más noticias</div><table width='100%' cellpadding='0' cellspacing='0'>" + secundarias_html + "</table></td></tr>" if secundarias_html else ""}
+
+        <!-- Informe especial -->
+        {"<tr><td style='padding:0 40px;'><table width='100%' cellpadding='0' cellspacing='0'>" + informe_html + "</table></td></tr>" if informe_html else ""}
+
+        <!-- Footer -->
+        <tr><td style="background:#1c2d3d;padding:24px 40px;margin-top:32px;text-align:center;">
+          <a href="https://globalpatagonia.org" style="font-family:'Playfair Display',Georgia,serif;
+                                                        font-size:1rem;font-weight:900;color:#f0ede8;
+                                                        text-decoration:none;">
+            GLOBAL<span style="color:#7aadcc">patagonia</span>
+          </a>
+          <div style="font-family:Inter,sans-serif;font-size:0.75rem;color:rgba(240,237,232,0.5);
+                      margin-top:10px;line-height:1.6;">
+            Recibiste este email porque te suscribiste en
+            <a href="https://globalpatagonia.org" style="color:#7aadcc;text-decoration:none;">globalpatagonia.org</a>
+          </div>
+        </td></tr>
+
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>"""
+
+    # Crear campaña en Brevo
+    try:
+        campaign_payload = json.dumps({
+            "name":        f"GLOBALpatagonia — {fecha_dd_mm}",
+            "subject":     f"El Sur de hoy — {fecha_dd_mm}",
+            "sender":      {"name": "GLOBALpatagonia", "email": "ficciontvpatagonia@gmail.com"},
+            "type":        "classic",
+            "htmlContent": html_content,
+            "recipients":  {"listIds": [BREVO_LIST_ID]}
+        }).encode("utf-8")
+
+        req_create = urllib.request.Request(
+            "https://api.brevo.com/v3/emailCampaigns",
+            data=campaign_payload,
+            headers={
+                "api-key":      BREVO_API_KEY,
+                "accept":       "application/json",
+                "content-type": "application/json"
+            },
+            method="POST"
+        )
+        with urllib.request.urlopen(req_create, timeout=30) as resp:
+            resultado = json.loads(resp.read().decode())
+
+        campaign_id = resultado.get("id")
+        if not campaign_id:
+            print(f"  Newsletter: error al crear campaña — {resultado}")
+            return
+
+        # Enviar campaña
+        req_send = urllib.request.Request(
+            f"https://api.brevo.com/v3/emailCampaigns/{campaign_id}/sendNow",
+            data=b"{}",
+            headers={
+                "api-key":      BREVO_API_KEY,
+                "accept":       "application/json",
+                "content-type": "application/json"
+            },
+            method="POST"
+        )
+        with urllib.request.urlopen(req_send, timeout=30) as resp_send:
+            resp_send.read()
+
+        state["ultimo_newsletter"] = hoy
+        with open(state_path, "w", encoding="utf-8") as f:
+            json.dump(state, f, ensure_ascii=False, indent=2)
+        print(f"  Newsletter OK ✓ campaña {campaign_id} enviada ({fecha_dd_mm})")
+
+    except urllib.error.HTTPError as http_err:
+        detalle = http_err.read().decode("utf-8", errors="replace")
+        print(f"  Newsletter falló {http_err.code}: {detalle}")
+    except Exception as e:
+        print(f"  Newsletter falló: {e}")
 
 
 def _generar_imagen_ig(ruta_local, titulo, tag="", nota_id=""):
