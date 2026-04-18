@@ -1,4 +1,9 @@
 {
+  "01-03": {
+    "titulo": "Ocupación británica de las Malvinas",
+    "año": 1833,
+    "respuesta": "El 3 de enero de 1833, fuerzas de la Royal Navy al mando del capitán John James Onslow desembarcaron en Puerto Soledad y expulsaron a las autoridades y pobladores argentinos de las Islas Malvinas. Desde ese día el archipiélago quedó bajo dominio británico ininterrumpido, salvo los 74 días de la guerra de 1982. Este hecho es el origen jurídico del reclamo soberano argentino, que Argentina sostiene como política de Estado."
+  },
   "01-06": {
     "titulo": "Expedición Loaisa-Elcano en Santa Cruz",
     "año": 1526,
@@ -24,15 +29,45 @@
     "año": 1878,
     "respuesta": "Francisco Perito Moreno parte hacia el sur de la Patagonia en una de sus más importantes expediciones de exploración. Durante estos viajes documentaría la región glacial, especialmente lo que hoy es el Glaciar Perito Moreno, sentando bases para futuras reservas naturales."
   },
+  "01-20": {
+    "titulo": "Perito Moreno llega al lago Nahuel Huapi",
+    "año": 1876,
+    "respuesta": "El 20 de enero de 1876, Francisco Pascasio Moreno llegó por primera vez al lago Nahuel Huapi durante su segunda expedición a la Patagonia andina. Con apenas 23 años, bautizó accidentes geográficos y realizó observaciones científicas que sentarían las bases del conocimiento de la región. Décadas después, Moreno donaría parte de esas tierras al Estado argentino para fundar el primer parque nacional de América del Sur."
+  },
   "01-28": {
     "titulo": "Magallanes avista el Río de la Plata",
     "año": 1520,
     "respuesta": "Durante su navegación hacia el sur, la flota de Magallanes avista la desembocadura rioplatense, contribuyendo al conocimiento cartográfico del Atlántico Sur y abriendo el camino hacia los territorios patagónicos."
   },
+  "01-31": {
+    "titulo": "Los Territorios Nacionales patagónicos toman posesión",
+    "año": 1885,
+    "respuesta": "En enero de 1885, asumieron los primeros gobernadores de los Territorios Nacionales de Neuquén, Río Negro, Chubut, Santa Cruz y Tierra del Fuego, creados por la Ley 1532 de octubre de 1884. Este proceso completó la organización administrativa de la Patagonia post-Conquista del Desierto, transformando una región disputada en unidades bajo jurisdicción directa del Estado nacional argentino."
+  },
+  "02-06": {
+    "titulo": "Primera base chilena permanente en la Antártida",
+    "año": 1947,
+    "respuesta": "El 6 de febrero de 1947, la Primera Expedición Antártica Chilena inauguró la Estación Soberanía en la Isla Greenwich, primera base permanente de Chile en el continente blanco. Rebautizada al año siguiente como Base Naval Capitán Arturo Prat, es la base antártica en funcionamiento continuo más antigua del mundo. Su creación marcó el inicio de la soberanía activa de Chile en la Antártida, ejercida sin interrupción hasta hoy."
+  },
+  "02-10": {
+    "titulo": "Fuga épica de Perito Moreno de la toldería mapuche",
+    "año": 1880,
+    "respuesta": "En febrero de 1880, Francisco Moreno, retenido por el cacique Sayhueque en el río Caleufú (Neuquén), logró fugarse en una balsa improvisada con dos acompañantes. Durante seis días navegaron de noche y se ocultaron de día hasta alcanzar el fortín militar en la confluencia del Limay y el Neuquén. La aventura, narrada en sus propias memorias, consolidó la leyenda del explorador que arriesgó su vida por conocer la Patagonia."
+  },
+  "02-15": {
+    "titulo": "Descubrimiento del Lago Argentino",
+    "año": 1877,
+    "respuesta": "El 15 de febrero de 1877, Francisco Pascasio Moreno y Carlos Moyano, navegando el río Santa Cruz, avistaron el lago que Moreno bautizó como 'Lago Argentino'. Fue el primer registro europeo del mayor lago de agua dulce de Argentina, hoy Patrimonio de la Humanidad UNESCO y corazón del Parque Nacional Los Glaciares. Esta fecha se conmemora en Argentina como el Día Nacional de los Glaciares."
+  },
   "02-18": {
     "titulo": "Consolidación del Territorio de Chubut",
     "año": 1881,
     "respuesta": "El Estado argentino establece una presencia administrativa más sólida en el Territorio de Chubut, reforzando la soberanía nacional en la región central de la Patagonia tras los acuerdos limítrofes con Chile."
+  },
+  "02-22": {
+    "titulo": "Argentina establece la primera base permanente en la Antártida",
+    "año": 1904,
+    "respuesta": "El 22 de febrero de 1904, Argentina tomó posesión del observatorio meteorológico de la isla Laurie (Orcadas del Sur), cedido por la expedición escocesa de William Speirs Bruce. Desde ese día Argentina mantiene presencia ininterrumpida en la Antártida, siendo el único país con más de 120 años de ocupación permanente en el continente blanco. El Día de la Antártida Argentina se celebra cada 22 de febrero."
   },
   "02-23": {
     "titulo": "Fundación de Comodoro Rivadavia",
@@ -43,6 +78,11 @@
     "titulo": "Ley de Colonización de Aysén",
     "año": 1937,
     "respuesta": "El Estado chileno promulga esta ley para incentivar la ocupación de la agreste región de Aysén, en la Patagonia occidental. Se entregaron tierras a colonos nacionales y extranjeros para deforestar, abrir caminos y establecer explotaciones ganaderas, integrando efectivamente este territorio aislado a la soberanía chilena."
+  },
+  "02-25": {
+    "titulo": "Fundación de Esquel",
+    "año": 1906,
+    "respuesta": "El 25 de febrero de 1906, Medardo Morelli logró la primera transmisión telegráfica desde el asentamiento cordillerano que se convertiría en Esquel, ciudad del Chubut andino. Sin acta fundacional formal, esta comunicación es la fecha oficial del nacimiento de la ciudad. Esquel es hoy el nodo urbano de la comarca andina chubutense y punto de partida de 'La Trochita', el tren de trocha angosta declarado monumento histórico nacional."
   },
   "03-02": {
     "titulo": "Entrada al Estrecho de Magallanes",
@@ -59,6 +99,11 @@
     "año": 1584,
     "respuesta": "Pedro Sarmiento de Gamboa funda en el Estrecho de Magallanes la ciudad de Rey Don Felipe con la misión de fortalecer el paso para la Corona Española. La falta de víveres y auxilios convirtió el asentamiento en una tragedia: todos los colonos murieron de inanición y frío. Los corsarios ingleses que hallaron los cadáveres rebautizaron el lugar como Port Famine."
   },
+  "03-31": {
+    "titulo": "Magallanes encuentra a los tehuelches en San Julián",
+    "año": 1520,
+    "respuesta": "El 31 de marzo de 1520, la flota de Hernando de Magallanes desembarcó en la bahía de San Julián para invernar. Allí tuvieron el primer contacto europeo documentado con el pueblo tehuelche, a quienes el cronista Pigafetta describió como 'gigantes' por su estatura, originando el mito de los 'patagones' y el nombre de toda una región. En este mismo sitio Magallanes sofocó un motín y ejecutó a sus cabecillas."
+  },
   "04-01": {
     "titulo": "Primera Misa en suelo argentino",
     "año": 1520,
@@ -73,6 +118,11 @@
     "titulo": "Creación del Parque Nacional Puyehue",
     "año": 1941,
     "respuesta": "Se establece formalmente esta área protegida en la Patagonia chilena (Región de Los Lagos), hogar de volcanes activos, lagos glaciares y bosques húmedos. Su creación consolidó la Patagonia como destino de conservación ambiental de importancia mundial."
+  },
+  "04-13": {
+    "titulo": "Primer cruce de la Cordillera de los Andes en avión",
+    "año": 1918,
+    "respuesta": "El 13 de abril de 1918, el teniente argentino Luis Cenobio Candelaria despegó de Zapala (Neuquén) y aterrizó en Cunco, Chile, tras 2 horas y 30 minutos de vuelo a más de 4.000 metros de altitud. Fue la primera travesía aérea de los Andes en la historia. La proeza, lograda con un avión de madera y tela de menos de 300 kilogramos, marcó el nacimiento de la aviación patagónica y la integración aérea entre Argentina y Chile."
   },
   "04-17": {
     "titulo": "Creación de la Policía del Neuquén",
@@ -115,10 +165,25 @@
     "año": 1902,
     "respuesta": "Se anunció el resultado del plebiscito del Valle 16 de Octubre: la población votó mayoritariamente por la soberanía argentina. El resultado definió la frontera en la zona cordillerana chubutense y consolidó la incorporación del valle a la nación argentina, con los colonos galeses como protagonistas insólitos de la geopolítica patagónica."
   },
+  "05-03": {
+    "titulo": "Fundación de San Carlos de Bariloche",
+    "año": 1902,
+    "respuesta": "El 3 de mayo de 1902, un decreto del presidente Julio Argentino Roca reservó el paraje San Carlos, a orillas del lago Nahuel Huapi, para fundar una nueva localidad. El comerciante alemán Carlos Wiederhold había instalado allí una pulpería años antes, pero esta fecha fue adoptada como la fundacional oficial. Bariloche creció de aldea de montaña a referente turístico mundial, con arquitectura alpina propia en plena Patagonia andina."
+  },
+  "05-13": {
+    "titulo": "Creación del Parque Nacional Torres del Paine",
+    "año": 1959,
+    "respuesta": "El 13 de mayo de 1959, el Estado chileno estableció el Parque Nacional Torres del Paine en la Patagonia austral de Magallanes. Con más de 227.000 hectáreas de glaciares, torres graníticas y fauna endémica, fue declarado Reserva de la Biosfera por la UNESCO en 1978. Es hoy el destino turístico más visitado de Chile y un ícono planetario de la Patagonia salvaje."
+  },
   "05-20": {
     "titulo": "Tratado de Límites Argentina-Chile",
     "año": 1902,
     "respuesta": "Se firma un acuerdo adicional para resolver cuestiones pendientes en la demarcación fronteriza patagónica, cerrando un capítulo de tensiones limítrofes entre Argentina y Chile que había amenazado con derivar en conflicto armado."
+  },
+  "05-25": {
+    "titulo": "La Trochita llega a Esquel",
+    "año": 1945,
+    "respuesta": "El 25 de mayo de 1945, el Viejo Expreso Patagónico —'La Trochita'— completó su recorrido hasta Esquel, cerrando los 402 kilómetros del ramal desde Ingeniero Jacobacci. El tren de trocha angosta de 75 centímetros es símbolo de la integración patagónica e inspiró pasajes de 'En la Patagonia' de Bruce Chatwin. Declarado monumento histórico nacional, circula hoy como tren turístico entre Esquel y El Maitén."
   },
   "05-31": {
     "titulo": "Fundación de Puerto Natales",
@@ -135,10 +200,25 @@
     "año": 1944,
     "respuesta": "Se establece formalmente esta reserva natural que abarca territorio de Río Negro y Neuquén. El Nahuel Huapi es uno de los parques nacionales más antiguos de Argentina y un símbolo de la conservación patagónica, con lagos, volcanes y bosques de ciprés y coihue declarados patrimonio natural."
   },
+  "06-10": {
+    "titulo": "Primer gobernador argentino en las Malvinas",
+    "año": 1829,
+    "respuesta": "El 10 de junio de 1829, el gobierno de Buenos Aires creó la Comandancia Política y Militar de las Islas Malvinas y nombró a Luis Vernet como primer gobernador argentino del archipiélago. Vernet organizó una colonia estable, reguló la pesca y ejerció autoridad efectiva hasta la ocupación británica de 1833. Esta fecha se conmemora como el Día de la Afirmación de los Derechos Argentinos sobre las Islas Malvinas y el Sector Antártico."
+  },
   "06-14": {
     "titulo": "Fin de la Guerra de Malvinas",
     "año": 1982,
     "respuesta": "El comandante argentino Mario Benjamín Menéndez firma la rendición ante las fuerzas británicas en Puerto Argentino/Stanley. La posguerra trajo una crisis humanitaria para los soldados y consolidó la Causa Malvinas como política de Estado. Para la Patagonia, la guerra dejó heridas profundas: ciudades como Comodoro Rivadavia y Río Gallegos habían sido el corazón logístico del conflicto."
+  },
+  "06-15": {
+    "titulo": "Sanción de la Ley de Provincialización patagónica",
+    "año": 1955,
+    "respuesta": "El 15 de junio de 1955, el Congreso Nacional sancionó la Ley 14.408, que transformó en provincias autónomas los Territorios Nacionales de Neuquén, Río Negro, Chubut, Santa Cruz y Formosa. La ley dio a los patagónicos el derecho a elegir sus gobernantes y redactar sus propias constituciones por primera vez, cerrando setenta años de subordinación administrativa al gobierno central."
+  },
+  "06-28": {
+    "titulo": "Promulgación de la provincialización patagónica",
+    "año": 1955,
+    "respuesta": "El 28 de junio de 1955, el presidente Juan Domingo Perón promulgó la Ley 14.408, convirtiendo en provincias autónomas los Territorios Nacionales de Neuquén, Río Negro, Chubut, Santa Cruz y Formosa. Este acto cerró setenta años de subordinación política de la Patagonia al gobierno central y habilitó las primeras elecciones provinciales de la región."
   },
   "07-09": {
     "titulo": "Independencia argentina — y el destino de la Patagonia",
@@ -165,6 +245,11 @@
     "año": 1870,
     "respuesta": "Se establece este puerto estratégico en el Estrecho de Magallanes. Punta Arenas se convertiría en la ciudad más importante de la Patagonia chilena durante la era del salitre y la lana, y en el punto de partida de las expediciones antárticas del siglo XX."
   },
+  "08-04": {
+    "titulo": "Fundación de Chos Malal, primera capital de Neuquén",
+    "año": 1887,
+    "respuesta": "El 4 de agosto de 1887, el coronel Manuel José Olascoaga fundó Chos Malal como capital del Territorio Nacional del Neuquén, recién creado tras la Conquista del Desierto. Estratégicamente ubicada cerca de las rutas de comercio con Chile, fue el primer centro urbano planificado de la región. En 1904 la capital se trasladó a la confluencia de los ríos Neuquén y Limay, pero Chos Malal conserva el honor de ser la cuna institucional de la provincia."
+  },
   "08-17": {
     "titulo": "Creación del Parque Nacional Los Glaciares",
     "año": 1945,
@@ -174,6 +259,21 @@
     "titulo": "Fallo del Beagle que casi desata la guerra",
     "año": 1978,
     "respuesta": "El tribunal arbitral de La Haya falla a favor de Chile en la disputa por las islas Picton, Lennox y Nueva. Argentina rechazó el laudo, escalando la tensión hasta el borde de la guerra en diciembre de ese mismo año. La mediación papal de Juan Pablo II fue la única barrera entre la diplomacia y el conflicto armado."
+  },
+  "09-12": {
+    "titulo": "Fundación de la ciudad de Neuquén capital",
+    "año": 1904,
+    "respuesta": "El 12 de septiembre de 1904, el ministro del Interior Joaquín V. González inauguró oficialmente la ciudad de Neuquén en la confluencia de los ríos Neuquén y Limay, trasladando la capital del Territorio Nacional desde Chos Malal. El gobernador Carlos Bouquet Roldán había impulsado el traslado para acercar la administración al ferrocarril y a los centros productivos del Alto Valle. Neuquén es hoy la metrópolis más dinámica de la Patagonia argentina."
+  },
+  "09-15": {
+    "titulo": "Fundación de Rawson, primera ciudad estable de la Patagonia argentina",
+    "año": 1865,
+    "respuesta": "El 15 de septiembre de 1865, en presencia del teniente coronel Julián Murga, los colonos galeses del Mimosa constituyeron formalmente el asentamiento de Rawson junto al río Chubut, bautizándolo en honor al ministro del Interior Guillermo Rawson. Capital del Chubut desde entonces, es conocida como la 'Madre de Ciudades' del sur argentino y el primer núcleo urbano estable de la Patagonia."
+  },
+  "09-30": {
+    "titulo": "Muerte de niña kawésqar en zoológico humano de París",
+    "año": 1881,
+    "respuesta": "El 30 de septiembre de 1881, una niña kawésqar de dos años y medio murió en brazos de su madre en el Jardín de Aclimatación de París, donde once indígenas patagónicos habían sido exhibidos como 'salvajes de la Tierra del Fuego' ante medio millón de espectadores. Arrancados de sus canoas en los fiordos de la Patagonia chilena por el empresario Carl Hagenbeck, solo cuatro de los once sobrevivieron para regresar a Chile."
   },
   "10-11": {
     "titulo": "Creación de la Gobernación de la Patagonia",
@@ -210,6 +310,21 @@
     "año": 1520,
     "respuesta": "Tras descubrir la entrada del paso interoceánico, Magallanes desembarca en la costa norte del estrecho (actual Bahía Fortescue). En el cerro Monte Cruz, el capellán Valderrama oficia una misa solemne. Es el primer acto litúrgico registrado en el actual territorio chileno."
   },
+  "11-12": {
+    "titulo": "Primer fusilamiento de las Huelgas Patagónicas",
+    "año": 1921,
+    "respuesta": "El 12 de noviembre de 1921, el trabajador chileno Roberto Triviño Cárcamo fue fusilado por orden del teniente coronel Héctor Varela en la estancia El Cifre, Santa Cruz. Fue el primer mártir de las Huelgas Patagónicas: peones rurales que reclamaban condiciones mínimas de trabajo en las estancias ovinas. La represión dejaría más de 1.500 trabajadores asesinados en los meses siguientes, la mayor masacre laboral de la historia argentina."
+  },
+  "11-25": {
+    "titulo": "Primera masacre selknam documentada en Tierra del Fuego",
+    "año": 1886,
+    "respuesta": "El 25 de noviembre de 1886, el oficial Ramón Lista desembarcó en la bahía de San Sebastián, Tierra del Fuego, y ordenó el asesinato de 28 personas del pueblo selknam, incluyendo mujeres y niños. Fue el acto inaugural del genocidio que, en menos de cuarenta años, redujo a este pueblo cazador de 4.000 a prácticamente ningún sobreviviente. Las estancias ovinas llegaron a pagar una libra esterlina por cada selknam muerto."
+  },
+  "11-28": {
+    "titulo": "Jura de la primera Constitución de Santa Cruz",
+    "año": 1957,
+    "respuesta": "El 28 de noviembre de 1957, la Convención Constituyente de Santa Cruz juró la primera Constitución provincial, completando el proceso de provincialización iniciado por la Ley 14.408 de 1955. El acto transformó el antiguo Territorio Nacional en provincia plena con poderes ejecutivo, legislativo y judicial propios. El Dr. Mario Cástulo Paradelo fue elegido primer gobernador constitucional al año siguiente."
+  },
   "12-08": {
     "titulo": "La flota de Magallanes completa el Estrecho",
     "año": 1520,
@@ -219,6 +334,11 @@
     "titulo": "Descubrimiento de petróleo en Comodoro Rivadavia",
     "año": 1907,
     "respuesta": "Se descubre la presencia de petróleo en el subsuelo comodorense, un hallazgo que transformaría radicalmente la economía de la Patagonia argentina. Comodoro Rivadavia se convirtió en un polo industrial de importancia nacional y en el símbolo del capitalismo extractivo en el sur del continente durante el siglo XX."
+  },
+  "12-18": {
+    "titulo": "Fundación de Punta Arenas",
+    "año": 1848,
+    "respuesta": "El 18 de diciembre de 1848, los colonos del Fuerte Bulnes se trasladaron 60 kilómetros al norte para fundar Punta Arenas a orillas del Estrecho de Magallanes, en un sitio con mejor bahía y tierras más fértiles. La nueva ciudad creció hasta convertirse en el principal puerto del extremo sur americano durante la era del salitre y la lana. Hoy es la mayor ciudad de la Patagonia chilena y puerta de entrada a la Antártida."
   },
   "12-19": {
     "titulo": "Fundación de Río Gallegos",
