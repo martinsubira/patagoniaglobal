@@ -1870,7 +1870,7 @@ def generar_paginas_og(notas):
     </div>
     {imagen_block}
     <div class="nota-cuerpo">{cuerpo_html}</div>
-    <a href="{ea(interactive_url)}" class="ver-completo">Ver nota completa con notas relacionadas →</a>
+    <a href="../" class="ver-completo">← Más noticias en GLOBALpatagonia</a>
   </article>
 </div>
 
@@ -3036,13 +3036,19 @@ def publicar_instagram(tapa):
     image_url_orig = f"https://globalpatagonia.org/{imagen}"
     image_url = image_url_ig or image_url_orig
 
-    nota_url = f"https://globalpatagonia.org/notas/{nota_id}.html" if nota_id else "https://globalpatagonia.org"
-    caption = (
-        f"{bandera} {titulo}\n\n"
-        f"{bajada}\n\n"
-        f"🔗 {nota_url}\n\n"
-        f"#Patagonia #GLOBALpatagonia #Noticias #SurGlobal #PatagoniaArgentina"
-    )
+    hashtags = "#Patagonia #GLOBALpatagonia #Noticias #SurGlobal #PatagoniaArgentina"
+    cuerpo_raw = tapa.get("cuerpo", "")
+    # Limpiar HTML si lo hubiera
+    import re as _re
+    cuerpo_texto = _re.sub(r"<[^>]+>", "", cuerpo_raw).strip()
+    encabezado = f"{bandera} {titulo}\n\n{bajada}\n\n"
+    pie = f"\n\n{hashtags}"
+    disponible = 2200 - len(encabezado) - len(pie)
+    if len(cuerpo_texto) > disponible:
+        # Truncar en el último párrafo completo que quepa
+        corte = cuerpo_texto[:disponible].rfind("\n\n")
+        cuerpo_texto = cuerpo_texto[:corte if corte > 0 else disponible].rstrip() + "…"
+    caption = encabezado + cuerpo_texto + pie
 
     try:
         api_base = f"https://graph.facebook.com/v21.0/{ig_user_id}"
