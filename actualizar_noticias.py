@@ -467,7 +467,7 @@ IDENTIDAD EDITORIAL:
 CRITERIO DE SELECCIÓN:
 ✓ Medio Ambiente: glaciares, agua, fauna, ecosistemas, legislación ambiental, especies invasoras, contaminación
 ✓ Pueblos Originarios: Mapuche, Tehuelche, Kawésqar, Selknam — territorio, derechos, cultura viva
-✓ Deportes Patagónicos: trail, escalada, kayak, ski, triatlón, expediciones, natación, carreras aventura
+✓ Deportes Patagónicos: SOLO deportes que se practican en o son distintivos de la Patagonia — trail running, escalada en roca/hielo, kayak de mar/río, ski/snowboard, mountainbike de montaña, triatlón, carreras de aventura, andinismo, trekking de larga distancia, surf en costas patagónicas, natación en aguas frías/lagos. DESCARTAR: rugby, fútbol, básquet, tenis, athletics, cualquier deporte de equipo nacional o internacional sin anclaje patagónico concreto (ej: Los Pumas, selección argentina, torneos nacionales).
 ✓ Desarrollo & Producción: economía regional, pesca, ganadería, energía, infraestructura, conectividad
 ✓ Cultura: arte, música, identidad, historia, gastronomía, fiestas regionales, pioneros
 ✓ Ciencia & Tecnología: hallazgos CONICET, paleontología, innovación aplicada al territorio
@@ -567,8 +567,9 @@ Devolvé EXACTAMENTE este JSON (sin texto adicional):
 
 REGLAS CRÍTICAS:
 - TAPA y SECUNDARIAS: nunca deportes, aventura, trail, escalada, ski, kayak, natación — esos van solo a "deportes".
+- DEPORTES — criterio excluyente: la nota debe ser sobre un deporte que se practica EN la Patagonia o es identitario de la región (trail, escalada, kayak, ski, mountainbike, carreras aventura, andinismo, trekking). JAMÁS: rugby, fútbol, básquet, tenis, Los Pumas, selecciones nacionales, torneos nacionales/internacionales de deportes convencionales. Si la nota de deportes no cumple este criterio, poné null aunque haya notas disponibles.
 - Cada sección debe usar una noticia DISTINTA (URLs diferentes).
-- Si no hay nota de deportes disponible hoy, poné null en "deportes".
+- Si no hay nota de deportes patagónicos disponible hoy, poné null en "deportes".
 - Si no hay nota de economía/empresas, poné null en "negocios".
 {"- HOY ES DOMINGO: completar cultura y turismo con notas del RSS de hoy." if es_domingo else "- Hoy no es domingo: cultura y turismo van en null."}"""
 
