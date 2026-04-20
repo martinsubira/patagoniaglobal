@@ -1606,33 +1606,14 @@ def main():
     except Exception:
         pass
 
-    # Leer estado una sola vez para tapa + secciones
-    _sec_state_path = os.path.join(_base_dir, "telegram_state.json")
-    try:
-        with open(_sec_state_path, encoding="utf-8") as _f:
-            _sec_state = json.load(_f)
-    except Exception:
-        _sec_state = {}
-
-    _tapa_tg_posteadas = set(_sec_state.get("tapa_tg_posteadas", []))
-    _tapa_fb_posteadas = set(_sec_state.get("tapa_fb_posteadas", []))
-
     print(f"\n  Publicando en Telegram...")
     for nota in notas_tapa_redes:
-        _nid = nota.get("id", "")
-        if _nid not in _tapa_tg_posteadas:
-            publicar_telegram(nota)
-            if _nid:
-                _tapa_tg_posteadas.add(_nid)
+        publicar_telegram(nota)
     publicar_telegram_informe_nuevo()
 
     print(f"\n  Publicando en Facebook...")
     for nota in notas_tapa_redes:
-        _nid = nota.get("id", "")
-        if _nid not in _tapa_fb_posteadas:
-            publicar_facebook(nota)
-            if _nid:
-                _tapa_fb_posteadas.add(_nid)
+        publicar_facebook(nota)
     publicar_facebook_informe_nuevo()
 
     print(f"\n  Enviando newsletter...")
@@ -1640,10 +1621,14 @@ def main():
 
     # Instagram solo se publica en --solo-instagram (después del push, cuando las imágenes están en Pages)
 
-    _sec_state["tapa_tg_posteadas"] = list(_tapa_tg_posteadas)
-    _sec_state["tapa_fb_posteadas"] = list(_tapa_fb_posteadas)
-
     # 9b. Publicar secciones automáticas (deportes / negocios / turismo / cultura)
+    _sec_state_path = os.path.join(_base_dir, "telegram_state.json")
+    try:
+        with open(_sec_state_path, encoding="utf-8") as _f:
+            _sec_state = json.load(_f)
+    except Exception:
+        _sec_state = {}
+
     _secciones_hoy = [
         (deportes, "deportes"),
         (negocios, "negocios"),
