@@ -102,7 +102,7 @@
       align-items: center;
       padding: 6px 40px;
       font-size: 11px;
-      color: #aaa;
+      color: #777;
       letter-spacing: 0.5px;
     }
 
@@ -128,7 +128,8 @@
     }
 
     .logo-img {
-      height: 136px;
+      height: auto;
+      max-height: 136px;
       width: auto;
       max-width: 90%;
       display: block;
@@ -136,7 +137,7 @@
 
     .logo-sub {
       font-size: 12px;
-      color: rgba(255,255,255,0.5);
+      color: rgba(255,255,255,0.75);
       letter-spacing: 3px;
       text-transform: uppercase;
       margin-top: 6px;
@@ -326,7 +327,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      color: rgba(255,255,255,0.3);
+      color: rgba(255,255,255,0.65);
       font-size: 48px;
     }
 
@@ -661,7 +662,7 @@
       letter-spacing: -0.3px;
     }
     .turismo-principal p { font-size: 13px; color: #666; line-height: 1.6; }
-    .tp-meta { display:flex; gap:12px; margin-top:12px; font-size:10px; color:#aaa; letter-spacing:0.5px; }
+    .tp-meta { display:flex; gap:12px; margin-top:12px; font-size:10px; color:#777; letter-spacing:0.5px; }
 
     .turismo-secundarias {
       display: flex;
@@ -756,13 +757,13 @@
     }
     .negocio-body p {
       font-size: 12px;
-      color: rgba(255,255,255,0.6);
+      color: rgba(255,255,255,0.75);
       line-height: 1.5;
       margin: 0;
     }
     .negocio-meta {
       font-size: 10px;
-      color: rgba(255,255,255,0.35);
+      color: rgba(255,255,255,0.65);
       letter-spacing: 1px;
       margin-top: 10px;
     }
@@ -828,7 +829,7 @@
       margin-bottom: 8px;
     }
 
-    .historia-card p { font-size: 12px; color: rgba(255,255,255,0.6); line-height: 1.5; }
+    .historia-card p { font-size: 12px; color: rgba(255,255,255,0.75); line-height: 1.5; }
 
     /* ── DESTINOS PATAGÓNICOS ── */
     .destinos-grid {
@@ -979,7 +980,7 @@
       font-weight: 700;
       letter-spacing: 1px;
       text-transform: uppercase;
-      border-bottom: 2px solid rgba(255,255,255,0.5);
+      border-bottom: 2px solid rgba(255,255,255,0.75);
       padding-bottom: 2px;
       color: white;
     }
@@ -1031,7 +1032,7 @@
 
     footer {
       background: var(--gris-oscuro);
-      color: rgba(255,255,255,0.5);
+      color: rgba(255,255,255,0.75);
       margin-top: 0;
       padding: 40px 20px 24px;
       text-align: center;
@@ -1051,7 +1052,7 @@
     .footer-tagline {
       font-size: 12px;
       letter-spacing: 2px;
-      color: rgba(255,255,255,0.35);
+      color: rgba(255,255,255,0.65);
       text-transform: uppercase;
       margin-bottom: 24px;
     }
@@ -1065,7 +1066,7 @@
     }
 
     .footer-nav a {
-      color: rgba(255,255,255,0.5);
+      color: rgba(255,255,255,0.75);
       text-decoration: none;
       font-size: 11px;
       text-transform: uppercase;
@@ -1188,7 +1189,7 @@
     .fecha-badge {
       text-align: center;
       font-size: 11px;
-      color: #aaa;
+      color: #777;
       letter-spacing: 2px;
       text-transform: uppercase;
       padding: 12px 0;
@@ -1205,7 +1206,7 @@
       .top-bar { padding: 5px 12px; font-size: 10px; }
       .top-bar .clima { display: none; }
       .header-main { padding: 16px 16px 12px; }
-      .logo-img { height: 110px; }
+      .logo-img { max-height: 110px; height: auto; }
       .logo-sub { font-size: 10px; letter-spacing: 2px; }
 
       /* Nav hamburger */
@@ -1250,7 +1251,7 @@
     }
 
     @media (max-width: 480px) {
-      .logo-img { height: 80px; }
+      .logo-img { max-height: 80px; height: auto; }
       .logo-tagline { font-size: 9px; letter-spacing: 3px; }
       .nav-links a { font-size: 13px; padding: 14px 20px; }
       .nota-overlay h3 { font-size: 17px; line-height: 1.3; }
@@ -1308,6 +1309,7 @@
   </nav>
 </header>
 
+<main>
 <div id="inicio"></div>
 <!-- TICKER -->
 <div class="ticker">
@@ -1613,7 +1615,7 @@
     <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:20px; flex-wrap:wrap; gap:8px;">
       <div>
         <h2 style="font-family:'Playfair Display',serif; font-size:22px; font-weight:900; color:white; margin-bottom:4px;">Agenda Patagónica</h2>
-        <p style="font-size:13px; color:rgba(255,255,255,0.4);">Próximos eventos en ambos lados de la cordillera</p>
+        <p style="font-size:13px; color:rgba(255,255,255,0.7);">Próximos eventos en ambos lados de la cordillera</p>
       </div>
       <a href="agenda.html" style="font-size:13px; font-weight:600; color:#7aadcc; text-decoration:none; white-space:nowrap; border-bottom:1px solid rgba(122,173,204,0.4); padding-bottom:1px;">Ver agenda completa →</a>
     </div>
@@ -1758,6 +1760,8 @@
   });
 })();
 </script>
+
+</main>
 
 <!-- FOOTER -->
 <footer>
