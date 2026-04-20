@@ -3397,8 +3397,8 @@ def solo_instagram():
         publicar_instagram(nota_sec)
         ig_state[f"ultimo_{clave}_instagram"] = sec_id
 
-    # Notas manuales en Instagram
-    manuales_ig_posteadas = set(ig_state.get("manuales_ig_posteadas", []))
+    # Notas manuales en Instagram (fallback al campo viejo para migración)
+    manuales_ig_posteadas = set(ig_state.get("manuales_ig_posteadas") or ig_state.get("manuales_posteadas", []))
     # También excluir notas que ya se postearon como sección en este mismo run
     _ya_posteadas_como_seccion = {
         ig_state.get(f"ultimo_{c}_instagram") for c in ["deportes", "negocios", "cultura", "turismo"]
