@@ -2,9 +2,9 @@
   "ultimo_informe_telegram": "20260420-propio-malvinas-alimentos",
   "ultimo_informe_facebook": "20260420-propio-malvinas-alimentos",
   "ultimo_informe_instagram": "20260420-propio-malvinas-alimentos",
-  "ultimo_negocios_telegram": "20260420-neuquen-activa-su-propio-regimen-de-incentivos-y-suma-neg",
-  "ultimo_negocios_facebook": "20260420-neuquen-activa-su-propio-regimen-de-incentivos-y-suma-neg",
-  "ultimo_negocios_instagram": "20260420-neuquen-activa-su-propio-regimen-de-incentivos-y-suma-neg",
+  "ultimo_negocios_telegram": "20260421-neuquen-licitara-15-nuevas-areas-de-vaca-muerta-en-mayo-neg",
+  "ultimo_negocios_facebook": "20260421-neuquen-licitara-15-nuevas-areas-de-vaca-muerta-en-mayo-neg",
+  "ultimo_negocios_instagram": "20260421-neuquen-licitara-15-nuevas-areas-de-vaca-muerta-en-mayo-neg",
   "ultimo_deportes_telegram": "20260419-los-pumas-7s-se-repusieron-y-estan-en-semifinales-en-dep",
   "ultimo_deportes_facebook": "20260419-los-pumas-7s-se-repusieron-y-estan-en-semifinales-en-dep",
   "ultimo_deportes_instagram": "20260419-los-pumas-7s-se-repusieron-y-estan-en-semifinales-en-dep",
@@ -17,20 +17,27 @@
   "ultimo_turismo_newsletter": "20260419-hualaihue-fiordos-mariscos-y-vida-autentica-en-los-tur",
   "ultimo_cultura_newsletter": "20260419-heladeria-tito-seis-decadas-de-sabor-en-rio-gallegos-cul",
   "ultimo_informe_newsletter": "20260420-propio-malvinas-alimentos",
-  "ultimo_newsletter": "2026-04-20",
+  "ultimo_newsletter": "2026-04-21",
   "manuales_posteadas": [
     "cultura-patrimonio-aysen",
     "cultura-cantautores-malvinas",
     "cultura-rodrigo-binet-fotografia"
   ],
   "manuales_ig_posteadas": [
-    "cultura-patrimonio-aysen",
     "cultura-cantautores-malvinas",
+    "20260421-neuquen-licitara-15-nuevas-areas-de-vaca-muerta-en-mayo-neg",
+    "20260419-hualaihue-fiordos-mariscos-y-vida-autentica-en-los-tur",
+    "cultura-patrimonio-aysen",
+    "20260419-los-pumas-7s-se-repusieron-y-estan-en-semifinales-en-dep",
+    "20260419-heladeria-tito-seis-decadas-de-sabor-en-rio-gallegos-cul",
     "cultura-rodrigo-binet-fotografia"
   ],
   "tapa_ig_posteadas": [
+    "20260421-basurero-petrolero-en-neuquen-fiscalia-anticipa-mas-sec1",
     "20260420-detectan-buque-extranjero-pescando-ilegalmente-dentro-tapa",
-    "20260420-desalojo-fallido-a-dos-comunidades-mapuche-escala-la-sec1",
-    "20260420-hallazgos-arqueologicos-en-la-cuenca-del-agrio-sec2"
+    "20260421-la-armada-completo-la-operacion-mare-nostrum-para-tapa",
+    "20260421-despidos-en-el-servicio-meteorologico-alarman-a-toda-sec2",
+    "20260420-hallazgos-arqueologicos-en-la-cuenca-del-agrio-sec2",
+    "20260420-desalojo-fallido-a-dos-comunidades-mapuche-escala-la-sec1"
   ]
 }

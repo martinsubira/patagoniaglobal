@@ -13,6 +13,19 @@
     "descripcion": "Muestra de artes visuales en el MPArtes. Una de las varias exposiciones que la institución pampeana propone durante el otoño cultural 2026."
   },
   {
+    "id": "festival-3d-tecno-comodoro-rivadavia-2026",
+    "titulo": "Festival 3D Tecno",
+    "fecha": "2026-04-23",
+    "fecha_fin": "2026-04-25",
+    "fecha_display": "23 al 25 de abril",
+    "lugar": "Centro de Información Pública, Comodoro Rivadavia",
+    "region": "Chubut, Argentina",
+    "pais": "AR",
+    "categoria": "desarrollo",
+    "emoji": "🤖",
+    "descripcion": "Primera edición del festival de ciencia, tecnología e innovación organizado por la Agencia Comodoro Conocimiento, bajo el lema \"Tecnología para el presente\". Entrada libre y gratuita."
+  },
+  {
     "id": "danzarium-bariloche-2026",
     "titulo": "Danzarium Bariloche",
     "fecha": "2026-04-24",
