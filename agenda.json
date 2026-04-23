@@ -26,6 +26,19 @@
     "descripcion": "Primera edición del festival de ciencia, tecnología e innovación organizado por la Agencia Comodoro Conocimiento, bajo el lema \"Tecnología para el presente\". Entrada libre y gratuita."
   },
   {
+    "id": "clasificatorio-primera-division-liga-sur-futbol-2026",
+    "titulo": "Torneo Clasificatorio de Primera División - Liga Sur de Fútbol",
+    "fecha": "2026-04-23",
+    "fecha_fin": "2026-04-24",
+    "fecha_display": "23 y 24 de abril",
+    "lugar": "Río Gallegos",
+    "region": "Santa Cruz, Argentina",
+    "pais": "AR",
+    "categoria": "deportes",
+    "emoji": "⚽",
+    "descripcion": "Seis equipos disputan el Torneo Clasificatorio de Primera División de la Liga Sur de Fútbol, pensando en el Provincial. Boxing Club vs Ferro YCF e Hispano Americano vs Boca RG abren la competencia, con más partidos al día siguiente."
+  },
+  {
     "id": "danzarium-bariloche-2026",
     "titulo": "Danzarium Bariloche",
     "fecha": "2026-04-24",

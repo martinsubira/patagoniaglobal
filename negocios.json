@@ -1,5 +1,21 @@
 [
   {
+    "id": "20260423-chubut-capacito-a-mas-de-500-pymes-en-comercio-digital-neg",
+    "titulo": "Chubut capacitó a más de 500 PyMEs en comercio digital",
+    "bajada": "La provincia formó a centenares de pequeñas empresas en herramientas de venta online y presentó el concurso Emprendimiento Argentino 2026.",
+    "cuerpo": "Más de 500 pequeñas y medianas empresas de Chubut pasaron por capacitaciones en comercio digital, una apuesta provincial para que la producción patagónica llegue a mercados más amplios sin depender exclusivamente de los circuitos tradicionales de distribución.\n\nEl programa se enmarca en una estrategia que busca cerrar la brecha digital de los emprendedores del sur. En localidades donde la distancia a los grandes centros de consumo es un obstáculo estructural, dominar las herramientas de venta online puede marcar la diferencia entre un negocio que sobrevive y uno que crece.\n\nLas capacitaciones abarcaron desde la creación de tiendas virtuales y el manejo de plataformas de marketplace hasta estrategias de marketing digital y logística de envíos. Para productores de lana, dulces regionales, artesanías o servicios turísticos, tener presencia digital es cada vez menos una opción y más una necesidad.\n\nEn el marco del lanzamiento también se presentó el concurso \"Emprendimiento Argentino 2026\", una iniciativa federal que busca reconocer y visibilizar proyectos de todo el país. El dato que enorgullece a la provincia: una emprendedora chubutense fue consagrada en la última edición del certamen, lo que demuestra que el talento patagónico puede competir a escala nacional cuando cuenta con las herramientas adecuadas.\n\nEl desafío para Chubut no termina en la capacitación. La conectividad sigue siendo un cuello de botella en gran parte de la provincia. Localidades de la meseta central y de la costa sur todavía operan con conexiones a internet inestables y lentas, lo que limita las posibilidades reales de sostener un comercio digital fluido.\n\nTambién queda pendiente resolver la logística de última milla. Enviar un producto desde Esquel, Sarmiento o Lago Puelo hasta Buenos Aires o cualquier punto del país implica costos y tiempos que las PyMEs urbanas no enfrentan. Sin políticas de subsidio al flete o acuerdos con operadores logísticos, la digitalización corre el riesgo de quedarse a mitad de camino.\n\nAun así, el número habla: más de 500 empresas formadas en un solo ciclo indica que hay demanda real y voluntad de transformación en el tejido productivo chubutense. La Patagonia produce; ahora necesita que esa producción llegue.",
+    "tag": "💼 Economía",
+    "categoria": "economia",
+    "fuente": "Tiempo Sur",
+    "autor": "Redacción GLOBALpatagonia",
+    "pais": "argentina",
+    "imagen": "fotos/foto-20260423-chubut-capacito-a-mas-de-500-pymes-en-comercio-digital-neg.webp",
+    "imagen_keywords": "PyMEs comercio digital",
+    "url_original": "https://www.tiemposur.com.ar/info-general/chubut-capacito-a-mas-de-500-pymes-en-comercio-digital",
+    "meta": "Hoy · GLOBALpatagonia",
+    "excluir_feed": true
+  },
+  {
     "id": "20260422-pozzo-ardizzi-la-red-de-estaciones-que-crecio-con-neg",
     "titulo": "Pozzo Ardizzi: la red de estaciones que creció con Viedma",
     "bajada": "El empresario rionegrino construyó un entramado de estaciones de servicio que acompañó el desarrollo de la capital provincial durante décadas.",
@@ -76,22 +92,6 @@
     "imagen": "fotos/foto-20260418-el-rigi-redefine-las-fronteras-productivas-de-vaca-neg.webp",
     "imagen_keywords": "Vaca Muerta energía",
     "url_original": "https://www.rionegro.com.ar/energia/el-rigi-redefine-las-fronteras-productivas-de-vaca-muerta/",
-    "meta": "Hoy · GLOBALpatagonia",
-    "excluir_feed": true
-  },
-  {
-    "id": "20260417-neuquen-capital-proyecta-mas-de-un-millon-de-metros-neg",
-    "titulo": "Neuquén capital proyecta más de un millón de metros cuadrados nuevos",
-    "bajada": "Una zona cotizada de la ciudad podría transformarse con edificios en altura que cambiarían el perfil urbano y la dinámica inmobiliaria regional.",
-    "cuerpo": "La Secretaría de Infraestructura y Planeamiento Urbano de la Municipalidad de Neuquén reveló que el corredor de la calle Doctor Ramón tiene potencial para albergar más de un millón de metros cuadrados de construcción en altura, casi triplicando la superficie cubierta que se levanta en toda la ciudad en un año normal. Alejandro Nicola, titular de la secretaría, indicó que solo el potencial edificable del corredor asciende a 845.100 metros cuadrados, número que supera el millón si se contemplan proyectos que requieran una flexibilización de los indicadores urbanísticos vigentes.\n\nEl dato refleja la presión inmobiliaria que Neuquén capital viene acumulando como polo de servicios del sector energético. La ciudad crece impulsada por el desarrollo de Vaca Muerta y la expansión de la industria petrolera en la cuenca neuquina, lo que genera una demanda habitacional y comercial que el parque edilicio existente ya no puede absorber. Los más de 300.000 metros cuadrados que se construyen anualmente en el ejido municipal dan cuenta de un ritmo sostenido, pero los proyeccionistas advierten que será insuficiente en el mediano plazo.\n\nLas proyecciones oficiales del municipio indican que Neuquén podría alcanzar el millón de habitantes en los próximos años, un desafío que se está abordando con planificación urbana, obras de infraestructura estructurales y decisiones estratégicas sobre densificación en altura. El corredor de la calle Dr. Ramón, por su localización y conectividad, emerge como el eje más dinámico de esa transformación.\n\nEl fenómeno genera debate entre urbanistas: la densificación en altura puede resolver la demanda de vivienda y reducir la expansión horizontal sobre terrenos naturales, pero requiere inversión en redes de servicios, transporte público y espacios verdes para no degradar la calidad de vida en los barrios intervenidos.",
-    "tag": "💼 Economía",
-    "categoria": "economía",
-    "fuente": "Río Negro",
-    "autor": "",
-    "pais": "argentina",
-    "imagen": "fotos/foto-20260417-neuquen-capital-proyecta-mas-de-un-millon-de-metros-neg.webp",
-    "imagen_keywords": "Neuquén construcción inmobiliaria ciudad",
-    "url_original": "https://www.rionegro.com.ar/municipales/neuquen-crece-en-altura-la-cotizada-zona-que-podria-recibir-mas-de-un-millon-de-metros-cuadrados/",
     "meta": "Hoy · GLOBALpatagonia",
     "excluir_feed": true
   }
