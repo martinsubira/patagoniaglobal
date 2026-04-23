@@ -1097,8 +1097,9 @@
     "lugar": "Mar Patagónico",
     "pais": "AR",
     "serie": "Misterios Submarinos",
-    "serie_descripcion": "Serie documental educativa de PakaPaka. Lola aprende a bucear y con cada clase explora un nuevo misterio del océano: desde las criaturas más pequeñas hasta las más grandes, las más raras, las que se camuflaron para sobrevivir, las que cooperan, las que crían a sus hijos y las que se comunican en silencio bajo el agua. Biología y ecología marina para niños y niñas de 8 a 12 años. Canal estatal argentino PakaPaka, 2018.",
-    "episodio": 1
+    "serie_descripcion": "Serie documental educativa de PakaPaka. Lola aprende a bucear y con cada clase explora un nuevo misterio del océano: adaptaciones, cadenas alimentarias, comunicación, crianza y los secretos de las profundidades. Dos temporadas, 21 episodios de 13 minutos. Canal estatal argentino PakaPaka.",
+    "episodio": 1,
+    "temporada": 1
   },
   {
     "id": "misterios-submarinos-ep02",
@@ -1111,7 +1112,8 @@
     "lugar": "Mar Patagónico",
     "pais": "AR",
     "serie": "Misterios Submarinos",
-    "episodio": 2
+    "episodio": 2,
+    "temporada": 1
   },
   {
     "id": "misterios-submarinos-ep03",
@@ -1124,7 +1126,8 @@
     "lugar": "Mar Patagónico",
     "pais": "AR",
     "serie": "Misterios Submarinos",
-    "episodio": 3
+    "episodio": 3,
+    "temporada": 1
   },
   {
     "id": "misterios-submarinos-ep04",
@@ -1137,7 +1140,8 @@
     "lugar": "Mar Patagónico",
     "pais": "AR",
     "serie": "Misterios Submarinos",
-    "episodio": 4
+    "episodio": 4,
+    "temporada": 1
   },
   {
     "id": "misterios-submarinos-ep05",
@@ -1150,7 +1154,8 @@
     "lugar": "Mar Patagónico",
     "pais": "AR",
     "serie": "Misterios Submarinos",
-    "episodio": 5
+    "episodio": 5,
+    "temporada": 1
   },
   {
     "id": "misterios-submarinos-ep06",
@@ -1163,7 +1168,8 @@
     "lugar": "Mar Patagónico",
     "pais": "AR",
     "serie": "Misterios Submarinos",
-    "episodio": 6
+    "episodio": 6,
+    "temporada": 1
   },
   {
     "id": "misterios-submarinos-ep07",
@@ -1176,7 +1182,8 @@
     "lugar": "Mar Patagónico",
     "pais": "AR",
     "serie": "Misterios Submarinos",
-    "episodio": 7
+    "episodio": 7,
+    "temporada": 1
   },
   {
     "id": "misterios-submarinos-ep08",
@@ -1189,7 +1196,8 @@
     "lugar": "Mar Patagónico",
     "pais": "AR",
     "serie": "Misterios Submarinos",
-    "episodio": 8
+    "episodio": 8,
+    "temporada": 1
   },
   {
     "id": "misterios-submarinos-ep09",
@@ -1202,7 +1210,8 @@
     "lugar": "Mar Patagónico",
     "pais": "AR",
     "serie": "Misterios Submarinos",
-    "episodio": 9
+    "episodio": 9,
+    "temporada": 1
   },
   {
     "id": "misterios-submarinos-ep10",
@@ -1215,7 +1224,8 @@
     "lugar": "Mar Patagónico",
     "pais": "AR",
     "serie": "Misterios Submarinos",
-    "episodio": 10
+    "episodio": 10,
+    "temporada": 1
   },
   {
     "id": "misterios-submarinos-ep11",
@@ -1228,7 +1238,8 @@
     "lugar": "Mar Patagónico",
     "pais": "AR",
     "serie": "Misterios Submarinos",
-    "episodio": 11
+    "episodio": 11,
+    "temporada": 1
   },
   {
     "id": "misterios-submarinos-2-ep01",
@@ -1240,9 +1251,9 @@
     "duracion": "13 min",
     "lugar": "Mar Patagónico",
     "pais": "AR",
-    "serie": "Misterios Submarinos II",
-    "serie_descripcion": "Segunda temporada de la serie documental de PakaPaka. Lola continúa su exploración submarina con nuevos temas, nuevas criaturas y nuevos misterios del océano. Episodios temáticos de 13 minutos sobre biología y ecología marina para niños y niñas. Canal estatal argentino PakaPaka.",
-    "episodio": 1
+    "serie": "Misterios Submarinos",
+    "episodio": 1,
+    "temporada": 2
   },
   {
     "id": "misterios-submarinos-2-ep02",
@@ -1254,8 +1265,9 @@
     "duracion": "13 min",
     "lugar": "Mar Patagónico",
     "pais": "AR",
-    "serie": "Misterios Submarinos II",
-    "episodio": 2
+    "serie": "Misterios Submarinos",
+    "episodio": 2,
+    "temporada": 2
   },
   {
     "id": "misterios-submarinos-2-ep03",
@@ -1267,8 +1279,9 @@
     "duracion": "13 min",
     "lugar": "Mar Patagónico",
     "pais": "AR",
-    "serie": "Misterios Submarinos II",
-    "episodio": 3
+    "serie": "Misterios Submarinos",
+    "episodio": 3,
+    "temporada": 2
   },
   {
     "id": "misterios-submarinos-2-ep04",
@@ -1280,8 +1293,9 @@
     "duracion": "13 min",
     "lugar": "Mar Patagónico",
     "pais": "AR",
-    "serie": "Misterios Submarinos II",
-    "episodio": 4
+    "serie": "Misterios Submarinos",
+    "episodio": 4,
+    "temporada": 2
   },
   {
     "id": "misterios-submarinos-2-ep05",
@@ -1293,8 +1307,9 @@
     "duracion": "13 min",
     "lugar": "Mar Patagónico",
     "pais": "AR",
-    "serie": "Misterios Submarinos II",
-    "episodio": 5
+    "serie": "Misterios Submarinos",
+    "episodio": 5,
+    "temporada": 2
   },
   {
     "id": "misterios-submarinos-2-ep06",
@@ -1306,8 +1321,9 @@
     "duracion": "13 min",
     "lugar": "Mar Patagónico",
     "pais": "AR",
-    "serie": "Misterios Submarinos II",
-    "episodio": 6
+    "serie": "Misterios Submarinos",
+    "episodio": 6,
+    "temporada": 2
   },
   {
     "id": "misterios-submarinos-2-ep07",
@@ -1319,8 +1335,9 @@
     "duracion": "13 min",
     "lugar": "Mar Patagónico / Atlántico Sur",
     "pais": "AR",
-    "serie": "Misterios Submarinos II",
-    "episodio": 7
+    "serie": "Misterios Submarinos",
+    "episodio": 7,
+    "temporada": 2
   },
   {
     "id": "misterios-submarinos-2-ep08",
@@ -1332,8 +1349,9 @@
     "duracion": "13 min",
     "lugar": "Mar Patagónico",
     "pais": "AR",
-    "serie": "Misterios Submarinos II",
-    "episodio": 8
+    "serie": "Misterios Submarinos",
+    "episodio": 8,
+    "temporada": 2
   },
   {
     "id": "misterios-submarinos-2-ep09",
@@ -1345,8 +1363,9 @@
     "duracion": "13 min",
     "lugar": "Mar Patagónico",
     "pais": "AR",
-    "serie": "Misterios Submarinos II",
-    "episodio": 9
+    "serie": "Misterios Submarinos",
+    "episodio": 9,
+    "temporada": 2
   },
   {
     "id": "misterios-submarinos-2-ep10",
@@ -1358,8 +1377,9 @@
     "duracion": "13 min",
     "lugar": "Mar Patagónico",
     "pais": "AR",
-    "serie": "Misterios Submarinos II",
-    "episodio": 10
+    "serie": "Misterios Submarinos",
+    "episodio": 10,
+    "temporada": 2
   },
   {
     "id": "patoruzito-2004",

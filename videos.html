@@ -343,6 +343,21 @@
 
     /* Episodes list */
     #sd-episodios { padding: 36px 60px 80px; background: #0d0d0d; }
+
+    /* Temporada selector */
+    #sd-temporadas { display: flex; gap: 10px; margin-bottom: 28px; }
+    .sd-temp-btn {
+      background: transparent; border: 1px solid rgba(255,255,255,0.25);
+      color: rgba(255,255,255,0.55); font-size: 13px; font-weight: 600;
+      font-family: 'Inter', sans-serif; letter-spacing: 0.5px;
+      padding: 7px 20px; border-radius: 4px; cursor: pointer;
+      transition: all 0.18s;
+    }
+    .sd-temp-btn:hover { border-color: rgba(255,255,255,0.6); color: white; }
+    .sd-temp-btn.active {
+      background: white; border-color: white; color: #141414;
+    }
+
     .sd-ep-label {
       font-size: 18px; font-weight: 600; color: white;
       margin-bottom: 4px; letter-spacing: 0.3px;
@@ -457,6 +472,7 @@
     </div>
   </div>
   <div id="sd-episodios">
+    <div id="sd-temporadas"></div>
     <div class="sd-ep-label">Episodios</div>
     <div class="sd-ep-sep"></div>
     <div id="sd-ep-lista"></div>
@@ -494,19 +510,12 @@ document.getElementById("lightbox").addEventListener("click", e => { if (e.targe
 document.addEventListener("keydown", e => { if (e.key === "Escape") { cerrar(); cerrarSerie(); } });
 
 // ── SERIE DETAIL PANEL ──
-function abrirSerie(s) {
-  document.getElementById("sd-bg").style.backgroundImage = `url(${thumbHD(s)})`;
-  document.getElementById("sd-badge").textContent = `${CATS[s.categoria]||'Serie'} · ${s.episodios.length} episodios`;
-  document.getElementById("sd-titulo").textContent = s.titulo;
-  document.getElementById("sd-desc").textContent = s.descripcion || "";
-  document.getElementById("sd-meta").textContent = [s.año, s.lugar, s.produccion].filter(Boolean).join(" · ");
+let _serieActual = null;
 
-  const ep1 = s.episodios[0];
-  document.getElementById("sd-play-btn").onclick = () => abrirVideo(ep1);
-
+function renderEpisodios(episodios) {
   const lista = document.getElementById("sd-ep-lista");
   lista.innerHTML = "";
-  s.episodios.forEach((ep, i) => {
+  episodios.forEach((ep, i) => {
     const epTitulo = ep.titulo.replace(/^[^—–]+[—–]\s*/, "");
     const row = document.createElement("div");
     row.className = "ep-row";
@@ -524,6 +533,40 @@ function abrirSerie(s) {
     row.addEventListener("click", () => abrirVideo(ep));
     lista.appendChild(row);
   });
+}
+
+function abrirSerie(s) {
+  _serieActual = s;
+  document.getElementById("sd-bg").style.backgroundImage = `url(${thumbHD(s)})`;
+  document.getElementById("sd-badge").textContent = `${CATS[s.categoria]||'Serie'} · ${s.episodios.length} episodios`;
+  document.getElementById("sd-titulo").textContent = s.titulo;
+  document.getElementById("sd-desc").textContent = s.descripcion || "";
+  document.getElementById("sd-meta").textContent = [s.año, s.lugar, s.produccion].filter(Boolean).join(" · ");
+
+  const ep1 = s.episodios[0];
+  document.getElementById("sd-play-btn").onclick = () => abrirVideo(ep1);
+
+  // Detectar temporadas
+  const tempNums = [...new Set(s.episodios.map(e => e.temporada).filter(Boolean))].sort();
+  const tempDiv = document.getElementById("sd-temporadas");
+  tempDiv.innerHTML = "";
+
+  if (tempNums.length > 1) {
+    tempNums.forEach(t => {
+      const btn = document.createElement("button");
+      btn.className = "sd-temp-btn" + (t === tempNums[0] ? " active" : "");
+      btn.textContent = `Temporada ${t}`;
+      btn.addEventListener("click", () => {
+        tempDiv.querySelectorAll(".sd-temp-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        renderEpisodios(s.episodios.filter(e => e.temporada === t));
+      });
+      tempDiv.appendChild(btn);
+    });
+    renderEpisodios(s.episodios.filter(e => e.temporada === tempNums[0]));
+  } else {
+    renderEpisodios(s.episodios);
+  }
 
   document.getElementById("serie-detail").classList.add("open");
   document.getElementById("serie-detail").scrollTop = 0;
