@@ -1432,7 +1432,7 @@
       .then(feed=>{
         const grid = document.getElementById('deportes-grid');
         const p = feed.principal;
-        const href = p.id ? `nota.html?id=${p.id}` : '#';
+        const href = p.id ? `/notas/${p.id}.html` : '#';
         let html = `<a href="${href}" style="text-decoration:none;position:relative;overflow:hidden;display:block;">
           <div style="height:300px;background-image:url('${p.imagen}');background-size:cover;background-position:center;"></div>
           <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.9) 0%,rgba(0,0,0,0.1) 65%,transparent 100%);padding:22px;display:flex;flex-direction:column;justify-content:flex-end;">
@@ -1442,7 +1442,7 @@
         </a>`;
         html += `<div style="display:flex;flex-direction:column;gap:4px;">`;
         (feed.secundarias||[]).forEach(s=>{
-          const shref = s.id ? `nota.html?id=${s.id}` : null;
+          const shref = s.id ? `/notas/${s.id}.html` : null;
           const tag = shref ? 'a' : 'div';
           const extra = shref ? `href="${shref}" style="text-decoration:none;` : `style="`;
           html += `<${tag} ${extra}position:relative;overflow:hidden;flex:1;display:block;">
@@ -1476,7 +1476,7 @@
           const bg = c.imagen
             ? `background-image:url('${c.imagen}');background-size:cover;background-position:center;height:90px;border-radius:4px 4px 0 0;`
             : '';
-          const href = c.id ? `nota.html?id=${c.id}` : '#';
+          const href = c.id ? `/notas/${c.id}.html` : '#';
           return `<a href="${href}" style="text-decoration:none;color:inherit;">
             <div style="background:white;border-radius:4px;border-left:3px solid ${color};box-shadow:0 1px 3px rgba(0,0,0,0.05);overflow:hidden;">
               ${c.imagen ? `<div style="${bg}"></div>` : ''}
@@ -1909,7 +1909,7 @@ function fechaDesdeId(id) {
 }
 
 function irANota(id) {
-  window.location.href = "nota.html?id=" + id;
+  window.location.href = "/notas/" + id + ".html";
 }
 
 function normTag(t) {
@@ -1996,14 +1996,14 @@ function renderTurismo(turismo) {
     ? `background-image:url('${principal.imagen}');background-size:cover;background-position:center;`
     : "background:#1c2d3d;";
 
-  const hrefPrincipal = principal.id ? `nota.html?id=${principal.id}` : '#';
+  const hrefPrincipal = principal.id ? `/notas/${principal.id}.html` : '#';
 
   let secsHtml = "";
   secs.forEach((s, i) => {
     const bg = s.imagen
       ? `background-image:url('${s.imagen}');background-size:cover;background-position:center;`
       : `background:#${i===0?'2a4a6a':'3a2a1a'};`;
-    const hrefSec = s.id ? `nota.html?id=${s.id}` : '#';
+    const hrefSec = s.id ? `/notas/${s.id}.html` : '#';
     secsHtml += `
     <a href="${hrefSec}" style="text-decoration:none;color:inherit;">
     <div class="turismo-sec">
@@ -2076,7 +2076,7 @@ function renderGuias(guias) {
       ? `background-image:url('${g.imagen}');background-size:cover;background-position:center;`
       : "background:linear-gradient(135deg,#1c2d3d,#3a5a7a);";
     return `
-      <a href="guia.html?id=${g.id}" class="destino-card">
+      <a href="/notas/${g.id}.html" class="destino-card">
         <div class="destino-header" style="${bg}">
           <div class="destino-nombre">${g.destino}</div>
         </div>
@@ -2103,7 +2103,7 @@ function renderNegocios(arts) {
       ? `background-image:url('${a.imagen}');background-size:cover;background-position:center;`
       : "background:linear-gradient(135deg,#1a2a1a,#2d4a2d);";
     return `
-      <a href="nota.html?id=${a.id}" class="negocio-card">
+      <a href="/notas/${a.id}.html" class="negocio-card">
         <div class="negocio-img" style="${bg}">
           <span class="negocio-tag">${normTag(a.tag) || 'Economía'}</span>
         </div>
@@ -2133,7 +2133,7 @@ function renderCultura(arts) {
     const tag = normTag(a.tag) || a.categoria || "Cultura";
     const meta = a.meta || "";
     return `
-      <a href="nota.html?id=${a.id}" style="text-decoration:none;color:inherit;">
+      <a href="/notas/${a.id}.html" style="text-decoration:none;color:inherit;">
       <div class="historia-card">
         <div class="hist-img" style="${bg}height:180px;"></div>
         <div class="hist-badge" style="background:#3a5a7a;">${tag}</div>

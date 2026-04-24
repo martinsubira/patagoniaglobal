@@ -14,7 +14,7 @@
       // Si no hay ?id= redirigir al inicio
       if (!id) { window.location.replace('/'); }
       // Canonical siempre apunta a la URL sin ?lang= (versión española canónica)
-      var canonicalUrl = 'https://globalpatagonia.org/nota.html?id=' + encodeURIComponent(id);
+      var canonicalUrl = 'https://globalpatagonia.org/notas/' + id + '.html';
       document.getElementById('canonical-tag').href = canonicalUrl;
     })();
   </script>
@@ -596,7 +596,7 @@ function renderRelacionadas(data, idActual, categoriaActual) {
       ? `<img class="rel-img" src="${n.imagen}" alt="${n.titulo}" onerror="this.style.display='none'">`
       : `<div class="rel-img"></div>`;
     return `
-      <a class="rel-card" href="nota.html?id=${n.id}" style="text-decoration:none;color:inherit;display:block;">
+      <a class="rel-card" href="/notas/${n.id}.html" style="text-decoration:none;color:inherit;display:block;">
         ${img}
         <div class="rel-body">
           <div class="rel-tag">${normTag(n.tag) || "Patagonia"}</div>
@@ -644,7 +644,7 @@ function renderNota(nota, fechaDisplay, data) {
   if (canonical) {
     // Canonical apunta siempre a la versión española (sin ?lang=)
     const _cParams = new URLSearchParams(window.location.search);
-    canonical.href = 'https://globalpatagonia.org/nota.html?id=' + encodeURIComponent(_cParams.get('id') || '');
+    canonical.href = 'https://globalpatagonia.org/notas/' + (_cParams.get('id') || '') + '.html';
   }
 
   // JSON-LD dinámico para Google
@@ -799,12 +799,14 @@ function renderNota(nota, fechaDisplay, data) {
 
   // hreflang: solo los idiomas disponibles en esta nota
   if (hasMultilang) {
-    const _base = 'https://globalpatagonia.org/nota.html?id=' + encodeURIComponent(getParam('id') || '');
+    const _id = getParam('id') || '';
+    const _baseClean = 'https://globalpatagonia.org/notas/' + _id + '.html';
+    const _baseLang = 'https://globalpatagonia.org/nota.html?id=' + encodeURIComponent(_id);
     const _addHL = (hl, href) => { const l=document.createElement('link'); l.rel='alternate'; l.hreflang=hl; l.href=href; document.head.appendChild(l); };
-    _addHL('es', _base);
-    _addHL('x-default', _base);
-    if (hasEN) _addHL('en', _base + '&lang=en');
-    if (hasPT) _addHL('pt', _base + '&lang=pt');
+    _addHL('es', _baseClean);
+    _addHL('x-default', _baseClean);
+    if (hasEN) _addHL('en', _baseLang + '&lang=en');
+    if (hasPT) _addHL('pt', _baseLang + '&lang=pt');
   }
 
   const AUTORES_AVATAR = {

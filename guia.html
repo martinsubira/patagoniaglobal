@@ -10,7 +10,7 @@
     (function() {
       var id = new URLSearchParams(window.location.search).get('id');
       if (!id) { window.location.replace('/'); return; }
-      document.getElementById('guia-canonical').href = 'https://globalpatagonia.org/guia.html?id=' + encodeURIComponent(id);
+      document.getElementById('guia-canonical').href = 'https://globalpatagonia.org/notas/' + id + '.html';
     })();
   </script>
   <meta name="description" id="meta-desc" content="Patagonia travel guide — GLOBALpatagonia"/>
@@ -607,7 +607,7 @@
 
       // ── SEO dinámico ──────────────────────────────────────
       const seoMeta = guia.seo || {};
-      const guiaCanonical = 'https://globalpatagonia.org/guia.html?id=' + encodeURIComponent(id);
+      const guiaCanonical = 'https://globalpatagonia.org/notas/' + id + '.html';
       const guiaImg = guia.imagen
         ? (guia.imagen.startsWith('http') ? guia.imagen : 'https://globalpatagonia.org/' + guia.imagen)
         : 'https://globalpatagonia.org/fotos/torres-del-paine.webp';
@@ -851,7 +851,7 @@
     const otrasGrid = document.getElementById('otras-guias-ext');
     guias.filter(g => g.id !== guia.id).forEach(g => {
       otrasGrid.innerHTML += `
-        <a href="guia.html?id=${g.id}" class="otra-card">
+        <a href="/notas/${g.id}.html" class="otra-card">
           ${g.imagen ? `<img class="otra-img" src="${g.imagen}" alt="${g.destino}" loading="lazy"/>` : '<div class="otra-img"></div>'}
           <div class="otra-body"><div class="otra-destino">${g.destino}</div><div class="otra-tagline">${g.tagline || ''}</div></div>
         </a>`;
@@ -869,7 +869,7 @@
     const otrasGrid = document.getElementById('otras-guias');
     guias.filter(g => g.id !== idActual).forEach(g => {
       otrasGrid.innerHTML += `
-        <a href="guia.html?id=${g.id}" class="otra-card">
+        <a href="/notas/${g.id}.html" class="otra-card">
           ${g.imagen ? `<img class="otra-img" src="${g.imagen}" alt="${g.destino}" loading="lazy"/>` : '<div class="otra-img"></div>'}
           <div class="otra-body"><div class="otra-destino">${g.destino}</div><div class="otra-tagline">${g.tagline || ''}</div></div>
         </a>`;
