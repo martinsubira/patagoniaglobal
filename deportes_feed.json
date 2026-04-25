@@ -1,14 +1,22 @@
 {
   "_info": "Feed de la sección Deportes & Aventura. Actualizado por actualizar_deportes.py. NO editar manualmente salvo corrección de emergencia.",
   "principal": {
-    "id": "20260419-bopp-campeon-sudamericano-trail-dep",
+    "id": "20260425-chef-neuquina-vuelve-al-everest-para-alimentar-a-los-dep",
     "tag": "🏃 Deportes",
-    "titulo": "Patricio Bopp, de Aysén, campeón sudamericano de trail running en Bolivia",
-    "bajada": "El atleta aysenino ganó la categoría Long Trail (81 km, 5.078 m de desnivel) en Samaipata con un tiempo de 9h 03m 20s. Era su primera vez representando a Chile.",
-    "imagen": "fotos/foto-20260419-bopp-trail-dep.jpg",
-    "meta": "19 abr · Diario Regional Aysén"
+    "titulo": "Chef neuquina vuelve al Everest para alimentar a los montañistas",
+    "bajada": "Luz, cocinera radicada en Neuquén, regresó al campamento base del Everest a 5.000 metros de altura para dar soporte gastronómico a expediciones de alta montaña.",
+    "imagen": "fotos/foto-20260425-chef-neuquina-vuelve-al-everest-para-alimentar-a-los-dep.webp",
+    "meta": "Hoy · Diario Río Negro"
   },
   "secundarias": [
+    {
+      "id": "20260419-bopp-campeon-sudamericano-trail-dep",
+      "tag": "🏃 Deportes",
+      "titulo": "Patricio Bopp, de Aysén, campeón sudamericano de trail running en Bolivia",
+      "bajada": "El atleta aysenino ganó la categoría Long Trail (81 km, 5.078 m de desnivel) en Samaipata con un tiempo de 9h 03m 20s. Era su primera vez representando a Chile.",
+      "imagen": "fotos/foto-20260419-bopp-trail-dep.jpg",
+      "meta": "19 abr · Diario Regional Aysén"
+    },
     {
       "id": "20260417-los-xvii-juegos-paraepade-cerraron-con-350-deportistas-dep",
       "tag": "🏃 Deportes",
@@ -42,14 +50,6 @@
       "bajada": "El corredor que dominó el Tetratlón Chapelco ahora controla los cronómetros de una de las carreras de trail más importantes de Sudamérica.",
       "imagen": "fotos/foto-20260411-1059-dep.webp",
       "meta": "Hoy · Diario Río Negro"
-    },
-    {
-      "id": "20260411-0435-dep",
-      "tag": "🏃 Deportes",
-      "titulo": "Alexis Bull, de El Calafate, lidera la clasificación en Concordia",
-      "bajada": "El piloto santacruceño dominó las dos tandas de entrenamientos y la primera clasificación de la tercera fecha del Campeonato Argentino de Clase 1 de Turismo Pista.",
-      "imagen": "fotos/foto-20260411-0435-dep.webp",
-      "meta": "Hoy · Tiempo Sur"
     }
   ]
 }
