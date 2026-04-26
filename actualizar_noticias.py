@@ -1720,7 +1720,9 @@ def _render_cuerpo_html(cuerpo):
         bloque = bloque.strip()
         if not bloque:
             continue
-        if bloque.startswith("## "):
+        if bloque.startswith("<"):
+            out.append(bloque)
+        elif bloque.startswith("## "):
             out.append(f"<h3>{htmllib.escape(bloque[3:])}</h3>")
         else:
             out.append(f"<p>{htmllib.escape(bloque)}</p>")

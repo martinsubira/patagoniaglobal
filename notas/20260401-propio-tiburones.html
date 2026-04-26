@@ -38,8 +38,8 @@
     }
   },
   "author": {
-    "@type": "Organization",
-    "name": "GLOBALpatagonia"
+    "@type": "Person",
+    "name": "J. Martineau"
   },
   "isPartOf": {
     "@type": "CreativeWork",
@@ -47,7 +47,6 @@
   }
 }</script>
   <link rel="icon" type="image/svg+xml" href="../favicon.svg"/>
-  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-5FP2F41BZG"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5FP2F41BZG');</script>
   <style>
@@ -70,12 +69,18 @@
     .nota-titulo{font-family:'Playfair Display',serif;font-size:clamp(28px,5vw,48px);font-weight:900;line-height:1.15;color:var(--gris-oscuro);margin-bottom:20px;letter-spacing:-0.5px;}
     .nota-bajada{font-size:19px;font-weight:400;color:var(--gris-medio);line-height:1.65;margin-bottom:24px;border-left:4px solid #8ab8d4;padding-left:18px;font-style:italic;}
     .nota-meta{font-size:11px;color:#aaa;letter-spacing:1px;text-transform:uppercase;margin-bottom:28px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding-bottom:16px;border-bottom:1px solid #e0ddd8;}
+    .nota-fuente{margin-top:40px;padding:16px 20px;background:#f0ede8;border-radius:4px;font-size:13px;color:#5a6070;}
+    .nota-fuente strong{color:#252830;}
     .nota-imagen-wrap{width:100%;background:#0e1a26;border-radius:4px;margin-bottom:32px;display:flex;justify-content:center;align-items:center;overflow:hidden;max-height:480px;}
     .nota-imagen{width:100%;max-height:480px;object-fit:contain;display:block;}
     .nota-imagen-placeholder{width:100%;height:320px;background:linear-gradient(160deg,#0e1a26 0%,#1c2d3d 45%,#4a7a9a 100%);border-radius:4px;margin-bottom:32px;}
     .nota-cuerpo p{font-size:17.5px;line-height:1.85;color:#2a2a2a;margin-bottom:24px;}
     .nota-cuerpo p:first-of-type{font-size:20px;line-height:1.8;color:#1c2d3d;font-weight:400;border-left:4px solid #7aadcc;padding-left:20px;margin-bottom:32px;}
     .nota-cuerpo h3{font-family:'Playfair Display',serif;font-size:clamp(20px,3vw,28px);font-weight:700;color:var(--verde);margin:48px 0 16px;padding-bottom:10px;border-bottom:3px solid var(--azul-claro);line-height:1.2;}
+    .nota-cuerpo h4{font-family:'Inter',sans-serif;font-size:16px;font-weight:700;color:#252830;margin:28px 0 10px;letter-spacing:0.3px;}
+    .nota-cuerpo strong{font-weight:700;color:#1c2d3d;}
+    .nota-galeria{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px;margin:32px 0;}
+    .nota-galeria img{width:100%;height:200px;object-fit:cover;border-radius:4px;}
     .ver-completo{display:inline-flex;align-items:center;gap:8px;margin:32px 0;padding:12px 24px;background:var(--verde);color:white;text-decoration:none;border-radius:3px;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;}
     .ver-completo:hover{opacity:0.85;}
     .divider-footer{height:2px;background:linear-gradient(90deg,#1c2d3d,#7aadcc,#1c2d3d);}
@@ -83,7 +88,7 @@
     .footer-logo{font-family:'Playfair Display',serif;font-size:22px;font-weight:900;color:white;letter-spacing:1px;margin-bottom:6px;}
     .footer-logo span{color:#8ab8d4;font-weight:400;font-style:italic;}
     .footer-copy{font-size:11px;letter-spacing:1px;margin-top:12px;color:rgba(255,255,255,0.35);}
-    @media(max-width:600px){.top-bar{padding:6px 16px;}.logo-img{height:46px;}nav a{padding:10px 10px;font-size:10px;}}
+    @media(max-width:600px){.top-bar{padding:6px 16px;}.logo-img{height:46px;}nav a{padding:10px 10px;font-size:10px;}.nota-galeria{grid-template-columns:1fr;}}
   </style>
 </head>
 <body>
@@ -107,7 +112,6 @@
     <a href="../buscar.html">Buscar</a>
   </nav>
 </header>
-
 <div class="container">
   <a href="../index.html" class="volver">← Inicio</a>
   <article>
@@ -115,48 +119,50 @@
     <h1 class="nota-titulo">Tiburones en la Patagonia: una pesca incompatible con su propia biología</h1>
     <p class="nota-bajada">Cinco especies conviven en el Golfo San Matías bajo categoría de amenaza. Su destino depende de una ecuación biológica implacable: crecer despacio y reproducirse poco en un mar donde la pesca no da tregua.</p>
     <div class="nota-meta">
-      <span>📰 GLOBALpatagonia</span>
       <span>🌎 Argentina</span>
       <span>2026-04-26</span>
     </div>
     <div class="nota-imagen-wrap"><img src="https://globalpatagonia.org/fotos/PESCA_TIBURON_01.webp" alt="Tiburones en la Patagonia: una pesca incompatible con su propia biología" class="nota-imagen" loading="eager"/></div>
     <div class="nota-cuerpo"><p>En las aguas frías del Golfo San Matías y a lo largo de toda la costa patagónica habitan al menos cinco especies de tiburones: bacota, cazón, gatuzo, gatopardo y pez gallo. Todas comparten algo más que territorio: están en alguna categoría de amenaza según la Unión Internacional para la Conservación de la Naturaleza (UICN).</p>
 <p>No es casualidad. Tampoco es un misterio. Es biología.</p>
-<p>&lt;strong&gt;Una ecuación que no cierra: crecer lento, reproducirse poco&lt;/strong&gt;</p>
+<strong>Una ecuación que no cierra: crecer lento, reproducirse poco</strong>
 <p>A diferencia de la mayoría de los peces, los tiburones no apuestan por la cantidad sino por el tiempo. Crecen despacio, alcanzan la madurez sexual tarde —a veces después de más de diez años— y tienen muy pocas crías por ciclo reproductivo.</p>
 <p>Un tiburón bacota, por ejemplo, puede pasar años desarrollándose para luego producir apenas unos pocos descendientes.</p>
 <p>Esa estrategia evolutiva funcionó durante millones de años en océanos relativamente estables. Pero hoy choca de frente con una presión que no existía: la pesca intensiva en todas sus formas.</p>
 <p>Porque el problema es matemático. Si un tiburón adulto muere, no hay reemplazo rápido. No hay «rebote» poblacional. Hay vacío. Y ese vacío puede tardar décadas en llenarse.</p>
 <p>En cambio, especies como la merluza o la caballa liberan millones de huevos y pueden recuperarse con rapidez tras una caída. Los tiburones no tienen ese margen. Nunca lo tuvieron.</p>
-<p>&lt;strong&gt;Cuando los pescadores notan el silencio&lt;/strong&gt;</p>
+<strong>Cuando los pescadores notan el silencio</strong>
 <p>A falta de censos completos, hay un indicador imposible de ignorar: quienes están todos los días en el agua.</p>
 <p>Pescadores deportivos de la región vienen señalando desde hace años una caída sostenida en la abundancia de tiburones. Relevamientos de organizaciones como WCS Argentina muestran que más del 60% percibe una disminución clara del gatopardo; en algunas zonas, esa caída llega hasta el 80%; y la tendencia ya era evidente desde al menos 2008.</p>
 <p>El cazón (Mustelus schmitti), además, no solo preocupa en la pesca deportiva: sus capturas comerciales cayeron más de un 50% en dos décadas, según datos del INIDEP.</p>
 <p>No es una impresión aislada. Es un patrón.</p>
-<p>&lt;strong&gt;La ilusión de la pesca con devolución&lt;/strong&gt;</p>
+<strong>La ilusión de la pesca con devolución</strong>
 <p>A primera vista, devolver al mar un tiburón capturado parece un gesto responsable. De hecho, normativas como la ley N° 5706 de Río Negro lo exigen.</p>
 <p>Pero hay una trampa invisible en esa práctica.</p>
 <p>Diversos estudios internacionales muestran que entre el 5% y el 20% de los tiburones liberados mueren después. No siempre es inmediato: el estrés, el agotamiento o las lesiones internas hacen su trabajo en silencio.</p>
 <p>Traducido: de cada 100 tiburones capturados, hasta 20 pueden morir igual.</p>
 <p>En especies que tardan años en reproducirse, ese número no es menor. Es devastador.</p>
-<p>&lt;strong&gt;El dilema: esperar datos perfectos o evitar el colapso&lt;/strong&gt;</p>
+<strong>El dilema: esperar datos perfectos o evitar el colapso</strong>
 <p>Frente a este escenario, biólogos y organizaciones conservacionistas plantean una postura clara: actuar ahora.</p>
 <p>Las propuestas son concretas: suspender temporalmente la pesca dirigida a tiburones en la Patagonia, implementar monitoreos con métodos no invasivos y estudiar en profundidad el impacto real de la pesca con devolución.</p>
 <p>El principio de precaución lo resume en una frase sencilla: si el daño puede ser grave e irreversible, esperar certeza absoluta es un lujo que no se puede pagar.</p>
-<p>&lt;strong&gt;Un problema local en un mundo que ya reaccionó&lt;/strong&gt;</p>
+<strong>Un problema local en un mundo que ya reaccionó</strong>
 <p>La preocupación no es exclusiva de Argentina. A nivel global, la protección de tiburones viene ganando terreno.</p>
 <p>En 2025, la Convención CITES incorporó especies como el cazón y el gatuzo a su Apéndice II, imponiendo controles estrictos sobre su comercio. Otras, como el tiburón ballena, ya cuentan con niveles de protección aún mayores.</p>
 <p>El mensaje es claro: los tiburones no resisten el ritmo actual de explotación.</p>
-<p>&lt;strong&gt;Una decisión inevitable&lt;/strong&gt;</p>
+<strong>Una decisión inevitable</strong>
 <p>Los tiburones patagónicos no están desapareciendo por debilidad, sino por una fortaleza evolutiva que hoy juega en su contra: vivir mucho, crecer despacio y reproducirse poco.</p>
 <p>Cada ejemplar perdido es una historia biológica que no se reemplaza rápido. Es tiempo acumulado que se disuelve.</p>
 <p>La pesca deportiva, incluso bajo la modalidad de devolución, no es neutra en este contexto. Es una presión adicional sobre poblaciones que ya muestran signos de agotamiento.</p>
 <p>Si el objetivo es evitar un colapso, la conclusión se impone con la lógica de una marea: detener la pesca dirigida a tiburones no es una opción extrema, es una medida coherente con su propia biología.</p>
 <p>Porque el océano puede regenerarse. Pero no a cualquier velocidad. Y definitivamente, no a la nuestra.</p></div>
+    <div class="nota-fuente" style="border-left:3px solid #1c2d3d;background:#f0ede8;display:flex;align-items:center;gap:12px;">
+      <img style="width:56px;height:56px;border-radius:50%;object-fit:cover;border:2px solid #1c2d3d;flex-shrink:0;" src="../fotos/avatar-j-martineau.webp" alt="J. Martineau"/>
+      <div><strong>Por J. Martineau</strong> · Nota de producción propia · <strong>GLOBALpatagonia</strong></div>
+    </div>
     <a href="../" class="ver-completo">← Más noticias en GLOBALpatagonia</a>
   </article>
 </div>
-
 <div class="divider-footer"></div>
 <footer>
   <div class="footer-logo"><span>global</span>PATAGONIA</div>
