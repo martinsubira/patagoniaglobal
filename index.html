@@ -16,7 +16,6 @@
   <meta name="description" content="GLOBALpatagonia: el primer medio digital que cubre la Patagonia argentina y chilena sin fronteras. Noticias de medio ambiente, deportes, cultura, pueblos originarios y turismo patagónico."/>
   <meta name="google-site-verification" content="pM-c0VRSYbfDfdcGwDFycDHJdpF7CTjpzTLy1EzrHgo" />
   <meta name="google-adsense-account" content="ca-pub-1924505291132800">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1924505291132800" crossorigin="anonymous"></script>
   <meta name="keywords" content="patagonia, noticias patagonia, patagonia argentina, patagonia chilena, glaciares, pueblos originarios patagonia, trail running patagonia, turismo patagonia, medio ambiente patagonia, santa cruz, neuquén, río negro, chubut, tierra del fuego, magallanes, bariloche, ushuaia, el calafate, torres del paine, fitz roy"/>
   <meta name="robots" content="index, follow"/>
   <meta name="author" content="GLOBALpatagonia"/>
@@ -53,13 +52,25 @@
     "sameAs": []
   }
   </script>
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5FP2F41BZG"></script>
+  <!-- Google Analytics — se carga después del evento load para no bloquear la página -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-5FP2F41BZG');
+    window.addEventListener('load', function() {
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-5FP2F41BZG';
+      document.head.appendChild(s);
+      gtag('js', new Date());
+      gtag('config', 'G-5FP2F41BZG');
+    });
+  </script>
+  <!-- Preload imagen tapa: fetch anticipado para que el browser descargue la imagen antes de renderizar el JS -->
+  <script>
+    fetch('/noticias.json').then(function(r){return r.json();}).then(function(d){
+      var img = (d.tapa||{}).imagen;
+      if(img){var l=document.createElement('link');l.rel='preload';l.as='image';l.href=img;document.head.appendChild(l);}
+    }).catch(function(){});
   </script>
   <meta name="twitter:title" content="GLOBALpatagonia — Noticias de la Patagonia Argentina y Chilena"/>
   <meta name="twitter:description" content="El primer medio digital panpatagónico. Medio ambiente, deportes, cultura y pueblos originarios de la Patagonia sin fronteras."/>
@@ -2266,5 +2277,7 @@ fetch("propios.json")
   }]
 }
 </script>
+<!-- AdSense al final del body: los anuncios se muestran igual pero no bloquean la carga inicial -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1924505291132800" crossorigin="anonymous"></script>
 </body>
 </html>
