@@ -59,6 +59,11 @@ Portal de noticias panpatagónico (Argentina + Chile). Nombre: **GLOBALpatagonia
 - Después de publicar espera 90s y corre `--solo-instagram` para publicar tapa en Instagram.
 - Secrets: `ANTHROPIC_API_KEY`, `UNSPLASH_ACCESS_KEY`, `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHANNEL_ID`, `FACEBOOK_PAGE_ID`, `FACEBOOK_PAGE_TOKEN`, `INSTAGRAM_BUSINESS_ACCOUNT_ID`
 
+**CRÍTICO — notas/ nunca se sobreescriben:**
+- `actualizar_noticias.py` genera `notas/[id].html` solo si el archivo NO existe (`if os.path.exists(ruta): continue`)
+- El workflow usa `git ls-files --others --exclude-standard notas/ | xargs -r git add --` en lugar de `git add notas/` — esto agrega solo archivos *nuevos*, nunca modifica los existentes
+- Motivo: notas colaboradoras (rodrigo-binet, ski-patagonia, etc.) tienen CSS/fotos/traducciones especiales que el script no conoce. Una sobreescritura las destruye sin aviso.
+
 ## Paleta visual
 `#1c2d3d` azul cordillera · `#7aadcc` azul glacial · `#252830` gris granito · `#8c6b4a` arcilla · `#f0ede8` fondo
 Tipografías: **Playfair Display** (títulos) + **Inter** (cuerpo)
@@ -84,3 +89,16 @@ Si la nota tiene `titulo_en`/`titulo_pt`, aparece automáticamente el switcher E
 
 ## GA4 / AdSense
 GA4: `G-5FP2F41BZG` | AdSense: `ca-pub-1924505291132800`
+
+## Notas estáticas — "También te puede interesar"
+- CSS de las cards `.relacionadas`, `.rel-card`, `.rel-img`, etc. está inlineado en cada `notas/*.html` (no viene de nota.html)
+- Script `agregar_relacionadas.py`: agrega la sección a todos los HTMLs estáticos que no la tengan. Ejecutar manualmente si se agregan notas nuevas con HTML propio.
+- Notas omitidas: variantes de idioma (`-en.html`, `-pt.html`, `-zh.html`) y el redirect stub `perito-moreno-timeout-2026.html`
+- Lógica de selección: mismo tag primero, luego otras, `random.seed(nid)` para que sea determinístico
+
+## Notas estáticas — variantes de idioma (multiidioma)
+- Páginas especiales con traducciones completas se crean manualmente: `[id]-en.html`, `[id]-pt.html`
+- El switcher de idioma (botones ES/EN/PT) se agrega directamente al HTML de cada página
+- Hreflang tags en `<head>` para SEO
+- Ejemplo: `notas/ski-patagonia-2026.html`, `notas/ski-patagonia-2026-en.html`, `notas/ski-patagonia-2026-pt.html`
+- Agregar estos archivos al sitemap.xml manualmente cuando se crean

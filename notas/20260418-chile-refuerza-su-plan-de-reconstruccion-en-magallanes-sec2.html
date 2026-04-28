@@ -84,6 +84,18 @@
     .footer-logo span{color:#8ab8d4;font-weight:400;font-style:italic;}
     .footer-copy{font-size:11px;letter-spacing:1px;margin-top:12px;color:rgba(255,255,255,0.35);}
     @media(max-width:600px){.top-bar{padding:6px 16px;}.logo-img{height:46px;}nav a{padding:10px 10px;font-size:10px;}}
+  
+    .relacionadas{margin-top:48px;padding-top:24px;border-top:2px solid #e0ddd8;}
+    .relacionadas-titulo{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#5a6070;margin-bottom:20px;}
+    .relacionadas-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+    .rel-card{cursor:pointer;border-radius:4px;overflow:hidden;background:white;transition:transform 0.2s;text-decoration:none;color:inherit;display:block;}
+    .rel-card:hover{transform:translateY(-2px);}
+    .rel-img{width:100%;height:100px;object-fit:cover;display:block;background:linear-gradient(160deg,#0e1a26,#1c2d3d);}
+    .rel-body{padding:10px 12px 12px;}
+    .rel-tag{font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#3a7a5a;margin-bottom:4px;}
+    .rel-titulo{font-size:13px;font-weight:600;line-height:1.35;color:#252830;}
+    @media(max-width:600px){.relacionadas-grid{grid-template-columns:1fr 1fr;}}
+    @media(max-width:480px){.relacionadas-grid{grid-template-columns:1fr;}}
   </style>
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600&display=swap"></noscript>
@@ -129,6 +141,10 @@
 <p>Magallanes comparte con la Patagonia argentina no solo el paisaje y el clima, sino también los problemas: conectividad deficiente, costo de vida elevado, migración juvenil hacia el norte y una sensación persistente de lejanía respecto a las decisiones que se toman en la capital. Cualquier política de desarrollo que se implemente de un lado de la frontera tiene efectos espejo del otro.</p>
 <p>El plan incluye además componentes de vivienda y mejoramiento urbano, dos áreas críticas en ciudades como Punta Arenas y Puerto Natales, donde el crecimiento turístico de los últimos años tensionó el mercado inmobiliario.</p>
 <p>Queda por verse si el despliegue se traduce en recursos concretos o si queda en el terreno de los anuncios. La Patagonia chilena, como la argentina, ha aprendido a medir las promesas con la vara de los hechos.</p></div>
+    <div class="relacionadas">
+      <div class="relacionadas-titulo">También te puede interesar</div>
+      <div class="relacionadas-grid"><a class="rel-card" href="/notas/20260419-punta-arenas-rompe-record-feria-laboral-convoco-a-1800-sec2.html"><img class="rel-img" src="https://globalpatagonia.org/fotos/foto-20260419-punta-arenas-rompe-record-feria-laboral-convoco-a-1800-sec2.webp" alt="Punta Arenas rompe récord: feria laboral convocó a 1.800 personas" onerror="this.style.display='none'"><div class="rel-body"><div class="rel-tag">Desarrollo</div><div class="rel-titulo">Punta Arenas rompe récord: feria laboral convocó a 1.800 personas</div></div></a><a class="rel-card" href="/notas/20260423-magallanes-lleva-al-congreso-chileno-la-crisis-del-sec2.html"><img class="rel-img" src="https://globalpatagonia.org/fotos/foto-20260423-magallanes-lleva-al-congreso-chileno-la-crisis-del-sec2.webp" alt="Magallanes lleva al Congreso chileno la crisis del agua rural" onerror="this.style.display='none'"><div class="rel-body"><div class="rel-tag">Desarrollo</div><div class="rel-titulo">Magallanes lleva al Congreso chileno la crisis del agua rural</div></div></a><a class="rel-card" href="/notas/20260412-1105-dep.html"><img class="rel-img" src="https://globalpatagonia.org/fotos/foto-20260412-1105-dep.webp" alt="Patagonia Run: la gran fiesta del trail en San Martín de los Andes" onerror="this.style.display='none'"><div class="rel-body"><div class="rel-tag">Deportes</div><div class="rel-titulo">Patagonia Run: la gran fiesta del trail en San Martín de los Andes</div></div></a></div>
+    </div>
     <a href="../" class="ver-completo">← Más noticias en GLOBALpatagonia</a>
   </article>
 </div>

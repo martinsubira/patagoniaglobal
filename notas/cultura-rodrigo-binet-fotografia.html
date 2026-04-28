@@ -84,6 +84,18 @@
     .footer-logo span{color:#8ab8d4;font-weight:400;font-style:italic;}
     .footer-copy{font-size:11px;letter-spacing:1px;margin-top:12px;color:rgba(255,255,255,0.35);}
     @media(max-width:600px){.top-bar{padding:6px 16px;}.logo-img{height:46px;}nav a{padding:10px 10px;font-size:10px;}}
+  
+    .relacionadas{margin-top:48px;padding-top:24px;border-top:2px solid #e0ddd8;}
+    .relacionadas-titulo{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#5a6070;margin-bottom:20px;}
+    .relacionadas-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+    .rel-card{cursor:pointer;border-radius:4px;overflow:hidden;background:white;transition:transform 0.2s;text-decoration:none;color:inherit;display:block;}
+    .rel-card:hover{transform:translateY(-2px);}
+    .rel-img{width:100%;height:100px;object-fit:cover;display:block;background:linear-gradient(160deg,#0e1a26,#1c2d3d);}
+    .rel-body{padding:10px 12px 12px;}
+    .rel-tag{font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#3a7a5a;margin-bottom:4px;}
+    .rel-titulo{font-size:13px;font-weight:600;line-height:1.35;color:#252830;}
+    @media(max-width:600px){.relacionadas-grid{grid-template-columns:1fr 1fr;}}
+    @media(max-width:480px){.relacionadas-grid{grid-template-columns:1fr;}}
   </style>
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600&display=swap"></noscript>
@@ -145,6 +157,10 @@
 <div style='margin:28px 0 8px;'><p style='font-family:"Playfair Display",serif;font-weight:700;color:#1c2d3d;font-size:17px;margin:0 0 10px;line-height:1.4;'><span style='color:#7aadcc;margin-right:8px;'>—</span>¿En qué proyecto estás trabajando ahora?</p><p style='margin:0;color:#2a2a2a;line-height:1.75;'>El último trabajo que hice me genera mucha expectativa. Es algo nuevo que construí a partir de una base que ya fue premiada en 2018 en un foro de portafolios de un festival de fotografía. El cómo surgió, el por qué lo hice y el resultado que obtuve me dieron ganas de mostrarlo. Es un trabajo que dice mucho, pero sobre todo sorprende al espectador.</p></div>
 
 <figure style='margin:36px auto 8px;max-width:65%;display:block;'><img src='../fotos/rodrigo-binet-foto2.webp' style='width:100%;height:auto;display:block;border-radius:4px;' loading='lazy' alt='Guanaco frente al Fitz Roy — fotografía de Rodrigo Binet'></figure></div>
+    <div class="relacionadas">
+      <div class="relacionadas-titulo">También te puede interesar</div>
+      <div class="relacionadas-grid"><a class="rel-card" href="/notas/20260419-heladeria-tito-seis-decadas-de-sabor-en-rio-gallegos-cul.html"><img class="rel-img" src="https://globalpatagonia.org/fotos/foto-20260419-heladeria-tito-seis-decadas-de-sabor-en-rio-gallegos-cul.webp" alt="Heladería Tito: seis décadas de sabor en Río Gallegos" onerror="this.style.display='none'"><div class="rel-body"><div class="rel-tag">Cultura</div><div class="rel-titulo">Heladería Tito: seis décadas de sabor en Río Gallegos</div></div></a><a class="rel-card" href="/notas/20260426-pena-folclorica-a-cielo-abierto-reune-a-la-comunidad-cul.html"><img class="rel-img" src="https://globalpatagonia.org/fotos/foto-20260426-pena-folclorica-a-cielo-abierto-reune-a-la-comunidad-cul.webp" alt="Peña folclórica a cielo abierto reúne a la comunidad santacruceña" onerror="this.style.display='none'"><div class="rel-body"><div class="rel-tag">Cultura</div><div class="rel-titulo">Peña folclórica a cielo abierto reúne a la comunidad santacruceña</div></div></a><a class="rel-card" href="/notas/cultura-ruben-patagonia.html"><img class="rel-img" src="https://globalpatagonia.org/fotos/ruben-patagonia.webp" alt="Rubén Patagonia: la voz tehuelche que cantó lo que otros no podían nombrar" onerror="this.style.display='none'"><div class="rel-body"><div class="rel-tag">Cultura</div><div class="rel-titulo">Rubén Patagonia: la voz tehuelche que cantó lo que otros no podían nombrar</div></div></a></div>
+    </div>
     <a href="../" class="ver-completo">← Más noticias en GLOBALpatagonia</a>
   </article>
 </div>
