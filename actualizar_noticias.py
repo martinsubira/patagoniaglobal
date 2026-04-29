@@ -2285,6 +2285,23 @@ def actualizar_sitemap():
                   f"    <changefreq>{freq}</changefreq>",
                   f"    <priority>{prio}</priority>", f"  </url>"]
 
+    # Escanear notas/ directamente — captura todo HTML no incluido en los JSONs
+    notas_dir = os.path.join(base, "notas")
+    OMITIR_SUFIJOS = ("-en.html", "-pt.html", "-zh.html", "-timeout-2026.html")
+    if os.path.isdir(notas_dir):
+        import time
+        for fname in sorted(os.listdir(notas_dir)):
+            if not fname.endswith(".html"):
+                continue
+            if any(fname.endswith(s) for s in OMITIR_SUFIJOS):
+                continue
+            nid = fname[:-5]  # quitar .html
+            if nid not in ids:
+                # inferir fecha de modificación del archivo
+                fpath = os.path.join(notas_dir, fname)
+                mtime = os.path.getmtime(fpath)
+                ids[nid] = datetime.fromtimestamp(mtime).strftime("%Y-%m-%d")
+
     for nid, fecha in sorted(ids.items(), key=lambda x: x[1], reverse=True):
         es_historia = nid in historias_ids
         freq = "monthly" if es_historia else "weekly"
