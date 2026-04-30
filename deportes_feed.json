@@ -1,14 +1,22 @@
 {
   "_info": "Feed de la sección Deportes & Aventura. Actualizado por actualizar_deportes.py. NO editar manualmente salvo corrección de emergencia.",
   "principal": {
-    "id": "20260429-vanessa-garrido-sudamericano-master-dep",
-    "tag": "🏊 Deportes",
-    "titulo": "Vanessa Garrido triunfa en el Sudamericano Máster de Brasil: medalla en aguas abiertas para Aysén",
-    "bajada": "La triatleta del Club Koyaike de Coyhaique terminó novena en los 3.000 m en aguas abiertas y ganó la medalla en categoría 45+ en el Campeonato Sudamericano Máster de Recife.",
-    "imagen": "fotos/foto-20260429-vanessa-garrido-sudamericano-master-dep.webp",
-    "meta": "29 abr · Diario Regional Aysén"
+    "id": "20260430-deportistas-magallanicos-haran-el-primer-cruce-a-nado-dep",
+    "tag": "🏃 Deportes",
+    "titulo": "Deportistas magallánicos harán el primer cruce a nado del Canal Fitz Roy",
+    "bajada": "El 2 de mayo, nadadores del Club Delfines de Punta Arenas desafiarán las aguas gélidas que conectan los senos Otway y Skyring, un hito sin precedentes en la natación de aguas abiertas patagónica.",
+    "imagen": "fotos/foto-20260430-deportistas-magallanicos-haran-el-primer-cruce-a-nado-dep.webp",
+    "meta": "Hoy · Tiempo Sur"
   },
   "secundarias": [
+    {
+      "id": "20260429-vanessa-garrido-sudamericano-master-dep",
+      "tag": "🏊 Deportes",
+      "titulo": "Vanessa Garrido triunfa en el Sudamericano Máster de Brasil: medalla en aguas abiertas para Aysén",
+      "bajada": "La triatleta del Club Koyaike de Coyhaique terminó novena en los 3.000 m en aguas abiertas y ganó la medalla en categoría 45+ en el Campeonato Sudamericano Máster de Recife.",
+      "imagen": "fotos/foto-20260429-vanessa-garrido-sudamericano-master-dep.webp",
+      "meta": "29 abr · Diario Regional Aysén"
+    },
     {
       "id": "20260425-chef-neuquina-vuelve-al-everest-para-alimentar-a-los-dep",
       "tag": "🏃 Deportes",
@@ -16,7 +24,9 @@
       "bajada": "Luz, cocinera radicada en Neuquén, regresó al campamento base del Everest a 5.000 metros de altura para dar soporte gastronómico a expediciones de alta montaña.",
       "imagen": "fotos/foto-20260425-chef-neuquina-vuelve-al-everest-para-alimentar-a-los-dep.webp",
       "meta": "Hoy · Diario Río Negro"
-    },
+    }
+  ],
+  "row_cards": [
     {
       "id": "20260419-bopp-campeon-sudamericano-trail-dep",
       "tag": "🏃 Deportes",
@@ -24,9 +34,7 @@
       "bajada": "El atleta aysenino ganó la categoría Long Trail (81 km, 5.078 m de desnivel) en Samaipata con un tiempo de 9h 03m 20s. Era su primera vez representando a Chile.",
       "imagen": "fotos/foto-20260419-bopp-trail-dep.jpg",
       "meta": "19 abr · Diario Regional Aysén"
-    }
-  ],
-  "row_cards": [
+    },
     {
       "id": "20260417-los-xvii-juegos-paraepade-cerraron-con-350-deportistas-dep",
       "tag": "🏃 Deportes",
@@ -49,14 +57,6 @@
       "titulo": "Patagonia Run: la gran fiesta del trail en San Martín de los Andes",
       "bajada": "Miles de corredores de distintos países protagonizaron una edición épica de la carrera de montaña más emblemática de la región, entre bosques de lengas y vistas al volcán Lanín.",
       "imagen": "fotos/foto-20260412-1105-dep.webp",
-      "meta": "Hoy · Diario Río Negro"
-    },
-    {
-      "id": "20260411-1059-dep",
-      "tag": "🏃 Deportes",
-      "titulo": "Maxi Morales: de multicampeón del Tetra a guardián del tiempo en Patagonia Run",
-      "bajada": "El corredor que dominó el Tetratlón Chapelco ahora controla los cronómetros de una de las carreras de trail más importantes de Sudamérica.",
-      "imagen": "fotos/foto-20260411-1059-dep.webp",
       "meta": "Hoy · Diario Río Negro"
     }
   ]
