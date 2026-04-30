@@ -1635,6 +1635,23 @@ def main():
     except Exception:
         pass
 
+    # Generar páginas estáticas ANTES de publicar en redes y newsletter
+    print(f"\n  Generando páginas estáticas...")
+    _notas_og = [tapa] + secundarias + [n for n in [deportes, negocios, cultura, turismo] if n]
+    try:
+        with open(os.path.join(os.path.dirname(__file__), "propios.json"), encoding="utf-8") as _f:
+            _notas_og += json.load(_f)
+    except Exception:
+        pass
+    try:
+        with open(os.path.join(os.path.dirname(__file__), "historias.json"), encoding="utf-8") as _f:
+            _hist = json.load(_f)
+            _notas_og += _hist["notas"] if isinstance(_hist, dict) else _hist
+    except Exception:
+        pass
+    _notas_og_filtradas = [n for n in _notas_og if isinstance(n, dict)]
+    generar_paginas_og(_notas_og_filtradas)
+
     print(f"\n  Publicando en Telegram...")
     for nota in notas_tapa_redes:
         publicar_telegram(nota)
@@ -1688,21 +1705,7 @@ def main():
     print(f"\n  Actualizando índice de búsqueda...")
     actualizar_search_index()
 
-    print(f"\n  Generando páginas OG para compartir...")
-    _notas_og = [tapa] + secundarias + [n for n in [deportes, negocios, cultura, turismo] if n]
-    try:
-        with open(os.path.join(os.path.dirname(__file__), "propios.json"), encoding="utf-8") as _f:
-            _notas_og += json.load(_f)
-    except Exception:
-        pass
-    try:
-        with open(os.path.join(os.path.dirname(__file__), "historias.json"), encoding="utf-8") as _f:
-            _hist = json.load(_f)
-            _notas_og += _hist["notas"] if isinstance(_hist, dict) else _hist
-    except Exception:
-        pass
-    _notas_og_filtradas = [n for n in _notas_og if isinstance(n, dict)]
-    generar_paginas_og(_notas_og_filtradas)
+    # _notas_og_filtradas ya fue generado antes de publicar en redes
 
     print(f"\n  Actualizando archivo estático en index.html...")
     actualizar_archivo_en_index(_notas_og_filtradas)
@@ -2396,7 +2399,7 @@ def publicar_telegram(tapa):
 
     banderas = {"argentina": "🇦🇷", "chile": "🇨🇱", "ambos": "🇦🇷🇨🇱", "malvinas": "🗺️"}
     bandera  = banderas.get(pais, "")
-    link     = f"https://globalpatagonia.org/nota.html?id={nota_id}"
+    link     = f"https://globalpatagonia.org/notas/{nota_id}.html"
 
     # HTML es más seguro que Markdown para caracteres especiales
     caption = (
@@ -2470,7 +2473,7 @@ def publicar_telegram_informe_nuevo():
     bajada = informe.get("bajada", "")
     imagen = informe.get("imagen", "")
     tag    = informe.get("tag", "📋 Informe")
-    link   = f"https://globalpatagonia.org/nota.html?id={informe_id}"
+    link   = f"https://globalpatagonia.org/notas/{informe_id}.html"
 
     caption = (
         f"{tag}\n\n"
@@ -2606,7 +2609,7 @@ def publicar_facebook(tapa):
 
     banderas = {"argentina": "🇦🇷", "chile": "🇨🇱", "ambos": "🇦🇷🇨🇱", "malvinas": "🗺️"}
     bandera  = banderas.get(pais, "")
-    link     = f"https://globalpatagonia.org/nota.html?id={nota_id}"
+    link     = f"https://globalpatagonia.org/notas/{nota_id}.html"
 
     mensaje = (
         f"{bandera} {titulo}\n\n"
@@ -2725,7 +2728,7 @@ def publicar_facebook_informe_nuevo():
     bajada = informe.get("bajada", "")
     imagen = informe.get("imagen", "")
     tag    = informe.get("tag", "📋 Informe")
-    link   = f"https://globalpatagonia.org/nota.html?id={informe_id}"
+    link   = f"https://globalpatagonia.org/notas/{informe_id}.html"
 
     mensaje = (
         f"{tag} {titulo}\n\n"
@@ -2814,7 +2817,7 @@ def _nl_seccion_html(label, nota, color_label="#7aadcc"):
     titulo  = nota.get("titulo", "")
     bajada  = nota.get("bajada", "")
     imagen  = nota.get("imagen", "")
-    link    = f"https://globalpatagonia.org/nota.html?id={n_id}"
+    link    = f"https://globalpatagonia.org/notas/{n_id}.html"
     if imagen and not imagen.startswith("http"):
         imagen = f"https://globalpatagonia.org/{imagen}"
     img_tag = f'<img src="{imagen}" alt="" width="520" style="width:100%;max-width:520px;height:220px;object-fit:cover;display:block;border-radius:4px;margin-bottom:14px;" />' if imagen else ""
@@ -2925,7 +2928,7 @@ def enviar_newsletter():
     tapa_titulo = tapa.get("titulo", "")
     tapa_bajada = tapa.get("bajada", "")
     tapa_imagen = tapa.get("imagen", "")
-    tapa_link   = f"https://globalpatagonia.org/nota.html?id={tapa_id}"
+    tapa_link   = f"https://globalpatagonia.org/notas/{tapa_id}.html"
     if tapa_imagen and not tapa_imagen.startswith("http"):
         tapa_imagen = f"https://globalpatagonia.org/{tapa_imagen}"
     tapa_img_tag = f'<img src="{tapa_imagen}" alt="" width="520" style="width:100%;max-width:520px;height:auto;display:block;border-radius:4px;margin-bottom:20px;" />' if tapa_imagen else ""
@@ -2935,7 +2938,7 @@ def enviar_newsletter():
     for s in secundarias:
         s_id    = s.get("id", "")
         s_tit   = s.get("titulo", "")
-        s_link  = f"https://globalpatagonia.org/nota.html?id={s_id}"
+        s_link  = f"https://globalpatagonia.org/notas/{s_id}.html"
         sec_rows += (
             f'<tr><td style="padding:10px 0;border-bottom:1px solid #e8e4de;">'
             f'<a href="{s_link}" style="font-family:Inter,sans-serif;font-size:0.93rem;color:#1c2d3d;'
@@ -2954,7 +2957,7 @@ def enviar_newsletter():
         inf_id    = informe_nota.get("id", "")
         inf_tit   = informe_nota.get("titulo", "")
         inf_baj   = informe_nota.get("bajada", "")
-        inf_link  = f"https://globalpatagonia.org/nota.html?id={inf_id}"
+        inf_link  = f"https://globalpatagonia.org/notas/{inf_id}.html"
         informe_block = f"""
         <tr><td style="padding:28px 40px 0 40px;border-top:1px solid #e8e4de;">
           <div style="background:#f0ede8;border-left:4px solid #7aadcc;padding:20px 24px;border-radius:4px;">
