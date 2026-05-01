@@ -13,19 +13,6 @@
     "descripcion": "Muestra de artes visuales en el MPArtes. Una de las varias exposiciones que la institución pampeana propone durante el otoño cultural 2026."
   },
   {
-    "id": "danzarium-bariloche-2026",
-    "titulo": "Danzarium Bariloche",
-    "fecha": "2026-04-24",
-    "fecha_fin": "2026-04-30",
-    "fecha_display": "24 al 30 de abril",
-    "lugar": "San Carlos de Bariloche",
-    "region": "Río Negro, Argentina",
-    "pais": "AR",
-    "categoria": "cultura",
-    "emoji": "💃",
-    "descripcion": "Encuentro internacional de danza en Bariloche. Compañías, talleres y funciones que convierten a la ciudad en capital de la danza patagónica durante una semana."
-  },
-  {
     "id": "chef-patagonico-2026",
     "titulo": "Festival Provincial del Chef Patagónico",
     "fecha": "2026-04-28",
