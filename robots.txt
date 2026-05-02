@@ -1,9 +1,7 @@
 User-agent: *
 Allow: /
 
-# Renderizadores JS — el contenido canónico está en /notas/*.html
-Disallow: /nota.html
-Disallow: /guia.html
+# Páginas JS dinámicas — noindex en el HTML, canonical apunta a /notas/*.html
 Disallow: /buscar.html
 
 Sitemap: https://globalpatagonia.org/sitemap.xml
