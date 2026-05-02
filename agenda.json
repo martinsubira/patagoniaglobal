@@ -13,19 +13,6 @@
     "descripcion": "Muestra de artes visuales en el MPArtes. Una de las varias exposiciones que la institución pampeana propone durante el otoño cultural 2026."
   },
   {
-    "id": "chef-patagonico-2026",
-    "titulo": "Festival Provincial del Chef Patagónico",
-    "fecha": "2026-04-28",
-    "fecha_fin": "2026-05-01",
-    "fecha_display": "28 de abril al 1 de mayo",
-    "lugar": "Villa Pehuenia-Moquehue, Neuquén",
-    "region": "Neuquén, Argentina",
-    "pais": "AR",
-    "categoria": "gastronomia",
-    "emoji": "🍽️",
-    "descripcion": "Encuentro gastronómico en la orilla del lago Aluminé. Chefs patagónicos compiten con productos de la región en uno de los destinos más hermosos del Neuquén andino."
-  },
-  {
     "id": "fiesta-chef-patagonico-pehuenia-2026",
     "titulo": "Fiesta Nacional del Chef Patagónico",
     "fecha": "2026-05-01",
@@ -37,6 +24,19 @@
     "categoria": "gastronomia",
     "emoji": "👨‍🍳",
     "descripcion": "Fiesta Nacional del Chef Patagónico en Villa Pehuenia-Moquehue, un evento gastronómico que reúne a chefs de toda la Patagonia durante tres jornadas de cocina, degustaciones y actividades en un entorno de bosques y lagos cordilleranos."
+  },
+  {
+    "id": "torneo-regional-pato-naves-puerto-deseado-2026",
+    "titulo": "3ª Edición del Torneo Regional Patricia \"Pato\" Naves",
+    "fecha": "2026-05-02",
+    "fecha_fin": "2026-05-03",
+    "fecha_display": "2 y 3 de mayo",
+    "lugar": "Puerto Deseado",
+    "region": "Santa Cruz, Argentina",
+    "pais": "AR",
+    "categoria": "deportes",
+    "emoji": "⚽",
+    "descripcion": "Tercera edición del Torneo Regional Patricia \"Pato\" Naves en Puerto Deseado, con la participación de dieciséis equipos de la zona, incluyendo representantes de Caleta Olivia, Pico Truncado, Las Heras y Comodoro. Organizado por el Grupo Arbitral CAFS 2026."
   },
   {
     "id": "triatlon-golfo-nuevo-2026",
