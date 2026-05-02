@@ -1181,6 +1181,134 @@ def guardar_json(datos):
     print(f"\n  ✓ noticias.json guardado")
 
 
+def inyectar_tapa_en_index(datos):
+    """Inyecta HTML de tapa+secundarias+8 noticias directamente en index.html.
+    Elimina la dependencia de JS para el above-the-fold, reduciendo LCP ~3.9s → ~1.5s."""
+    import html as htmllib
+
+    base = os.path.dirname(__file__)
+    index_path = os.path.join(base, "index.html")
+    if not os.path.exists(index_path):
+        return
+
+    with open(index_path, encoding="utf-8") as f:
+        contenido = f.read()
+
+    if "<!-- TAPA-STATIC-START -->" not in contenido:
+        print("  ⚠ Marcadores TAPA-STATIC no encontrados en index.html — omitiendo inyección")
+        return
+
+    def e(s):
+        return htmllib.escape(str(s or ""))
+
+    def bandera_html(pais):
+        if pais == "chile":  return '<span style="font-size:11px;opacity:0.8;">🇨🇱</span> '
+        if pais == "ambos":  return '<span style="font-size:11px;opacity:0.8;">🇦🇷🇨🇱</span> '
+        return '<span style="font-size:11px;opacity:0.8;">🇦🇷</span> '
+
+    def norm_tag(t):
+        return re.sub(r"medio ambiente", "Ambiente", str(t or ""), flags=re.IGNORECASE)
+
+    def fecha_desde_id(nid):
+        m = re.match(r'^(\d{4})(\d{2})(\d{2})', nid or '')
+        return f"{m.group(3)}/{m.group(2)}/{m.group(1)}" if m else ""
+
+    t         = datos.get("tapa", {})
+    s         = datos.get("secundarias", [])[:2]
+    noticias  = datos.get("noticias", [])[:8]
+
+    CARD_COLORS = ["card-azul", "card-verde", "card-gris", "card-cafe"]
+    SEC_COLORS  = ["nota-sec-1", "nota-sec-2"]
+    TAG_CLASSES = {
+        "turismo": "tag-turismo", "aventura": "tag-social", "deportes": "tag-social",
+        "medio ambiente": "tag-turismo", "ambiente": "tag-turismo",
+        "social": "tag-social", "policial": "tag-policial",
+        "política": "tag-social", "economía": "tag-social",
+        "historia": "tag-historia", "pesca": "tag-turismo", "general": "tag-social",
+    }
+
+    # ── Preload estático en <head> ────────────────────────────────────────────
+    preload_html = ""
+    if t.get("imagen"):
+        preload_html = f'<link rel="preload" as="image" href="{e(t["imagen"])}">'
+
+    # ── Tapa principal ────────────────────────────────────────────────────────
+    tapa_img = t.get("imagen", "")
+    if tapa_img:
+        tapa_bg  = f"background-image:url('{e(tapa_img)}');background-size:cover;background-position:center;"
+        tapa_cls = "img-cover"
+    else:
+        tapa_bg  = "background:linear-gradient(160deg,#0e1a26 0%,#1c2d3d 45%,#4a7a9a 100%);"
+        tapa_cls = "img-placeholder"
+
+    tapa_id = e(t.get("id", "tapa"))
+    tapa_html = f"""
+    <div class="nota-tapa" onclick="irANota('{tapa_id}')">
+      <div class="{tapa_cls}" style="width:100%;height:480px;display:block;{tapa_bg}"></div>
+      <div class="nota-overlay">
+        <div class="tag">{norm_tag(t.get("tag")) or "🗞️ Tapa"}</div>
+        <h3>{e(t.get("titulo", ""))}</h3>
+        <p>{bandera_html(t.get("pais"))}{e(t.get("bajada", ""))}</p>
+      </div>
+    </div>"""
+
+    for i, n in enumerate(s):
+        sec_img = n.get("imagen", "")
+        sec_bg  = f"background-image:url('{e(sec_img)}');background-size:cover;background-position:center;" if sec_img else ""
+        sec_cls = SEC_COLORS[i] if i < len(SEC_COLORS) else ""
+        sec_id  = e(n.get("id", f"sec{i+1}"))
+        tapa_html += f"""
+    <div class="nota-secundaria" onclick="irANota('{sec_id}')">
+      <div class="img-placeholder {sec_cls}" style="width:100%;height:238px;{sec_bg}"></div>
+      <div class="nota-overlay">
+        <div class="tag">{norm_tag(n.get("tag")) or "🗞️ Noticias"}</div>
+        <h3>{e(n.get("titulo", ""))}</h3>
+        <p>{bandera_html(n.get("pais"))}{e(n.get("bajada", ""))}</p>
+      </div>
+    </div>"""
+
+    # ── 8 noticias de la semana ───────────────────────────────────────────────
+    noticias_html = ""
+    for i, n in enumerate(noticias):
+        color_cls = CARD_COLORS[i % len(CARD_COLORS)]
+        cat       = (n.get("categoria") or n.get("tag") or "").lower()
+        tag_cls   = TAG_CLASSES.get(cat, "tag-social")
+        img       = n.get("imagen", "")
+        bg        = f"background-image:url('{e(img)}');background-size:cover;background-position:center;" if img else ""
+        nid       = e(n.get("id", f"n{i+1}"))
+        tag_txt   = norm_tag(n.get("tag", ""))
+        noticias_html += f"""
+    <div class="noticia-card" onclick="irANota('{nid}')">
+      <div class="card-img {color_cls}" style="{bg}"></div>
+      <div class="card-body">
+        <div class="card-tag {tag_cls}">{tag_txt}</div>
+        <h3>{e(n.get("titulo", ""))}</h3>
+        <div class="card-meta">{bandera_html(n.get("pais"))} · {fecha_desde_id(n.get("id")) or e(n.get("meta", ""))}</div>
+      </div>
+    </div>"""
+
+    # ── Aplicar los tres reemplazos ───────────────────────────────────────────
+    nuevo = re.sub(
+        r"<!-- TAPA-PRELOAD-START -->.*?<!-- TAPA-PRELOAD-END -->",
+        f"<!-- TAPA-PRELOAD-START -->{preload_html}<!-- TAPA-PRELOAD-END -->",
+        contenido, flags=re.DOTALL
+    )
+    nuevo = re.sub(
+        r"<!-- TAPA-STATIC-START -->.*?<!-- TAPA-STATIC-END -->",
+        f"<!-- TAPA-STATIC-START -->{tapa_html}\n  <!-- TAPA-STATIC-END -->",
+        nuevo, flags=re.DOTALL
+    )
+    nuevo = re.sub(
+        r"<!-- NOTICIAS-STATIC-START -->.*?<!-- NOTICIAS-STATIC-END -->",
+        f"<!-- NOTICIAS-STATIC-START -->{noticias_html}\n  <!-- NOTICIAS-STATIC-END -->",
+        nuevo, flags=re.DOTALL
+    )
+
+    with open(index_path, "w", encoding="utf-8") as f:
+        f.write(nuevo)
+    print(f"  Tapa inyectada en index.html ✓ ({len(noticias)} noticias semana)")
+
+
 # ══════════════════════════════════════════════════════════
 #  AGENDA
 # ══════════════════════════════════════════════════════════
@@ -1603,6 +1731,10 @@ def main():
 
     guardar_json(datos)
     print(f"  Feed: tapa + {len(datos['secundarias'])} sec + {len(datos['noticias'])} noticias semana")
+
+    # 7c. Inyectar tapa+noticias en index.html para eliminar LCP dependiente de JS
+    print(f"\n  Inyectando tapa en index.html...")
+    inyectar_tapa_en_index(datos)
 
     # 8. Agenda
     print(f"\n  Actualizando agenda...")

@@ -66,13 +66,8 @@
       gtag('config', 'G-5FP2F41BZG');
     });
   </script>
-  <!-- Preload imagen tapa: fetch anticipado para que el browser descargue la imagen antes de renderizar el JS -->
-  <script>
-    fetch('/noticias.json').then(function(r){return r.json();}).then(function(d){
-      var img = (d.tapa||{}).imagen;
-      if(img){var l=document.createElement('link');l.rel='preload';l.as='image';l.href=img;document.head.appendChild(l);}
-    }).catch(function(){});
-  </script>
+  <!-- Preload imagen tapa — inyectado por actualizar_noticias.py -->
+  <!-- TAPA-PRELOAD-START --><link rel="preload" as="image" href="fotos/torres-del-paine.webp"><!-- TAPA-PRELOAD-END -->
   <meta name="twitter:title" content="GLOBALpatagonia — Noticias de la Patagonia Argentina y Chilena"/>
   <meta name="twitter:description" content="El primer medio digital panpatagónico. Medio ambiente, deportes, cultura y pueblos originarios de la Patagonia sin fronteras."/>
   <meta name="twitter:image" content="https://globalpatagonia.org/fotos/torres-del-paine.webp"/>
@@ -1286,7 +1281,7 @@
 <!-- TOP BAR -->
 <header>
   <div class="top-bar">
-    <span class="fecha" id="fecha-display">Jueves, 30 de Abril de 2026 · Patagonia Argentina y Chilena</span>
+    <span class="fecha" id="fecha-display">Sábado, 2 de Mayo de 2026 · Patagonia Argentina y Chilena</span>
     <span class="clima">🌤 Bariloche 12° · Neuquén 18° · Punta Arenas 8° · Puerto Montt 14°</span>
   </div>
   <div class="header-main">
@@ -1327,7 +1322,7 @@
 <div class="ticker">
   <div class="ticker-label">⚡ AHORA</div>
   <div class="ticker-text" id="ticker-texto">
-    CONAF ADELANTA EL INVIERNO EN TORRES DEL PAINE: guía especializado y microcrampones obligatorios desde el 27 de abril · PATAGONIA RUN 2026 cerró su 16ª edición con seis mil corredores y USD 60M de impacto económico en San Martín de los Andes · NUEVO SISTEMA TARIFARIO entra en vigencia en Torres del Paine desde el 1º de mayo · EMERGENCIA PATAGÓNICA: el Senado argentino debate declarar emergencia ambiental y económica en Río Negro, Chubut, Neuquén y Santa Cruz · VENDAVALES CULTURALES: Magallanes activa circuito de encuentros regionales en Punta Arenas
+    FIESTA NACIONAL DEL CHEF PATAGÓNICO: Villa Pehuenia celebra su 20ª edición con chefs de ambos lados de la cordillera y Dolli Irigoyen como madrina · PATAGONIA CAMP CUP 9ª EDICIÓN: hoy corren los 42 km entre los bosques otoñales de Torres del Paine · TORRES DEL PAINE ESTRENA SISTEMA TARIFARIO desde el 1° de mayo con nuevas modalidades de acceso y exigencias invernales · JUEGOS EPADE 2026: Neuquén, Río Negro y La Pampa se enfrentan en el gran torneo patagónico del 11 al 23 de mayo · CONICET ANALIZA el rol del cambio climático detrás de los incendios patagónicos de 2026 · PATAGONIA BARILOCHE BY UTMB: inscripciones abiertas para la edición más esperada del trail running norpatagónico
   </div>
 </div>
 
@@ -1341,13 +1336,14 @@
   </div>
 
   <div class="tapa-grid" id="tapa-grid">
+  <!-- TAPA-STATIC-START -->
     <!-- Nota principal -->
     <div class="nota-tapa">
-      <div class="img-placeholder" style="background-image:url('https://images.unsplash.com/photo-1531168556467-80aace0d0144?w=1000&q=85&fit=crop&crop=center');background-size:cover;background-position:center;"></div>
+      <div class="img-placeholder" style="background-image:url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1000&q=85&fit=crop&crop=center');background-size:cover;background-position:center;"></div>
       <div class="nota-overlay">
-        <div class="tag">🏔️ Aventura</div>
-        <h3>CONAF adelanta el invierno en Torres del Paine: guía especializado y equipo técnico obligatorios desde el 27 de abril</h3>
-        <p>La Corporación Nacional Forestal de Magallanes anticipó la temporada invernal por las condiciones meteorológicas extremas. El circuito W y el sendero Base Torres ya solo se recorren con guía habilitado, microcrampones y equipo de seguridad.</p>
+        <div class="tag">🍳 Gastronomía</div>
+        <h3>El sabor de la Patagonia explota en Villa Pehuenia: la Fiesta del Chef Patagónico celebra su vigésima edición con cocineros de ambos lados de la cordillera</h3>
+        <p>Durante tres días, Villa Pehuenia se convierte en la capital culinaria del sur. La 20ª edición reúne chefs de las cinco provincias argentinas, representantes chilenos y la presencia estelar de Dolli Irigoyen como madrina del festival más importante de la gastronomía patagónica.</p>
       </div>
     </div>
 
@@ -1356,20 +1352,21 @@
       <div class="img-placeholder nota-sec-1" style="background-image:url('https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=700&q=80&fit=crop&crop=center');background-size:cover;background-position:center;"></div>
       <div class="nota-overlay">
         <div class="tag">🏃 Trail Running</div>
-        <h3>El Patagonia Run 2026 cerró su 16ª edición con seis mil corredores y un impacto récord en San Martín de los Andes</h3>
-        <p>La carrera de montaña más importante del continente movilizó cerca de 20.000 personas durante cinco días y dejó USD 60 millones en derrame económico para la cuenca del Lanín.</p>
+        <h3>El otoño corre entre lengas doradas: la Patagonia Camp Cup celebra hoy su 9ª edición con 42 km junto a los Cuernos del Paine</h3>
+        <p>Este 2 de mayo, los bosques de lenga y coigüe de Torres del Paine reciben a cientos de corredores de todo el mundo para una travesía que combina paisaje austral extremo con el desafío físico de las distancias de 5, 15, 21 y 42 kilómetros.</p>
       </div>
     </div>
 
     <!-- Nota secundaria 2 -->
     <div class="nota-secundaria">
-      <div class="img-placeholder nota-sec-2" style="background-image:url('https://images.unsplash.com/photo-1612392166886-ee8475b03af2?w=700&q=80&fit=crop&crop=center');background-size:cover;background-position:center;"></div>
+      <div class="img-placeholder nota-sec-2" style="background-image:url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=700&q=80&fit=crop&crop=center');background-size:cover;background-position:center;"></div>
       <div class="nota-overlay">
-        <div class="tag">🏛️ Política</div>
-        <h3>Emergencia patagónica: el Senado debate un proyecto que declara crisis ambiental, económica y habitacional en cuatro provincias</h3>
-        <p>La iniciativa apunta a Río Negro, Chubut, Neuquén y Santa Cruz, en respuesta a una temporada marcada por incendios masivos, caída del turismo y tensiones productivas en toda la región.</p>
+        <div class="tag">🏛️ Chile</div>
+        <h3>Torres del Paine estrena sistema tarifario: más opciones de acceso, mayor control del flujo y nuevas exigencias para rutas invernales</h3>
+        <p>Desde el 1° de mayo, CONAF implementa una estructura diferenciada con entradas diarias y de varios días, tarifas ajustadas para chilenos y extranjeros, y controles especiales para los senderos más exigentes de la temporada fría.</p>
       </div>
     </div>
+  <!-- TAPA-STATIC-END -->
   </div>
 
   <!-- ══ NOTICIAS DEL DÍA ══ -->
@@ -1380,38 +1377,40 @@
   </div>
 
   <div class="noticias-grid" id="noticias-grid">
+  <!-- NOTICIAS-STATIC-START -->
     <div class="noticia-card">
-      <div class="card-img card-azul" style="background-image:url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=75&fit=crop&crop=center');background-size:cover;background-position:center;"></div>
+      <div class="card-img card-azul" style="background-image:url('https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=400&q=75&fit=crop&crop=center');background-size:cover;background-position:center;"></div>
       <div class="card-body">
-        <div class="card-tag tag-turismo">· Turismo · Chile ·</div>
-        <h3>Nuevo sistema tarifario en Torres del Paine: las reglas que ordenarán el ingreso al parque desde el 1° de mayo</h3>
-        <div class="card-meta">29 de Abril · Magallanes</div>
+        <div class="card-tag tag-turismo">· Deportes · Neuquén ·</div>
+        <h3>Los Juegos EPADE 2026 llegan a la Patagonia: Neuquén alberga natación, atletismo y handball del 11 al 23 de mayo</h3>
+        <div class="card-meta">2 de Mayo · Neuquén · Río Negro · La Pampa</div>
       </div>
     </div>
     <div class="noticia-card">
-      <div class="card-img card-verde" style="background-image:url('https://images.unsplash.com/photo-1505765050516-f72dcac9c60e?w=400&q=75&fit=crop&crop=center');background-size:cover;background-position:center;"></div>
+      <div class="card-img card-verde" style="background-image:url('https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=400&q=75&fit=crop&crop=center');background-size:cover;background-position:center;"></div>
       <div class="card-body">
-        <div class="card-tag tag-historia">· Cultura · Magallanes ·</div>
-        <h3>Vendavales Culturales: Magallanes activa un encuentro regional que pone la identidad austral en el centro de la escena</h3>
-        <div class="card-meta">28 de Abril · Punta Arenas</div>
+        <div class="card-tag tag-historia">· Medio Ambiente · Patagonia ·</div>
+        <h3>No fue el viento, fue el clima: CONICET revela cómo el cambio climático potenció los incendios patagónicos de 2026</h3>
+        <div class="card-meta">Mayo 2026 · Patagonia Argentina</div>
       </div>
     </div>
     <div class="noticia-card">
-      <div class="card-img card-cafe" style="background-image:url('https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=400&q=75&fit=crop&crop=center');background-size:cover;background-position:center;"></div>
+      <div class="card-img card-cafe" style="background-image:url('https://images.unsplash.com/photo-1487730116645-74489c55fd6c?w=400&q=75&fit=crop&crop=center');background-size:cover;background-position:center;"></div>
       <div class="card-body">
-        <div class="card-tag tag-policial">· Clima · Norpatagonia ·</div>
-        <h3>Alerta amarilla: viento, lluvia y nevadas cierran abril en la cordillera norpatagónica con ráfagas de hasta 90 km/h</h3>
-        <div class="card-meta">Abril 2026 · Bariloche · Neuquén</div>
+        <div class="card-tag tag-policial">· Trail Running · Bariloche ·</div>
+        <h3>Patagonia Bariloche by UTMB: la carrera más ambiciosa del sur argentino abre inscripciones para su edición más convocante</h3>
+        <div class="card-meta">Mayo 2026 · Río Negro</div>
       </div>
     </div>
     <div class="noticia-card">
-      <div class="card-img card-gris" style="background-image:url('https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=400&q=75&fit=crop&crop=center');background-size:cover;background-position:center;"></div>
+      <div class="card-img card-gris" style="background-image:url('https://images.unsplash.com/photo-1612392166886-ee8475b03af2?w=400&q=75&fit=crop&crop=center');background-size:cover;background-position:center;"></div>
       <div class="card-body">
-        <div class="card-tag tag-social">· Turismo · Bariloche ·</div>
-        <h3>Bariloche enfrenta una de las temporadas más complejas de su historia: la capital del turismo argentino busca reinventarse</h3>
-        <div class="card-meta">Abril 2026 · Río Negro</div>
+        <div class="card-tag tag-social">· Turismo · Chile ·</div>
+        <h3>Salares, volcanes y bosques únicos: Chile Travel revela los destinos patagónicos imperdibles para la temporada 2026</h3>
+        <div class="card-meta">Mayo 2026 · Patagonia Chilena</div>
       </div>
     </div>
+  <!-- NOTICIAS-STATIC-END -->
   </div>
 
   <div class="divider" style="margin:24px 0;"></div>
@@ -2065,12 +2064,9 @@ fetch("noticias.json")
   .then(data => {
     renderFecha(data);
     renderTicker(data);
-    renderTapa(data);
-    renderNoticias(data);
+    // tapa y noticias ya están inyectados en el HTML por el Action
   })
-  .catch(() => {
-    // Si no hay noticias.json, el sitio muestra el contenido hardcodeado. OK.
-  });
+  .catch(() => {});
 
 // Turismo: archivo separado, se actualiza manualmente los domingos
 fetch("turismo.json")
