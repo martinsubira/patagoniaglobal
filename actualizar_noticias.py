@@ -1713,6 +1713,9 @@ def main():
     print(f"\n  Generando páginas de temas...")
     generar_paginas_temas(_notas_og_filtradas)
 
+    print(f"\n  Generando feed RSS...")
+    generar_feed_rss()
+
     print(f"\n  Actualizando sitemap...")
     actualizar_sitemap()
 
@@ -2198,6 +2201,128 @@ def actualizar_archivo_en_index(notas):
     with open(index_path, "w", encoding="utf-8") as f:
         f.write(nuevo)
     print(f"  Archivo estático: {len(links)} links en index.html")
+
+
+# ══════════════════════════════════════════════════════════
+#  RSS FEED (Google News / lectores RSS)
+# ══════════════════════════════════════════════════════════
+
+def generar_feed_rss():
+    """Genera feed.xml con las últimas 50 noticias — compatible con Google News."""
+    import xml.etree.ElementTree as ET
+    from email.utils import format_datetime
+    from datetime import timezone
+
+    base = os.path.dirname(__file__)
+
+    def fecha_rfc2822(nota_id):
+        try:
+            yyyymmdd = nota_id[:8]
+            dt = datetime.strptime(yyyymmdd, "%Y%m%d").replace(
+                hour=9, tzinfo=timezone.utc
+            )
+            return format_datetime(dt)
+        except Exception:
+            return format_datetime(datetime.now(tz=timezone.utc))
+
+    def imagen_abs(img):
+        if not img:
+            return "https://globalpatagonia.org/fotos/torres-del-paine.webp"
+        if img.startswith("http"):
+            return img
+        return f"https://globalpatagonia.org/{img}"
+
+    # Recolectar notas únicas (noticias.json primero, luego historial.json)
+    vistas = set()
+    notas = []
+
+    def agregar(n):
+        nid = n.get("id", "")
+        if not nid or nid in vistas:
+            return
+        vistas.add(nid)
+        notas.append(n)
+
+    try:
+        with open(os.path.join(base, "noticias.json"), encoding="utf-8") as f:
+            nj = json.load(f)
+        tapa = nj.get("tapa") or {}
+        if tapa.get("id"):
+            agregar(tapa)
+        for n in (nj.get("secundarias") or []):
+            agregar(n)
+        for n in (nj.get("ticker") or []):
+            agregar(n)
+    except Exception:
+        pass
+
+    try:
+        with open(os.path.join(base, "historial.json"), encoding="utf-8") as f:
+            hist = json.load(f)
+        for n in hist[:80]:
+            agregar(n)
+    except Exception:
+        pass
+
+    notas = notas[:50]
+
+    # Construir XML con string (para control fino de namespaces)
+    lines = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<rss version="2.0"',
+        '  xmlns:media="http://search.yahoo.com/mrss/"',
+        '  xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">',
+        '  <channel>',
+        '    <title>GLOBALpatagonia</title>',
+        '    <link>https://globalpatagonia.org/</link>',
+        '    <description>Sur Global, principio de todo. Noticias de la Patagonia argentina y chilena.</description>',
+        '    <language>es-ar</language>',
+        '    <managingEditor>ficciontvpatagonia@gmail.com (GLOBALpatagonia)</managingEditor>',
+        '    <webMaster>ficciontvpatagonia@gmail.com</webMaster>',
+        f'    <lastBuildDate>{format_datetime(datetime.now(tz=timezone.utc))}</lastBuildDate>',
+        '    <image>',
+        '      <url>https://globalpatagonia.org/logo-globalpatagonia.png</url>',
+        '      <title>GLOBALpatagonia</title>',
+        '      <link>https://globalpatagonia.org/</link>',
+        '    </image>',
+    ]
+
+    import html as htmllib
+    for n in notas:
+        nid  = n.get("id", "")
+        url  = f"https://globalpatagonia.org/nota.html?id={nid}"
+        titulo  = htmllib.escape(n.get("titulo", ""))
+        bajada  = htmllib.escape(n.get("bajada", n.get("titulo", "")))
+        pub     = fecha_rfc2822(nid)
+        img     = imagen_abs(n.get("imagen", ""))
+        fuente  = htmllib.escape(n.get("fuente", "GLOBALpatagonia"))
+
+        lines += [
+            '    <item>',
+            f'      <title>{titulo}</title>',
+            f'      <link>{url}</link>',
+            f'      <guid isPermaLink="true">{url}</guid>',
+            f'      <description>{bajada}</description>',
+            f'      <pubDate>{pub}</pubDate>',
+            f'      <author>ficciontvpatagonia@gmail.com ({fuente})</author>',
+            f'      <media:content url="{img}" medium="image"/>',
+            '      <news:news>',
+            '        <news:publication>',
+            '          <news:name>GLOBALpatagonia</news:name>',
+            '          <news:language>es</news:language>',
+            '        </news:publication>',
+            f'        <news:publication_date>{pub}</news:publication_date>',
+            f'        <news:title>{titulo}</news:title>',
+            '      </news:news>',
+            '    </item>',
+        ]
+
+    lines += ['  </channel>', '</rss>']
+
+    feed_path = os.path.join(base, "feed.xml")
+    with open(feed_path, "w", encoding="utf-8") as f:
+        f.write("\n".join(lines))
+    print(f"  feed.xml generado — {len(notas)} artículos")
 
 
 # ══════════════════════════════════════════════════════════
