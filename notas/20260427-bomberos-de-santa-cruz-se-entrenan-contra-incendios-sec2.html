@@ -98,6 +98,18 @@
     .rel-titulo{font-size:13px;font-weight:600;line-height:1.35;color:#252830;}
     @media(max-width:600px){.relacionadas-grid{grid-template-columns:1fr 1fr;}}
     @media(max-width:480px){.relacionadas-grid{grid-template-columns:1fr;}}
+  
+    /* COMPARTIR */
+    .compartir-bloque{margin:32px 0 8px;}
+    .compartir-label-s{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#7a7a7a;display:block;margin-bottom:10px;}
+    .compartir-btns{display:flex;flex-wrap:wrap;gap:8px;}
+    .btn-c{display:inline-flex;align-items:center;gap:5px;padding:8px 14px;border-radius:3px;font-size:12px;font-weight:600;text-decoration:none;cursor:pointer;border:none;transition:opacity 0.2s;color:white;}
+    .btn-c:hover{opacity:0.85;}
+    .btn-c-wa{background:#25D366;}
+    .btn-c-x{background:#000;}
+    .btn-c-fb{background:#1877F2;}
+    .btn-c-mail{background:#555;}
+    .btn-c-copy{background:#3a5a7a;}
   </style>
 </head>
 <body>
@@ -143,7 +155,8 @@
       <div class="relacionadas-titulo">También te puede interesar</div>
       <div class="relacionadas-grid"><a class="rel-card" href="/notas/20260426-santa-cruz-respalda-la-reforma-de-la-ley-de-glaciares-tapa.html"><img class="rel-img" src="https://globalpatagonia.org/fotos/foto-20260426-santa-cruz-respalda-la-reforma-de-la-ley-de-glaciares-tapa.jpg" alt="Santa Cruz respalda la reforma de la Ley de Glaciares y desafía al Poder Judicial" onerror="this.style.display='none'"><div class="rel-body"><div class="rel-tag">Ambiente</div><div class="rel-titulo">Santa Cruz respalda la reforma de la Ley de Glaciares y desafía al Poder Judicial</div></div></a><a class="rel-card" href="/notas/20260406-propio-ballenas-chiloe.html"><img class="rel-img" src="https://globalpatagonia.org/fotos/ballena.webp" alt="El mayor santuario de ballenas azules del mundo está en Chiloé — y un drone lo está documentando por primera vez" onerror="this.style.display='none'"><div class="rel-body"><div class="rel-tag">Ambiente</div><div class="rel-titulo">El mayor santuario de ballenas azules del mundo está en Chiloé — y un drone lo está documentando por primera vez</div></div></a><a class="rel-card" href="/notas/20260423-tierra-del-fuego-prohibe-cultivo-de-salmonidos-en-el-tapa.html"><img class="rel-img" src="https://globalpatagonia.org/fotos/foto-20260423-tierra-del-fuego-prohibe-cultivo-de-salmonidos-en-el-tapa.webp" alt="Tierra del Fuego prohíbe cultivo de salmónidos en el Canal Beagle" onerror="this.style.display='none'"><div class="rel-body"><div class="rel-tag">Ambiente</div><div class="rel-titulo">Tierra del Fuego prohíbe cultivo de salmónidos en el Canal Beagle</div></div></a></div>
     </div>
-    <a href="../" class="ver-completo">← Más noticias en GLOBALpatagonia</a>
+        <a href="../" class="ver-completo">← Más noticias en GLOBALpatagonia</a>
+    <div class="compartir-bloque" id="compartir-bloque"></div>
   </article>
 </div>
 
@@ -153,5 +166,25 @@
   <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-top:4px;">Argentina · Chile · Sin fronteras</div>
   <div class="footer-copy">© 2026 GLOBALpatagonia · globalpatagonia.org</div>
 </footer>
+
+<script>
+(function(){
+  var href = encodeURIComponent(window.location.href);
+  var titulo = encodeURIComponent(document.title.replace(' — GLOBALpatagonia','').replace(' - GLOBALpatagonia',''));
+  var mailSubject = encodeURIComponent(document.title.replace(' — GLOBALpatagonia','').replace(' - GLOBALpatagonia',''));
+  var mailBody = encodeURIComponent(document.title + '\n' + window.location.href);
+  var div = document.getElementById('compartir-bloque');
+  if (!div) return;
+  div.innerHTML =
+    '<span class="compartir-label-s">Compartir</span>' +
+    '<div class="compartir-btns">' +
+    '<a class="btn-c btn-c-wa" href="https://wa.me/?text='+titulo+'%20'+href+'" target="_blank" rel="noopener">WhatsApp</a>' +
+    '<a class="btn-c btn-c-x" href="https://twitter.com/intent/tweet?text='+titulo+'&url='+href+'" target="_blank" rel="noopener">X</a>' +
+    '<a class="btn-c btn-c-fb" href="https://www.facebook.com/sharer/sharer.php?u='+href+'" target="_blank" rel="noopener">Facebook</a>' +
+    '<a class="btn-c btn-c-mail" href="mailto:?subject='+mailSubject+'&body='+mailBody+'">Email</a>' +
+    '<button class="btn-c btn-c-copy" onclick="navigator.clipboard.writeText(window.location.href);this.textContent=\x27¡Copiado!\x27">Copiar enlace</button>' +
+    '</div>';
+})();
+</script>
 </body>
 </html>
