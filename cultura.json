@@ -1,5 +1,15 @@
 [
   {
+    "id": "20260503-corto-rodado-celebra-18-ediciones-integrando-cine-cul",
+    "titulo": "Corto Rodado celebra 18 ediciones integrando cine patagónico binacional",
+    "bajada": "El festival santacruceño de cortometrajes profundiza el corredor cultural Argentina-Chile y abre su convocatoria a la inteligencia artificial como herramienta creativa.",
+    "imagen": "fotos/foto-20260503-corto-rodado-celebra-18-ediciones-integrando-cine-cul.webp",
+    "tag": "🎭 Cultura",
+    "categoria": "cultura",
+    "meta": "Hoy · Tiempo Sur",
+    "pais": "ambos"
+  },
+  {
     "id": "cultura-uriel-sokolowicz-mar-es-uno",
     "titulo": "Un buzo en aguas patagónicas retrató el fondo del mar y ganó: Uriel Sokolowicz, premiado en el concurso \"El Mar es Uno\"",
     "bajada": "El camarógrafo submarino e instructor de buceo logró un 7.° puesto en la categoría Cámara con “Bosque encantado”, imagen tomada en el Parque Interjurisdiccional Marino Isla Pingüino.",
@@ -20,28 +30,6 @@
     "categoria": "cultura",
     "meta": "Hoy · Tiempo Sur",
     "pais": "argentina"
-  },
-  {
-    "id": "20260419-heladeria-tito-seis-decadas-de-sabor-en-rio-gallegos-cul",
-    "titulo": "Heladería Tito: seis décadas de sabor en Río Gallegos",
-    "bajada": "El emblemático local de la capital santacruceña celebró 60 años con un reconocimiento nacional a su trayectoria y la receta que nunca cambió.",
-    "imagen": "fotos/foto-20260419-heladeria-tito-seis-decadas-de-sabor-en-rio-gallegos-cul.webp",
-    "tag": "🎭 Cultura",
-    "categoria": "cultura",
-    "meta": "Hoy · Tiempo Sur",
-    "pais": "argentina"
-  },
-  {
-    "id": "cultura-rodrigo-binet-fotografia",
-    "titulo": "Rodrigo Binet: \"Siempre trato de que un pedacito de Santa Cruz aparezca en mi trabajo\"",
-    "bajada": "El fotógrafo de Río Gallegos que llevó la Patagonia a ferias internacionales y a las paredes de la UNESCO habla de su proceso creativo, de la escena fotográfica sureña y del nuevo trabajo que está a punto de mostrar.",
-    "imagen": "fotos/rodrigo-binet-foto4.webp",
-    "tag": "📷 Cultura",
-    "categoria": "cultura",
-    "meta": "Abril 2026 · GLOBALpatagonia",
-    "pais": "argentina",
-    "excluir_feed": true,
-    "postear_redes": true
   },
   {
     "id": "historia-huelgas-1921",

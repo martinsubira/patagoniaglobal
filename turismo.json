@@ -1,5 +1,14 @@
 [
   {
+    "id": "20260503-la-otra-vida-del-lago-nahuel-huapi-mas-alla-del-tur",
+    "badge": "TURISMO",
+    "titulo": "La otra vida del lago Nahuel Huapi más allá del turismo clásico",
+    "bajada": "Una mirada al paisaje y las rutas que rodean el gran lago de Bariloche revela facetas menos conocidas de uno de los íconos patagónicos.",
+    "imagen": "fotos/foto-20260503-la-otra-vida-del-lago-nahuel-huapi-mas-alla-del-tur.webp",
+    "meta": "Hoy · Diario Río Negro",
+    "url_original": "https://www.rionegro.com.ar/sociedad/paisaje-y-ruta-en-bariloche-la-otra-vida-del-gran-lago-nahuel-huapi/"
+  },
+  {
     "id": "20260503-cabo-froward-parque-nacional-bosques-submarinos-tur",
     "badge": "🌿 Naturaleza · Chile",
     "titulo": "Cabo Froward en camino a Parque Nacional: la nueva frontera verde y azul del extremo sur de América",
@@ -19,24 +28,5 @@
     "imagen": "fotos/foto-20260426-navegar-el-nahuel-huapi-el-paseo-que-nunca-se-repite-tur.webp",
     "meta": "Hoy · Diario Río Negro",
     "url_original": "https://www.rionegro.com.ar/voy-turismo/navegar-por-el-nahuel-huapi-un-paseo-que-se-repite-y-nunca-es-igual-el-mejor-plan-en-bariloche/"
-  },
-  {
-    "id": "20260419-hualaihue-fiordos-mariscos-y-vida-autentica-en-los-tur",
-    "badge": "TURISMO",
-    "titulo": "Hualaihué: fiordos, mariscos y vida auténtica en Los Lagos",
-    "bajada": "Esta comuna costera de la Región de Los Lagos se posiciona como un destino donde la gastronomía marina y el paisaje de fiordos ofrecen una experiencia patagónica sin filtros.",
-    "imagen": "fotos/torres-del-paine.webp",
-    "meta": "Hoy · La Nación Chile",
-    "url_original": "https://www.lanacion.cl/lugares-turisticos-en-chile-hualaihue-mariscos-y-vida-entre-fiordos/"
-  },
-  {
-    "id": "turismo-pucheguin-cochamo-2026",
-    "badge": "CONSERVACIÓN",
-    "titulo": "Pucheguín: cómo una campaña histórica salvó 133.000 hectáreas en la Patagonia chilena",
-    "bajada": "Una coalición de organizaciones locales e internacionales recaudó 78 millones de dólares para comprar y proteger para siempre uno de los últimos territorios vírgenes del norte de la Patagonia chilena. La historia de una hacienda casi perdida, una presa bloqueada y el corredor biológico más grande de América Latina.",
-    "imagen": "fotos/foto-turismo-pucheguin-cochamo-2026.webp",
-    "meta": "17 de Abril de 2026 · El País",
-    "url_original": "https://elpais.com/america-futura/2026-02-19/pucheguin-un-ejemplo-historico-de-colaboracion-para-proteger-la-naturaleza.html",
-    "excluir_feed": true
   }
 ]
