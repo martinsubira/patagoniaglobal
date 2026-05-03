@@ -139,6 +139,19 @@
     "descripcion": "Una de las carreras de aventura más extremas del mundo, en los paisajes salvajes de la Patagonia chilena."
   },
   {
+    "id": "corto-rodado-2026-convocatoria",
+    "titulo": "Corto Rodado - 18° Edición (cierre de convocatoria)",
+    "fecha": "2026-07-12",
+    "fecha_fin": null,
+    "fecha_display": "12 de julio (cierre de convocatoria)",
+    "lugar": "Río Gallegos",
+    "region": "Santa Cruz, Argentina",
+    "pais": "AR",
+    "categoria": "cultura",
+    "emoji": "🎬",
+    "descripcion": "El festival de cortometrajes Corto Rodado celebra su 18° edición profundizando el intercambio cultural en el corredor Argentina-Chile. La convocatoria cierra el 12 de julio e integra nuevas voces y tecnologías como la Inteligencia Artificial."
+  },
+  {
     "id": "festival-folklorico-magallanes-2026",
     "titulo": "XLIII Festival Folclórico en la Patagonia",
     "fecha": "2026-08-01",
