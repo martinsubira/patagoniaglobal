@@ -249,7 +249,7 @@
     const data = new URLSearchParams(new FormData(form));
     data.append('tipo', 'publicidad');
     try {
-      await fetch(SCRIPT_URL, { method: 'POST', body: data });
+      await fetch(SCRIPT_URL, { method: 'POST', body: data, mode: 'no-cors' });
       form.style.display = 'none';
       success.style.display = 'block';
     } catch {
