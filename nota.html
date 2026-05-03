@@ -11,13 +11,10 @@
   <link rel="canonical" id="canonical-tag"/>
   <script>
     (function() {
-      var params = new URLSearchParams(window.location.search);
-      var id = params.get('id');
-      // Si no hay ?id= redirigir al inicio
-      if (!id) { window.location.replace('/'); }
-      // Canonical siempre apunta a la URL sin ?lang= (versión española canónica)
-      var canonicalUrl = 'https://globalpatagonia.org/notas/' + id + '.html';
-      document.getElementById('canonical-tag').href = canonicalUrl;
+      var slug = (window.location.pathname.split('/notas/')[1] || '').replace('.html', '')
+                 || new URLSearchParams(window.location.search).get('id');
+      if (!slug) { window.location.replace('/'); return; }
+      document.getElementById('canonical-tag').href = 'https://globalpatagonia.org/notas/' + slug + '.html';
     })();
   </script>
   <meta property="og:site_name" content="GLOBALpatagonia"/>
@@ -637,17 +634,14 @@ function renderNota(nota, fechaDisplay, data) {
   setMeta('meta[property="og:title"]', nota.titulo + " — GLOBALpatagonia");
   setMeta('meta[property="og:description"]', nota.bajada || nota.titulo);
   setMeta('meta[property="og:image"]', imgAbsoluta);
-  setMeta('meta[property="og:url"]', window.location.href);
+  const cleanUrl = 'https://globalpatagonia.org/notas/' + nota.id + '.html';
+  setMeta('meta[property="og:url"]', cleanUrl);
   setMeta('meta[name="description"]', nota.bajada || nota.titulo);
   setMeta('meta[name="twitter:title"]', nota.titulo + " — GLOBALpatagonia");
   setMeta('meta[name="twitter:description"]', nota.bajada || nota.titulo);
   setMeta('meta[name="twitter:image"]', imgAbsoluta);
   const canonical = document.querySelector('link[rel="canonical"]');
-  if (canonical) {
-    // Canonical apunta siempre a la versión española (sin ?lang=)
-    const _cParams = new URLSearchParams(window.location.search);
-    canonical.href = 'https://globalpatagonia.org/notas/' + (_cParams.get('id') || '') + '.html';
-  }
+  if (canonical) canonical.href = cleanUrl;
 
   // JSON-LD dinámico para Google
   const jsonld = document.getElementById("jsonld-nota");
