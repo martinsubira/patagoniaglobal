@@ -427,6 +427,18 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://globalpatagonia.org/notas/20260426-propio-malvinas-giro-eeuu-en.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://globalpatagonia.org/notas/20260426-propio-malvinas-giro-eeuu-zh.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://globalpatagonia.org/notas/20260420-propio-malvinas-alimentos.html</loc>
     <lastmod>2026-05-03</lastmod>
     <changefreq>weekly</changefreq>
@@ -437,6 +449,18 @@
     <lastmod>2026-05-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://globalpatagonia.org/notas/ski-patagonia-2026-en.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://globalpatagonia.org/notas/ski-patagonia-2026-pt.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://globalpatagonia.org/notas/20260407-propio-malvinas.html</loc>
