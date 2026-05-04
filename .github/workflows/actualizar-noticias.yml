@@ -69,12 +69,17 @@ jobs:
               print('Secundaria forzada inyectada y archivo eliminado.')
           else:
               print('Sin secundaria forzada, continuando con secundarias generadas.')
+          # Deduplicar noticias[] — quitar lo que ya está en tapa o secundarias
+          with open('noticias.json', encoding='utf-8') as f:
+              datos = json.load(f)
+          excluir = {datos['tapa']['id']} | {s['id'] for s in datos.get('secundarias', [])}
+          datos['noticias'] = [n for n in datos.get('noticias', []) if n['id'] not in excluir]
+          with open('noticias.json', 'w', encoding='utf-8') as f:
+              json.dump(datos, f, ensure_ascii=False, indent=2)
           # Re-inyectar index.html con el noticias.json ya parcheado
           import sys
           sys.path.insert(0, '.')
           import actualizar_noticias
-          with open('noticias.json', encoding='utf-8') as f:
-              datos = json.load(f)
           actualizar_noticias.inyectar_tapa_en_index(datos)
           EOF
 
