@@ -86,6 +86,30 @@
     .footer-logo span{color:#8ab8d4;font-weight:400;font-style:italic;}
     .footer-copy{font-size:11px;letter-spacing:1px;margin-top:12px;color:rgba(255,255,255,0.35);}
     @media(max-width:600px){.top-bar{padding:6px 16px;}.logo-img{height:46px;}nav a{padding:10px 10px;font-size:10px;}}
+  
+    .relacionadas{margin-top:48px;padding-top:24px;border-top:2px solid #e0ddd8;}
+    .relacionadas-titulo{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#5a6070;margin-bottom:20px;}
+    .relacionadas-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+    .rel-card{cursor:pointer;border-radius:4px;overflow:hidden;background:white;transition:transform 0.2s;text-decoration:none;color:inherit;display:block;}
+    .rel-card:hover{transform:translateY(-2px);}
+    .rel-img{width:100%;height:100px;object-fit:cover;display:block;background:linear-gradient(160deg,#0e1a26,#1c2d3d);}
+    .rel-body{padding:10px 12px 12px;}
+    .rel-tag{font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#3a7a5a;margin-bottom:4px;}
+    .rel-titulo{font-size:13px;font-weight:600;line-height:1.35;color:#252830;}
+    @media(max-width:600px){.relacionadas-grid{grid-template-columns:1fr 1fr;}}
+    @media(max-width:480px){.relacionadas-grid{grid-template-columns:1fr;}}
+  
+    /* COMPARTIR */
+    .compartir-bloque{margin:32px 0 8px;}
+    .compartir-label-s{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#7a7a7a;display:block;margin-bottom:10px;}
+    .compartir-btns{display:flex;flex-wrap:wrap;gap:8px;}
+    .btn-c{display:inline-flex;align-items:center;gap:5px;padding:8px 14px;border-radius:3px;font-size:12px;font-weight:600;text-decoration:none;cursor:pointer;border:none;transition:opacity 0.2s;color:white;}
+    .btn-c:hover{opacity:0.85;}
+    .btn-c-wa{background:#25D366;}
+    .btn-c-x{background:#000;}
+    .btn-c-fb{background:#1877F2;}
+    .btn-c-mail{background:#555;}
+    .btn-c-copy{background:#3a5a7a;}
   </style>
 </head>
 <body>
@@ -129,6 +153,11 @@
 <p>El momento en que surge este dato no es menor. La Argentina debate desde hace años la aplicación efectiva de la Ley de Glaciares (Ley 26.639), cuestionada repetidamente por las provincias mineras. Si el glaciar más famoso del país muestra señales de retroceso acelerado, el argumento en favor de una protección más robusta se vuelve difícil de rebatir. La ciencia, en este caso, llega al debate político con un número concreto: 0,8 km² en 97 días.</p>
 <p>La Patagonia tiene en sus glaciares una reserva de agua dulce que el mundo comenzó a mirar con urgencia a medida que avanza el siglo. El Perito Moreno fue, durante décadas, la excepción que confirmaba la regla: el hielo que resistía. Lo ocurrido en el verano 2025-2026 no permite seguir sosteniendo esa narrativa con la misma comodidad. El Sur Global no está ajeno al calentamiento global. Está en su primera línea.</p></div>
     <div class="nota-fuente"><strong>Fuente original:</strong> Esta nota fue elaborada con información de <strong>Página 12</strong>.</div>
+    <div class="relacionadas">
+      <div class="relacionadas-titulo">También te puede interesar</div>
+      <div class="relacionadas-grid"><a class="rel-card" href="/notas/20260502-punta-arenas-pide-terreno-para-nuevo-cesfam-y-cambios-sec2.html"><img class="rel-img" src="https://globalpatagonia.org/fotos/foto-20260502-punta-arenas-pide-terreno-para-nuevo-cesfam-y-cambios-sec2.webp" alt="Punta Arenas pide terreno para nuevo Cesfam y cambios habitacionales" onerror="this.style.display='none'"><div class="rel-body"><div class="rel-tag">Desarrollo</div><div class="rel-titulo">Punta Arenas pide terreno para nuevo Cesfam y cambios habitacionales</div></div></a><a class="rel-card" href="/notas/20260429-santa-cruz-prohibe-mineria-en-zonas-glaciares-y-tapa.html"><img class="rel-img" src="https://globalpatagonia.org/fotos/foto-20260429-santa-cruz-prohibe-mineria-en-zonas-glaciares-y-tapa.webp" alt="Santa Cruz prohíbe minería en zonas glaciares y reafirma su política ambiental" onerror="this.style.display='none'"><div class="rel-body"><div class="rel-tag">Ambiente</div><div class="rel-titulo">Santa Cruz prohíbe minería en zonas glaciares y reafirma su política ambiental</div></div></a><a class="rel-card" href="/notas/20260425-hito-en-vaca-muerta-prueban-por-primera-vez-arenas-de-sec2.html"><img class="rel-img" src="https://globalpatagonia.org/fotos/foto-20260425-hito-en-vaca-muerta-prueban-por-primera-vez-arenas-de-sec2.webp" alt="Hito en Vaca Muerta: prueban por primera vez arenas de fractura neuquinas" onerror="this.style.display='none'"><div class="rel-body"><div class="rel-tag">Producción</div><div class="rel-titulo">Hito en Vaca Muerta: prueban por primera vez arenas de fractura neuquinas</div></div></a></div>
+    </div>
+    <div class="compartir-bloque" id="compartir-bloque"></div>
     <a href="../" class="ver-completo">← Más noticias en GLOBALpatagonia</a>
   </article>
 </div>
@@ -139,5 +168,25 @@
   <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-top:4px;">Argentina · Chile · Sin fronteras</div>
   <div class="footer-copy">© 2026 GLOBALpatagonia · globalpatagonia.org</div>
 </footer>
+
+<script>
+(function(){
+  var href = encodeURIComponent(window.location.href);
+  var titulo = encodeURIComponent(document.title.replace(' — GLOBALpatagonia','').replace(' - GLOBALpatagonia',''));
+  var mailSubject = encodeURIComponent(document.title.replace(' — GLOBALpatagonia','').replace(' - GLOBALpatagonia',''));
+  var mailBody = encodeURIComponent(document.title + '\n' + window.location.href);
+  var div = document.getElementById('compartir-bloque');
+  if (!div) return;
+  div.innerHTML =
+    '<span class="compartir-label-s">Compartir</span>' +
+    '<div class="compartir-btns">' +
+    '<a class="btn-c btn-c-wa" href="https://wa.me/?text='+titulo+'%20'+href+'" target="_blank" rel="noopener">WhatsApp</a>' +
+    '<a class="btn-c btn-c-x" href="https://twitter.com/intent/tweet?text='+titulo+'&url='+href+'" target="_blank" rel="noopener">X</a>' +
+    '<a class="btn-c btn-c-fb" href="https://www.facebook.com/sharer/sharer.php?u='+href+'" target="_blank" rel="noopener">Facebook</a>' +
+    '<a class="btn-c btn-c-mail" href="mailto:?subject='+mailSubject+'&body='+mailBody+'">Email</a>' +
+    '<button class="btn-c btn-c-copy" onclick="navigator.clipboard.writeText(window.location.href);this.textContent='¡Copiado!'">Copiar enlace</button>' +
+    '</div>';
+})();
+</script>
 </body>
 </html>
