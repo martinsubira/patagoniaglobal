@@ -38,6 +38,11 @@ jobs:
           BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
         run: python3 actualizar_noticias.py
 
+      - name: Agregar relacionadas y compartir a notas nuevas
+        run: |
+          python3 agregar_relacionadas.py
+          python3 agregar_compartir.py
+
       - name: Inyectar tapa forzada (si existe)
         run: |
           python3 - <<'EOF'
@@ -80,6 +85,7 @@ jobs:
           git add noticias.json noticias_ayer.json historial.json agenda.json index.html fotos/ propios.json propios_historial.json deportes_feed.json negocios.json turismo.json cultura.json telegram_state.json sitemap.xml feed.xml
           git add tapa_forzada.json secundaria_forzada.json 2>/dev/null || true
           git ls-files --others --exclude-standard notas/ | xargs -r git add --
+          git add notas/
           git diff --staged --quiet || git commit -m "Noticias actualizadas — $(date +'%d/%m/%Y')"
           git push
 
