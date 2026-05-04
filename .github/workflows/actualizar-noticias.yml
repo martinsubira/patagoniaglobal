@@ -64,13 +64,20 @@ jobs:
               print('Secundaria forzada inyectada y archivo eliminado.')
           else:
               print('Sin secundaria forzada, continuando con secundarias generadas.')
+          # Re-inyectar index.html con el noticias.json ya parcheado
+          import sys
+          sys.path.insert(0, '.')
+          import actualizar_noticias
+          with open('noticias.json', encoding='utf-8') as f:
+              datos = json.load(f)
+          actualizar_noticias.inyectar_tapa_en_index(datos)
           EOF
 
       - name: Publicar cambios
         run: |
           git config user.name "GLOBALpatagonia Bot"
           git config user.email "bot@globalpatagonia.org"
-          git add noticias.json noticias_ayer.json historial.json agenda.json fotos/ propios.json propios_historial.json deportes_feed.json negocios.json turismo.json cultura.json telegram_state.json sitemap.xml feed.xml
+          git add noticias.json noticias_ayer.json historial.json agenda.json index.html fotos/ propios.json propios_historial.json deportes_feed.json negocios.json turismo.json cultura.json telegram_state.json sitemap.xml feed.xml
           git add tapa_forzada.json secundaria_forzada.json 2>/dev/null || true
           git ls-files --others --exclude-standard notas/ | xargs -r git add --
           git diff --staged --quiet || git commit -m "Noticias actualizadas — $(date +'%d/%m/%Y')"
