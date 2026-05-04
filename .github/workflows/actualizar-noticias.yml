@@ -22,7 +22,7 @@ jobs:
           python-version: '3.11'
 
       - name: Instalar dependencias
-        run: pip install anthropic feedparser Pillow numpy
+        run: pip install anthropic feedparser Pillow numpy pytrends
 
       - name: Correr script de noticias
         env:

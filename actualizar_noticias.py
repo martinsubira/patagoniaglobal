@@ -180,6 +180,60 @@ def es_patagonica(titulo, resumen):
     return any(kw in texto for kw in PALABRAS_CLAVE)
 
 
+# Keywords de alta prioridad editorial (peso x3 en el scoring)
+_PALABRAS_PRIORITARIAS = frozenset([
+    "glaciar", "glaciares", "ley de glaciares", "pesca ilegal",
+    "incendio forestal", "incendio", "derrame", "contaminación",
+    "mapuche", "tehuelche", "kawésqar", "kawesqar", "selknam",
+    "yagán", "yagan", "comunidad indígena", "pueblo originario",
+    "malvinas", "falkland", "falklands", "antártida", "antartida",
+    "soberanía", "inach",
+])
+
+_trending_cache = None  # se carga una sola vez por ejecución
+
+def obtener_trending_keywords():
+    """Trending searches de Google Trends para AR y CL. Retorna set vacío si falla."""
+    global _trending_cache
+    if _trending_cache is not None:
+        return _trending_cache
+    try:
+        from pytrends.request import TrendReq
+        pytrends = TrendReq(hl='es', tz=180, timeout=(10, 25), retries=1, backoff_factor=0.5)
+        kws = set()
+        for pais in ('argentina', 'chile'):
+            try:
+                df = pytrends.trending_searches(pn=pais)
+                for term in df[0].str.lower().tolist():
+                    kws.add(term)
+                    kws.update(w for w in term.split() if len(w) > 3)
+            except Exception:
+                pass
+        _trending_cache = kws
+        print(f"  Trending AR+CL: {len(kws)} términos cargados")
+        return kws
+    except ImportError:
+        print("  pytrends no disponible, scoring sin trending")
+        _trending_cache = set()
+        return set()
+    except Exception as e:
+        print(f"  Trending no disponible ({e}), scoring sin trending")
+        _trending_cache = set()
+        return set()
+
+
+def puntuar_relevancia(titulo, resumen, trending_kw=frozenset()):
+    """Cuenta coincidencias de keywords; las prioritarias pesan 3×, trending suma +5."""
+    texto = (titulo + " " + resumen).lower()
+    score = 0
+    for kw in PALABRAS_CLAVE:
+        if kw in texto:
+            score += 3 if kw in _PALABRAS_PRIORITARIAS else 1
+    if trending_kw and any(tk in texto for tk in trending_kw):
+        score += 5
+    return score
+
+
 def obtener_imagen_rss(entry):
     if hasattr(entry, "media_content") and entry.media_content:
         for m in entry.media_content:
@@ -358,6 +412,8 @@ def fetch_noticias_crudas():
     print(f"  {fecha_display()}")
     print(f"{'='*55}\n")
 
+    trending_kw = obtener_trending_keywords()
+
     for fuente in FUENTES_RSS:
         print(f"  Leyendo: {fuente['nombre']} ...", end=" ", flush=True)
         try:
@@ -373,9 +429,10 @@ def fetch_noticias_crudas():
                         "fuente":           fuente["nombre"],
                         "region":           fuente["region"],
                         "titulo_original":  titulo,
-                        "resumen_original": resumen[:500] if resumen else "",
+                        "resumen_original": resumen[:250] if resumen else "",
                         "url":              entry.get("link", ""),
                         "imagen_rss":       obtener_imagen_rss(entry),
+                        "score":            puntuar_relevancia(titulo, resumen, trending_kw),
                     }
                     if fuente["region"] in REGIONES_CHILE:
                         cl.append(articulo)
@@ -386,10 +443,14 @@ def fetch_noticias_crudas():
         except Exception as e:
             print(f"error ({e})")
 
-    # Pool balanceado: hasta 22 AR + hasta 12 CL (garantía mínima de cobertura chilena)
-    pool = ar[:22] + cl[:12]
+    # Ordenar por relevancia antes de recortar (las más patagónicas primero)
+    ar.sort(key=lambda x: x["score"], reverse=True)
+    cl.sort(key=lambda x: x["score"], reverse=True)
+
+    # Pool balanceado: hasta 15 AR + hasta 10 CL (garantía mínima de cobertura chilena)
+    pool = ar[:15] + cl[:10]
     print(f"\n  Total encontradas: {len(ar)+len(cl)} ({len(ar)} AR · {len(cl)} CL)")
-    print(f"  Pool para Claude: {len(pool)} ({min(len(ar),22)} AR · {min(len(cl),12)} CL)\n")
+    print(f"  Pool para Claude: {len(pool)} ({min(len(ar),15)} AR · {min(len(cl),10)} CL)\n")
     return pool
 
 
