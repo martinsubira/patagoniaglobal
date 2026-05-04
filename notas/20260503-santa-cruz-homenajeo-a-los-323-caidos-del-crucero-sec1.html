@@ -98,6 +98,18 @@
     .btn-c-fb{background:#1877F2;}
     .btn-c-mail{background:#555;}
     .btn-c-copy{background:#3a5a7a;}
+  
+    .relacionadas{margin-top:48px;padding-top:24px;border-top:2px solid #e0ddd8;}
+    .relacionadas-titulo{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#5a6070;margin-bottom:20px;}
+    .relacionadas-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+    .rel-card{cursor:pointer;border-radius:4px;overflow:hidden;background:white;transition:transform 0.2s;text-decoration:none;color:inherit;display:block;}
+    .rel-card:hover{transform:translateY(-2px);}
+    .rel-img{width:100%;height:100px;object-fit:cover;display:block;background:linear-gradient(160deg,#0e1a26,#1c2d3d);}
+    .rel-body{padding:10px 12px 12px;}
+    .rel-tag{font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#3a7a5a;margin-bottom:4px;}
+    .rel-titulo{font-size:13px;font-weight:600;line-height:1.35;color:#252830;}
+    @media(max-width:600px){.relacionadas-grid{grid-template-columns:1fr 1fr;}}
+    @media(max-width:480px){.relacionadas-grid{grid-template-columns:1fr;}}
   </style>
 </head>
 <body>
@@ -141,7 +153,12 @@
 <p>El acto también coincidió con la conmemoración del 44° aniversario del Bautismo de Fuego de la Fuerza Aérea Argentina, recordado en otra ceremonia con presencia de fuerzas de seguridad y autoridades municipales. Ambos eventos refuerzan el lugar central que ocupa Malvinas en la identidad patagónica.</p>
 <p>La memoria, en estas latitudes, no es retórica. Es geografía, vecindad con el mar austral y la convicción de que el reclamo de soberanía sigue vigente, 44 años después del conflicto.</p></div>
     <div class="nota-fuente"><strong>Fuente original:</strong> Esta nota fue elaborada con información de <strong>Tiempo Sur</strong>.</div>
-        <a href="../" class="ver-completo">← Más noticias en GLOBALpatagonia</a>
+        
+    <div class="relacionadas">
+      <div class="relacionadas-titulo">También te puede interesar</div>
+      <div class="relacionadas-grid"><a class="rel-card" href="/notas/20260426-propio-malvinas-giro-eeuu.html"><img class="rel-img" src="https://globalpatagonia.org/fotos/malvinas-telam-ushuaia.png" alt="Claves para entender qué ocurrió realmente con el giro de EE.UU. sobre la soberanía de las Islas Malvinas y qué implicancias tiene para el reclamo argentino" onerror="this.style.display='none'"><div class="rel-body"><div class="rel-tag">Atlántico Sur</div><div class="rel-titulo">Claves para entender qué ocurrió realmente con el giro de EE.UU. sobre la soberanía de las Islas Malvinas y qué implicancias tiene para el reclamo argentino</div></div></a><a class="rel-card" href="/notas/20260503-reino-unido-refuerza-sistemas-de-defensa-aerea-en-tapa.html"><img class="rel-img" src="https://globalpatagonia.org/fotos/foto-20260503-reino-unido-refuerza-sistemas-de-defensa-aerea-en-tapa.webp" alt="Reino Unido refuerza sistemas de defensa aérea en Malvinas ante tensión internacional" onerror="this.style.display='none'"><div class="rel-body"><div class="rel-tag">Atlántico Sur</div><div class="rel-titulo">Reino Unido refuerza sistemas de defensa aérea en Malvinas ante tensión internacional</div></div></a><a class="rel-card" href="/notas/20260425-malvinas-argentina-reafirma-soberania-tras-senales-de-tapa.html"><img class="rel-img" src="https://globalpatagonia.org/fotos/monumento-malvinas.webp" alt="Malvinas: Argentina reafirma soberanía tras señales de un posible giro de EE.UU." onerror="this.style.display='none'"><div class="rel-body"><div class="rel-tag">Atlántico Sur</div><div class="rel-titulo">Malvinas: Argentina reafirma soberanía tras señales de un posible giro de EE.UU.</div></div></a></div>
+    </div>
+    <a href="../" class="ver-completo">← Más noticias en GLOBALpatagonia</a>
     <div class="compartir-bloque" id="compartir-bloque"></div>
   </article>
 </div>

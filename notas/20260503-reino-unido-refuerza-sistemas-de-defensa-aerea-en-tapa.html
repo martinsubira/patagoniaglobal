@@ -98,6 +98,18 @@
     .btn-c-fb{background:#1877F2;}
     .btn-c-mail{background:#555;}
     .btn-c-copy{background:#3a5a7a;}
+  
+    .relacionadas{margin-top:48px;padding-top:24px;border-top:2px solid #e0ddd8;}
+    .relacionadas-titulo{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#5a6070;margin-bottom:20px;}
+    .relacionadas-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+    .rel-card{cursor:pointer;border-radius:4px;overflow:hidden;background:white;transition:transform 0.2s;text-decoration:none;color:inherit;display:block;}
+    .rel-card:hover{transform:translateY(-2px);}
+    .rel-img{width:100%;height:100px;object-fit:cover;display:block;background:linear-gradient(160deg,#0e1a26,#1c2d3d);}
+    .rel-body{padding:10px 12px 12px;}
+    .rel-tag{font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#3a7a5a;margin-bottom:4px;}
+    .rel-titulo{font-size:13px;font-weight:600;line-height:1.35;color:#252830;}
+    @media(max-width:600px){.relacionadas-grid{grid-template-columns:1fr 1fr;}}
+    @media(max-width:480px){.relacionadas-grid{grid-template-columns:1fr;}}
   </style>
 </head>
 <body>
@@ -141,7 +153,12 @@
 <p>El refuerzo también genera preocupación en Chile, cuya región de Magallanes comparte aguas y rutas marítimas con la zona en disputa. El Estrecho de Magallanes y el Paso Drake son corredores estratégicos que cualquier escalada bélica podría afectar, convirtiendo este tema en una cuestión binacional.</p>
 <p>Lo que viene es incierto. Si el contexto internacional no se distensiona, la presencia militar británica en las islas podría seguir en aumento, profundizando una asimetría que la región patagónica observa con inquietud desde ambos lados de la cordillera.</p></div>
     <div class="nota-fuente"><strong>Fuente original:</strong> Esta nota fue elaborada con información de <strong>Tiempo Sur</strong>.</div>
-        <a href="../" class="ver-completo">← Más noticias en GLOBALpatagonia</a>
+        
+    <div class="relacionadas">
+      <div class="relacionadas-titulo">También te puede interesar</div>
+      <div class="relacionadas-grid"><a class="rel-card" href="/notas/20260503-santa-cruz-homenajeo-a-los-323-caidos-del-crucero-sec1.html"><img class="rel-img" src="https://globalpatagonia.org/fotos/foto-20260503-santa-cruz-homenajeo-a-los-323-caidos-del-crucero-sec1.webp" alt="Santa Cruz homenajeó a los 323 caídos del crucero Belgrano" onerror="this.style.display='none'"><div class="rel-body"><div class="rel-tag">Atlántico Sur</div><div class="rel-titulo">Santa Cruz homenajeó a los 323 caídos del crucero Belgrano</div></div></a><a class="rel-card" href="/notas/20260425-malvinas-argentina-reafirma-soberania-tras-senales-de-tapa.html"><img class="rel-img" src="https://globalpatagonia.org/fotos/monumento-malvinas.webp" alt="Malvinas: Argentina reafirma soberanía tras señales de un posible giro de EE.UU." onerror="this.style.display='none'"><div class="rel-body"><div class="rel-tag">Atlántico Sur</div><div class="rel-titulo">Malvinas: Argentina reafirma soberanía tras señales de un posible giro de EE.UU.</div></div></a><a class="rel-card" href="/notas/20260426-propio-malvinas-giro-eeuu.html"><img class="rel-img" src="https://globalpatagonia.org/fotos/malvinas-telam-ushuaia.png" alt="Claves para entender qué ocurrió realmente con el giro de EE.UU. sobre la soberanía de las Islas Malvinas y qué implicancias tiene para el reclamo argentino" onerror="this.style.display='none'"><div class="rel-body"><div class="rel-tag">Atlántico Sur</div><div class="rel-titulo">Claves para entender qué ocurrió realmente con el giro de EE.UU. sobre la soberanía de las Islas Malvinas y qué implicancias tiene para el reclamo argentino</div></div></a></div>
+    </div>
+    <a href="../" class="ver-completo">← Más noticias en GLOBALpatagonia</a>
     <div class="compartir-bloque" id="compartir-bloque"></div>
   </article>
 </div>

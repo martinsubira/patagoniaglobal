@@ -98,6 +98,18 @@
     .btn-c-fb{background:#1877F2;}
     .btn-c-mail{background:#555;}
     .btn-c-copy{background:#3a5a7a;}
+  
+    .relacionadas{margin-top:48px;padding-top:24px;border-top:2px solid #e0ddd8;}
+    .relacionadas-titulo{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#5a6070;margin-bottom:20px;}
+    .relacionadas-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+    .rel-card{cursor:pointer;border-radius:4px;overflow:hidden;background:white;transition:transform 0.2s;text-decoration:none;color:inherit;display:block;}
+    .rel-card:hover{transform:translateY(-2px);}
+    .rel-img{width:100%;height:100px;object-fit:cover;display:block;background:linear-gradient(160deg,#0e1a26,#1c2d3d);}
+    .rel-body{padding:10px 12px 12px;}
+    .rel-tag{font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#3a7a5a;margin-bottom:4px;}
+    .rel-titulo{font-size:13px;font-weight:600;line-height:1.35;color:#252830;}
+    @media(max-width:600px){.relacionadas-grid{grid-template-columns:1fr 1fr;}}
+    @media(max-width:480px){.relacionadas-grid{grid-template-columns:1fr;}}
   </style>
 </head>
 <body>
@@ -140,7 +152,12 @@
 <p>Corto Rodado también cumple una función vital de archivo cultural. A lo largo de sus 18 ediciones, ha documentado transformaciones sociales, ambientales y económicas de la región a través de la mirada de sus propios habitantes. No es cine sobre la Patagonia hecho desde afuera: es cine patagónico hecho desde adentro.</p>
 <p>La convocatoria está abierta a cortometrajes de ficción, documental, animación y experimental. Los interesados pueden inscribirse hasta mediados de julio a través de las plataformas oficiales del festival. Para GLOBALpatagonia, este tipo de iniciativas son fundamentales: demuestran que la producción cultural del sur no espera permisos del centro para existir y crecer.</p></div>
     <div class="nota-fuente"><strong>Fuente original:</strong> Esta nota fue elaborada con información de <strong>Tiempo Sur</strong>.</div>
-        <a href="../" class="ver-completo">← Más noticias en GLOBALpatagonia</a>
+        
+    <div class="relacionadas">
+      <div class="relacionadas-titulo">También te puede interesar</div>
+      <div class="relacionadas-grid"><a class="rel-card" href="/notas/cultura-ruben-patagonia.html"><img class="rel-img" src="https://globalpatagonia.org/fotos/ruben-patagonia.webp" alt="Rubén Patagonia: la voz tehuelche que cantó lo que otros no podían nombrar" onerror="this.style.display='none'"><div class="rel-body"><div class="rel-tag">Cultura</div><div class="rel-titulo">Rubén Patagonia: la voz tehuelche que cantó lo que otros no podían nombrar</div></div></a><a class="rel-card" href="/notas/cultura-chatwin-patagonia.html"><img class="rel-img" src="https://globalpatagonia.org/fotos/ruta-estepa-patagonica.webp" alt="Bruce Chatwin y la Patagonia: el libro que cambió para siempre cómo el mundo mira el sur" onerror="this.style.display='none'"><div class="rel-body"><div class="rel-tag">Cultura</div><div class="rel-titulo">Bruce Chatwin y la Patagonia: el libro que cambió para siempre cómo el mundo mira el sur</div></div></a><a class="rel-card" href="/notas/cultura-uriel-sokolowicz-mar-es-uno.html"><img class="rel-img" src="https://globalpatagonia.org/fotos/uriel-sokolowicz-bosque-encantado.webp" alt="Un buzo en aguas patagónicas retrató el fondo del mar y ganó: Uriel Sokolowicz, premiado en el concurso "El Mar es Uno"" onerror="this.style.display='none'"><div class="rel-body"><div class="rel-tag">Cultura</div><div class="rel-titulo">Un buzo en aguas patagónicas retrató el fondo del mar y ganó: Uriel Sokolowicz, premiado en el concurso "El Mar es Uno"</div></div></a></div>
+    </div>
+    <a href="../" class="ver-completo">← Más noticias en GLOBALpatagonia</a>
     <div class="compartir-bloque" id="compartir-bloque"></div>
   </article>
 </div>
