@@ -68,9 +68,10 @@ FUENTES_RSS = [
     {"nombre": "LMNeuquén",              "url": "https://www.lmneuquen.com/rss/",                       "region": "Neuquén"},
     {"nombre": "Tiempo Sur",             "url": "https://www.tiemposur.com.ar/feed",                     "region": "Santa Cruz"},
     # ── Argentina · Nacional ──
-    {"nombre": "La Nación",               "url": "https://www.lanacion.com.ar/arc/outboundfeeds/rss/",   "region": "Nacional"},
-    {"nombre": "Infobae",                 "url": "https://www.infobae.com/feeds/rss/",                   "region": "Nacional"},
-    {"nombre": "Clarín",                  "url": "https://www.clarin.com/rss/lo-ultimo/",                "region": "Nacional"},
+    {"nombre": "La Nación",               "url": "https://www.lanacion.com.ar/arc/outboundfeeds/rss/",              "region": "Nacional"},
+    {"nombre": "Infobae",                 "url": "https://www.infobae.com/feeds/rss/",                              "region": "Nacional"},
+    {"nombre": "Clarín",                  "url": "https://www.clarin.com/rss/lo-ultimo/",                           "region": "Nacional"},
+    {"nombre": "Página 12",               "url": "https://www.pagina12.com.ar/arc/outboundfeeds/rss/portada",       "region": "Nacional"},
     # ── Chile · Nacional ──
     {"nombre": "La Nación Chile",           "url": "https://www.lanacion.cl/feed/",                        "region": "Nacional Chile"},
     # ── Chile · Regionales ──
