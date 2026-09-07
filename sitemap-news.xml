@@ -2,6 +2,39 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://globalpatagonia.org/notas/20260907-descubren-la-ranita-de-chalten-un-hito-de-la-tapa.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>GLOBALpatagonia</news:name>
+        <news:language>es</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-07T09:00:00-03:00</news:publication_date>
+      <news:title>Descubren la Ranita de Chaltén: un hito de la biodiversidad en Los Glaciares</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://globalpatagonia.org/notas/20260907-punta-arenas-controla-incendio-en-su-vertedero-sec1.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>GLOBALpatagonia</news:name>
+        <news:language>es</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-07T09:00:00-03:00</news:publication_date>
+      <news:title>Punta Arenas controla incendio en su vertedero municipal</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://globalpatagonia.org/notas/20260907-corredor-maritimo-austral-la-propuesta-para-conectar-sec2.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>GLOBALpatagonia</news:name>
+        <news:language>es</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-07T09:00:00-03:00</news:publication_date>
+      <news:title>Corredor Marítimo Austral: la propuesta para conectar el continente con Tierra del Fuego</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://globalpatagonia.org/notas/20260906-magallanes-desafia-el-horario-de-verano-mantiene-su-tapa.html</loc>
     <news:news>
       <news:publication>
@@ -10,17 +43,6 @@
       </news:publication>
       <news:publication_date>2026-09-06T09:00:00-03:00</news:publication_date>
       <news:title>Magallanes desafía el horario de verano: mantiene su propio huso para integrarse con Argentina</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://globalpatagonia.org/notas/20260905-radonich-y-la-ruta-comercial-a-malvinas-punta-arenas-tapa.html</loc>
-    <news:news>
-      <news:publication>
-        <news:name>GLOBALpatagonia</news:name>
-        <news:language>es</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-05T09:00:00-03:00</news:publication_date>
-      <news:title>Radonich y la ruta comercial a Malvinas: Punta Arenas perdió USD 20 millones</news:title>
     </news:news>
   </url>
   <url>
@@ -35,25 +57,14 @@
     </news:news>
   </url>
   <url>
-    <loc>https://globalpatagonia.org/notas/20260905-el-forrest-gump-chileno-corrio-por-el-calafate-y-los-sec1.html</loc>
+    <loc>https://globalpatagonia.org/notas/20260907-inversiones-de-elsztain-en-malvinas-la-puja-por-el-neg.html</loc>
     <news:news>
       <news:publication>
         <news:name>GLOBALpatagonia</news:name>
         <news:language>es</news:language>
       </news:publication>
-      <news:publication_date>2026-09-05T09:00:00-03:00</news:publication_date>
-      <news:title>El “Forrest Gump chileno” corrió por El Calafate y Los Glaciares</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://globalpatagonia.org/notas/20260905-fosis-entrega-apoyo-a-87-emprendedores-de-punta-arenas-sec2.html</loc>
-    <news:news>
-      <news:publication>
-        <news:name>GLOBALpatagonia</news:name>
-        <news:language>es</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-05T09:00:00-03:00</news:publication_date>
-      <news:title>FOSIS entrega apoyo a 87 emprendedores de Punta Arenas</news:title>
+      <news:publication_date>2026-09-07T09:00:00-03:00</news:publication_date>
+      <news:title>Inversiones de Elsztain en Malvinas: la puja por el negocio bajo bloqueo</news:title>
     </news:news>
   </url>
   <url>
@@ -87,17 +98,6 @@
       </news:publication>
       <news:publication_date>2026-09-06T09:00:00-03:00</news:publication_date>
       <news:title>Ciudad de los Vientos lanza su segundo llamado para crecer en Magallanes</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://globalpatagonia.org/notas/20260905-del-incendio-a-exportar-la-historia-de-una-pyme-en-neg.html</loc>
-    <news:news>
-      <news:publication>
-        <news:name>GLOBALpatagonia</news:name>
-        <news:language>es</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-05T09:00:00-03:00</news:publication_date>
-      <news:title>Del incendio a exportar: la historia de una pyme en Vaca Muerta</news:title>
     </news:news>
   </url>
 </urlset>

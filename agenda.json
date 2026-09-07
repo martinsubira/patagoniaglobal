@@ -26,19 +26,6 @@
     "descripcion": "Edición 2026 de la Feria Provincial del Libro, con la participación de Facundo Pastor y actividades culturales en Río Gallegos."
   },
   {
-    "id": "patagonian-marathon-2026",
-    "titulo": "Patagonian International Marathon",
-    "fecha": "2026-09-05",
-    "fecha_fin": "2026-09-06",
-    "fecha_display": "5 y 6 de septiembre",
-    "lugar": "Torres del Paine, Magallanes",
-    "region": "Magallanes, Chile",
-    "pais": "CL",
-    "categoria": "deportes",
-    "emoji": "🏃",
-    "descripcion": "Maratón internacional en el corazón del Parque Nacional Torres del Paine. Una de las carreras más icónicas del mundo, con el macizo Torres como telón de fondo."
-  },
-  {
     "id": "fedemad-esquel-2026",
     "titulo": "FEDEMAD 2026 - Feria de la Madera de la Patagonia",
     "fecha": "2026-09-11",
