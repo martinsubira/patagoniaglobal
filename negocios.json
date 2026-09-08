@@ -1,5 +1,21 @@
 [
   {
+    "id": "20260908-rio-negro-lanza-creditos-con-tasa-bonificada-para-neg",
+    "titulo": "Río Negro lanza créditos con tasa bonificada para impulsar a las empresas",
+    "bajada": "El programa provincial ofrece una reducción de 5 puntos en la tasa de interés para créditos destinados a fortalecer el tejido productivo local.",
+    "cuerpo": "El gobierno de Río Negro busca dar un impulso concreto al entramado productivo provincial con el lanzamiento de un nuevo beneficio para empresas. Se trata de una línea de créditos que permite acceder a financiamiento con una tasa de interés 5 puntos menor a la del mercado, una herramienta pensada para aliviar la presión financiera sobre los pequeños y medianos empresarios y fomentar la inversión.\n\nLa medida, anunciada desde el ejecutivo provincial, apunta a sectores estratégicos de la economía rionegrina, como la fruticultura, el turismo, la industria tecnológica y los servicios basados en el conocimiento. En un contexto macroeconómico desafiante, el acceso a capital de trabajo y a financiamiento para proyectos de expansión se vuelve crítico para la supervivencia y el crecimiento de las firmas locales.\n\nLa diferencia de 5 puntos porcentuales puede parecer un número abstracto, pero para una pyme con un crédito de 10 millones de pesos, significa un ahorro significativo en el costo total del préstamo. Para GLOBALpatagonia, esta iniciativa es un ejemplo de cómo las políticas públicas pueden tener un impacto directo en el día a día de las economías regionales.\n\nLa Patagonia se caracteriza por un tejido productivo basado en pequeñas y medianas empresas que a menudo enfrentan dificultades para acceder al crédito bancario tradicional. La creación de líneas de fomento provinciales es un mecanismo clave para nivelar la cancha y permitir que los productores locales puedan competir. Queda por ver cómo se implementará esta medida y qué alcance tendrá, pero la señal es positiva: hay un Estado provincial dispuesto a poner el hombro para sostener al sector privado.",
+    "tag": "💼 Economía",
+    "categoria": "economia",
+    "fuente": "Diario Río Negro",
+    "autor": "Redacción GLOBALpatagonia",
+    "pais": "argentina",
+    "imagen": "fotos/foto-20260908-rio-negro-lanza-creditos-con-tasa-bonificada-para-neg.webp",
+    "imagen_keywords": "créditos pymes finanzas",
+    "url_original": "https://www.rionegro.com.ar/politica/el-nuevo-beneficio-para-empresas-de-rio-negro-permite-acceder-a-creditos-con-5-puntos-menos-de-tasa-4713093/",
+    "meta": "Hoy · GLOBALpatagonia",
+    "excluir_feed": true
+  },
+  {
     "id": "20260907-inversiones-de-elsztain-en-malvinas-la-puja-por-el-neg",
     "titulo": "Inversiones de Elsztain en Malvinas: la puja por el negocio bajo bloqueo",
     "bajada": "Eduardo Elsztain revela que su inversión en la Falkland Islands Company está bajo un bloqueo del gobierno británico, un hecho que redefine las reglas de juego económicas en el Atlántico Sur.",
@@ -76,22 +92,6 @@
     "imagen": "fotos/foto-20260903-hm-desembarca-en-punta-arenas-con-su-tienda-mas-neg.webp",
     "imagen_keywords": "tienda ropa inauguración punta arenas",
     "url_original": "https://www.tiemposur.com.ar/info-general/h-m-genera-expectativa-con-largas-filas-frente-al-comercio",
-    "meta": "Hoy · GLOBALpatagonia",
-    "excluir_feed": true
-  },
-  {
-    "id": "20260902-apoyo-economico-a-clubes-deportivos-de-puerto-deseado-neg",
-    "titulo": "Apoyo económico a clubes deportivos de Puerto Deseado",
-    "bajada": "El municipio de Puerto Deseado firmó un convenio para financiar a los clubes deportivos locales.",
-    "cuerpo": "En una muestra de apoyo al deporte de base, la Municipalidad de Puerto Deseado concretó la firma de convenios con clubes deportivos locales para hacer efectivo un importante aporte económico.\n\nLa iniciativa, enmarcada en las políticas de fortalecimiento institucional, busca acompañar a las instituciones que fomentan la actividad física y la contención social en la localidad de Santa Cruz. El aporte económico permitirá a los clubes afrontar gastos de funcionamiento y mejorar sus instalaciones.\n\nEste tipo de subsidios son vitales para la supervivencia de las pequeñas instituciones deportivas de la Patagonia, que a menudo dependen del apoyo estatal para cubrir costos de viajes, equipamiento y mantenimiento. La firma del convenio representa un alivio para las comisiones directivas, que día a día trabajan para mantener viva la llama del deporte en la comunidad.",
-    "tag": "💼 Economía",
-    "categoria": "economia",
-    "fuente": "Tiempo Sur",
-    "autor": "Redacción GLOBALpatagonia",
-    "pais": "argentina",
-    "imagen": "fotos/foto-20260902-apoyo-economico-a-clubes-deportivos-de-puerto-deseado-neg.webp",
-    "imagen_keywords": "club deportivo acuerdo",
-    "url_original": "https://www.tiemposur.com.ar/deporte/municipio-firmo-un-convenio-para-financiar-a-los-clubes-deportivos",
     "meta": "Hoy · GLOBALpatagonia",
     "excluir_feed": true
   }

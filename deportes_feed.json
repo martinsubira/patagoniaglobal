@@ -1,14 +1,22 @@
 {
   "_info": "Feed de la sección Deportes & Aventura. Actualizado por actualizar_deportes.py. NO editar manualmente salvo corrección de emergencia.",
   "principal": {
-    "id": "20260902-esqui-de-travesia-nocturno-nueva-salida-en-el-cerro-dep",
-    "tag": "🏃 Deportes",
-    "titulo": "Esquí de travesía nocturno: nueva salida en el Cerro San Martín",
-    "bajada": "El Club Andino Bariloche organiza una salida nocturna con esquí, raquetas y splitboard para el viernes 4 de septiembre.",
-    "imagen": "fotos/foto-20260902-esqui-de-travesia-nocturno-nueva-salida-en-el-cerro-dep.webp",
-    "meta": "Hoy · Club Andino Bariloche"
+    "id": "20260908-catedral-celebra-sus-90-anos-con-un-beneficio-para-los-dep",
+    "tag": "🏔️ Deportes",
+    "titulo": "Catedral celebra sus 90 años con un beneficio para los residentes",
+    "bajada": "El cerro más emblemático de Bariloche lanza un pase especial para que los locales festejen nueve décadas de historia sobre la nieve.",
+    "imagen": "fotos/foto-20260908-catedral-celebra-sus-90-anos-con-un-beneficio-para-los-dep.webp",
+    "meta": "Hoy · Catedral Alta Patagonia"
   },
   "secundarias": [
+    {
+      "id": "20260902-esqui-de-travesia-nocturno-nueva-salida-en-el-cerro-dep",
+      "tag": "🏃 Deportes",
+      "titulo": "Esquí de travesía nocturno: nueva salida en el Cerro San Martín",
+      "bajada": "El Club Andino Bariloche organiza una salida nocturna con esquí, raquetas y splitboard para el viernes 4 de septiembre.",
+      "imagen": "fotos/foto-20260902-esqui-de-travesia-nocturno-nueva-salida-en-el-cerro-dep.webp",
+      "meta": "Hoy · Club Andino Bariloche"
+    },
     {
       "id": "20260901-el-club-mar-del-plata-rompe-la-racha-y-es-campeon-del-dep",
       "tag": "🏃 Deportes",
@@ -16,7 +24,9 @@
       "bajada": "El histórico equipo de Caleta Olivia vuelve a la cima tras una década, con una campaña aplastante en la liga local.",
       "imagen": "fotos/foto-20260901-el-club-mar-del-plata-rompe-la-racha-y-es-campeon-del-dep.webp",
       "meta": "Hoy · Tiempo Sur"
-    },
+    }
+  ],
+  "row_cards": [
     {
       "id": "20260831-el-boxeo-vuelve-a-torres-del-paine-con-su-festival-mas-dep",
       "tag": "🏃 Deportes",
@@ -24,9 +34,7 @@
       "bajada": "El Gimnasio Municipal de Villa Cerro Castillo recibe una nueva edición del Festival de Boxeo Jorge 'Cuajo' Andrade, con apoyo del Gobierno Regional.",
       "imagen": "fotos/foto-20260831-el-boxeo-vuelve-a-torres-del-paine-con-su-festival-mas-dep.webp",
       "meta": "Hoy · El Magallánico"
-    }
-  ],
-  "row_cards": [
+    },
     {
       "id": "20260831-la-vuelta-a-la-isla-solitaria-celebra-su-octava-dep",
       "tag": "🏃 Deportes",
@@ -50,14 +58,6 @@
       "bajada": "El Grupo Excursionistas de Adultos arranca el año con una salida al Cerro Perito Moreno, reafirmando su compromiso con el montañismo y la vida al aire libre.",
       "imagen": "fotos/foto-20260827-el-geda-del-club-andino-inicia-su-temporada-44-en-el-dep.webp",
       "meta": "Hoy · Club Andino Bariloche"
-    },
-    {
-      "id": "20260826-copa-davis-la-designacion-de-frana-no-toca-la-agenda-dep",
-      "tag": "🏃 Deportes",
-      "titulo": "Copa Davis: la designación de Frana no toca la agenda deportiva patagónica",
-      "bajada": "La lista de tenistas convocados por el capitán argentino para enfrentar a Turquía no tiene referentes de clubes patagónicos.",
-      "imagen": "fotos/foto-20260826-copa-davis-la-designacion-de-frana-no-toca-la-agenda-dep.webp",
-      "meta": "Hoy · Tiempo Sur"
     }
   ]
 }

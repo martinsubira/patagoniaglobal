@@ -2,6 +2,39 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://globalpatagonia.org/notas/20260908-incendio-en-los-alerces-la-ayuda-llega-al-bolsillo-de-tapa.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>GLOBALpatagonia</news:name>
+        <news:language>es</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-08T09:00:00-03:00</news:publication_date>
+      <news:title>Incendio en Los Alerces: la ayuda llega al bolsillo de los productores</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://globalpatagonia.org/notas/20260908-malvinas-la-estrategia-de-tierra-del-fuego-contra-el-sec1.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>GLOBALpatagonia</news:name>
+        <news:language>es</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-08T09:00:00-03:00</news:publication_date>
+      <news:title>Malvinas: la estrategia de Tierra del Fuego contra el tratado con Reino Unido</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://globalpatagonia.org/notas/20260908-inach-mapas-que-narran-el-encuentro-entre-sec2.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>GLOBALpatagonia</news:name>
+        <news:language>es</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-08T09:00:00-03:00</news:publication_date>
+      <news:title>INACH: mapas que narran el encuentro entre expedicionarios y pueblos del Fin del Mundo</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://globalpatagonia.org/notas/20260907-descubren-la-ranita-de-chalten-un-hito-de-la-tapa.html</loc>
     <news:news>
       <news:publication>
@@ -35,25 +68,25 @@
     </news:news>
   </url>
   <url>
-    <loc>https://globalpatagonia.org/notas/20260906-magallanes-desafia-el-horario-de-verano-mantiene-su-tapa.html</loc>
+    <loc>https://globalpatagonia.org/notas/20260908-catedral-celebra-sus-90-anos-con-un-beneficio-para-los-dep.html</loc>
     <news:news>
       <news:publication>
         <news:name>GLOBALpatagonia</news:name>
         <news:language>es</news:language>
       </news:publication>
-      <news:publication_date>2026-09-06T09:00:00-03:00</news:publication_date>
-      <news:title>Magallanes desafía el horario de verano: mantiene su propio huso para integrarse con Argentina</news:title>
+      <news:publication_date>2026-09-08T09:00:00-03:00</news:publication_date>
+      <news:title>Catedral celebra sus 90 años con un beneficio para los residentes</news:title>
     </news:news>
   </url>
   <url>
-    <loc>https://globalpatagonia.org/notas/20260906-rio-colorado-reune-a-la-elite-ganadera-de-la-patagonia-sec2.html</loc>
+    <loc>https://globalpatagonia.org/notas/20260908-rio-negro-lanza-creditos-con-tasa-bonificada-para-neg.html</loc>
     <news:news>
       <news:publication>
         <news:name>GLOBALpatagonia</news:name>
         <news:language>es</news:language>
       </news:publication>
-      <news:publication_date>2026-09-06T09:00:00-03:00</news:publication_date>
-      <news:title>Río Colorado reúne a la elite ganadera de la Patagonia</news:title>
+      <news:publication_date>2026-09-08T09:00:00-03:00</news:publication_date>
+      <news:title>Río Negro lanza créditos con tasa bonificada para impulsar a las empresas</news:title>
     </news:news>
   </url>
   <url>
@@ -65,39 +98,6 @@
       </news:publication>
       <news:publication_date>2026-09-07T09:00:00-03:00</news:publication_date>
       <news:title>Inversiones de Elsztain en Malvinas: la puja por el negocio bajo bloqueo</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://globalpatagonia.org/notas/20260906-zona-franca-de-punta-arenas-constituye-una-mesa-para-neg.html</loc>
-    <news:news>
-      <news:publication>
-        <news:name>GLOBALpatagonia</news:name>
-        <news:language>es</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-06T09:00:00-03:00</news:publication_date>
-      <news:title>Zona Franca de Punta Arenas constituye una mesa para definir su futuro</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://globalpatagonia.org/notas/20260906-base-escudero-del-inach-renueva-su-jefatura-en-pleno-cul.html</loc>
-    <news:news>
-      <news:publication>
-        <news:name>GLOBALpatagonia</news:name>
-        <news:language>es</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-06T09:00:00-03:00</news:publication_date>
-      <news:title>Base Escudero del INACH renueva su jefatura en pleno invierno antartico</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://globalpatagonia.org/notas/20260906-ciudad-de-los-vientos-lanza-su-segundo-llamado-para-tur.html</loc>
-    <news:news>
-      <news:publication>
-        <news:name>GLOBALpatagonia</news:name>
-        <news:language>es</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-06T09:00:00-03:00</news:publication_date>
-      <news:title>Ciudad de los Vientos lanza su segundo llamado para crecer en Magallanes</news:title>
     </news:news>
   </url>
 </urlset>
