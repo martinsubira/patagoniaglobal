@@ -2,6 +2,39 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://globalpatagonia.org/notas/20260909-a-21-anos-del-hallazgo-que-revelo-el-primer-tapa.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>GLOBALpatagonia</news:name>
+        <news:language>es</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-09T09:00:00-03:00</news:publication_date>
+      <news:title>A 21 años del hallazgo que reveló el primer asentamiento español en la Patagonia</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://globalpatagonia.org/notas/20260909-museo-yagan-exhibira-documental-sobre-el-movimiento-de-sec1.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>GLOBALpatagonia</news:name>
+        <news:language>es</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-09T09:00:00-03:00</news:publication_date>
+      <news:title>Museo Yagán exhibirá documental sobre el movimiento de mujeres en Chile</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://globalpatagonia.org/notas/20260909-magallanes-la-region-mas-beneficiada-por-el-plan-de-sec2.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>GLOBALpatagonia</news:name>
+        <news:language>es</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-09T09:00:00-03:00</news:publication_date>
+      <news:title>Magallanes, la región más beneficiada por el Plan de Zonas Extremas</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://globalpatagonia.org/notas/20260908-incendio-en-los-alerces-la-ayuda-llega-al-bolsillo-de-tapa.html</loc>
     <news:news>
       <news:publication>
@@ -35,36 +68,14 @@
     </news:news>
   </url>
   <url>
-    <loc>https://globalpatagonia.org/notas/20260907-descubren-la-ranita-de-chalten-un-hito-de-la-tapa.html</loc>
+    <loc>https://globalpatagonia.org/notas/20260909-una-salida-nocturna-en-el-cerro-catedral-convoco-a-40-dep.html</loc>
     <news:news>
       <news:publication>
         <news:name>GLOBALpatagonia</news:name>
         <news:language>es</news:language>
       </news:publication>
-      <news:publication_date>2026-09-07T09:00:00-03:00</news:publication_date>
-      <news:title>Descubren la Ranita de Chaltén: un hito de la biodiversidad en Los Glaciares</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://globalpatagonia.org/notas/20260907-punta-arenas-controla-incendio-en-su-vertedero-sec1.html</loc>
-    <news:news>
-      <news:publication>
-        <news:name>GLOBALpatagonia</news:name>
-        <news:language>es</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-07T09:00:00-03:00</news:publication_date>
-      <news:title>Punta Arenas controla incendio en su vertedero municipal</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://globalpatagonia.org/notas/20260907-corredor-maritimo-austral-la-propuesta-para-conectar-sec2.html</loc>
-    <news:news>
-      <news:publication>
-        <news:name>GLOBALpatagonia</news:name>
-        <news:language>es</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-07T09:00:00-03:00</news:publication_date>
-      <news:title>Corredor Marítimo Austral: la propuesta para conectar el continente con Tierra del Fuego</news:title>
+      <news:publication_date>2026-09-09T09:00:00-03:00</news:publication_date>
+      <news:title>Una salida nocturna en el Cerro Catedral convocó a 40 montañistas</news:title>
     </news:news>
   </url>
   <url>
@@ -87,17 +98,6 @@
       </news:publication>
       <news:publication_date>2026-09-08T09:00:00-03:00</news:publication_date>
       <news:title>Río Negro lanza créditos con tasa bonificada para impulsar a las empresas</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://globalpatagonia.org/notas/20260907-inversiones-de-elsztain-en-malvinas-la-puja-por-el-neg.html</loc>
-    <news:news>
-      <news:publication>
-        <news:name>GLOBALpatagonia</news:name>
-        <news:language>es</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-07T09:00:00-03:00</news:publication_date>
-      <news:title>Inversiones de Elsztain en Malvinas: la puja por el negocio bajo bloqueo</news:title>
     </news:news>
   </url>
 </urlset>

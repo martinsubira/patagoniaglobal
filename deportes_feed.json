@@ -1,14 +1,22 @@
 {
   "_info": "Feed de la sección Deportes & Aventura. Actualizado por actualizar_deportes.py. NO editar manualmente salvo corrección de emergencia.",
   "principal": {
-    "id": "20260908-catedral-celebra-sus-90-anos-con-un-beneficio-para-los-dep",
-    "tag": "🏔️ Deportes",
-    "titulo": "Catedral celebra sus 90 años con un beneficio para los residentes",
-    "bajada": "El cerro más emblemático de Bariloche lanza un pase especial para que los locales festejen nueve décadas de historia sobre la nieve.",
-    "imagen": "fotos/foto-20260908-catedral-celebra-sus-90-anos-con-un-beneficio-para-los-dep.webp",
-    "meta": "Hoy · Catedral Alta Patagonia"
+    "id": "20260909-una-salida-nocturna-en-el-cerro-catedral-convoco-a-40-dep",
+    "tag": "🏃 Deportes",
+    "titulo": "Una salida nocturna en el Cerro Catedral convocó a 40 montañistas",
+    "bajada": "La travesía organizada por el Club Andino Bariloche combinó esquí y raquetas para disfrutar del entorno nevado bajo la luz de la luna.",
+    "imagen": "fotos/foto-20260909-una-salida-nocturna-en-el-cerro-catedral-convoco-a-40-dep.webp",
+    "meta": "Hoy · Club Andino Bariloche"
   },
   "secundarias": [
+    {
+      "id": "20260908-catedral-celebra-sus-90-anos-con-un-beneficio-para-los-dep",
+      "tag": "🏔️ Deportes",
+      "titulo": "Catedral celebra sus 90 años con un beneficio para los residentes",
+      "bajada": "El cerro más emblemático de Bariloche lanza un pase especial para que los locales festejen nueve décadas de historia sobre la nieve.",
+      "imagen": "fotos/foto-20260908-catedral-celebra-sus-90-anos-con-un-beneficio-para-los-dep.webp",
+      "meta": "Hoy · Catedral Alta Patagonia"
+    },
     {
       "id": "20260902-esqui-de-travesia-nocturno-nueva-salida-en-el-cerro-dep",
       "tag": "🏃 Deportes",
@@ -16,7 +24,9 @@
       "bajada": "El Club Andino Bariloche organiza una salida nocturna con esquí, raquetas y splitboard para el viernes 4 de septiembre.",
       "imagen": "fotos/foto-20260902-esqui-de-travesia-nocturno-nueva-salida-en-el-cerro-dep.webp",
       "meta": "Hoy · Club Andino Bariloche"
-    },
+    }
+  ],
+  "row_cards": [
     {
       "id": "20260901-el-club-mar-del-plata-rompe-la-racha-y-es-campeon-del-dep",
       "tag": "🏃 Deportes",
@@ -24,9 +34,7 @@
       "bajada": "El histórico equipo de Caleta Olivia vuelve a la cima tras una década, con una campaña aplastante en la liga local.",
       "imagen": "fotos/foto-20260901-el-club-mar-del-plata-rompe-la-racha-y-es-campeon-del-dep.webp",
       "meta": "Hoy · Tiempo Sur"
-    }
-  ],
-  "row_cards": [
+    },
     {
       "id": "20260831-el-boxeo-vuelve-a-torres-del-paine-con-su-festival-mas-dep",
       "tag": "🏃 Deportes",
@@ -50,14 +58,6 @@
       "bajada": "El seleccionado santacruceño buscará subir al podio en el Campeonato Argentino de Selecciones Masculino tras caer en semis.",
       "imagen": "fotos/foto-20260829-caleta-olivia-va-por-el-bronce-en-el-argentino-de-dep.webp",
       "meta": "Hoy · Tiempo Sur"
-    },
-    {
-      "id": "20260827-el-geda-del-club-andino-inicia-su-temporada-44-en-el-dep",
-      "tag": "🏃 Deportes",
-      "titulo": "El GEDA del Club Andino inicia su temporada 44 en El Bolsón",
-      "bajada": "El Grupo Excursionistas de Adultos arranca el año con una salida al Cerro Perito Moreno, reafirmando su compromiso con el montañismo y la vida al aire libre.",
-      "imagen": "fotos/foto-20260827-el-geda-del-club-andino-inicia-su-temporada-44-en-el-dep.webp",
-      "meta": "Hoy · Club Andino Bariloche"
     }
   ]
 }
